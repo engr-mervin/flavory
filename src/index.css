@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #ea5c2b;
+}
+
+.heading--1 {
+  font-size: 6.6rem;
+  font-weight: 800;
+  letter-spacing: 6.6px;
+  color: #3f2107;
+}
+
+.button--action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 245, 236);
+  width: 5rem;
+  height: 5rem;
+  border-radius: 30%;
+  cursor: pointer;
+  border: 1.5px solid #ea5c2b;
+  transition: all 200ms;
+}
+.button--action:hover {
+  background-color: #ea5c2b;
+  transform: scale(1.08);
+}
+.button--action:hover .icon {
+  color: rgb(255, 245, 236);
+}
+.button .icon {
+  transition: all 200ms;
+  color: #ea5c2b;
+  width: 3rem;
+  height: 3rem;
+}
+
+.header {
+  padding: 3rem 8rem;
+  background-color: rgb(255, 245, 236);
+  align-items: center;
+  background-image: linear-gradient(to right, rgba(234, 92, 43, 0.45), rgba(234, 92, 43, 0.25)), url(./assets/header-image.jpg);
+  background-size: cover;
+  background-position: center;
+  color: #3f2107;
+}
+.header-box {
+  border-radius: 1rem;
+  background-color: rgba(255, 245, 236, 0.6);
+  backdrop-filter: blur(3px);
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  height: 100%;
+  justify-content: space-between;
+  padding: 4rem 8rem;
+}
+.header p {
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+}
+
+/*# sourceMappingURL=index.css.map */
