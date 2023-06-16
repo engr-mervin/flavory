@@ -1,0 +1,21 @@
+.contact-info {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+
+  & .contact-item {
+    width: 3.6rem;
+    height: 3.6rem;
+    transition: all 200ms;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  & .contact-logo {
+    width: 3.6rem;
+    height: 3.6rem;
+    fill: $color-font--black;
+  }
+}

@@ -62,11 +62,60 @@ body {
   text-align: right;
 }
 
+.contact-info {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.contact-info .contact-item {
+  width: 3.6rem;
+  height: 3.6rem;
+  transition: all 200ms;
+}
+.contact-info .contact-item:hover {
+  transform: scale(1.1);
+}
+.contact-info .contact-logo {
+  width: 3.6rem;
+  height: 3.6rem;
+  fill: #3f2107;
+}
+
+.link:link, .link:visited {
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #3f2107;
+}
+.link:hover, .link:active {
+  background-color: #ff7f3f;
+}
+
+.tab {
+  border: none;
+  cursor: pointer;
+  padding: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  background-color: rgb(255, 250, 246);
+  font-size: 1.6rem;
+  color: #3f2107;
+  letter-spacing: 0.7px;
+  border-bottom: 3px solid transparent;
+  transition: all 300ms;
+}
+.tab.active {
+  border-bottom: 3px solid #ea5c2b;
+}
+.tab:hover {
+  transform: scale(1.05);
+}
+
 .header {
   padding: 3rem 8rem;
   background-color: rgb(255, 245, 236);
   align-items: center;
-  background-image: linear-gradient(to right, rgba(234, 92, 43, 0.15), rgba(234, 92, 43, 0.05)), url(./assets/header-image.jpg);
+  background-image: linear-gradient(to bottom, rgba(234, 92, 43, 0.15), rgba(234, 92, 43, 0.05)), url(./assets/header-image.jpg);
   background-size: cover;
   background-position: center;
   color: #3f2107;
@@ -79,16 +128,47 @@ body {
   min-width: min-content;
   display: flex;
   flex-direction: column;
-  gap: 6rem;
   height: 100%;
   justify-content: space-between;
   padding: 4rem 6rem;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   padding-right: 2rem;
 }
 .header-box > p {
   font-size: 2.2rem;
   letter-spacing: 1px;
+  margin-top: 2rem;
+  margin-bottom: 6rem;
+}
+.header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.navigation {
+  background-color: rgb(255, 250, 246);
+  margin: 0 5rem;
+  padding-top: 5rem;
+}
+.navigation-list {
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+}
+.navigation-logo {
+  height: 2.4rem;
+  width: 2.4rem;
+  display: inline-block;
+  fill: #ea5c2b;
+}
+.navigation-logo path {
+  fill: #ea5c2b;
+}
+.navigation-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,4 +1,5 @@
 import React from "react";
+import ContactInfo from "../Reusable/ContactInfo";
 import * as constants from "../../util/constants";
 import ProjectInfo from "../Reusable/ProjectInfo";
 
@@ -8,7 +9,10 @@ const Header = function (props) {
       <div className="header-box">
         <h1 className="heading--1">{constants.APP_TITLE}</h1>
         <p>{constants.APP_SLOGAN}</p>
-        <ProjectInfo></ProjectInfo>
+        <div className="header-info">
+          <ContactInfo></ContactInfo>
+          <ProjectInfo></ProjectInfo>
+        </div>
       </div>
     </div>
   );

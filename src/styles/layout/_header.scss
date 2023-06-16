@@ -3,7 +3,7 @@
   background-color: $color-font--white;
   align-items: center;
   background-image: linear-gradient(
-      to right,
+      to bottom,
       rgba($color-primary, 0.15),
       rgba($color-primary, 0.05)
     ),
@@ -20,16 +20,23 @@
     min-width: min-content;
     display: flex;
     flex-direction: column;
-    gap: 6rem;
     height: 100%;
     justify-content: space-between;
     padding: 4rem 6rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     padding-right: 2rem;
 
     & > p {
       font-size: 2.2rem;
       letter-spacing: 1px;
+      margin-top: 2rem;
+      margin-bottom: 6rem;
     }
+  }
+
+  &-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
   }
 }
