@@ -1,14 +1,14 @@
 import React from "react";
-import HeaderTitle from "./HeaderTitle.js";
-import ButtonIcon from "../UI/ButtonIcon.js";
-import { ReactComponent as IconCart } from "../../assets/cart-outline.svg";
+import * as constants from "../../util/constants";
+import ProjectInfo from "../Reusable/ProjectInfo";
 
 const Header = function (props) {
   return (
     <div className="header">
       <div className="header-box">
-        <HeaderTitle></HeaderTitle>
-        <p>Food at your doorstep.</p>
+        <h1 className="heading--1">{constants.APP_TITLE}</h1>
+        <p>{constants.APP_SLOGAN}</p>
+        <ProjectInfo></ProjectInfo>
       </div>
     </div>
   );

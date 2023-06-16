@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
   font-size: 62.5%;
 }
@@ -16,16 +17,17 @@ body {
 }
 
 body {
-  font-family: "Lato", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   color: #ea5c2b;
+  font-family: "Montserrat", sans-serif;
 }
 
 .heading--1 {
+  font-family: "Inconsolata", monospace;
   font-size: 6.6rem;
-  font-weight: 800;
-  letter-spacing: 6.6px;
+  font-weight: 400;
+  letter-spacing: 3.6px;
   color: #3f2107;
 }
 
@@ -55,11 +57,16 @@ body {
   height: 3rem;
 }
 
+.project-info p {
+  font-size: 1.4rem;
+  text-align: right;
+}
+
 .header {
   padding: 3rem 8rem;
   background-color: rgb(255, 245, 236);
   align-items: center;
-  background-image: linear-gradient(to right, rgba(234, 92, 43, 0.45), rgba(234, 92, 43, 0.25)), url(./assets/header-image.jpg);
+  background-image: linear-gradient(to right, rgba(234, 92, 43, 0.15), rgba(234, 92, 43, 0.05)), url(./assets/header-image.jpg);
   background-size: cover;
   background-position: center;
   color: #3f2107;
@@ -67,18 +74,21 @@ body {
 .header-box {
   border-radius: 1rem;
   background-color: rgba(255, 245, 236, 0.6);
-  backdrop-filter: blur(3px);
-  width: 40%;
+  backdrop-filter: blur(4px);
+  width: 50%;
+  min-width: min-content;
   display: flex;
   flex-direction: column;
   gap: 6rem;
   height: 100%;
   justify-content: space-between;
-  padding: 4rem 8rem;
+  padding: 4rem 6rem;
+  padding-bottom: 2rem;
+  padding-right: 2rem;
 }
-.header p {
+.header-box > p {
   font-size: 2.2rem;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 /*# sourceMappingURL=index.css.map */

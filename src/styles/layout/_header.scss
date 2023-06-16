@@ -4,8 +4,8 @@
   align-items: center;
   background-image: linear-gradient(
       to right,
-      rgba($color-primary, 0.45),
-      rgba($color-primary, 0.25)
+      rgba($color-primary, 0.15),
+      rgba($color-primary, 0.05)
     ),
     url(./assets/header-image.jpg);
   background-size: cover;
@@ -15,18 +15,21 @@
   &-box {
     border-radius: 1rem;
     background-color: rgba($color-font--white, 0.6);
-    backdrop-filter: blur(3px);
-    width: 40%;
+    backdrop-filter: blur(4px);
+    width: 50%;
+    min-width: min-content;
     display: flex;
     flex-direction: column;
     gap: 6rem;
     height: 100%;
     justify-content: space-between;
-    padding: 4rem 8rem;
-  }
+    padding: 4rem 6rem;
+    padding-bottom: 2rem;
+    padding-right: 2rem;
 
-  & p {
-    font-size: 2.2rem;
-    letter-spacing: 2px;
+    & > p {
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
   }
 }
