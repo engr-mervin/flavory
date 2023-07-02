@@ -1,0 +1,14 @@
+.link {
+  &:link,
+  &:visited {
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+    color: $color-font--black;
+  }
+
+  &:hover,
+  &:active {
+    background-color: $color-primary--light;
+  }
+}

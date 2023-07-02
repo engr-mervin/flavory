@@ -1,0 +1,48 @@
+.navigation {
+  padding: 1rem 6rem;
+  padding-top: 2rem;
+  border-bottom: 3px double $color-font--black;
+  background-color: $color-primary--white;
+  display: flex;
+  justify-content: space-between;
+
+  &-list,
+  &-list-2 {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  &-list-2 {
+    gap: 2rem;
+  }
+  &-item,
+  &-item-2 {
+    display: flex;
+    align-items: center;
+    a:link,
+    a:visited {
+      padding: 2rem 3rem;
+      text-decoration: none;
+      color: $color-font--black;
+      transition: all 250ms;
+      border-radius: 2px;
+    }
+
+    a:hover,
+    a:active {
+      transform: scale(1.05);
+      background-color: $color-primary--white-dark-1;
+    }
+  }
+
+  &-item-2 {
+    a:link,
+    a:visited {
+      padding: 1rem 3rem;
+      color: $color-font--white;
+      background-color: $color-font--black;
+      border-radius: 1rem;
+    }
+  }
+}
