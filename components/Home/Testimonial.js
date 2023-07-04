@@ -5,6 +5,12 @@ import test3 from "../../assets/images/test-3.jpg";
 const Testimonial = function () {
   return (
     <div className="testimonial">
+      <h1 className="heading--1c">We Rebuild Lives</h1>
+      <div className="testimonial-video-box">
+        <video className="testimonial-video" autoPlay muted loop>
+          <source src={"/testimonial-bg-2.mp4"} type="video/mp4"></source>
+        </video>
+      </div>
       <div className="testimonial-item">
         <Image
           className="testimonial-image testimonial-image--1"

@@ -1,10 +1,13 @@
 .testimonial {
   display: flex;
   flex-direction: column;
-  gap: 8rem;
-  padding: 12rem 30rem;
+  gap: 6rem;
+  padding: 15rem 30rem;
   background-color: $color-primary--white-dark-1;
 
+  overflow: hidden;
+
+  position: relative;
   &-item {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -19,13 +22,12 @@
   &-box,
   &-box-2 {
     margin-left: -4rem;
-    color: $color-font--black;
     background-color: $color-primary--white;
+    color: $color-font--black;
     display: flex;
     flex-direction: column;
-    padding: 4rem;
+    padding: 3rem;
     padding-left: 10rem;
-    padding-bottom: 8rem;
     padding-right: 8rem;
     box-shadow: 1rem 1rem 2rem rgba(black, 0.08);
     // border-radius: 1rem;
@@ -35,6 +37,23 @@
     & * {
       transform: skewX(10deg);
     }
+  }
+
+  &-video-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+  }
+
+  &-video {
+    height: 100%;
+    opacity: 0.2;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
   }
 
   &-box-2 {

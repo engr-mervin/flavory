@@ -39,6 +39,16 @@ body {
   color: #3f2107;
 }
 
+.heading--1c {
+  font-family: "Montserrat", monospace;
+  font-size: 4.2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: #3f2107;
+  text-align: center;
+}
+
 .heading--2 {
   font-size: 3.5rem;
   font-family: "Montserrat", monospace;
@@ -199,20 +209,19 @@ body {
 
 .hero {
   display: flex;
-  padding: 0 4rem;
-  padding-bottom: 6rem;
+  padding: 15rem 10rem;
   background-color: rgb(255, 250, 246);
+  gap: 10rem;
+  justify-content: space-between;
   text-align: center;
 }
 .hero-box {
   width: 60%;
-  padding: 8rem 6rem;
-  padding-bottom: 4rem;
   display: flex;
   flex-direction: column;
 }
 .hero-feature-box {
-  margin-top: 3rem;
+  margin-top: auto;
 }
 .hero-feature-text {
   color: #3f2107;
@@ -229,7 +238,6 @@ body {
 .hero-feature-list {
   background-color: #3f2107;
   padding: 1.5rem 5rem;
-  border-radius: 1rem;
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -258,11 +266,11 @@ body {
 }
 .hero-image-box {
   position: relative;
-  padding: 3rem;
+  padding: 0rem;
   width: 40%;
   align-items: center;
   display: grid;
-  gap: 1rem;
+  gap: 3rem;
   grid-template-columns: 1.2fr 1fr;
   grid-template-rows: 1fr 1fr;
   justify-content: center;
@@ -331,16 +339,18 @@ body {
 .navigation-item-2 a:visited {
   padding: 1rem 3rem;
   color: rgb(255, 245, 236);
-  background-color: #3f2107;
+  background-color: #ea5c2b;
   border-radius: 1rem;
 }
 
 .testimonial {
   display: flex;
   flex-direction: column;
-  gap: 8rem;
-  padding: 12rem 30rem;
+  gap: 6rem;
+  padding: 15rem 30rem;
   background-color: rgb(250, 238, 229);
+  overflow: hidden;
+  position: relative;
 }
 .testimonial-item {
   display: grid;
@@ -354,19 +364,33 @@ body {
 }
 .testimonial-box, .testimonial-box-2 {
   margin-left: -4rem;
-  color: #3f2107;
   background-color: rgb(255, 250, 246);
+  color: #3f2107;
   display: flex;
   flex-direction: column;
-  padding: 4rem;
+  padding: 3rem;
   padding-left: 10rem;
-  padding-bottom: 8rem;
   padding-right: 8rem;
   box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.08);
   transform: skewX(-10deg);
 }
 .testimonial-box *, .testimonial-box-2 * {
   transform: skewX(10deg);
+}
+.testimonial-video-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+}
+.testimonial-video {
+  height: 100%;
+  opacity: 0.2;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
 }
 .testimonial-box-2 {
   margin-left: 0;

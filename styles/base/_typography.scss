@@ -20,6 +20,15 @@ body {
   letter-spacing: 0.6px;
   color: $color-font--black;
 }
+.heading--1c {
+  font-family: "Montserrat", monospace;
+  font-size: 4.2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: $color-font--black;
+  text-align: center;
+}
 
 .heading--2 {
   font-size: 3.5rem;
