@@ -3,6 +3,8 @@
 
 @import "base/variables";
 @import "base/base";
+@import "base/animation";
+@import "base/mixins";
 @import "base/typography";
 @import "components/button";
 @import "components/project-info";
@@ -13,3 +15,4 @@
 @import "layout/hero";
 @import "layout/navigation";
 @import "layout/testimonial";
+@import "layout/footer";

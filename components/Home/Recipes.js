@@ -1,5 +1,5 @@
 const Recipes = function () {
-  return <h1>Recipes</h1>;
+  return <section>Recipes</section>;
 };
 
 export default Recipes;

@@ -15,6 +15,9 @@
   background-position: center;
   color: $color-font--black;
 
+  animation: blurIn 800ms;
+  animation-fill-mode: both;
+  animation-delay: 0ms;
   &-box {
     border-radius: 1rem;
     background-color: rgba($color-font--white, 0.6);

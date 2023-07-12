@@ -1,0 +1,4 @@
+@function addAnimDelay($delay, $number) {
+  $totalDelay: $delay * $number;
+  @return $totalDelay * 1ms;
+}

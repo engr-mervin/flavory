@@ -6,6 +6,9 @@
   display: flex;
   justify-content: space-between;
 
+  animation: fade 800ms;
+  animation-fill-mode: both;
+  animation-delay: 0ms;
   &-list,
   &-list-2 {
     display: flex;
@@ -17,7 +20,8 @@
     gap: 2rem;
   }
   &-item,
-  &-item-2 {
+  &-item-2,
+  &-item-3 {
     display: flex;
     align-items: center;
     a:link,
@@ -27,6 +31,7 @@
       color: $color-font--black;
       transition: all 250ms;
       border-radius: 2px;
+      font-size: 1.8rem;
     }
 
     a:hover,
@@ -43,6 +48,16 @@
       color: $color-font--white;
       background-color: $color-primary;
       border-radius: 1rem;
+    }
+  }
+  &-item-3 {
+    a:link,
+    a:visited {
+      padding: 1rem 3rem;
+      color: $color-primary;
+      background-color: $color-primary--white;
+      border-radius: 1rem;
+      border: 2px solid $color-primary;
     }
   }
 }

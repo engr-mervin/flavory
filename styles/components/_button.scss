@@ -37,16 +37,28 @@
     cursor: pointer;
     font-weight: 500;
     color: $color-font--white;
+    animation: zoomOut 400ms;
+    animation-fill-mode: both;
+    &:hover {
+      animation: zoomIn 400ms;
+      animation-fill-mode: both;
+    }
   }
 
   &-hero--start {
-    background-color: $color-primary--lightest;
-    border: none;
+    background-color: $color-primary--white;
+    border: 1.5px solid $color-primary;
     padding: 1rem 3rem;
     border-radius: 1rem;
     font-size: 1.6rem;
     font-family: "Montserrat", sans-serif;
     cursor: pointer;
     font-weight: 500;
+    animation: zoomOut 400ms;
+    animation-fill-mode: both;
+    &:hover {
+      animation: zoomIn 400ms;
+      animation-fill-mode: both;
+    }
   }
 }

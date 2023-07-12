@@ -4,7 +4,7 @@ import test2 from "../../assets/images/test-2.jpg";
 import test3 from "../../assets/images/test-3.jpg";
 const Testimonial = function () {
   return (
-    <div className="testimonial">
+    <section className="testimonial">
       <h1 className="heading--1c">We Rebuild Lives</h1>
       <div className="testimonial-video-box">
         <video className="testimonial-video" autoPlay muted loop>
@@ -57,7 +57,7 @@ const Testimonial = function () {
           <h3 className="heading--3">&mdash; Product Manager</h3>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

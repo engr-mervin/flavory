@@ -18,7 +18,7 @@ const MainNavigation = function () {
         <li className="navigation-item-2">
           <Link href="/sign-up">Sign up</Link>
         </li>
-        <li className="navigation-item-2">
+        <li className="navigation-item-3">
           <Link href="/log-in">Log in</Link>
         </li>
       </ul>
