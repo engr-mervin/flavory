@@ -33,9 +33,11 @@ const Testimonial = function () {
           <p className="testimonial-text">
             As the lead chef and owner of my restaurant, flavory helped me
             create an amazing menu the customers love! A lot of cultural recipes
-            are available, and there's always something new to try!
+            are available, and there&apos;s always something new to try!
           </p>
-          <h3 className="heading--3">&mdash; "Flavors of Siam" Owner</h3>
+          <h3 className="heading--3">
+            &mdash; &ldquo;Flavors of Siam&rdquo; Owner
+          </h3>
         </div>
         <Image
           alt="Photo of Nattawut Chaiyapong"
