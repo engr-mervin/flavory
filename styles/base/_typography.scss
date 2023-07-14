@@ -20,7 +20,7 @@ body {
   letter-spacing: 0.6px;
   color: $color-font--black;
   animation: moveToTop 800ms, fadeIn 800ms;
-  animation-delay: addAnimDelay(800, 1);
+  animation-delay: addAnimDelay($animation-hero-delay, 1);
   animation-fill-mode: both;
 }
 .heading--1c {

@@ -1,0 +1,42 @@
+.mask {
+  position: absolute;
+  z-index: -1;
+  &--recipes {
+    width: 120%;
+    aspect-ratio: 1/1;
+
+    background-color: $color-primary--white-dark-1;
+
+    filter: blur(200px) saturate(70%);
+    border-radius: 50%;
+    top: 100%;
+    left: 100%;
+
+    transform: translate(-50%, -50%);
+  }
+
+  //   &--recipes-2 {
+  //     background-image: linear-gradient(
+  //       to bottom right,
+  //       rgba($color-primary--white-dark-1, 0.4),
+  //       rgba($color-primary--white-dark-1, 0.05)
+  //     );
+
+  //     clip-path: polygon(100% 15%, 100% 45%, 35% 100%, 0 100%, 0 90%, 0 50%);
+  //   }
+  &--recipes-3 {
+    width: 120%;
+    aspect-ratio: 1/1;
+
+    background-color: $color-primary--white-dark-1;
+
+    filter: blur(200px) saturate(70%);
+    border-radius: 50%;
+    top: 0%;
+    left: 0%;
+
+    transform: translate(-50%, -50%);
+  }
+  //   &--recipes-4 {
+  //   }
+}

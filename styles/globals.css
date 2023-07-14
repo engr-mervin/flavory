@@ -20,6 +20,10 @@ body {
   background: #ea5c2b;
 }
 
+#__next {
+  overflow: hidden;
+}
+
 @keyframes moveToRight {
   0% {
     transform: translateX(-100%);
@@ -110,7 +114,7 @@ body {
   letter-spacing: 0.6px;
   color: #3f2107;
   animation: moveToTop 800ms, fadeIn 800ms;
-  animation-delay: 800ms;
+  animation-delay: 600ms;
   animation-fill-mode: both;
 }
 
@@ -239,6 +243,10 @@ body {
   fill: rgb(255, 245, 236);
 }
 
+.card {
+  position: relative;
+}
+
 .link:link, .link:visited {
   font-weight: 600;
   text-decoration: underline;
@@ -267,6 +275,31 @@ body {
 }
 .tab:hover {
   transform: scale(1.05);
+}
+
+.mask {
+  position: absolute;
+  z-index: -1;
+}
+.mask--recipes {
+  width: 120%;
+  aspect-ratio: 1/1;
+  background-color: rgb(250, 238, 229);
+  filter: blur(200px) saturate(70%);
+  border-radius: 50%;
+  top: 100%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+}
+.mask--recipes-3 {
+  width: 120%;
+  aspect-ratio: 1/1;
+  background-color: rgb(250, 238, 229);
+  filter: blur(200px) saturate(70%);
+  border-radius: 50%;
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%, -50%);
 }
 
 .header {
@@ -332,7 +365,7 @@ body {
 .hero-feature-box {
   margin-top: 4rem;
   animation: moveToTop 800ms, fade 800ms;
-  animation-delay: 2400ms;
+  animation-delay: 1800ms;
   animation-fill-mode: both;
 }
 .hero-feature-text {
@@ -364,7 +397,7 @@ body {
 }
 .hero-text, .hero-text-2, .hero-actions {
   animation: moveToTop 800ms, fade 800ms;
-  animation-delay: 1600ms;
+  animation-delay: 1200ms;
   animation-fill-mode: both;
 }
 .hero-text {
@@ -394,7 +427,7 @@ body {
   justify-content: center;
   background-size: cover;
   animation: fade 800ms, blurIn 800ms;
-  animation-delay: 3200ms;
+  animation-delay: 2400ms;
   animation-fill-mode: both;
 }
 .hero-image-center {
@@ -647,6 +680,110 @@ body {
   width: 100%;
   font-size: 1.4rem;
   padding-right: 0;
+}
+
+.search {
+  padding: 4rem;
+  border-left: 2px dotted #3f2107;
+}
+.search-bar {
+  font-family: inherit;
+}
+.search-bar::placeholder {
+  font-family: inherit;
+}
+.search-button {
+  padding: 1rem 2rem;
+  background-color: rgba(246, 216, 96, 0.55);
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+.search-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 0.5rem;
+  margin-bottom: 4rem;
+}
+.search__item:hover .search__item--front {
+  transform: rotateY(180deg);
+}
+.search__item:hover .search__item--back {
+  transform: rotateY(360deg);
+}
+.search-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  column-gap: 3rem;
+  row-gap: 2rem;
+}
+.search__item--front, .search__item--back {
+  background-color: rgb(255, 250, 246);
+  box-shadow: 1rem 1rem 2rem rgba(63, 33, 7, 0.13);
+  cursor: pointer;
+  position: relative;
+  aspect-ratio: 1/1;
+  transition: all 500ms;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+  border: none;
+  overflow: hidden;
+}
+.search__item--front__image, .search__item--back__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.search__item--front__image-box, .search__item--back__image-box {
+  display: block;
+  height: 100%;
+}
+.search__item--front__mask, .search__item--back__mask {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom right, rgba(255, 127, 63, 0.15), rgba(255, 127, 63, 0.05));
+}
+.search__item--front {
+  transform: rotateY(0deg);
+}
+.search__item--front__title-box {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.5rem;
+  text-align: right;
+}
+.search__item--front__title {
+  background-image: linear-gradient(to bottom right, rgba(246, 216, 96, 0.95), rgba(246, 216, 96, 0.55));
+  color: #3f2107;
+  font-style: italic;
+  font-weight: 500;
+  padding: 0.3rem 1rem;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.search__item--back {
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  position: absolute;
+}
+.search__item--back__image {
+  filter: blur(3px);
+}
+
+.recipes {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  position: relative;
 }
 
 /*# sourceMappingURL=globals.css.map */

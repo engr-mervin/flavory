@@ -13,6 +13,7 @@ const Testimonial = function () {
       </div>
       <div className="testimonial-item">
         <Image
+          alt="Photo of Mildred Thompson"
           className="testimonial-image testimonial-image--1"
           src={test1}
         ></Image>
@@ -37,12 +38,14 @@ const Testimonial = function () {
           <h3 className="heading--3">&mdash; "Flavors of Siam" Owner</h3>
         </div>
         <Image
+          alt="Photo of Nattawut Chaiyapong"
           className="testimonial-image-2 testimonial-image--2"
           src={test2}
         ></Image>
       </div>
       <div className="testimonial-item">
         <Image
+          alt="Photo of Amelia Knight"
           className="testimonial-image testimonial-image--3"
           src={test3}
         ></Image>

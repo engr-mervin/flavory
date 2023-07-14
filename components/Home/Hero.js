@@ -50,16 +50,32 @@ const Hero = function () {
           <p className="hero-feature-text">Featured by</p>
           <ul className="hero-feature-list">
             <li>
-              <Image className="hero-feature-item" src={logoBBC}></Image>
+              <Image
+                alt="BBC Logo"
+                className="hero-feature-item"
+                src={logoBBC}
+              ></Image>
             </li>
             <li>
-              <Image className="hero-feature-item" src={logoBI}></Image>
+              <Image
+                alt="Business Insider Logo"
+                className="hero-feature-item"
+                src={logoBI}
+              ></Image>
             </li>
             <li>
-              <Image className="hero-feature-item" src={logoForbes}></Image>
+              <Image
+                alt="Forbes Logo"
+                className="hero-feature-item"
+                src={logoForbes}
+              ></Image>
             </li>
             <li>
-              <Image className="hero-feature-item" src={logoTechcrunch}></Image>
+              <Image
+                alt="Tech Crunch Logo"
+                className="hero-feature-item"
+                src={logoTechcrunch}
+              ></Image>
             </li>
           </ul>
         </div>

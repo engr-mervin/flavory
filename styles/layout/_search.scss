@@ -1,0 +1,118 @@
+.search {
+  padding: 4rem;
+  border-left: 2px dotted $color-font--black;
+
+  &-bar {
+    font-family: inherit;
+
+    &::placeholder {
+      font-family: inherit;
+    }
+  }
+
+  &-button {
+    padding: 1rem 2rem;
+    background-color: rgba($color-accent--yellow, 0.55);
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 0.5rem;
+  }
+
+  &-form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 0.5rem;
+    margin-bottom: 4rem;
+  }
+  &__item:hover &__item--front {
+    transform: rotateY(180deg);
+  }
+  &__item:hover &__item--back {
+    transform: rotateY(360deg);
+  }
+  &-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    column-gap: 3rem;
+    row-gap: 2rem;
+  }
+
+  &__item--front,
+  &__item--back {
+    background-color: $color-primary--white;
+    box-shadow: 1rem 1rem 2rem rgba($color-font--black, 0.13);
+    cursor: pointer;
+    position: relative;
+    aspect-ratio: 1/1;
+    transition: all 500ms;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    border: none;
+    overflow: hidden;
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    &__image-box {
+      display: block;
+      height: 100%;
+    }
+
+    &__mask {
+      position: absolute;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(
+        to bottom right,
+        rgba($color-primary--light, 0.15),
+        rgba($color-primary--light, 0.05)
+      );
+    }
+  }
+
+  &__item--front {
+    transform: rotateY(0deg);
+
+    &__title-box {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding: 0.5rem;
+      text-align: right;
+    }
+    &__title {
+      background-image: linear-gradient(
+        to bottom right,
+        rgba($color-accent--yellow, 0.95),
+        rgba($color-accent--yellow, 0.55)
+      );
+      color: $color-font--black;
+      font-style: italic;
+      font-weight: 500;
+      padding: 0.3rem 1rem;
+      // position: absolute;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+  }
+
+  &__item--back {
+    top: 0;
+    left: 0;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    position: absolute;
+
+    &__image {
+      filter: blur(3px);
+    }
+  }
+}
