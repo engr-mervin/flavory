@@ -1,0 +1,11 @@
+.recipe {
+  margin: 3rem;
+  display: flex;
+  flex-direction: column;
+
+  &__image {
+    width: 100%;
+    display: block;
+    object-fit: contain;
+  }
+}

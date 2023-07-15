@@ -5,7 +5,6 @@ const SearchItem = function ({ recipe, selectRecipe }) {
   const clickHandler = function (e, recipe) {
     e.preventDefault();
     addParam("current", recipe.id);
-    selectRecipe(recipe);
   };
   return (
     <li
@@ -33,7 +32,14 @@ const SearchItem = function ({ recipe, selectRecipe }) {
             <img
               className="search__item--back__image"
               src={recipe["image_url"]}
-            ></img>
+            ></img>{" "}
+          </div>
+          <div className="search__item--back__title-box">
+            <span className="search__item--back__title">{recipe.title}</span>
+
+            <span className="search__item--back__publisher">
+              {`by: ${recipe.publisher}`}
+            </span>
           </div>
         </div>
       </Card>

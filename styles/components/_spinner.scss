@@ -1,0 +1,45 @@
+.spinner {
+  &--1,
+  &--2,
+  &--3 {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: transparent;
+    animation-name: spin;
+    animation-iteration-count: infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: blur(0.4px);
+  }
+  &--1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    width: 6.5rem;
+    border: 5px solid $color-primary;
+    border-top: 5px solid transparent;
+
+    animation-duration: 1000ms;
+    animation-timing-function: ease-in;
+  }
+
+  &--2 {
+    width: 5.25rem;
+    border: 5px solid $color-accent--green;
+    border-right: 5px solid transparent;
+    animation-duration: 1300ms;
+    animation-timing-function: ease-out;
+  }
+
+  &--3 {
+    width: 4rem;
+    border: 5px solid $color-accent--yellow;
+    border-bottom: 5px solid transparent;
+    animation-duration: 1860ms;
+    animation-timing-function: ease-in;
+  }
+}
