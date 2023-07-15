@@ -52,6 +52,7 @@ const Recipe = function ({ selectedRecipe }) {
           <ul className="recipe__ingredient-list">
             {selectedRecipe.ingredients.map((ingredient) => (
               <Ingredient
+                key={ingredient.description}
                 ingredient={ingredient}
                 multiplier={multiplier}
               ></Ingredient>
