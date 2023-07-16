@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { FORKIFY_KEY } from "../../util/constants";
-import { useRouter } from "next/router";
 import useRouterFilter from "../../custom-hooks/use-router-filter";
 const SearchBar = function () {
   const [query, setQuery] = useState("");

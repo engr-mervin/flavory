@@ -1025,6 +1025,7 @@ body {
   margin: 1rem 1.5rem;
 }
 .pages__button {
+  cursor: pointer;
   font: inherit;
   background-color: rgb(255, 245, 236);
   color: #3f2107;

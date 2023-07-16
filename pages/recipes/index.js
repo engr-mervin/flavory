@@ -32,7 +32,7 @@ const Recipes = function (props) {
 
   useEffect(() => {
     setCurrentPage(props.currentPage);
-  }, [props.currentPage]);
+  }, [props.currentPage, props.recipes]);
 
   //CHANGE CURRENT PAGE
   useEffect(() => {

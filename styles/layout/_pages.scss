@@ -10,6 +10,7 @@
     margin: 1rem 1.5rem;
   }
   &__button {
+    cursor: pointer;
     font: inherit;
     background-color: $color-font--white;
     color: $color-font--black;
