@@ -1,7 +1,7 @@
 import SearchItem from "./SearchItem";
 
 const SearchResults = function ({ recipes }) {
-  console.log(recipes);
+  console.log("Received recipes:", recipes);
   return (
     <ul className="search-list">
       {recipes?.length > 0 ? (

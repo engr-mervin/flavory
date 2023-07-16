@@ -5,3 +5,6 @@ export const URL_LI = "https://www.linkedin.com/in/engr-mervin/";
 export const URL_GH = "https://github.com/engr-mervin";
 
 export const FORKIFY_KEY = "ffffd809-c764-45c8-b3f1-d18224957752";
+
+export const MAX_RECIPES_PER_PAGE = 20;
+export const MAX_PAGES_PER_GROUP = 5;

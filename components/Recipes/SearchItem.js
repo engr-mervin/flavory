@@ -1,7 +1,7 @@
 import useRouterFilter from "../../custom-hooks/use-router-filter";
 import Card from "../Reusable/Card";
 const SearchItem = function ({ recipe, selectRecipe }) {
-  const addParam = useRouterFilter();
+  const { addParam } = useRouterFilter();
   const clickHandler = function (e, recipe) {
     e.preventDefault();
     addParam("current", recipe.id);

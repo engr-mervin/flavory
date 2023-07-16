@@ -3,36 +3,90 @@ import { useEffect, useState } from "react";
 import Search from "../../components/Recipes/Search";
 import SearchBar from "../../components/Recipes/SearchBar";
 import SearchResults from "../../components/Recipes/SearchResults";
-import { FORKIFY_KEY } from "../../util/constants";
+import {
+  FORKIFY_KEY,
+  MAX_PAGES_PER_GROUP,
+  MAX_RECIPES_PER_PAGE,
+} from "../../util/constants";
+import Pages from "../../components/Recipes/Pages";
+import useRouterFilter from "../../custom-hooks/use-router-filter";
 
 const Recipes = function (props) {
-  console.log(props.currentRecipe);
-  const [recipes, setRecipes] = useState([]);
+  console.log(props);
+  const { addParamShallow } = useRouterFilter();
+  const [currentPage, setCurrentPage] = useState(1);
+  // const [recipes, setRecipes] = useState([]);
+  const [currentPageGroup, setCurrentPageGroup] = useState([]);
+  const [currentRecipes, setCurrentRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
-  useEffect(() => {
-    setRecipes(props.recipes);
-    setSelectedRecipe(props.currentRecipe);
-  }, [props.recipes, props.currentRecipe]);
+  //CHANGE ALL RECIPES
+  // useEffect(() => {
+  //   setRecipes(props.recipes);
+  // }, [props.recipes]);
 
-  // const selectRecipe = function (recipe) {
-  //   // setSelectedRecipe(recipe);
-  // };
+  //CHANGE SELECTED RECIPE
+  useEffect(() => {
+    setSelectedRecipe(props.currentRecipe);
+  }, [props.currentRecipe]);
+
+  useEffect(() => {
+    setCurrentPage(props.currentPage);
+  }, [props.currentPage]);
+
+  //CHANGE CURRENT PAGE
+  useEffect(() => {
+    if (!props?.recipes?.length) return;
+
+    // get start
+    let start = Math.floor(currentPage / MAX_PAGES_PER_GROUP) + 1;
+    let end = start + MAX_PAGES_PER_GROUP - 1;
+
+    let pages = [];
+    for (let i = start; i <= end; i++) {
+      if (i > Math.ceil(props.recipes.length / MAX_RECIPES_PER_PAGE)) break;
+      pages.push(i);
+    }
+    setCurrentPageGroup(pages);
+  }, [currentPage, props.recipes]);
+
+  //CHANGE CURRENT RECIPES
+  useEffect(() => {
+    console.log("Filtering recipes");
+    if (!props?.recipes?.length) return;
+    let start = MAX_RECIPES_PER_PAGE * (currentPage - 1);
+    let end = start + MAX_RECIPES_PER_PAGE - 1;
+
+    let filteredRecipes = [];
+
+    for (let i = start; i <= end; i++) {
+      if (i >= props.recipes.length) break;
+      filteredRecipes.push(props.recipes[i]);
+    }
+    setCurrentRecipes(filteredRecipes);
+  }, [currentPage, props.recipes]);
+
+  const changePage = function (page) {
+    return () => {
+      addParamShallow("page", page.toString());
+      setCurrentPage(page);
+    };
+  };
 
   console.log("The dynamic route loaded!");
   return (
     <div className="recipes">
-      {/* <Mask className="mask--recipes"></Mask>
-      <Mask className="mask--recipes-2"></Mask>
-      <Mask className="mask--recipes-3"></Mask>
-      <Mask className="mask--recipes-4"></Mask> */}
-
       <Recipe selectedRecipe={selectedRecipe}></Recipe>
 
       <Search>
         <SearchBar></SearchBar>
 
-        <SearchResults recipes={recipes}></SearchResults>
+        <SearchResults recipes={currentRecipes}></SearchResults>
+        <Pages
+          pageGroup={currentPageGroup}
+          currentPage={currentPage}
+          changePage={changePage}
+        ></Pages>
       </Search>
     </div>
   );
@@ -40,13 +94,9 @@ const Recipes = function (props) {
 
 //handle page load
 export async function getServerSideProps({ req, res, query }) {
-  // if (!params?.search && !params?.current)
-  //   return {
-  //     props: {},
-  //   };
-
   let search = query?.search ? query.search : null;
   let current = query?.current ? query.current : null;
+  let currentPage = query?.page ? query.page : null;
 
   let allProps = {};
 
@@ -77,7 +127,8 @@ export async function getServerSideProps({ req, res, query }) {
 
     allProps = { ...allProps, currentRecipe };
   }
-  console.log(allProps);
+
+  allProps = { ...allProps, currentPage: currentPage ? currentPage : 1 };
   return { props: allProps };
 }
 export default Recipes;

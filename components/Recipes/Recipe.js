@@ -8,7 +8,6 @@ import SubtractLogo from "../../assets/remove.svg";
 import TimeLogo from "../../assets/time.svg";
 
 const Recipe = function ({ selectedRecipe }) {
-  console.log(selectedRecipe);
   const [multiplier, setMultiplier] = useState(1);
 
   const add = function (val) {

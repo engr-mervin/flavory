@@ -1014,6 +1014,30 @@ body {
   border-radius: 0.3rem;
 }
 
+.pages__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin-top: 5rem;
+}
+.pages__item {
+  margin: 1rem 1.5rem;
+}
+.pages__button {
+  font: inherit;
+  background-color: rgb(255, 245, 236);
+  color: #3f2107;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  border: 1.5px solid #ea5c2b;
+}
+.pages__button.current {
+  background-color: #ea5c2b;
+  color: rgb(255, 245, 236);
+}
+
 .recipes {
   display: grid;
   grid-template-columns: 1fr 1.25fr;

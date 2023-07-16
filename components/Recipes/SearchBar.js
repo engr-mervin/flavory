@@ -5,7 +5,7 @@ import useRouterFilter from "../../custom-hooks/use-router-filter";
 const SearchBar = function () {
   const [query, setQuery] = useState("");
 
-  const addParam = useRouterFilter();
+  const { addMultipleParam } = useRouterFilter();
   const queryChangeHandler = function (e) {
     e.preventDefault();
     setQuery(e.target.value);
@@ -15,7 +15,7 @@ const SearchBar = function () {
     e.preventDefault();
 
     const queryClean = query.trim().toLowerCase();
-    addParam("search", queryClean);
+    addMultipleParam(["search", "page"], [queryClean, "1"]);
   };
 
   return (
