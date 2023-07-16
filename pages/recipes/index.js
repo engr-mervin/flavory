@@ -36,13 +36,15 @@ const Recipes = function (props) {
 
   //CHANGE CURRENT PAGE
   useEffect(() => {
-    if (!props?.recipes?.length) return;
-
     // get start
-    let start = Math.floor(currentPage / MAX_PAGES_PER_GROUP) + 1;
+    let start = Math.floor((currentPage - 1) / MAX_PAGES_PER_GROUP) + 1;
     let end = start + MAX_PAGES_PER_GROUP - 1;
 
     let pages = [];
+    if (!props?.recipes?.length) {
+      setCurrentPageGroup(pages);
+      return;
+    }
     for (let i = start; i <= end; i++) {
       if (i > Math.ceil(props.recipes.length / MAX_RECIPES_PER_PAGE)) break;
       pages.push(i);
@@ -53,12 +55,15 @@ const Recipes = function (props) {
   //CHANGE CURRENT RECIPES
   useEffect(() => {
     console.log("Filtering recipes");
-    if (!props?.recipes?.length) return;
     let start = MAX_RECIPES_PER_PAGE * (currentPage - 1);
     let end = start + MAX_RECIPES_PER_PAGE - 1;
 
     let filteredRecipes = [];
 
+    if (!props?.recipes?.length) {
+      setCurrentRecipes(filteredRecipes);
+      return;
+    }
     for (let i = start; i <= end; i++) {
       if (i >= props.recipes.length) break;
       filteredRecipes.push(props.recipes[i]);
