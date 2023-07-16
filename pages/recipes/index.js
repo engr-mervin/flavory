@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Search from "../../components/Recipes/Search";
 import SearchBar from "../../components/Recipes/SearchBar";
 import SearchResults from "../../components/Recipes/SearchResults";
-import Mask from "../../components/Reusable/Mask";
 import { FORKIFY_KEY } from "../../util/constants";
 
 const Recipes = function (props) {

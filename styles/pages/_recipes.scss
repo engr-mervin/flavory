@@ -1,6 +1,8 @@
 .recipes {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.25fr;
+  align-items: flex-start;
   position: relative;
-  min-height: 50rem;
+  // min-height: 50rem;
+  margin-top: 4rem;
 }
