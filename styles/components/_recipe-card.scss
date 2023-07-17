@@ -1,0 +1,106 @@
+.recipe-card {
+  &__tag {
+    position: absolute;
+    right: 0;
+    background-color: $color-accent--green;
+    padding: 1.2rem 2rem;
+    // top: 50%;
+    // top: 0;
+    top: 0;
+    color: $color-font--white;
+    font-weight: 400;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    opacity: 0.95;
+    // transform: translate(50%, -50%) rotate(270deg);
+    // transform: rotate(45deg) translate(25%, -25%);b
+    transform: translate(5%, calc(-50% - 5px));
+    border-radius: 1rem;
+  }
+  &:link,
+  &:visited {
+    outline: 3.5px double $color-accent--green;
+    outline-offset: 6.5px;
+    min-height: 45rem;
+    text-decoration: none;
+    color: $color-font--black;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font: inherit;
+    cursor: pointer;
+    border: none;
+    // overflow: hidden;
+    border-radius: 2rem;
+    box-shadow: 0rem 0rem 2rem rgba($color-font--black, 0.15);
+    background-color: white;
+    transition: all 400ms;
+    position: relative;
+  }
+
+  &:hover,
+  &:active {
+    transform: translateY(-1rem) scale(1.02);
+    box-shadow: 0rem 0rem 1.6rem rgba($color-font--black, 0.23);
+  }
+  &__all-details-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  &__title-box {
+    background-color: $color-accent--yellow-light;
+    padding: 0.5rem 2rem;
+  }
+  &__image-box {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-top-left-radius: 2rem;
+    overflow: hidden;
+    border-top-right-radius: 2rem;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__details-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  &__list {
+    list-style: none;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 3rem 3rem;
+    gap: 2rem;
+  }
+
+  &__item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  &__logo {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+  &__item span {
+    font-size: 1.3rem;
+    font-style: italic;
+    width: 100%;
+    word-break: keep-all;
+  }
+}

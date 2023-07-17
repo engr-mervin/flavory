@@ -14,9 +14,8 @@
   }
   &--1 {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: calc(50% - 3.25rem);
+    left: calc(50% - 3.25rem);
     z-index: 1;
 
     width: 6.5rem;

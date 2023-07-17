@@ -6,6 +6,7 @@ import SavedLogo from "../../assets/heart.svg";
 import AddLogo from "../../assets/add.svg";
 import SubtractLogo from "../../assets/remove.svg";
 import TimeLogo from "../../assets/time.svg";
+import NoSelected from "../Fallback Pages/NoSelected";
 
 const Recipe = function ({ selectedRecipe }) {
   const [multiplier, setMultiplier] = useState(1);
@@ -93,7 +94,7 @@ const Recipe = function ({ selectedRecipe }) {
           </div>
         </>
       ) : (
-        <p>No recipe selected.</p>
+        <NoSelected></NoSelected>
       )}
     </div>
   );

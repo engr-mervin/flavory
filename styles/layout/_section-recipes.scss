@@ -1,0 +1,13 @@
+.section-recipes {
+  padding: 12rem;
+  background-color: $color-primary--white;
+
+  &__box {
+    display: grid;
+    margin-top: 8rem;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    column-gap: 10rem;
+  }
+}

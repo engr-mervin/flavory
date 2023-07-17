@@ -1,4 +1,4 @@
-export const numToFraction = function (val, tolerance) {
+export const numToFraction = function (val, tolerance = 0.001) {
   val = +val;
   if (isNaN(val)) return "";
 
@@ -12,9 +12,9 @@ export const numToFraction = function (val, tolerance) {
   //supports only from 2-16 denominator
   for (let i = 2; i < 17; i++) {
     if (dec * i - Math.floor(dec * i) <= tolerance) {
-      return `${whole ? whole : ""} ${dec * i}/${i}`;
+      return `${whole ? whole : ""} ${Math.floor(dec * i)}/${i}`;
     }
   }
 
-  return val.toString();
+  return val.toFixed(2).toString();
 };

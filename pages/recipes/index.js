@@ -54,7 +54,6 @@ const Recipes = function (props) {
 
   //CHANGE CURRENT RECIPES
   useEffect(() => {
-    console.log("Filtering recipes");
     let start = MAX_RECIPES_PER_PAGE * (currentPage - 1);
     let end = start + MAX_RECIPES_PER_PAGE - 1;
 

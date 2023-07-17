@@ -19,6 +19,7 @@
   &-list-2 {
     gap: 2rem;
   }
+
   &-item,
   &-item-2,
   &-item-3 {
@@ -39,6 +40,11 @@
       transform: scale(1.05);
       background-color: $color-primary--white-dark-1;
     }
+  }
+
+  &-item.current {
+    background-color: $color-primary--white-dark-1;
+    transform: scale(1.05);
   }
 
   &-item-2 {

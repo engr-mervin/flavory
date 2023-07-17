@@ -5,7 +5,7 @@ const Ingredient = function ({ ingredient, multiplier }) {
     <div className="ingredient">
       <span className="ingredient__quantity">
         {ingredient.quantity
-          ? numToFraction(ingredient.quantity * multiplier, 0.01)
+          ? numToFraction(ingredient.quantity * multiplier)
           : ""}
       </span>{" "}
       <span className="ingredient__unit">{ingredient.unit}</span>{" "}

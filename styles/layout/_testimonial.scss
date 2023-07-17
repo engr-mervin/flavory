@@ -49,7 +49,7 @@
 
   &-video {
     height: 100%;
-    opacity: 0.2;
+    opacity: 0.08;
     top: 50%;
     left: 50%;
     position: absolute;
@@ -68,7 +68,7 @@
     border-image: url("../assets/svg blobs/blob-1.svg");
     border-image-slice: 30 fill;
     z-index: 1;
-    outline: 4px solid $color-primary;
+    outline: 3.5px solid $color-primary;
     outline-offset: 6px;
     cursor: pointer;
     animation: zoomOut 400ms;
