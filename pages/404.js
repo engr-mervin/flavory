@@ -5,7 +5,7 @@ const Custom404 = function () {
     <div className="custom-page__404">
       <InfoLogo className="custom-page__404-logo"></InfoLogo>
       <h1 className="custom-page__404-text">
-        We could not find what you're looking for.
+        We could not find what you&lsquo;re looking for.
       </h1>
     </div>
   );
