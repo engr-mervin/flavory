@@ -397,7 +397,7 @@ body {
 .recipe-card__tag {
   position: absolute;
   right: 0;
-  background-color: #95cd41;
+  background-color: #ea5c2b;
   padding: 1.2rem 2rem;
   top: 0;
   color: rgb(255, 245, 236);
@@ -410,7 +410,7 @@ body {
   border-radius: 1rem;
 }
 .recipe-card:link, .recipe-card:visited {
-  outline: 3.5px double #95cd41;
+  outline: 3.5px solid #ea5c2b;
   outline-offset: 6.5px;
   min-height: 45rem;
   text-decoration: none;
@@ -782,7 +782,7 @@ body {
 }
 
 .section-recipes {
-  padding: 12rem;
+  padding: 12rem 18rem;
   background-color: rgb(255, 250, 246);
 }
 .section-recipes__box {
@@ -791,13 +791,13 @@ body {
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   align-items: center;
-  column-gap: 10rem;
+  column-gap: 12rem;
 }
 
 .recipe {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
   border-radius: 2rem;
   overflow: hidden;
 }
@@ -1017,31 +1017,46 @@ body {
 }
 
 .search {
-  padding: 6rem;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+  overflow: hidden;
+}
+.search__box {
+  padding: 6rem;
   border-radius: 2rem;
   min-height: 20rem;
   background-color: rgba(255, 245, 236, 0.15);
 }
 .search-bar {
+  padding: 1rem;
   font-family: inherit;
+  border: 2px solid rgba(63, 33, 7, 0.3);
+  border-radius: 1rem;
 }
 .search-bar::placeholder {
   font-family: inherit;
 }
+.search-bar:focus {
+  outline: none;
+  border: 2px solid #95cd41;
+}
 .search-button {
   padding: 1rem 2rem;
-  background-color: rgba(246, 216, 96, 0.55);
+  background-color: rgba(149, 205, 65, 0.55);
   border: none;
   font-family: inherit;
   cursor: pointer;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
 }
 .search-form {
   display: grid;
   grid-template-columns: 1fr auto;
   column-gap: 0.5rem;
   margin-bottom: 4rem;
+  grid-column: 1/-1;
+  padding: 0 16rem;
 }
 .search-list {
   list-style: none;
@@ -1144,9 +1159,10 @@ body {
 .no-selected {
   min-height: 20rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   padding: 5rem;
+  padding-left: 22rem;
   position: relative;
   border-bottom: 8px solid #95cd41;
 }

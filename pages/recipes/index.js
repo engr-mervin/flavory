@@ -2,14 +2,13 @@ import Recipe from "../../components/Recipes/Recipe";
 import { useEffect, useState } from "react";
 import Search from "../../components/Recipes/Search";
 import SearchBar from "../../components/Recipes/SearchBar";
-import SearchResults from "../../components/Recipes/SearchResults";
 import {
   FORKIFY_KEY,
   MAX_PAGES_PER_GROUP,
   MAX_RECIPES_PER_PAGE,
 } from "../../util/constants";
-import Pages from "../../components/Recipes/Pages";
 import useRouterFilter from "../../custom-hooks/use-router-filter";
+import Error from "next/error";
 
 const Recipes = function (props) {
   console.log(props);
@@ -80,18 +79,15 @@ const Recipes = function (props) {
   console.log("The dynamic route loaded!");
   return (
     <div className="recipes">
+      <SearchBar></SearchBar>
       <Recipe selectedRecipe={selectedRecipe}></Recipe>
 
-      <Search>
-        <SearchBar></SearchBar>
-
-        <SearchResults recipes={currentRecipes}></SearchResults>
-        <Pages
-          pageGroup={currentPageGroup}
-          currentPage={currentPage}
-          changePage={changePage}
-        ></Pages>
-      </Search>
+      <Search
+        currentRecipes={currentRecipes}
+        currentPage={currentPage}
+        currentPageGroup={currentPageGroup}
+        changePage={changePage}
+      ></Search>
     </div>
   );
 };
@@ -113,6 +109,7 @@ export async function getServerSideProps({ req, res, query }) {
     const data = await request.json();
 
     //array of objects
+    if (!data?.data?.recipe) throw new Error();
     const recipes = data.data.recipes;
 
     allProps = { ...allProps, recipes: recipes };
@@ -125,6 +122,7 @@ export async function getServerSideProps({ req, res, query }) {
 
     const data = await request.json();
 
+    if (!data?.data?.recipe) throw new Error();
     const currentRecipe = data.data.recipe;
     //array of objects
     // const recipes = data.data.recipes;

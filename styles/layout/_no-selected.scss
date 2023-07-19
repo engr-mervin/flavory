@@ -2,9 +2,10 @@
   min-height: 20rem;
 
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   padding: 5rem;
+  padding-left: 22rem;
   position: relative;
 
   border-bottom: 8px solid $color-accent--green;
@@ -48,6 +49,7 @@
   //   }
 
   &__art {
+    // display: none;
     position: absolute;
     height: 18rem;
     // width: 18rem;

@@ -94,7 +94,11 @@ const Recipe = function ({ selectedRecipe }) {
           </div>
         </>
       ) : (
-        <NoSelected></NoSelected>
+        <NoSelected
+          imageSource="http://forkify-api.herokuapp.com/images/mare_portobello_burgers_with_pesto_provolone_and_roasted_peppers_h05d8.jpg"
+          message="Please select a recipe!"
+          withImage={true}
+        ></NoSelected>
       )}
     </div>
   );

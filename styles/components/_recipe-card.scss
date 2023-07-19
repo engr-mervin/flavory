@@ -2,7 +2,7 @@
   &__tag {
     position: absolute;
     right: 0;
-    background-color: $color-accent--green;
+    background-color: $color-primary;
     padding: 1.2rem 2rem;
     // top: 50%;
     // top: 0;
@@ -20,7 +20,7 @@
   }
   &:link,
   &:visited {
-    outline: 3.5px double $color-accent--green;
+    outline: 3.5px solid $color-primary;
     outline-offset: 6.5px;
     min-height: 45rem;
     text-decoration: none;

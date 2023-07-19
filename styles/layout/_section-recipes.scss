@@ -1,5 +1,5 @@
 .section-recipes {
-  padding: 12rem;
+  padding: 12rem 18rem;
   background-color: $color-primary--white;
 
   &__box {
@@ -8,6 +8,6 @@
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     align-items: center;
-    column-gap: 10rem;
+    column-gap: 12rem;
   }
 }
