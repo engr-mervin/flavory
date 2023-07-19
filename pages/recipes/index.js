@@ -8,92 +8,97 @@ import {
   MAX_RECIPES_PER_PAGE,
 } from "../../util/constants";
 import useRouterFilter from "../../custom-hooks/use-router-filter";
-import Error from "next/error";
-
 const Recipes = function (props) {
-  console.log(props);
+  console.log(props.searchResults);
   const { addParamShallow } = useRouterFilter();
   const [currentPage, setCurrentPage] = useState(1);
-  // const [recipes, setRecipes] = useState([]);
   const [currentPageGroup, setCurrentPageGroup] = useState([]);
-  const [currentRecipes, setCurrentRecipes] = useState([]);
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [pageRecipes, setPageRecipes] = useState([]);
+  const [currentRecipe, setCurrentRecipe] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
 
-  //CHANGE ALL RECIPES
-  // useEffect(() => {
-  //   setRecipes(props.recipes);
-  // }, [props.recipes]);
-
-  //CHANGE SELECTED RECIPE
   useEffect(() => {
-    setSelectedRecipe(props.currentRecipe);
+    setCurrentRecipe(props.currentRecipe);
   }, [props.currentRecipe]);
 
+  //UPDATE DISPLAYED PAGES
   useEffect(() => {
+    setSearchResults(props.searchResults);
     setCurrentPage(props.currentPage);
-  }, [props.currentPage, props.recipes]);
-
-  //CHANGE CURRENT PAGE
-  useEffect(() => {
-    // get start
-    let start = Math.floor((currentPage - 1) / MAX_PAGES_PER_GROUP) + 1;
-    let end = start + MAX_PAGES_PER_GROUP - 1;
-
     let pages = [];
-    if (!props?.recipes?.length) {
+
+    if (!props?.searchResults?.length) {
       setCurrentPageGroup(pages);
       return;
     }
+    let maxPage = Math.ceil(props.searchResults.length / MAX_RECIPES_PER_PAGE);
+    let previousPage =
+      Math.floor((props.currentPage - 1) / MAX_PAGES_PER_GROUP) *
+      MAX_PAGES_PER_GROUP;
+
+    let start = previousPage + 1;
+    let end = previousPage + MAX_PAGES_PER_GROUP;
+
     for (let i = start; i <= end; i++) {
-      if (i > Math.ceil(props.recipes.length / MAX_RECIPES_PER_PAGE)) break;
+      if (i > maxPage) break;
       pages.push(i);
     }
     setCurrentPageGroup(pages);
-  }, [currentPage, props.recipes]);
+  }, [props.searchResults, props.currentPage]);
 
-  //CHANGE CURRENT RECIPES
+  //UPDATE DISPLAYED RECIPES
   useEffect(() => {
     let start = MAX_RECIPES_PER_PAGE * (currentPage - 1);
     let end = start + MAX_RECIPES_PER_PAGE - 1;
 
     let filteredRecipes = [];
 
-    if (!props?.recipes?.length) {
-      setCurrentRecipes(filteredRecipes);
+    if (!props?.searchResults?.length) {
+      setPageRecipes(filteredRecipes);
       return;
     }
     for (let i = start; i <= end; i++) {
-      if (i >= props.recipes.length) break;
-      filteredRecipes.push(props.recipes[i]);
+      if (i >= props.searchResults.length) break;
+      filteredRecipes.push(props.searchResults[i]);
     }
-    setCurrentRecipes(filteredRecipes);
-  }, [currentPage, props.recipes]);
+    setPageRecipes(filteredRecipes);
+  }, [props.searchResults, props.currentPage, currentPage]);
 
   const changePage = function (page) {
     return () => {
       addParamShallow("page", page.toString());
-      setCurrentPage(page);
+      setCurrentPage(+page);
     };
   };
 
-  console.log("The dynamic route loaded!");
+  const changePageDynamic = function (add) {
+    let maxPage = Math.ceil(props.searchResults.length / MAX_RECIPES_PER_PAGE);
+    return () => {
+      let intendedPage = +currentPage + add;
+
+      if (intendedPage <= 0 || intendedPage > maxPage) return;
+      addParamShallow("page", intendedPage.toString());
+      setCurrentPage(intendedPage);
+    };
+  };
   return (
     <div className="recipes">
       <SearchBar></SearchBar>
-      <Recipe selectedRecipe={selectedRecipe}></Recipe>
+      <Recipe currentRecipe={currentRecipe}></Recipe>
 
       <Search
-        currentRecipes={currentRecipes}
+        pageRecipes={pageRecipes}
         currentPage={currentPage}
         currentPageGroup={currentPageGroup}
         changePage={changePage}
+        changePageDynamic={changePageDynamic}
       ></Search>
     </div>
   );
 };
 
 //handle page load
-export async function getServerSideProps({ req, res, query }) {
+export async function getServerSideProps({ query }) {
   let search = query?.search ? query.search : null;
   let current = query?.current ? query.current : null;
   let currentPage = query?.page ? query.page : null;
@@ -109,10 +114,11 @@ export async function getServerSideProps({ req, res, query }) {
     const data = await request.json();
 
     //array of objects
-    if (!data?.data?.recipe) throw new Error();
+    // if (!data?.data?.recipe) throw new Error();
+    // if(data?.data?.recipes)
     const recipes = data.data.recipes;
 
-    allProps = { ...allProps, recipes: recipes };
+    allProps = { ...allProps, searchResults: recipes, searchStatus: "hello" };
   }
 
   if (current) {
@@ -122,7 +128,10 @@ export async function getServerSideProps({ req, res, query }) {
 
     const data = await request.json();
 
-    if (!data?.data?.recipe) throw new Error();
+    if (!data?.data) {
+      throw new Error("Something went wrong");
+    }
+    // if (!data?.data?.recipe) throw new Error();
     const currentRecipe = data.data.recipe;
     //array of objects
     // const recipes = data.data.recipes;

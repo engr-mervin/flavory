@@ -394,6 +394,31 @@ body {
   font-weight: 600;
 }
 
+.chevron {
+  cursor: pointer;
+  font: inherit;
+  background-color: rgb(255, 245, 236);
+  color: #3f2107;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  border: 1.5px solid #ea5c2b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chevron__left-logo, .chevron__right-logo {
+  height: 3rem;
+  width: 3rem;
+  color: #3f2107;
+}
+.chevron__left-logo {
+  transform: translateX(-5%);
+}
+.chevron__right-logo {
+  transform: translateX(5%);
+}
+
 .recipe-card__tag {
   position: absolute;
   right: 0;
@@ -813,7 +838,6 @@ body {
   object-fit: cover;
   object-position: center;
   display: block;
-  filter: blur(1px);
 }
 .recipe__button-save {
   cursor: pointer;
@@ -1022,6 +1046,15 @@ body {
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
   border-radius: 2rem;
   overflow: hidden;
+  justify-content: space-between;
+}
+.search__button-box {
+  padding: 6rem;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 5rem;
+  justify-content: space-between;
+  padding: 0 5rem;
 }
 .search__box {
   padding: 6rem;
@@ -1184,12 +1217,30 @@ body {
   z-index: -1;
 }
 
+.custom-page__404 {
+  min-height: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.custom-page__404-text {
+  font-size: 4.5rem;
+  font-family: "Monserrat", monospace;
+  font-weight: 300;
+  color: #3f2107;
+}
+.custom-page__404-logo {
+  height: 5rem;
+  width: 5rem;
+  color: #3f2107;
+  fill: #3f2107;
+}
+
 .pages__list {
   display: flex;
   align-items: center;
   justify-content: center;
   list-style: none;
-  margin-top: 5rem;
 }
 .pages__item {
   margin: 1rem 1.5rem;

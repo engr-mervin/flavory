@@ -1,0 +1,26 @@
+.chevron {
+  cursor: pointer;
+  font: inherit;
+  background-color: $color-font--white;
+  color: $color-font--black;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  border: 1.5px solid $color-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__left-logo,
+  &__right-logo {
+    height: 3rem;
+    width: 3rem;
+    color: $color-font--black;
+  }
+
+  &__left-logo {
+    transform: translateX(-5%);
+  }
+  &__right-logo {
+    transform: translateX(5%);
+  }
+}

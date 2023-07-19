@@ -25,10 +25,10 @@ const RecipeCard = function ({ recipe }) {
           </div>
         </div> */}
           <ul className="recipe-card__list">
-            {recipe.ingredients.slice(0, 14).map((ingredient) => (
+            {recipe.ingredients.slice(0, 14).map((ingredient, ind) => (
               <li
                 className="recipe-card__item"
-                key={`${ingredient.description}`}
+                key={`${ingredient.description}_${ind}`}
               >
                 <ArrowLogo className="recipe-card__logo"></ArrowLogo>
                 <span>{capitalizeFirstLetter(ingredient.description)}</span>
