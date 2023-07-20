@@ -46,6 +46,27 @@ const Recipes = function (props) {
     setCurrentPageGroup(pages);
   }, [props.searchResults, props.currentPage]);
 
+  //UPDATE DISPLAYED PAGES
+  useEffect(() => {
+    let pages = [];
+
+    if (!props?.searchResults?.length) {
+      setCurrentPageGroup(pages);
+      return;
+    }
+    let maxPage = Math.ceil(props.searchResults.length / MAX_RECIPES_PER_PAGE);
+    let previousPage =
+      Math.floor((currentPage - 1) / MAX_PAGES_PER_GROUP) * MAX_PAGES_PER_GROUP;
+
+    let start = previousPage + 1;
+    let end = previousPage + MAX_PAGES_PER_GROUP;
+
+    for (let i = start; i <= end; i++) {
+      if (i > maxPage) break;
+      pages.push(i);
+    }
+    setCurrentPageGroup(pages);
+  }, [currentPage]);
   //UPDATE DISPLAYED RECIPES
   useEffect(() => {
     let start = MAX_RECIPES_PER_PAGE * (currentPage - 1);

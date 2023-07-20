@@ -1051,10 +1051,11 @@ body {
 .search__button-box {
   padding: 6rem;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   margin-top: 5rem;
   justify-content: space-between;
   padding: 0 5rem;
+  margin-bottom: 2rem;
 }
 .search__box {
   padding: 6rem;
