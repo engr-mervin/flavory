@@ -10,6 +10,7 @@
     "watch": "sass --watch styles/main.scss:styles/globals.css"
   },
   "dependencies": {
+    "@prisma/client": "^5.0.0",
     "@svgr/webpack": "^8.0.1",
     "next": "13.4.7",
     "react": "18.2.0",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.7",
-    "file-loader": "^6.2.0"
+    "file-loader": "^6.2.0",
+    "prisma": "^5.0.0"
   }
 }

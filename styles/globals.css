@@ -1271,4 +1271,8 @@ body {
   column-gap: 6rem;
 }
 
+.signup__input.invalid {
+  outline: 2px solid red;
+}
+
 /*# sourceMappingURL=globals.css.map */
