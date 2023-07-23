@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import useValidateText from "../custom-hooks/use-validate-text";
-import { redirect } from "next/dist/server/api-utils";
+
 const prisma = new PrismaClient();
 const SignUpPage = function ({ users }) {
   console.log(users);
