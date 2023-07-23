@@ -10,7 +10,6 @@
     "watch": "sass --watch styles/main.scss:styles/globals.css"
   },
   "dependencies": {
-    "@netlify/plugin-nextjs": "^4.39.1",
     "@prisma/client": "^5.0.0",
     "@svgr/webpack": "^8.0.1",
     "next": "13.4.7",
