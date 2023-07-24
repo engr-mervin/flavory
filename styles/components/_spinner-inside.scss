@@ -1,0 +1,49 @@
+$width: 3.25rem;
+$width-2: 2.625rem;
+$width-3: 2rem;
+
+$thick: 0.25rem;
+
+.spinner-inside {
+  &--1,
+  &--2,
+  &--3 {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: transparent;
+    animation-name: spin;
+    animation-iteration-count: infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: blur(0.4px);
+  }
+  &--1 {
+    top: calc(50% - $width / 2);
+    left: calc(50% - $width / 2);
+    z-index: 1;
+
+    width: $width;
+    border: $thick solid $color-primary;
+    border-top: $thick solid transparent;
+
+    animation-duration: 1000ms;
+    animation-timing-function: ease-in;
+  }
+
+  &--2 {
+    width: $width-2;
+    border: $thick solid $color-accent--green;
+    border-right: $thick solid transparent;
+    animation-duration: 1300ms;
+    animation-timing-function: ease-out;
+  }
+
+  &--3 {
+    width: $width-3;
+    border: $thick solid $color-accent--yellow;
+    border-bottom: $thick solid transparent;
+    animation-duration: 1860ms;
+    animation-timing-function: ease-in;
+  }
+}

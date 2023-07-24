@@ -1,13 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../../db";
 import { validateText } from "../../util/validate";
-import { redirect } from "next/dist/server/api-utils";
 
 const registerUserHandler = async function (req, res) {
-  //   console.log(req, res);
-  const prisma = new PrismaClient();
-  //   await prisma.user.deleteMany();
-  //   console.log(allValues);
-
   if (req.method !== "POST")
     return res.status(405).json({ message: "Only acccepts POST method" });
 
@@ -20,7 +14,9 @@ const registerUserHandler = async function (req, res) {
 
   //   console.log(findOne);
   if (findOne) {
-    return res.status(500).json({ message: "User already exists" });
+    return res
+      .status(500)
+      .json({ message: `User ${userObject.userName} already exists.` });
   }
 
   if (

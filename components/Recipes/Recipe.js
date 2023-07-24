@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FORKIFY_KEY } from "../../util/constants";
 import Ingredient from "./Ingredient";
 import SaveLogo from "../../assets/heart-outline.svg";
@@ -7,9 +7,12 @@ import AddLogo from "../../assets/add.svg";
 import SubtractLogo from "../../assets/remove.svg";
 import TimeLogo from "../../assets/time.svg";
 import NoSelected from "../Fallback Pages/NoSelected";
+import { isAuthorized } from "../../util/local-storage";
+import AuthContext from "../../store/auth-context";
 
 const Recipe = function ({ currentRecipe }) {
   const [multiplier, setMultiplier] = useState(1);
+  const { authState, updateState } = useContext(AuthContext);
 
   const add = function (val) {
     return () => {
@@ -46,7 +49,10 @@ const Recipe = function ({ currentRecipe }) {
           <div className="recipe__all-details">
             <div className="recipe__details">
               <p className="recipe__publisher">{`by: ${currentRecipe.publisher}`}</p>
-              <button className="recipe__button-save">
+              <button
+                className="recipe__button-save"
+                disabled={authState.isAuth ? false : true}
+              >
                 <SaveLogo className="recipe__logo"></SaveLogo>
               </button>
             </div>

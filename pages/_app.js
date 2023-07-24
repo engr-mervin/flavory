@@ -5,6 +5,7 @@ import MainNavigation from "../components/Layout/MainNavigation";
 import Footer from "../components/Layout/Footer";
 import { useEffect, useState } from "react";
 import Loading from "../components/Fallback Pages/Loading";
+import { AuthContextProvider } from "../store/auth-context";
 function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -29,7 +30,7 @@ function App({ Component, pageProps }) {
     };
   });
   return (
-    <>
+    <AuthContextProvider>
       {loading ? <Loading></Loading> : ""}
       <Header></Header>
       <MainNavigation></MainNavigation>
@@ -37,7 +38,7 @@ function App({ Component, pageProps }) {
         <Component loading={loading} {...pageProps} />
       </main>
       <Footer></Footer>
-    </>
+    </AuthContextProvider>
   );
 }
 

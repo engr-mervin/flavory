@@ -1,7 +1,8 @@
-.signup {
+.login {
   display: flex;
   flex-direction: column;
   padding: 8rem 48rem;
+
   &__form {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -18,13 +19,8 @@
     color: $color-font--black;
     outline: 2px solid rgb(230, 230, 230);
   }
-
   &__input:focus {
     outline: 2px solid $color-primary--light;
-  }
-  &__input.invalid {
-    background-color: rgb(253, 200, 200);
-    outline: 2px solid rgb(255, 107, 107);
   }
 
   &__label {
@@ -35,6 +31,7 @@
 
   &__submit {
     background-color: $color-primary;
+    grid-column: 2/-1;
     border: none;
     font-family: inherit;
     color: $color-font--white;
@@ -43,16 +40,5 @@
     border-radius: 0.8rem;
     cursor: pointer;
     font-size: 1.6rem;
-  }
-
-  &__message {
-    font-size: 1.4rem;
-    color: red;
-    font-weight: 400;
-  }
-  &__text {
-    font-size: 1.4rem;
-    color: $color-font--black;
-    font-weight: 400;
   }
 }

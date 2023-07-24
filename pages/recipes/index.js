@@ -93,6 +93,9 @@ const Recipes = function (props) {
   };
 
   const changePageDynamic = function (add) {
+    if (!props?.searchResults?.length) {
+      return;
+    }
     let maxPage = Math.ceil(props.searchResults.length / MAX_RECIPES_PER_PAGE);
     return () => {
       let intendedPage = +currentPage + add;

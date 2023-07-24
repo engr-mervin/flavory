@@ -66,4 +66,23 @@
       border: 2px solid $color-primary;
     }
   }
+
+  &__logout {
+    padding: 1rem 3rem;
+    color: $color-primary;
+    background-color: $color-primary--white;
+    border-radius: 1rem;
+    border: 2px solid $color-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    cursor: pointer;
+    font-size: 1.8rem;
+
+    transition: all 250ms;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 }
