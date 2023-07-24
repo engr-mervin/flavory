@@ -12,11 +12,7 @@ const MainNavigation = function () {
   // const [auth, setAuth] = useState(false);
 
   const { authState, updateState } = useContext(AuthContext);
-  useEffect(() => {
-    updateState();
-  }, []);
 
-  console.log(authState, updateState);
   const logoutHandler = async function (e) {
     e.preventDefault();
 

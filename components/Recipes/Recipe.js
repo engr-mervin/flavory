@@ -9,10 +9,22 @@ import TimeLogo from "../../assets/time.svg";
 import NoSelected from "../Fallback Pages/NoSelected";
 import { isAuthorized } from "../../util/local-storage";
 import AuthContext from "../../store/auth-context";
+import BookmarkContext from "../../store/bookmark-context";
 
 const Recipe = function ({ currentRecipe }) {
   const [multiplier, setMultiplier] = useState(1);
-  const { authState, updateState } = useContext(AuthContext);
+  const { authState } = useContext(AuthContext);
+  const { bookmarkState, addBookmark, removeBookmark } =
+    useContext(BookmarkContext);
+
+  const [saved, setSaved] = useState(false);
+
+  console.log(bookmarkState);
+  useEffect(() => {
+    if (!currentRecipe || !bookmarkState?.bookmarks) return;
+    console.log(bookmarkState.bookmarks.includes(currentRecipe.id));
+    setSaved(bookmarkState.bookmarks.includes(currentRecipe.id));
+  }, [bookmarkState.bookmarks, currentRecipe]);
 
   const add = function (val) {
     return () => {
@@ -30,6 +42,30 @@ const Recipe = function ({ currentRecipe }) {
         return prev - val / currentRecipe.servings;
       });
     };
+  };
+
+  const bookmarkHandler = async function () {
+    const requestData = {
+      sessionId: authState.sessionId,
+      recipeId: currentRecipe.id,
+    };
+    if (bookmarkState.bookmarks.includes(currentRecipe.id)) {
+      removeBookmark(currentRecipe.id);
+
+      await fetch("/api/unbookmark", {
+        method: "POST",
+        body: JSON.stringify(requestData),
+        headers: { "Content-Type": "application/json" },
+      });
+    } else {
+      addBookmark(currentRecipe.id);
+
+      await fetch("/api/bookmark", {
+        method: "POST",
+        body: JSON.stringify(requestData),
+        headers: { "Content-Type": "application/json" },
+      });
+    }
   };
 
   useEffect(() => {
@@ -52,8 +88,13 @@ const Recipe = function ({ currentRecipe }) {
               <button
                 className="recipe__button-save"
                 disabled={authState.isAuth ? false : true}
+                onClick={bookmarkHandler}
               >
-                <SaveLogo className="recipe__logo"></SaveLogo>
+                {saved ? (
+                  <SavedLogo className="recipe__logo"></SavedLogo>
+                ) : (
+                  <SaveLogo className="recipe__logo"></SaveLogo>
+                )}
               </button>
             </div>
             <div className="recipe__specifics">

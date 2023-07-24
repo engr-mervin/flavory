@@ -6,6 +6,8 @@ import Footer from "../components/Layout/Footer";
 import { useEffect, useState } from "react";
 import Loading from "../components/Fallback Pages/Loading";
 import { AuthContextProvider } from "../store/auth-context";
+import UserDataProvider from "../components/Wrapper/UserDataProvider";
+import { BookmarkContextProvider } from "../store/bookmark-context";
 function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -31,13 +33,17 @@ function App({ Component, pageProps }) {
   });
   return (
     <AuthContextProvider>
-      {loading ? <Loading></Loading> : ""}
-      <Header></Header>
-      <MainNavigation></MainNavigation>
-      <main>
-        <Component loading={loading} {...pageProps} />
-      </main>
-      <Footer></Footer>
+      <BookmarkContextProvider>
+        <UserDataProvider>
+          {loading ? <Loading></Loading> : ""}
+          <Header></Header>
+          <MainNavigation></MainNavigation>
+          <main>
+            <Component loading={loading} {...pageProps} />
+          </main>
+          <Footer></Footer>
+        </UserDataProvider>
+      </BookmarkContextProvider>
     </AuthContextProvider>
   );
 }

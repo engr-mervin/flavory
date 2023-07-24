@@ -9,3 +9,11 @@ export const isAuthorized = function () {
   }
   return false;
 };
+
+export const getSessionId = function () {
+  if (isAuthorized()) {
+    return localStorage.getItem("sessionId");
+  }
+
+  return "";
+};

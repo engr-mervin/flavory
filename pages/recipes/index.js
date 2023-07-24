@@ -9,7 +9,6 @@ import {
 } from "../../util/constants";
 import useRouterFilter from "../../custom-hooks/use-router-filter";
 const Recipes = function (props) {
-  console.log(props.searchResults);
   const { addParamShallow } = useRouterFilter();
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPageGroup, setCurrentPageGroup] = useState([]);

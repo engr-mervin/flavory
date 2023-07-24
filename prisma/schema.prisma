@@ -17,7 +17,8 @@ model User{
   userName String
   password String
   displayName String
-
+  lovedRecipes String[]
+  myRecipes String[]
 }
 
 

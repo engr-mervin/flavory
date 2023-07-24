@@ -931,6 +931,9 @@ body {
   border: 1.5px solid #aaa;
   cursor: auto;
 }
+.recipe__button-save.saved {
+  color: red;
+}
 .recipe__logo, .recipe__logo-2 {
   height: 2.75rem;
   width: 2.75rem;

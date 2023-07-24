@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { isAuthorized } from "../util/local-storage";
+import { getSessionId, isAuthorized } from "../util/local-storage";
 
 const initialVal = {
   isAuth: false,
@@ -11,7 +11,7 @@ export default AuthContext;
 
 const authReducer = function (prev, action) {
   if (action.type === "UPDATE") {
-    let newState = { ...prev, isAuth: isAuthorized() };
+    let newState = { isAuth: isAuthorized(), sessionId: getSessionId() };
     return newState;
   }
 };
