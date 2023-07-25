@@ -1,33 +1,39 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import User from "./User";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../../store/auth-context";
+import UserDataContext from "../../store/user-data-context";
 
 const MainNavigation = function () {
   let tab;
 
   const router = useRouter();
 
-  // const [auth, setAuth] = useState(false);
-
   const { authState, updateState } = useContext(AuthContext);
+  const { clearData } = useContext(UserDataContext);
+
+  const [loggingOut, setLoggingOut] = useState(false);
 
   const logoutHandler = async function (e) {
     e.preventDefault();
 
+    setLoggingOut(true);
     const sessionId = localStorage.getItem("sessionId");
 
-    if (!sessionId) return;
-    const response = await fetch("/api/log-out", {
+    if (!sessionId) {
+      setLoggingOut(false);
+      return;
+    }
+    await fetch("/api/log-out", {
       method: "POST",
       body: JSON.stringify({ sessionId: sessionId }),
       headers: { "Content-Type": "application/json" },
     });
 
-    console.log(await response.json());
     localStorage.removeItem("sessionId");
     updateState();
+    clearData();
+    setLoggingOut(false);
     router.push("/");
   };
   if (router.pathname === "/") {
@@ -59,8 +65,12 @@ const MainNavigation = function () {
             <Link href="/account">Account</Link>
           </li>
           <li className="navigation-item-3">
-            <button className="navigation__logout" onClick={logoutHandler}>
-              Log out
+            <button
+              className="navigation__logout"
+              onClick={logoutHandler}
+              disabled={loggingOut ? true : false}
+            >
+              {loggingOut ? "Please wait..." : "Log out"}
             </button>
           </li>
         </ul>

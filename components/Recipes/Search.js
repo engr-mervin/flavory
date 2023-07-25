@@ -2,6 +2,7 @@ import SearchResults from "./SearchResults";
 import Pages from "./Pages";
 import NoSelected from "../Fallback Pages/NoSelected";
 import Chevron from "../UI/ChevronLeft";
+import { useRouter } from "next/router";
 const Search = function ({
   currentPage,
   currentPageGroup,
@@ -9,6 +10,7 @@ const Search = function ({
   changePage,
   changePageDynamic,
 }) {
+  const router = useRouter();
   return (
     <div className="search">
       {pageRecipes.length > 0 ? (
@@ -35,7 +37,11 @@ const Search = function ({
       ) : (
         <NoSelected
           imageSource="http://forkify-api.herokuapp.com/images/PepperoniPizzaMonkeyBread8cd5.jpg"
-          message="No recipe found. Start searching!"
+          message={
+            !router.query.search
+              ? `Start searching!`
+              : `No recipe found for "${router.query.search}"`
+          }
           withImage={false}
         ></NoSelected>
       )}

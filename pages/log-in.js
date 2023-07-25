@@ -7,6 +7,8 @@ const LogInPage = function () {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
+  const [message, setMessage] = useState("");
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const router = useRouter();
   const { authState, updateState } = useContext(AuthContext);
 
@@ -26,6 +28,8 @@ const LogInPage = function () {
 
   const submitHandler = async function (e) {
     e.preventDefault();
+    setIsLoggingIn(true);
+    setMessage("Logging in, please wait...");
     const userData = { userName, password };
 
     const response = await fetch("/api/log-in", {
@@ -36,10 +40,10 @@ const LogInPage = function () {
 
     const data = await response.json();
 
-    localStorage.setItem("sessionId", data.sessionId);
-
-    updateState();
+    setMessage(data.message);
     if (response.ok) {
+      updateState();
+      localStorage.setItem("sessionId", data.sessionId);
       router.push("/");
     }
     // if (response.ok) router.push("/");
@@ -70,6 +74,9 @@ const LogInPage = function () {
               type="text"
               id="login__password"
             ></input>
+            <div className="signup__status">
+              <p className="signup__message">{message}</p>
+            </div>
             <button className="login__submit">Log in!</button>
           </form>
         </>

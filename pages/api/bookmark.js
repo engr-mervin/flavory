@@ -1,4 +1,5 @@
 import { prisma } from "../../db";
+import { parseArrayObject } from "../../util/strings";
 
 const bookmarkRecipe = async function (req, res) {
   const session = await prisma.session.findFirst({
@@ -21,9 +22,8 @@ const bookmarkRecipe = async function (req, res) {
     return res.status(500).json({ message: "User does not exist." });
   }
 
-  const exists = user.lovedRecipes.findIndex(
-    (recipe) => recipe.id === req.body.recipe.id
-  );
+  const loved = parseArrayObject(user.lovedRecipes);
+  const exists = loved.findIndex((recipe) => recipe.id === req.body.recipe.id);
 
   if (exists != -1) {
     return res.status(500).json({ message: "Already bookmarked" });

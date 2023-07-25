@@ -1,8 +1,23 @@
 .account {
+  padding: 4rem;
+  padding-bottom: 0;
+
+  &__content-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__bookmarks {
+    padding: 4rem 8rem;
+  }
+  &__own {
+    gap: 3rem;
+    padding: 4rem 8rem;
+  }
   &__bookmarks-list {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-    padding: 8rem;
+    padding: 3rem 0;
+    gap: 2rem;
   }
 }

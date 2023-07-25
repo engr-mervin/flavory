@@ -1,12 +1,12 @@
 import { useContext, useEffect } from "react";
 import AuthContext from "../../store/auth-context";
-import BookmarkContext from "../../store/bookmark-context";
+import BookmarkContext from "../../store/user-data-context";
 import { useRouter } from "next/router";
 import { parseNested } from "../../util/strings";
 
 const UserDataProvider = function ({ children }) {
   const { authState, updateState } = useContext(AuthContext);
-  const { initialLoad } = useContext(BookmarkContext);
+  const { initialLoad, saveName } = useContext(BookmarkContext);
   const router = useRouter();
 
   //on every first load and reload check the session
@@ -15,10 +15,10 @@ const UserDataProvider = function ({ children }) {
   }, []);
 
   useEffect(() => {
-    const getBookmarks = async function () {
+    const getUserData = async function () {
       if (authState.sessionId === "") return;
       const sessionData = { sessionId: authState.sessionId };
-      const response = await fetch("/api/get-bookmarks", {
+      const response = await fetch("/api/get-user-data", {
         method: "POST",
         body: JSON.stringify(sessionData),
       });
@@ -35,8 +35,9 @@ const UserDataProvider = function ({ children }) {
 
       //SAVE RETRIEVED BOOKMARKS TO BOOKMARK CONTEXT
       initialLoad(parseNested(data.bookmarks));
+      saveName(JSON.parse(data.displayName));
     };
-    getBookmarks();
+    getUserData();
   }, [authState.sessionId]);
 
   return <>{children}</>;

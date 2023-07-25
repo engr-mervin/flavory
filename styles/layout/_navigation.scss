@@ -83,6 +83,14 @@
     transition: all 250ms;
     &:hover {
       transform: scale(1.05);
+      &:disabled {
+        transform: scale(1);
+      }
+    }
+    &:disabled {
+      color: #aaa;
+      border: 2px solid #aaa;
+      cursor: auto;
     }
   }
 }

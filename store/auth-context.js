@@ -14,6 +14,9 @@ const authReducer = function (prev, action) {
     let newState = { isAuth: isAuthorized(), sessionId: getSessionId() };
     return newState;
   }
+
+  if (action.type === "VERIFY") {
+  }
 };
 
 export const AuthContextProvider = function ({ children }) {

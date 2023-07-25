@@ -559,24 +559,57 @@ body {
   word-break: keep-all;
 }
 
+.bookmark {
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 3rem rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+  transition: all 300ms;
+}
+.bookmark:hover {
+  transform: translateY(-0.5rem);
+}
 .bookmark__link {
   display: grid;
   text-decoration: none;
-  grid-template-columns: 30rem 30rem 1fr 10rem;
+  grid-template-columns: 20rem 1fr;
   color: #3f2107;
-  align-items: flex-start;
-  height: 30rem;
+  align-items: stretch;
+  height: 20rem;
+  background-color: rgb(255, 250, 246);
+}
+.bookmark__details-box {
+  padding: 2rem 4rem;
+  width: 100%;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .bookmark__image-box {
-  height: 30rem;
-  width: 30rem;
-  flex-basis: 30rem;
+  height: 20rem;
+  width: 20rem;
+  flex-basis: 20rem;
   overflow: hidden;
 }
 .bookmark__image {
-  height: 30rem;
-  width: 30rem;
+  height: 20rem;
+  width: 20rem;
   object-fit: cover;
+}
+.bookmark__unsave {
+  height: 2.75rem;
+  width: 2.75rem;
+  color: currentColor;
+  fill: currentColor;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  transition: all 300ms;
+}
+.bookmark__unsave:hover {
+  transform: scale(1.2);
 }
 
 .header {
@@ -807,6 +840,14 @@ body {
 }
 .navigation__logout:hover {
   transform: scale(1.05);
+}
+.navigation__logout:hover:disabled {
+  transform: scale(1);
+}
+.navigation__logout:disabled {
+  color: #aaa;
+  border: 2px solid #aaa;
+  cursor: auto;
 }
 
 .testimonial {
@@ -1464,11 +1505,26 @@ body {
   font-size: 1.6rem;
 }
 
+.account {
+  padding: 4rem;
+  padding-bottom: 0;
+}
+.account__content-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.account__bookmarks {
+  padding: 4rem 8rem;
+}
+.account__own {
+  gap: 3rem;
+  padding: 4rem 8rem;
+}
 .account__bookmarks-list {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  padding: 8rem;
+  padding: 3rem 0;
+  gap: 2rem;
 }
 
 /*# sourceMappingURL=globals.css.map */

@@ -1,6 +1,6 @@
 import { prisma } from "../../db";
 
-const getBookmarks = async function (req, res) {
+const getUserData = async function (req, res) {
   const data = JSON.parse(req.body);
   const session = await prisma.session.findFirst({
     where: {
@@ -32,8 +32,9 @@ const getBookmarks = async function (req, res) {
   return res.status(200).json({
     message: "Successfully retrieved bookmarks!",
     bookmarks: JSON.stringify(bookmarks),
+    displayName: JSON.stringify(user.displayName),
     valid: true,
   });
 };
 
-export default getBookmarks;
+export default getUserData;

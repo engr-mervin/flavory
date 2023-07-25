@@ -1,4 +1,5 @@
 import { prisma } from "../../db";
+import { parseArrayObject, stringifyArrayObject } from "../../util/strings";
 
 const unbookmarkRecipe = async function (req, res) {
   const session = await prisma.session.findFirst({
@@ -21,23 +22,20 @@ const unbookmarkRecipe = async function (req, res) {
     return res.status(500).json({ message: "User does not exist." });
   }
 
-  const exists = user.lovedRecipes.findIndex(
-    (recipe) => recipe.id === req.body.recipeId
-  );
-
-  if (exists === -1) {
-    return res.status(500).json({ message: "Not yet bookmarked." });
-  }
-
-  const loved = user.lovedRecipes;
+  const loved = parseArrayObject(user.lovedRecipes);
 
   const index = loved.findIndex((recipe) => recipe.id === req.body.recipe.id);
 
+  if (index === -1) {
+    return res.status(500).json({ message: "Not yet bookmarked." });
+  }
+
   loved.splice(index, 1);
 
+  const lovedString = stringifyArrayObject(loved);
   const newUserData = {
     ...user,
-    lovedRecipes: [...loved],
+    lovedRecipes: lovedString,
   };
 
   await prisma.user.update({

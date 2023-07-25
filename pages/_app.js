@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Loading from "../components/Fallback Pages/Loading";
 import { AuthContextProvider } from "../store/auth-context";
 import UserDataProvider from "../components/Wrapper/UserDataProvider";
-import { BookmarkContextProvider } from "../store/bookmark-context";
+import { UserDataContextProvider } from "../store/user-data-context";
 function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -33,7 +33,7 @@ function App({ Component, pageProps }) {
   });
   return (
     <AuthContextProvider>
-      <BookmarkContextProvider>
+      <UserDataContextProvider>
         <UserDataProvider>
           {loading ? <Loading></Loading> : ""}
           <Header></Header>
@@ -43,7 +43,7 @@ function App({ Component, pageProps }) {
           </main>
           <Footer></Footer>
         </UserDataProvider>
-      </BookmarkContextProvider>
+      </UserDataContextProvider>
     </AuthContextProvider>
   );
 }

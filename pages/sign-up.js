@@ -39,14 +39,19 @@ const SignUpPage = function ({ users }) {
     e.preventDefault();
 
     setIsSigningUp(true);
+    setMessage("Registering user...");
     if (
       !userNameIsValid ||
       !password2IsValid ||
       !passwordIsValid ||
-      !displayNameIsValid ||
-      passwordValue != password2Value
+      !displayNameIsValid
     ) {
       setMessage("Please fix input errors.");
+      setIsSigningUp(false);
+      return;
+    }
+    if (passwordValue != password2Value) {
+      setMessage("Password does not match");
       setIsSigningUp(false);
       return;
     }
@@ -118,11 +123,7 @@ const SignUpPage = function ({ users }) {
           placeholder="6-16 (a-Z)(0-9)(-_)"
         ></input>
         <div className="signup__status">
-          {isSigningUp ? (
-            <p className="signup__text">Registering user...</p>
-          ) : (
-            <p className="signup__message">{message}</p>
-          )}
+          <p className="signup__message">{message}</p>
         </div>
         <button className="signup__submit">Sign-up!</button>
       </form>

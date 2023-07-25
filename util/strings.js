@@ -12,3 +12,11 @@ export const parseNested = function (str) {
     return str;
   }
 };
+
+export const parseArrayObject = function (arr) {
+  return arr.map((el) => parseNested(el));
+};
+
+export const stringifyArrayObject = function (arr) {
+  return arr.map((el) => JSON.stringify(el));
+};

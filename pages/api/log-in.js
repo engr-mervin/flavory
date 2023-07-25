@@ -27,8 +27,6 @@ const loginUserHandler = async function (req, res) {
     },
   });
 
-  console.log(session);
-
   //return session id
 
   return res

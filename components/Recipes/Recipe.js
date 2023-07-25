@@ -8,24 +8,21 @@ import SubtractLogo from "../../assets/remove.svg";
 import TimeLogo from "../../assets/time.svg";
 import NoSelected from "../Fallback Pages/NoSelected";
 import AuthContext from "../../store/auth-context";
-import BookmarkContext from "../../store/bookmark-context";
+import UserDataContext from "../../store/user-data-context";
 
 const Recipe = function ({ currentRecipe }) {
   const [multiplier, setMultiplier] = useState(1);
   const { authState } = useContext(AuthContext);
-  const { bookmarkState, addBookmark, removeBookmark } =
-    useContext(BookmarkContext);
-
+  const { userData, addBookmark, removeBookmark } = useContext(UserDataContext);
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    if (!currentRecipe || !bookmarkState?.bookmarks) return;
-    setSaved(
-      bookmarkState.bookmarks.find(
-        (bookmark) => bookmark.id === currentRecipe.id
-      )
+    if (!currentRecipe || !userData?.bookmarks) return;
+    const index = userData.bookmarks.findIndex(
+      (bookmark) => bookmark.id === currentRecipe.id
     );
-  }, [bookmarkState.bookmarks, currentRecipe]);
+    setSaved(index !== -1);
+  }, [userData.bookmarks, currentRecipe]);
 
   const add = function (val) {
     return () => {
@@ -48,13 +45,11 @@ const Recipe = function ({ currentRecipe }) {
   const bookmarkHandler = async function () {
     const requestData = {
       sessionId: authState.sessionId,
-      // recipeId: currentRecipe.id,
       recipe: currentRecipe,
     };
-    const exists = bookmarkState.bookmarks.findIndex(
+    const exists = userData.bookmarks.findIndex(
       (bookmark) => bookmark.id === currentRecipe.id
     );
-
     if (exists != -1) {
       removeBookmark(currentRecipe);
 
