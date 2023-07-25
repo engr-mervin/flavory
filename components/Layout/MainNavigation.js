@@ -30,7 +30,7 @@ const MainNavigation = function () {
     updateState();
     router.push("/");
   };
-  if (router.pathname.startsWith("/")) {
+  if (router.pathname === "/") {
     tab = "home";
   }
   if (router.pathname.startsWith("/recipes")) {

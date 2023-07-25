@@ -1,16 +1,14 @@
 import { prisma } from "../../db";
 
 const unbookmarkRecipe = async function (req, res) {
-  const body = req.body;
-  console.log(body);
   const session = await prisma.session.findFirst({
     where: {
-      id: body.sessionId,
+      id: req.body.sessionId,
     },
   });
 
   if (!session) {
-    return res.status(404).json({ message: "No session found" });
+    return res.status(500).json({ message: "Invalid Session id." });
   }
 
   const user = await prisma.user.findFirst({
@@ -20,20 +18,24 @@ const unbookmarkRecipe = async function (req, res) {
   });
 
   if (!user) {
-    return res.status(404).json({ message: "No user found" });
+    return res.status(500).json({ message: "User does not exist." });
   }
 
-  if (!user.lovedRecipes.includes(body.recipeId)) {
-    return res.status(500).json({ message: "Not yet bookmarked" });
+  const exists = user.lovedRecipes.findIndex(
+    (recipe) => recipe.id === req.body.recipeId
+  );
+
+  if (exists === -1) {
+    return res.status(500).json({ message: "Not yet bookmarked." });
   }
 
   const loved = user.lovedRecipes;
 
-  const index = loved.indexOf(body.recipeId);
+  const index = loved.findIndex((recipe) => recipe.id === req.body.recipe.id);
 
   loved.splice(index, 1);
 
-  const newUser = {
+  const newUserData = {
     ...user,
     lovedRecipes: [...loved],
   };
@@ -42,7 +44,7 @@ const unbookmarkRecipe = async function (req, res) {
     where: {
       id: session.userId,
     },
-    data: newUser,
+    data: newUserData,
   });
 
   return res.status(200).json({ message: "Successfully unbookmarked!" });

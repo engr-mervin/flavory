@@ -1,10 +1,13 @@
 import { useContext, useEffect } from "react";
 import AuthContext from "../../store/auth-context";
 import BookmarkContext from "../../store/bookmark-context";
+import { useRouter } from "next/router";
+import { parseNested } from "../../util/strings";
 
 const UserDataProvider = function ({ children }) {
   const { authState, updateState } = useContext(AuthContext);
   const { initialLoad } = useContext(BookmarkContext);
+  const router = useRouter();
 
   //on every first load and reload check the session
   useEffect(() => {
@@ -21,10 +24,21 @@ const UserDataProvider = function ({ children }) {
       });
 
       const data = await response.json();
-      initialLoad(JSON.parse(data.bookmarks));
+
+      //REMOVE SESSION ID WHEN IT WAS NOT FOUND IN DATABASE
+      if (!JSON.parse(data.valid)) {
+        localStorage.removeItem("sessionId");
+        updateState();
+        router.push("/");
+        return;
+      }
+
+      //SAVE RETRIEVED BOOKMARKS TO BOOKMARK CONTEXT
+      initialLoad(parseNested(data.bookmarks));
     };
     getBookmarks();
   }, [authState.sessionId]);
+
   return <>{children}</>;
 };
 

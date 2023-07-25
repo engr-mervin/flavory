@@ -7,7 +7,6 @@ import AddLogo from "../../assets/add.svg";
 import SubtractLogo from "../../assets/remove.svg";
 import TimeLogo from "../../assets/time.svg";
 import NoSelected from "../Fallback Pages/NoSelected";
-import { isAuthorized } from "../../util/local-storage";
 import AuthContext from "../../store/auth-context";
 import BookmarkContext from "../../store/bookmark-context";
 
@@ -19,11 +18,13 @@ const Recipe = function ({ currentRecipe }) {
 
   const [saved, setSaved] = useState(false);
 
-  console.log(bookmarkState);
   useEffect(() => {
     if (!currentRecipe || !bookmarkState?.bookmarks) return;
-    console.log(bookmarkState.bookmarks.includes(currentRecipe.id));
-    setSaved(bookmarkState.bookmarks.includes(currentRecipe.id));
+    setSaved(
+      bookmarkState.bookmarks.find(
+        (bookmark) => bookmark.id === currentRecipe.id
+      )
+    );
   }, [bookmarkState.bookmarks, currentRecipe]);
 
   const add = function (val) {
@@ -47,10 +48,15 @@ const Recipe = function ({ currentRecipe }) {
   const bookmarkHandler = async function () {
     const requestData = {
       sessionId: authState.sessionId,
-      recipeId: currentRecipe.id,
+      // recipeId: currentRecipe.id,
+      recipe: currentRecipe,
     };
-    if (bookmarkState.bookmarks.includes(currentRecipe.id)) {
-      removeBookmark(currentRecipe.id);
+    const exists = bookmarkState.bookmarks.findIndex(
+      (bookmark) => bookmark.id === currentRecipe.id
+    );
+
+    if (exists != -1) {
+      removeBookmark(currentRecipe);
 
       await fetch("/api/unbookmark", {
         method: "POST",
@@ -58,7 +64,7 @@ const Recipe = function ({ currentRecipe }) {
         headers: { "Content-Type": "application/json" },
       });
     } else {
-      addBookmark(currentRecipe.id);
+      addBookmark(currentRecipe);
 
       await fetch("/api/bookmark", {
         method: "POST",

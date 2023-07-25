@@ -1,6 +1,6 @@
 .navigation {
-  padding: 1rem 6rem;
-  padding-top: 2rem;
+  padding: 1.5rem 6rem;
+  padding-top: 1.5rem;
   border-bottom: 3px double $color-font--black;
   background-color: $color-primary--white;
   display: flex;
@@ -27,7 +27,7 @@
     align-items: center;
     a:link,
     a:visited {
-      padding: 2rem 3rem;
+      padding: 1.5rem 3rem;
       text-decoration: none;
       color: $color-font--black;
       transition: all 250ms;

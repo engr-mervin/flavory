@@ -8,18 +8,32 @@ const getBookmarks = async function (req, res) {
     },
   });
 
-  console.log(session);
+  if (!session) {
+    return res.status(500).json({
+      message: "Invalid Session id.",
+      valid: false,
+    });
+  }
   const user = await prisma.user.findFirst({
     where: {
       id: session.userId,
     },
   });
 
+  if (!user) {
+    return res.status(500).json({
+      message: "User does not exist.",
+      valid: false,
+    });
+  }
+
   const bookmarks = user.lovedRecipes;
 
-  return res
-    .status(200)
-    .json({ message: "Success!", bookmarks: JSON.stringify(bookmarks) });
+  return res.status(200).json({
+    message: "Successfully retrieved bookmarks!",
+    bookmarks: JSON.stringify(bookmarks),
+    valid: true,
+  });
 };
 
 export default getBookmarks;

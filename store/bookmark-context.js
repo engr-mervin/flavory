@@ -14,15 +14,20 @@ const bookmarkReducer = function (prev, action) {
   }
   if (action.type === "ADD") {
     const add = action.bookmark;
-    if (prev.bookmarks.includes(add)) return { ...prev };
+    const index = prev.bookmarks.findIndex(
+      (bookmark) => bookmark.id === add.id
+    );
+    if (index !== -1) return { ...prev };
     return { ...prev, bookmarks: [...prev.bookmarks, add] };
   }
 
   if (action.type === "REMOVE") {
     const remove = action.bookmark;
-    if (!prev.bookmarks.includes(remove)) return { ...prev };
+    const index = prev.bookmarks.findIndex(
+      (bookmark) => bookmark.id === remove.id
+    );
+    if (index === -1) return { ...prev };
 
-    const index = prev.bookmarks.indexOf(remove);
     let newBookmarks = prev.bookmarks;
     newBookmarks.splice(index, 1);
     return { ...prev, bookmarks: [...newBookmarks] };

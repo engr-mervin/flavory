@@ -8,7 +8,7 @@ const bookmarkRecipe = async function (req, res) {
   });
 
   if (!session) {
-    return res.status(404).json({ message: "No session found" });
+    return res.status(500).json({ message: "Invalid Session id." });
   }
 
   const user = await prisma.user.findFirst({
@@ -18,23 +18,27 @@ const bookmarkRecipe = async function (req, res) {
   });
 
   if (!user) {
-    return res.status(404).json({ message: "No user found" });
+    return res.status(500).json({ message: "User does not exist." });
   }
 
-  if (user.lovedRecipes.includes(req.body.recipeId)) {
+  const exists = user.lovedRecipes.findIndex(
+    (recipe) => recipe.id === req.body.recipe.id
+  );
+
+  if (exists != -1) {
     return res.status(500).json({ message: "Already bookmarked" });
   }
 
-  const newUser = {
+  const newUserData = {
     ...user,
-    lovedRecipes: [...user.lovedRecipes, req.body.recipeId],
+    lovedRecipes: [...user.lovedRecipes, JSON.stringify(req.body.recipe)],
   };
 
   await prisma.user.update({
     where: {
       id: session.userId,
     },
-    data: newUser,
+    data: newUserData,
   });
 
   return res.status(200).json({ message: "Successfully bookmarked!" });

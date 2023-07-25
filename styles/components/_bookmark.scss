@@ -1,0 +1,23 @@
+.bookmark {
+  &__link {
+    display: grid;
+    text-decoration: none;
+    grid-template-columns: 30rem 30rem 1fr 10rem;
+    color: $color-font--black;
+    align-items: flex-start;
+    height: 30rem;
+  }
+
+  &__image-box {
+    height: 30rem;
+    width: 30rem;
+    flex-basis: 30rem;
+    overflow: hidden;
+  }
+
+  &__image {
+    height: 30rem;
+    width: 30rem;
+    object-fit: cover;
+  }
+}
