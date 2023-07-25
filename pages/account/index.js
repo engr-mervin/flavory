@@ -8,7 +8,7 @@ const AccountPage = function () {
   return (
     <ul className="account__bookmarks-list">
       {bookmarkState.bookmarks.map((bookmark) => (
-        <Bookmark recipe={bookmark}></Bookmark>
+        <Bookmark key={bookmark.id} recipe={bookmark}></Bookmark>
       ))}
     </ul>
   );

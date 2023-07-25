@@ -9,8 +9,13 @@ const Bookmark = function ({ recipe }) {
         </div>
         <h2 className="heading--2">{recipe.title}</h2>
         <ul className="bookmark__list">
-          {recipe.ingredients.map((ingredient) => (
-            <li className="bookmark__list-item">{ingredient.description}</li>
+          {recipe.ingredients.map((ingredient, index) => (
+            <li
+              key={`${ingredient.description}_${index}`}
+              className="bookmark__list-item"
+            >
+              {ingredient.description}
+            </li>
           ))}
         </ul>
         <div className="bookmark__details-box">
