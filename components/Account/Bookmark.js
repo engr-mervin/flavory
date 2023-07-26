@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import UserDataContext from "../../store/user-data-context";
-import SavedLogo from "../../assets/heart.svg";
+import DeleteLogo from "../../assets/trash-outline.svg";
 
 const Bookmark = function ({ recipe }) {
   const { userData, removeBookmark } = useContext(UserDataContext);
@@ -43,13 +43,13 @@ const Bookmark = function ({ recipe }) {
           ))}
         </ul> */}
         <div className="bookmark__details-box">
-          <h2 className="heading--2">{recipe.title}</h2>
+          <h2 className="bookmark__title">{recipe.title}</h2>
+          <p className="bookmark__author">by: {recipe.publisher}</p>
         </div>
       </Link>
-      <SavedLogo
-        className="bookmark__unsave"
-        onClick={removeBookmarkHandler}
-      ></SavedLogo>
+      <div className="bookmark__unsave">
+        <DeleteLogo onClick={removeBookmarkHandler}></DeleteLogo>
+      </div>
     </li>
   );
 };

@@ -45,6 +45,9 @@ const MainNavigation = function () {
   if (router.pathname.startsWith("/about")) {
     tab = "about";
   }
+  if (router.pathname.startsWith("/account")) {
+    tab = "account";
+  }
 
   return (
     <nav className="navigation">
@@ -61,7 +64,9 @@ const MainNavigation = function () {
       </ul>
       {authState.isAuth ? (
         <ul className="navigation-list-2">
-          <li className="navigation-item-3">
+          <li
+            className={`navigation-item ${tab === "account" ? "current" : ""}`}
+          >
             <Link href="/account">Account</Link>
           </li>
           <li className="navigation-item-3">

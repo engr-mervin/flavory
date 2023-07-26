@@ -132,13 +132,9 @@ export async function getServerSideProps({ query }) {
     const request = await fetch(
       `https://forkify-api.herokuapp.com/api/v2/recipes?search=${search}&key=${FORKIFY_KEY}`
     );
-    // console.log("hi");
 
     const data = await request.json();
 
-    //array of objects
-    // if (!data?.data?.recipe) throw new Error();
-    // if(data?.data?.recipes)
     const recipes = data.data.recipes;
 
     allProps = { ...allProps, searchResults: recipes, searchStatus: "hello" };
@@ -151,13 +147,7 @@ export async function getServerSideProps({ query }) {
 
     const data = await request.json();
 
-    if (!data?.data) {
-      throw new Error("Something went wrong");
-    }
-    // if (!data?.data?.recipe) throw new Error();
     const currentRecipe = data.data.recipe;
-    //array of objects
-    // const recipes = data.data.recipes;
 
     allProps = { ...allProps, currentRecipe };
   }
