@@ -10,7 +10,7 @@ const MainNavigation = function () {
   const router = useRouter();
 
   const { authState, updateState } = useContext(AuthContext);
-  const { clearData } = useContext(UserDataContext);
+  const { userData, clearData } = useContext(UserDataContext);
 
   const [loggingOut, setLoggingOut] = useState(false);
 
@@ -48,6 +48,9 @@ const MainNavigation = function () {
   if (router.pathname.startsWith("/account")) {
     tab = "account";
   }
+  if (router.pathname.startsWith("/new-recipe")) {
+    tab = "new-recipe";
+  }
 
   return (
     <nav className="navigation">
@@ -61,13 +64,24 @@ const MainNavigation = function () {
         <li className={`navigation-item ${tab === "about" ? "current" : ""}`}>
           <Link href="/about">About</Link>
         </li>
+        {authState.isAuth ? (
+          <li
+            className={`navigation-item ${
+              tab === "new-recipe" ? "current" : ""
+            }`}
+          >
+            <Link href="/new-recipe">New Recipe</Link>
+          </li>
+        ) : (
+          ""
+        )}
       </ul>
       {authState.isAuth ? (
         <ul className="navigation-list-2">
           <li
             className={`navigation-item ${tab === "account" ? "current" : ""}`}
           >
-            <Link href="/account">Account</Link>
+            <Link href="/account">{userData.displayName}</Link>
           </li>
           <li className="navigation-item-3">
             <button

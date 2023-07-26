@@ -16,6 +16,7 @@ const UserDataProvider = function ({ children }) {
 
   useEffect(() => {
     const getUserData = async function () {
+      console.log("Session id changed");
       if (authState.sessionId === "") return;
       const sessionData = { sessionId: authState.sessionId };
       const response = await fetch("/api/get-user-data", {

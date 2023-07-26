@@ -56,20 +56,20 @@ const LogInPage = function () {
         <>
           <h1 className="heading--1e">Log In</h1>
           <form onSubmit={submitHandler} className="login__form">
-            <label className="login__label" htmlFor="login__user-name">
+            <label className="input__label" htmlFor="login__user-name">
               User Name:
             </label>
             <input
-              className={`login__input`}
+              className="input"
               onChange={onChangeUserName}
               type="text"
               id="login__user-name"
             ></input>
-            <label className="login__label" htmlFor="login__password">
+            <label className="input__label" htmlFor="login__password">
               Password:
             </label>
             <input
-              className={`login__input`}
+              className="input"
               onChange={onChangePassword}
               type="text"
               id="login__password"

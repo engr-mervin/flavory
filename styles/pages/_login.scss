@@ -9,25 +9,6 @@
     gap: 2rem;
     align-items: center;
   }
-  &__input {
-    border: none;
-    border-radius: 1px;
-    font-family: inherit;
-    padding: 0.3rem 1rem;
-    font-weight: 500;
-    font-size: 1.6rem;
-    color: $color-font--black;
-    outline: 2px solid rgb(230, 230, 230);
-  }
-  &__input:focus {
-    outline: 2px solid $color-primary--light;
-  }
-
-  &__label {
-    font-size: 1.6rem;
-    color: $color-font--black;
-    font-weight: 500;
-  }
 
   &__submit {
     background-color: $color-primary;

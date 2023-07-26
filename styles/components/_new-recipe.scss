@@ -1,0 +1,23 @@
+.new-recipe {
+  padding: 12rem 20rem;
+  &__group--1 {
+    display: grid;
+    grid-template-columns: 3fr 4.5fr 3fr 4.5fr;
+    column-gap: 6rem;
+    row-gap: 1rem;
+    align-items: center;
+  }
+  &__group--2 {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: auto 5fr auto 2fr auto 3fr;
+    column-gap: 3rem;
+    row-gap: 1rem;
+    align-items: center;
+  }
+  &__group--3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

@@ -618,6 +618,53 @@ body {
   transform: scale(1.2);
 }
 
+.new-recipe {
+  padding: 12rem 20rem;
+}
+.new-recipe__group--1 {
+  display: grid;
+  grid-template-columns: 3fr 4.5fr 3fr 4.5fr;
+  column-gap: 6rem;
+  row-gap: 1rem;
+  align-items: center;
+}
+.new-recipe__group--2 {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: auto 5fr auto 2fr auto 3fr;
+  column-gap: 3rem;
+  row-gap: 1rem;
+  align-items: center;
+}
+.new-recipe__group--3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input {
+  border: none;
+  border-radius: 1px;
+  font-family: inherit;
+  padding: 0.3rem 1rem;
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: #3f2107;
+  outline: 2px solid rgb(230, 230, 230);
+}
+.input:focus {
+  outline: 2px solid #ff7f3f;
+}
+.input.invalid {
+  background-color: rgb(253, 200, 200);
+  outline: 2px solid rgb(255, 107, 107);
+}
+.input__label {
+  font-size: 1.6rem;
+  color: #3f2107;
+  font-weight: 500;
+}
+
 .header {
   padding: 2rem 6rem;
   display: flex;
@@ -1425,28 +1472,6 @@ body {
   gap: 2rem;
   align-items: center;
 }
-.signup__input {
-  border: none;
-  border-radius: 1px;
-  font-family: inherit;
-  padding: 0.3rem 1rem;
-  font-weight: 500;
-  font-size: 1.6rem;
-  color: #3f2107;
-  outline: 2px solid rgb(230, 230, 230);
-}
-.signup__input:focus {
-  outline: 2px solid #ff7f3f;
-}
-.signup__input.invalid {
-  background-color: rgb(253, 200, 200);
-  outline: 2px solid rgb(255, 107, 107);
-}
-.signup__label {
-  font-size: 1.6rem;
-  color: #3f2107;
-  font-weight: 500;
-}
 .signup__submit {
   background-color: #ea5c2b;
   border: none;
@@ -1479,24 +1504,6 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   align-items: center;
-}
-.login__input {
-  border: none;
-  border-radius: 1px;
-  font-family: inherit;
-  padding: 0.3rem 1rem;
-  font-weight: 500;
-  font-size: 1.6rem;
-  color: #3f2107;
-  outline: 2px solid rgb(230, 230, 230);
-}
-.login__input:focus {
-  outline: 2px solid #ff7f3f;
-}
-.login__label {
-  font-size: 1.6rem;
-  color: #3f2107;
-  font-weight: 500;
 }
 .login__submit {
   background-color: #ea5c2b;
