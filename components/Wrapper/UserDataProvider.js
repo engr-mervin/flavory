@@ -22,12 +22,13 @@ const UserDataProvider = function ({ children }) {
       const response = await fetch("/api/get-user-data", {
         method: "POST",
         body: JSON.stringify(sessionData),
+        headers: { "Content-Type": "application/json" },
       });
 
       const data = await response.json();
 
       //REMOVE SESSION ID WHEN IT WAS NOT FOUND IN DATABASE
-      if (!JSON.parse(data.valid)) {
+      if (!data.valid) {
         localStorage.removeItem("sessionId");
         updateState();
         router.push("/");
@@ -35,9 +36,11 @@ const UserDataProvider = function ({ children }) {
       }
 
       //SAVE RETRIEVED BOOKMARKS TO BOOKMARK CONTEXT
+      console.log(data);
       initialLoad(parseNested(data.bookmarks));
       saveName(JSON.parse(data.displayName));
     };
+
     getUserData();
   }, [authState.sessionId]);
 

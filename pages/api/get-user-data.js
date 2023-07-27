@@ -1,7 +1,8 @@
 import { prisma } from "../../db";
 
 const getUserData = async function (req, res) {
-  const data = JSON.parse(req.body);
+  const data = req.body;
+  console.log(data);
   const session = await prisma.session.findFirst({
     where: {
       id: data.sessionId,

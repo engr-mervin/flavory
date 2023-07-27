@@ -69,10 +69,10 @@
 
   &__logout {
     padding: 1rem 3rem;
-    color: $color-primary;
+    color: $color-primary--lighter;
     background-color: $color-primary--white;
     border-radius: 1rem;
-    border: 2px solid $color-primary;
+    border: 1.5px solid $color-primary--lighter;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -11,6 +11,7 @@ import AuthContext from "../../store/auth-context";
 import UserDataContext from "../../store/user-data-context";
 
 const Recipe = function ({ currentRecipe }) {
+  console.log(currentRecipe);
   const [multiplier, setMultiplier] = useState(1);
   const { authState } = useContext(AuthContext);
   const { userData, addBookmark, removeBookmark } = useContext(UserDataContext);
