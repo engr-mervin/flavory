@@ -1,34 +1,45 @@
-import { FORKIFY_KEY } from "../../util/constants";
 import { parseNested } from "../../util/strings";
 
 const newRecipe = async function (req, res) {
-  const data = req.body;
-
   //if session id does not exist return an error
 
   if (!req.body.sessionId)
-    return res
-      .status(500)
-      .json({ message: "Session ID does not exist, please re-login." });
+    return res.status(500).json({
+      message: "Session ID does not exist, please re-login.",
+      ok: false,
+    });
 
   //if publisher does not exist try getting the publisher by the session id
 
-  if (!req.body.publisher) {
-    const sessionData = { sessionId: req.body.sessionId };
-    const response = await fetch("/api/get-user-data", {
-      method: "POST",
-      body: JSON.stringify(sessionData),
+  const session = await prisma.session.findFirst({
+    where: {
+      id: req.body.sessionId,
+    },
+  });
+
+  if (!session) {
+    return res
+      .status(500)
+      .json({ message: "Session invalid, please re-login.", ok: false });
+  }
+  const user = await prisma.user.findFirst({
+    where: {
+      id: session.userId,
+    },
+  });
+
+  if (!user) {
+    return res.status(500).json({
+      message: "User does not exist. Cannot post recipe.",
+      ok: false,
     });
+  } else {
+    req.body.publisher = user.displayName;
+  }
 
-    const data = await response.json();
-
-    if (!data.displayName) {
-      return res.status(500).json({
-        message: "Invalid Session ID or User does not exist, please re-login.",
-      });
-    } else {
-      req.body.publisher = data.displayName;
-    }
+  if (req.body["image_url"] === "") {
+    req.body["image_url"] =
+      "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930";
   }
 
   //if both exists do form validation
@@ -36,7 +47,6 @@ const newRecipe = async function (req, res) {
   //if form is ok do the POST method to forkify
 
   const requestObject = parseNested(req.body);
-  console.log(requestObject);
   const postRecipe = {
     title: requestObject.title,
     publisher: requestObject.publisher,
@@ -50,21 +60,50 @@ const newRecipe = async function (req, res) {
   const sendRecipe = JSON.stringify(postRecipe);
 
   console.log(sendRecipe);
-  const responseForkify = await fetch(
-    "https://forkify-api.herokuapp.com/api/v2/recipes?key=ffffd809-c764-45c8-b3f1-d18224957752",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: sendRecipe,
-    }
-  );
+  try {
+    const forkify = await fetch(
+      "https://forkify-api.herokuapp.com/api/v2/recipes?key=ffffd809-c764-45c8-b3f1-d18224957752",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: sendRecipe,
+      }
+    );
+    const forkifyData = await forkify.json();
 
-  console.log(responseForkify);
-  const dataForkify = responseForkify.json();
+    if (!forkify.ok) throw error;
 
-  console.log(dataForkify);
-  return dataForkify;
-  //if successful, save to database of session id add yourrecipes
+    console.log(forkify, forkifyData);
+
+    const fullRecipe = {
+      ...postRecipe,
+      id: forkifyData.data.recipe.id,
+      createdAt: forkifyData.data.recipe.createdAt,
+    };
+    //if successful, save to database of session id add myrecipes
+
+    const newUserData = {
+      ...user,
+      myRecipes: [...user.myRecipes, JSON.stringify(fullRecipe)],
+    };
+
+    await prisma.user.update({
+      where: {
+        id: user.id,
+      },
+      data: newUserData,
+    });
+
+    return res.status(201).json({
+      message: "Recipe upload successful.",
+      createdRecipe: JSON.stringify(fullRecipe),
+      ok: true,
+    });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ message: "Server error. Please retry again later.", ok: false });
+  }
 };
 
 export default newRecipe;

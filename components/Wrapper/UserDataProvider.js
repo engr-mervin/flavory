@@ -1,12 +1,13 @@
 import { useContext, useEffect } from "react";
 import AuthContext from "../../store/auth-context";
-import BookmarkContext from "../../store/user-data-context";
 import { useRouter } from "next/router";
 import { parseNested } from "../../util/strings";
+import UserDataContext from "../../store/user-data-context";
 
 const UserDataProvider = function ({ children }) {
   const { authState, updateState } = useContext(AuthContext);
-  const { initialLoad, saveName } = useContext(BookmarkContext);
+  const { initialLoad, saveName, initialLoadMyRecipes } =
+    useContext(UserDataContext);
   const router = useRouter();
 
   //on every first load and reload check the session
@@ -39,6 +40,7 @@ const UserDataProvider = function ({ children }) {
       console.log(data);
       initialLoad(parseNested(data.bookmarks));
       saveName(JSON.parse(data.displayName));
+      initialLoadMyRecipes(parseNested(data.myRecipes));
     };
 
     getUserData();

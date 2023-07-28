@@ -1,24 +1,31 @@
-export const convertToNumber = function (text, dec) {
-  if (text === "") return null;
-  //IF A NUMBER ALREADY
-  if (!isNaN(Number(text))) return Number(text);
+export const convertToNumber = function (dec) {
+  return (text) => {
+    if (text === "") return null;
+    //IF A NUMBER ALREADY
+    if (!isNaN(Number(text))) return Number(text);
 
-  //IF NOT A NUMBER AND DOEES NOT CONTAIN "/"
-  if (!text.includes("/")) return null;
+    //IF NOT A NUMBER AND DOEES NOT CONTAIN "/"
+    if (!text.includes("/")) return null;
 
-  //IF CONTAINS "/" BUT MULTIPLE
-  if (text.split("/").length > 2) return null;
+    //IF CONTAINS "/" BUT MULTIPLE
+    if (text.split("/").length > 2) return null;
 
-  //CONVERT TO NUMBER
-  let a = text.split("/")[0];
+    //CONVERT TO NUMBER
+    let a = text.split("/")[0];
 
-  let b = text.split("/")[1];
+    let b = text.split("/")[1];
 
-  let c = Number((a / b).toFixed(dec));
+    let c = Number((a / b).toFixed(dec));
 
-  if (isNaN(c)) return null;
+    if (isNaN(c)) return null;
 
-  return c;
+    return c;
+  };
 };
 
-console.log(convertToNumber("2/3/5"));
+export const round = function (num, places) {
+  let roundNum = num * 10 ** places;
+  roundNum = Math.round(roundNum);
+
+  return +(roundNum / 10 ** places).toFixed(places);
+};

@@ -21,7 +21,7 @@
     // clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   }
 
-  &__button-save {
+  &__button-action {
     cursor: pointer;
     top: 2rem;
     right: 2rem;
@@ -32,7 +32,8 @@
     opacity: 0.9;
     border: none;
     border: 1.5px solid $color-primary;
-
+    font-size: 2rem;
+    font-weight: 600;
     border-radius: 1rem;
 
     color: $color-primary;
@@ -87,7 +88,7 @@
 
   &__details {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-end;
     background-color: $color-accent--yellow-light;
   }
@@ -96,6 +97,7 @@
     font-size: 2.6rem;
     text-transform: uppercase;
     font-weight: 600;
+    margin-right: auto;
   }
 
   &__link {

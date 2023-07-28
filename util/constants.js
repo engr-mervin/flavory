@@ -3,7 +3,8 @@ export const PROJECT_INFO = "Copyright JMB 2023";
 export const APP_SLOGAN = "Where taste meets imagination.";
 export const URL_LI = "https://www.linkedin.com/in/engr-mervin/";
 export const URL_GH = "https://github.com/engr-mervin";
-
+export const MAX_INGREDIENTS = 16;
+export const MIN_INGREDIENTS = 1;
 export const FORKIFY_KEY = process.env["API_KEY"];
 
 export const MAX_RECIPES_PER_PAGE = 20;

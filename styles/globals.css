@@ -1062,7 +1062,7 @@ body {
   object-position: center;
   display: block;
 }
-.recipe__button-save {
+.recipe__button-action {
   cursor: pointer;
   top: 2rem;
   right: 2rem;
@@ -1073,6 +1073,8 @@ body {
   opacity: 0.9;
   border: none;
   border: 1.5px solid #ea5c2b;
+  font-size: 2rem;
+  font-weight: 600;
   border-radius: 1rem;
   color: #ea5c2b;
   display: flex;
@@ -1080,18 +1082,18 @@ body {
   justify-content: center;
   transition: all 300ms;
 }
-.recipe__button-save:hover {
+.recipe__button-action:hover {
   transform: scale(1.1);
 }
-.recipe__button-save:hover:disabled {
+.recipe__button-action:hover:disabled {
   transform: scale(1);
 }
-.recipe__button-save:disabled {
+.recipe__button-action:disabled {
   color: #aaa;
   border: 1.5px solid #aaa;
   cursor: auto;
 }
-.recipe__button-save.saved {
+.recipe__button-action.saved {
   color: red;
 }
 .recipe__logo, .recipe__logo-2 {
@@ -1117,7 +1119,7 @@ body {
 }
 .recipe__details {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-end;
   background-color: #fcf7e1;
 }
@@ -1126,6 +1128,7 @@ body {
   font-size: 2.6rem;
   text-transform: uppercase;
   font-weight: 600;
+  margin-right: auto;
 }
 .recipe__link {
   text-align: right;
@@ -1310,11 +1313,11 @@ body {
 }
 .search-bar:focus {
   outline: none;
-  border: 2px solid #95cd41;
+  border: 2px solid #ea5c2b;
 }
 .search-button {
   padding: 1rem 2rem;
-  background-color: rgba(149, 205, 65, 0.55);
+  background-color: rgba(234, 92, 43, 0.8);
   border: none;
   font-family: inherit;
   cursor: pointer;
@@ -1434,7 +1437,7 @@ body {
   padding: 5rem;
   padding-left: 22rem;
   position: relative;
-  border-bottom: 8px solid #95cd41;
+  border-bottom: 8px solid #ea5c2b;
 }
 .no-selected__logo {
   height: 4rem;

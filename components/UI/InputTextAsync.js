@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-const InputText = function ({
-  validateFunction /*Function to determine this input validity*/,
+const InputTextAsync = function ({
+  validateFunctionAsync /*Function to determine this input validity*/,
   id,
   className,
   placeholder,
@@ -9,26 +9,31 @@ const InputText = function ({
   inputtype = "" /*Grouping mechanism for ingredients (by column)*/,
   updateStateFunction /*Changes the state that holds all the values of the form */,
   updateValidityField /*Changes state on a parent that will be only true if all fields are true*/,
-  postProcessFunction /*Modifies the state on successful updating*/,
-  touchSubscribe /*Simulates touch on components*/,
+  initialValidity,
 }) {
-  const [validity, setValidity] = useState(validateFunction(""));
+  const [validity, setValidity] = useState(initialValidity);
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
   const [classNames, setClassNames] = useState(className);
 
-  const touch = function () {
-    setError(!validity);
-  };
-  //subscribe to touch function:IIFEs
-  (() => {
-    if (!touchSubscribe) return;
-    touchSubscribe(touch);
-  })();
-
+  console.log(error);
   useEffect(() => {
-    updateStateFunction(value, inputtype, dataindex);
+    //validate only when the value doesn't change for 1000 ms; "Debouncing"
+    setValidity(false);
+    const delayedValidation = setTimeout(async () => {
+      const isValid = await validateFunctionAsync(value);
+      setValidity(isValid);
+      setError(!isValid);
+      if (isValid) {
+        updateStateFunction(value, inputtype, dataindex);
+      }
+    }, 1000);
+
+    return () => {
+      clearTimeout(delayedValidation);
+    };
   }, [value]);
+
   useEffect(() => {
     updateValidityField(validity, inputtype, dataindex);
   }, [validity]);
@@ -45,18 +50,10 @@ const InputText = function ({
     }
   }, [error]);
 
-  const updateHandler = function (e) {
+  const updateHandler = async function (e) {
     e.preventDefault();
-    const isValid = validateFunction(e.target.value);
-    setValidity(isValid);
-    setError(!isValid);
-    let updatedValue = e.target.value;
-    if (postProcessFunction) {
-      updatedValue = postProcessFunction(updatedValue);
-    }
-    if (isValid) {
-      setValue(updatedValue);
-    }
+    setError(true);
+    setValue(e.target.value);
   };
   return (
     <input
@@ -65,10 +62,9 @@ const InputText = function ({
       placeholder={placeholder}
       inputtype={inputtype}
       onChange={updateHandler}
-      onBlur={updateHandler}
       id={id}
     ></input>
   );
 };
 
-export default InputText;
+export default InputTextAsync;

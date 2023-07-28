@@ -40,13 +40,13 @@
 
     &:focus {
       outline: none;
-      border: 2px solid $color-accent--green;
+      border: 2px solid $color-primary;
     }
   }
 
   &-button {
     padding: 1rem 2rem;
-    background-color: rgba($color-accent--green, 0.55);
+    background-color: rgba($color-primary, 0.8);
     border: none;
     font-family: inherit;
     cursor: pointer;

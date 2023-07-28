@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { UserDataContext } from "../../store/user-data-context";
+import UserDataContext from "../../store/user-data-context";
 import Bookmark from "../../components/Account/Bookmark";
 
 const AccountPage = function () {
@@ -23,8 +23,12 @@ const AccountPage = function () {
             </div>
 
             <div className="account__own">
-              <ul className="account__own-list"></ul>
               <h2 className="heading--2d">Your Recipes</h2>
+              <ul className="account__bookmarks-list">
+                {userData.myRecipes.map((myRecipe) => (
+                  <Bookmark key={myRecipe.id} recipe={myRecipe}></Bookmark>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

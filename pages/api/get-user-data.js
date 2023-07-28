@@ -28,12 +28,11 @@ const getUserData = async function (req, res) {
     });
   }
 
-  const bookmarks = user.lovedRecipes;
-
   return res.status(200).json({
     message: "Successfully retrieved bookmarks!",
-    bookmarks: JSON.stringify(bookmarks),
+    bookmarks: JSON.stringify(user.lovedRecipes),
     displayName: JSON.stringify(user.displayName),
+    myRecipes: JSON.stringify(user.myRecipes),
     valid: true,
   });
 };

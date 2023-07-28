@@ -9,13 +9,21 @@ import TimeLogo from "../../assets/time.svg";
 import NoSelected from "../Fallback Pages/NoSelected";
 import AuthContext from "../../store/auth-context";
 import UserDataContext from "../../store/user-data-context";
+import { round } from "../../util/numbers";
 
 const Recipe = function ({ currentRecipe }) {
   console.log(currentRecipe);
   const [multiplier, setMultiplier] = useState(1);
   const { authState } = useContext(AuthContext);
-  const { userData, addBookmark, removeBookmark } = useContext(UserDataContext);
+  const { userData, addBookmark, removeBookmark, removeMyRecipe } =
+    useContext(UserDataContext);
   const [saved, setSaved] = useState(false);
+
+  const canDelete = userData.myRecipes.find(
+    (myRecipe) => myRecipe.id === currentRecipe?.id
+  )
+    ? true
+    : true;
 
   useEffect(() => {
     if (!currentRecipe || !userData?.bookmarks) return;
@@ -74,6 +82,22 @@ const Recipe = function ({ currentRecipe }) {
     setMultiplier(1);
   }, [currentRecipe]);
 
+  const removeHandler = async function () {
+    const requestData = {
+      sessionId: authState.sessionId,
+      recipe: currentRecipe,
+    };
+    removeMyRecipe(currentRecipe);
+
+    const res = await fetch("/api/delete-recipe", {
+      method: "POST",
+      body: JSON.stringify(requestData),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const data = await res.json();
+    console.log(data);
+  };
   return (
     <div className="recipe">
       {currentRecipe ? (
@@ -88,7 +112,7 @@ const Recipe = function ({ currentRecipe }) {
             <div className="recipe__details">
               <p className="recipe__publisher">{`by: ${currentRecipe.publisher}`}</p>
               <button
-                className="recipe__button-save"
+                className="recipe__button-action"
                 disabled={authState.isAuth ? false : true}
                 onClick={bookmarkHandler}
               >
@@ -98,6 +122,17 @@ const Recipe = function ({ currentRecipe }) {
                   <SaveLogo className="recipe__logo"></SaveLogo>
                 )}
               </button>
+              {canDelete ? (
+                <button
+                  className="recipe__button-action"
+                  disabled={authState.isAuth ? false : true}
+                  onClick={removeHandler}
+                >
+                  &#10005;
+                </button>
+              ) : (
+                ""
+              )}
             </div>
             <div className="recipe__specifics">
               <TimeLogo className="recipe__logo-2"></TimeLogo>
@@ -110,7 +145,7 @@ const Recipe = function ({ currentRecipe }) {
                 <SubtractLogo className="recipe__logo"></SubtractLogo>
               </button>
               <p className="recipe__servings">
-                {currentRecipe.servings * multiplier} servings
+                {round(currentRecipe.servings * multiplier, 0)} servings
               </p>
               <button className="recipe__button" onClick={add(1)}>
                 <AddLogo className="recipe__logo"></AddLogo>

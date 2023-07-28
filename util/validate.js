@@ -1,5 +1,5 @@
 export const validateText = function (text, maxLength) {
-  if (typeof text !== "string") return;
+  if (typeof text !== "string") return false;
 
   let trimmed = text.trim();
 
@@ -10,7 +10,7 @@ export const validateText = function (text, maxLength) {
   return re.test(trimmed);
 };
 export const validateTitle = function (text) {
-  if (typeof text !== "string") return;
+  if (typeof text !== "string") return false;
 
   let trimmed = text.trim();
 
@@ -21,7 +21,7 @@ export const validateTitle = function (text) {
   return re.test(trimmed) && trimmed.length > 0;
 };
 export const validateDescription = function (text) {
-  if (typeof text !== "string") return;
+  if (typeof text !== "string") return false;
 
   let trimmed = text.trim();
 
@@ -32,7 +32,7 @@ export const validateDescription = function (text) {
   return re.test(trimmed);
 };
 export const validateQuantity = function (text) {
-  if (typeof text !== "string") return;
+  if (typeof text !== "string") return false;
 
   let trimmed = text.trim();
 
@@ -42,7 +42,6 @@ export const validateQuantity = function (text) {
 
   const firstCheck = re.test(trimmed);
 
-  console.log(trimmed.split(".").length);
   const secondCheck =
     trimmed.split(".").length < 3 && trimmed.split("/").length < 3;
 
@@ -50,7 +49,7 @@ export const validateQuantity = function (text) {
 };
 
 export const validateUnit = function (text) {
-  if (typeof text !== "string") return;
+  if (typeof text !== "string") return false;
 
   let trimmed = text.trim();
 
@@ -62,29 +61,62 @@ export const validateUnit = function (text) {
 };
 
 export const validateWholeNumber = function (text) {
-  if (typeof text !== "string") return;
+  if (typeof text !== "string" || text === "") return false;
   let trimmed = text.trim();
 
-  if (trimmed.length < 0 || trimmed.length > 3) return false;
+  if (trimmed.length < 1 || trimmed.length > 3) return false;
   const re = /^[0-9]*$/;
 
   const num = Number(trimmed);
 
-  if (re.test(trimmed) && !isNaN(num)) return true && num < 1000;
-  else {
-    return false;
-  }
+  return re.test(trimmed) && !isNaN(num) && num < 1000;
 };
 
-export const validateURL = function (text) {
-  if (typeof text !== "string") return;
+export const validateURL = async function (text) {
+  if (typeof text !== "string") return false;
 
   let trimmed = text.trim();
+  if (trimmed === "") return true;
 
-  return (
-    trimmed.startsWith("https://") ||
-    trimmed.startsWith("http://") ||
-    trimmed.startsWith("www.") ||
-    trimmed === ""
-  );
+  const a = await doesURLExist(trimmed);
+
+  return a;
 };
+
+async function doesURLExist(url) {
+  try {
+    const response = await fetch(url, { method: "HEAD", mode: "no-cors" });
+    console.log(response);
+    return response.status != 404;
+  } catch (error) {
+    return false;
+  }
+}
+
+export async function validateImage(text) {
+  try {
+    if (typeof text !== "string") return false;
+
+    let trimmed = text.trim();
+    if (trimmed === "") return true;
+
+    const isValid = await isValidImageUrl(trimmed);
+
+    return isValid;
+  } catch (error) {
+    return false; // Error occurred during fetch, URL is not valid
+  }
+}
+
+function isValidImageUrl(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = function () {
+      resolve(true); // Image is valid
+    };
+    img.onerror = function () {
+      resolve(false); // Image is not valid or failed to load
+    };
+    img.src = url;
+  });
+}
