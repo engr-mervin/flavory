@@ -71,8 +71,6 @@ const newRecipe = async function (req, res) {
     );
     const forkifyData = await forkify.json();
 
-    if (!forkify.ok) throw error;
-
     console.log(forkify, forkifyData);
 
     const fullRecipe = {
