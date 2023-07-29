@@ -60,12 +60,18 @@ const newRecipe = async function (req, res) {
   const sendRecipe = JSON.stringify(postRecipe);
 
   console.log(sendRecipe);
+
+  const key = process.env["API_KEY"];
   try {
     const forkify = await fetch(
-      "https://forkify-api.herokuapp.com/api/v2/recipes?key=ffffd809-c764-45c8-b3f1-d18224957752",
+      `https://forkify-api.herokuapp.com/api/v2/recipes?key=${key}`,
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Credentials": true,
+        },
         body: sendRecipe,
       }
     );
