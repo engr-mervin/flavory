@@ -1,4 +1,5 @@
 import { parseNested } from "../../util/strings";
+import { prisma } from "../../db";
 
 const newRecipe = async function (req, res) {
   //if session id does not exist return an error
