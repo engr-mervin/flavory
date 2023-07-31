@@ -15,10 +15,12 @@ import InputText from "../UI/InputText";
 import InputTextAsync from "../UI/InputTextAsync";
 import UserDataContext from "../../store/user-data-context";
 import { parseNested } from "../../util/strings";
+import ModalContext from "../../store/modal-context";
 
 const NewRecipeForm = function () {
   const { authState } = useContext(AuthContext);
   const { userData, addMyRecipe } = useContext(UserDataContext);
+  const { setModal, setMessage } = useContext(ModalContext);
 
   let touchSubscribers = [];
 
@@ -101,8 +103,11 @@ const NewRecipeForm = function () {
     });
   };
 
+  //NEW RECIPE AT DATABASE AND API
   const submitForm = async function (e) {
     e.preventDefault();
+    //touch all fields
+
     touchFunction();
     if (
       Object.values(detailsValidity).includes(false) ||
@@ -114,7 +119,16 @@ const NewRecipeForm = function () {
       return;
     }
 
-    setStatus("Loading...");
+    setStatus("");
+
+    setModal({
+      isShown: true,
+      isConfirmButtonShown: false,
+      isCancelButtonShown: false,
+      message: "Uploading...Please wait.",
+      canBeClosed: false,
+      title: "Create New Recipe",
+    });
 
     const recipeData = {
       ...details,
@@ -122,20 +136,32 @@ const NewRecipeForm = function () {
       sessionId: authState.sessionId,
     };
 
-    console.log(recipeData);
+    try {
+      const response = await fetch("api/new-recipe", {
+        method: "POST",
+        body: JSON.stringify(recipeData),
+        headers: { "Content-Type": "application/json" },
+      });
 
-    const response = await fetch("api/new-recipe", {
-      method: "POST",
-      body: JSON.stringify(recipeData),
-      headers: { "Content-Type": "application/json" },
-    });
+      const data = await response.json();
 
-    const data = await response.json();
+      setModal({
+        isCancelButtonShown: true,
+        cancelButtonText: "Ok",
+        message: data.message,
+        canBeClosed: true,
+      });
+      if (!data.ok) return;
 
-    setStatus(data.message);
-    if (!data.ok) return;
-
-    addMyRecipe(parseNested(data.createdRecipe));
+      addMyRecipe(parseNested(data.createdRecipe));
+    } catch (err) {
+      setModal({
+        isCancelButtonShown: true,
+        message: "Something went wrong. Please retry again later.",
+        cancelButtonText: "Ok",
+        canBeClosed: true,
+      });
+    }
   };
 
   const updateIngredientValidityState = function (value, inputtype, dataindex) {
@@ -177,144 +203,151 @@ const NewRecipeForm = function () {
   };
 
   return (
-    <form className="new-recipe">
-      <div className="new-recipe__group--1">
-        <label className="input__label">Title:</label>
-        <InputText
-          validateFunction={validateTitle}
-          id="new-recipe__title"
-          className="input"
-          placeholder="Input a title."
-          dataindex={0}
-          inputtype="title"
-          updateStateFunction={updateDetailsState}
-          updateValidityField={updateDetailsValidityState}
-          touchSubscribe={touchSubscribe}
-        />
-        <label className="input__label">Recipe URL:</label>
-        <InputTextAsync
-          validateFunctionAsync={validateURL}
-          id="new-recipe__source"
-          className="input"
-          placeholder="Input a valid URL."
-          dataindex={0}
-          inputtype="source_url"
-          updateStateFunction={updateDetailsState}
-          updateValidityField={updateDetailsValidityState}
-          initialValidity={true}
-        />
-        <label className="input__label">Image URL:</label>
-        <InputTextAsync
-          validateFunctionAsync={validateImage}
-          id="new-recipe__image"
-          className="input"
-          placeholder="Input a valid image URL."
-          dataindex={0}
-          inputtype="image_url"
-          updateStateFunction={updateDetailsState}
-          updateValidityField={updateDetailsValidityState}
-          initialValidity={true}
-        />
-        <label className="input__label">Cooking Time (mins):</label>
-        <InputText
-          validateFunction={validateWholeNumber}
-          id="new-recipe__cooking-time"
-          className="input"
-          placeholder="Input a number in minutes."
-          dataindex={0}
-          inputtype="cooking_time"
-          updateStateFunction={updateDetailsState}
-          updateValidityField={updateDetailsValidityState}
-          postProcessFunction={convertToNumber(0)}
-          touchSubscribe={touchSubscribe}
-        />
-        <label className="input__label">Servings:</label>
-        <InputText
-          validateFunction={validateWholeNumber}
-          id="new-recipe__cooking-time"
-          className="input"
-          placeholder="Input number of servings."
-          dataindex={0}
-          inputtype="servings"
-          updateStateFunction={updateDetailsState}
-          updateValidityField={updateDetailsValidityState}
-          postProcessFunction={convertToNumber(0)}
-          touchSubscribe={touchSubscribe}
-        />
-      </div>
+    <div className="new-recipe">
+      <h1 className="heading--1e">SHARE YOUR RECIPE!</h1>
+      <form className="new-recipe__form">
+        <h2 className="heading--2d">Details:</h2>
+        <div className="new-recipe__group--1">
+          <label className="input__label">Title:</label>
+          <InputText
+            validateFunction={validateTitle}
+            id="new-recipe__title"
+            className="input"
+            tooltip={`Input a title. At least 3 characters with "",'' and - symbols`}
+            dataindex={0}
+            inputtype="title"
+            updateStateFunction={updateDetailsState}
+            updateValidityField={updateDetailsValidityState}
+            touchSubscribe={touchSubscribe}
+          />
+          <label className="input__label">Recipe URL:</label>
+          <InputTextAsync
+            validateFunctionAsync={validateURL}
+            id="new-recipe__source"
+            className="input"
+            tooltip="Input a valid URL."
+            dataindex={0}
+            inputtype="source_url"
+            updateStateFunction={updateDetailsState}
+            updateValidityField={updateDetailsValidityState}
+            initialValidity={true}
+          />
+          <label className="input__label">Image URL:</label>
+          <InputTextAsync
+            validateFunctionAsync={validateImage}
+            id="new-recipe__image"
+            className="input"
+            tooltip="Input a valid image URL."
+            dataindex={0}
+            inputtype="image_url"
+            updateStateFunction={updateDetailsState}
+            updateValidityField={updateDetailsValidityState}
+            initialValidity={true}
+          />
+          <label className="input__label">Cooking Time (mins):</label>
+          <InputText
+            validateFunction={validateWholeNumber}
+            id="new-recipe__cooking-time"
+            className="input"
+            tooltip="Input a number in minutes. Whole number only."
+            dataindex={0}
+            inputtype="cooking_time"
+            updateStateFunction={updateDetailsState}
+            updateValidityField={updateDetailsValidityState}
+            postProcessFunction={convertToNumber(0)}
+            touchSubscribe={touchSubscribe}
+          />
+          <label className="input__label">Servings:</label>
+          <InputText
+            validateFunction={validateWholeNumber}
+            id="new-recipe__cooking-time"
+            className="input"
+            tooltip="Input number of servings. Whole number only."
+            dataindex={0}
+            inputtype="servings"
+            updateStateFunction={updateDetailsState}
+            updateValidityField={updateDetailsValidityState}
+            postProcessFunction={convertToNumber(0)}
+            touchSubscribe={touchSubscribe}
+          />
+        </div>
 
-      <div className="new-recipe__group--2">
-        {ingredients.map((el, index) => {
-          return (
-            <Fragment key={index}>
-              <label className="input__label">{`Quantity ${index + 1}:`}</label>
-              <InputText
-                validateFunction={validateQuantity}
-                id={`ingredient__quantity-${index + 1}`}
-                className="input"
-                placeholder="Input a number or fraction."
-                dataindex={index}
-                inputtype="quantity"
-                updateStateFunction={updateIngredientState}
-                updateValidityField={updateIngredientValidityState}
-                postProcessFunction={convertToNumber(4)}
-                touchSubscribe={touchSubscribe}
-              />
-              <label className="input__label">{`Unit ${index + 1}:`}</label>
-              <InputText
-                validateFunction={validateUnit}
-                id={`ingredient__unit-${index + 1}`}
-                className="input"
-                placeholder="Input a unit."
-                dataindex={index}
-                inputtype="unit"
-                updateStateFunction={updateIngredientState}
-                updateValidityField={updateIngredientValidityState}
-                touchSubscribe={touchSubscribe}
-              />
-              <label className="input__label">{`Ingredient ${
-                index + 1
-              }:`}</label>
-              <InputText
-                validateFunction={validateDescription}
-                id={`ingredient__description-${index + 1}`}
-                className="input"
-                placeholder="Input a description(required)."
-                dataindex={index}
-                inputtype="description"
-                updateStateFunction={updateIngredientState}
-                updateValidityField={updateIngredientValidityState}
-                touchSubscribe={touchSubscribe}
-              />
-            </Fragment>
-          );
-        })}
-      </div>
-      <p className="new-recipe__status">{status}</p>
-      <div className="new-recipe__button-box">
-        <button
-          className="new-recipe__button"
-          type="button"
-          onClick={decreaseIngredient}
-        >
-          &minus;
-        </button>
-        <button
-          className="new-recipe__submit-button"
-          type="submit"
-          onClick={submitForm}
-        >
-          Publish!
-        </button>
-        <button
-          className="new-recipe__button"
-          type="button"
-          onClick={increaseIngredient}
-        >
-          +
-        </button>
-      </div>
-    </form>
+        <h2 className="heading--2d">Ingredients:</h2>
+        <div className="new-recipe__group--2">
+          {ingredients.map((el, index) => {
+            return (
+              <Fragment key={index}>
+                <label className="input__label">{`Quantity ${
+                  index + 1
+                }:`}</label>
+                <InputText
+                  validateFunction={validateQuantity}
+                  id={`ingredient__quantity-${index + 1}`}
+                  className="input"
+                  tooltip="Input a decimal number or fraction."
+                  dataindex={index}
+                  inputtype="quantity"
+                  updateStateFunction={updateIngredientState}
+                  updateValidityField={updateIngredientValidityState}
+                  postProcessFunction={convertToNumber(4)}
+                  touchSubscribe={touchSubscribe}
+                />
+                <label className="input__label">{`Unit ${index + 1}:`}</label>
+                <InputText
+                  validateFunction={validateUnit}
+                  id={`ingredient__unit-${index + 1}`}
+                  className="input"
+                  tooltip={`Input letters with "",'' and - symbols`}
+                  dataindex={index}
+                  inputtype="unit"
+                  updateStateFunction={updateIngredientState}
+                  updateValidityField={updateIngredientValidityState}
+                  touchSubscribe={touchSubscribe}
+                />
+                <label className="input__label">{`Ingredient ${
+                  index + 1
+                }:`}</label>
+                <InputText
+                  validateFunction={validateDescription}
+                  id={`ingredient__description-${index + 1}`}
+                  className="input"
+                  tooltip="Input an ingredient description(required)."
+                  dataindex={index}
+                  inputtype="description"
+                  updateStateFunction={updateIngredientState}
+                  updateValidityField={updateIngredientValidityState}
+                  touchSubscribe={touchSubscribe}
+                />
+              </Fragment>
+            );
+          })}
+        </div>
+        <p className="new-recipe__status">{status}</p>
+        <div className="new-recipe__button-box">
+          <button
+            className="new-recipe__button"
+            type="button"
+            onClick={decreaseIngredient}
+          >
+            &minus;
+          </button>
+          <button
+            className="new-recipe__submit-button"
+            type="submit"
+            onClick={submitForm}
+          >
+            Publish!
+          </button>
+          <button
+            className="new-recipe__button"
+            type="button"
+            onClick={increaseIngredient}
+          >
+            +
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

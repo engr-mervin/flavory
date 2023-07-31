@@ -1,0 +1,34 @@
+.tooltip {
+  position: absolute;
+  min-width: 8rem;
+  max-width: 24rem;
+
+  top: 95%;
+  left: 95%;
+
+  z-index: 10;
+  font-size: 1rem;
+  font-family: inherit;
+
+  background-color: $color-primary--white;
+  border-radius: 0.5rem;
+  border: 1px solid $color-font--black;
+  padding: 0.5rem;
+  color: $color-font--black;
+
+  opacity: 0;
+  pointer-events: none;
+  visibility: none;
+
+  transition: all 150ms;
+}
+
+.tooltip-parent {
+  position: relative;
+  &:hover {
+    .tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

@@ -135,7 +135,7 @@ export async function getServerSideProps({ query }) {
 
     const data = await request.json();
 
-    const recipes = data.data.recipes;
+    const recipes = data?.data?.recipes;
 
     allProps = { ...allProps, searchResults: recipes, searchStatus: "hello" };
   }
@@ -147,9 +147,11 @@ export async function getServerSideProps({ query }) {
 
     const data = await request.json();
 
-    const currentRecipe = data.data.recipe;
+    const currentRecipe = data?.data?.recipe;
 
-    allProps = { ...allProps, currentRecipe };
+    if (currentRecipe) {
+      allProps = { ...allProps, currentRecipe };
+    }
   }
 
   allProps = { ...allProps, currentPage: currentPage ? currentPage : 1 };

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import Tooltip from "../Reusable/Tooltip";
 
 const InputTextAsync = function ({
   validateFunctionAsync /*Function to determine this input validity*/,
   id,
   className,
-  placeholder,
+  tooltip,
   dataindex = "" /*Grouping mechanism for ingredients (by row) */,
   inputtype = "" /*Grouping mechanism for ingredients (by column)*/,
   updateStateFunction /*Changes the state that holds all the values of the form */,
@@ -56,14 +57,16 @@ const InputTextAsync = function ({
     setValue(e.target.value);
   };
   return (
-    <input
-      type="text"
-      className={classNames}
-      placeholder={placeholder}
-      inputtype={inputtype}
-      onChange={updateHandler}
-      id={id}
-    ></input>
+    <div className="tooltip-parent">
+      <input
+        type="text"
+        className={classNames}
+        inputtype={inputtype}
+        onChange={updateHandler}
+        id={id}
+      ></input>
+      <Tooltip>{tooltip}</Tooltip>
+    </div>
   );
 };
 

@@ -1,14 +1,24 @@
 .new-recipe {
-  padding: 12rem 20rem;
+  padding: 8rem 20rem;
+
+  &__form {
+    padding: 6rem;
+    padding-bottom: 3rem;
+    border-radius: 1.5em;
+    margin-top: 4rem;
+    box-shadow: 0 0 2rem rgba(black, 0.12);
+  }
   &__group--1 {
     display: grid;
     grid-template-columns: 3fr 4.5fr 3fr 4.5fr;
     column-gap: 6rem;
     row-gap: 1.5rem;
     align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
   }
   &__group--2 {
-    margin-top: 4rem;
+    margin-top: 2rem;
     display: grid;
     grid-template-columns: auto 2fr auto 3fr auto 5fr;
     column-gap: 3rem;
@@ -26,11 +36,11 @@
     justify-content: space-between;
     margin-top: 1rem;
     padding: 0 4rem;
-    align-items: flex-start;
+    align-items: flex-end;
   }
 
   &__status {
-    margin-top: 3rem;
+    margin-top: 8rem;
     text-align: center;
     display: block;
     color: red;

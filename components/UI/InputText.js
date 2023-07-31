@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Tooltip from "../Reusable/Tooltip";
 
 const InputText = function ({
   validateFunction /*Function to determine this input validity*/,
@@ -11,6 +12,7 @@ const InputText = function ({
   updateValidityField /*Changes state on a parent that will be only true if all fields are true*/,
   postProcessFunction /*Modifies the state on successful updating*/,
   touchSubscribe /*Simulates touch on components*/,
+  tooltip,
 }) {
   const [validity, setValidity] = useState(validateFunction(""));
   const [value, setValue] = useState("");
@@ -36,7 +38,7 @@ const InputText = function ({
   useEffect(() => {
     if (error) {
       setClassNames((prev) => {
-        return `${className} invalid`;
+        return `${className} invalid tooltip-parent`;
       });
     } else {
       setClassNames((prev) => {
@@ -59,15 +61,17 @@ const InputText = function ({
     }
   };
   return (
-    <input
-      type="text"
-      className={classNames}
-      placeholder={placeholder}
-      inputtype={inputtype}
-      onChange={updateHandler}
-      onBlur={updateHandler}
-      id={id}
-    ></input>
+    <div className="tooltip-parent">
+      <input
+        type="text"
+        className={classNames}
+        inputtype={inputtype}
+        onChange={updateHandler}
+        onBlur={updateHandler}
+        id={id}
+      ></input>
+      <Tooltip>{tooltip}</Tooltip>
+    </div>
   );
 };
 

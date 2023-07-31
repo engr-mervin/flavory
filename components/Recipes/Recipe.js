@@ -10,21 +10,25 @@ import NoSelected from "../Fallback Pages/NoSelected";
 import AuthContext from "../../store/auth-context";
 import UserDataContext from "../../store/user-data-context";
 import { round } from "../../util/numbers";
+import ModalContext from "../../store/modal-context";
+import useRouterFilter from "../../custom-hooks/use-router-filter";
 
 const Recipe = function ({ currentRecipe }) {
-  console.log(currentRecipe);
+  const { setModalMessage, setModal } = useContext(ModalContext);
   const [multiplier, setMultiplier] = useState(1);
   const { authState } = useContext(AuthContext);
   const { userData, addBookmark, removeBookmark, removeMyRecipe } =
     useContext(UserDataContext);
   const [saved, setSaved] = useState(false);
-
+  const { deleteParam } = useRouterFilter();
+  //SHOW OR HIDE DELETE RECIPE BUTTON
   const canDelete = userData.myRecipes.find(
     (myRecipe) => myRecipe.id === currentRecipe?.id
   )
     ? true
     : true;
 
+  //TOGGLE BOOKMARK BUTTON STATE (FILLED OR NOT)
   useEffect(() => {
     if (!currentRecipe || !userData?.bookmarks) return;
     const index = userData.bookmarks.findIndex(
@@ -33,6 +37,7 @@ const Recipe = function ({ currentRecipe }) {
     setSaved(index !== -1);
   }, [userData.bookmarks, currentRecipe]);
 
+  //ADD SERVINGS BUTTON FUNCTIONALITY
   const add = function (val) {
     return () => {
       setMultiplier((prev) => {
@@ -42,6 +47,8 @@ const Recipe = function ({ currentRecipe }) {
       });
     };
   };
+
+  //REDUCE SERVINGS BUTTON FUNCTIONALITY
   const subtract = function (val) {
     return () => {
       setMultiplier((prev) => {
@@ -51,6 +58,7 @@ const Recipe = function ({ currentRecipe }) {
     };
   };
 
+  //BOOKMARK SAVE TO OR REMOVE FROM DATABASE FUNCTION
   const bookmarkHandler = async function () {
     const requestData = {
       sessionId: authState.sessionId,
@@ -78,25 +86,71 @@ const Recipe = function ({ currentRecipe }) {
     }
   };
 
+  //RESET MULTIPLIER ON CURRENT RECIPE CHANGE
   useEffect(() => {
     setMultiplier(1);
   }, [currentRecipe]);
 
+  //MODAL CONFIRMATION
+  const confirmAction = async function () {
+    setModal({
+      isShown: true,
+      title: "Delete this recipe?",
+      message: "This is an irreversible action!",
+      okFunction: removeHandler,
+    });
+  };
+
+  //DELETE RECIPE AT DATABASE AND API
   const removeHandler = async function () {
+    //create recipe data at delete request
     const requestData = {
       sessionId: authState.sessionId,
       recipe: currentRecipe,
     };
-    removeMyRecipe(currentRecipe);
 
-    const res = await fetch("/api/delete-recipe", {
-      method: "POST",
-      body: JSON.stringify(requestData),
-      headers: { "Content-Type": "application/json" },
+    //invoke modal
+    setModal({
+      disableButtons: true,
+      canBeClosed: false,
+      message: "Deleting...Please wait.",
     });
 
-    const data = await res.json();
-    console.log(data);
+    //start request
+    try {
+      const res = await fetch("/api/delete-recipe", {
+        method: "POST",
+        body: JSON.stringify(requestData),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      setModalMessage("Parsing data...");
+      const data = await res.json();
+
+      setModal({
+        disableButtons: false,
+        okFunction: null,
+        canBeClosed: true,
+        message: data.message,
+        isConfirmButtonShown: false,
+        cancelButtonText: "Ok",
+      });
+
+      //delete at client side when delete request is successful
+      if (data.ok) {
+        deleteParam("current");
+        removeMyRecipe(currentRecipe);
+      }
+    } catch (err) {
+      setModal({
+        disableButtons: false,
+        okFunction: null,
+        canBeClosed: true,
+        message: "Something went wrong. Please try again.",
+        isConfirmButtonShown: false,
+        cancelButtonText: "Ok",
+      });
+    }
   };
   return (
     <div className="recipe">
@@ -126,7 +180,7 @@ const Recipe = function ({ currentRecipe }) {
                 <button
                   className="recipe__button-action"
                   disabled={authState.isAuth ? false : true}
-                  onClick={removeHandler}
+                  onClick={confirmAction}
                 >
                   &#10005;
                 </button>

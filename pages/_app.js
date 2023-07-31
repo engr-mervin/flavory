@@ -3,15 +3,21 @@ import { useRouter } from "next/router";
 import Header from "../components/Layout/Header";
 import MainNavigation from "../components/Layout/MainNavigation";
 import Footer from "../components/Layout/Footer";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Loading from "../components/Fallback Pages/Loading";
 import { AuthContextProvider } from "../store/auth-context";
 import UserDataProvider from "../components/Wrapper/UserDataProvider";
 import { UserDataContextProvider } from "../store/user-data-context";
+import ModalContext, { ModalContextProvider } from "../store/modal-context";
+import Modal from "../components/UI/Modal";
+import { createPortal } from "react-dom";
 function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-
+  const [documentObj, setDocumentObj] = useState(null);
+  useEffect(() => {
+    setDocumentObj(document);
+  }, []);
   useEffect(() => {
     const startLoading = function () {
       setLoading(true);
@@ -34,15 +40,23 @@ function App({ Component, pageProps }) {
   return (
     <AuthContextProvider>
       <UserDataContextProvider>
-        <UserDataProvider>
-          {loading ? <Loading></Loading> : ""}
-          <Header></Header>
-          <MainNavigation></MainNavigation>
-          <main>
-            <Component loading={loading} {...pageProps} />
-          </main>
-          <Footer></Footer>
-        </UserDataProvider>
+        <ModalContextProvider>
+          <UserDataProvider>
+            {loading ? <Loading></Loading> : ""}
+            <Header></Header>
+            <MainNavigation></MainNavigation>
+            <main>
+              <Component loading={loading} {...pageProps} />
+            </main>
+            <Footer></Footer>
+            {documentObj
+              ? createPortal(
+                  <Modal></Modal>,
+                  document.getElementById("modal-root")
+                )
+              : ""}
+          </UserDataProvider>
+        </ModalContextProvider>
       </UserDataContextProvider>
     </AuthContextProvider>
   );

@@ -1,0 +1,81 @@
+.modal {
+  &__overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(black, 0.85);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    backdrop-filter: blur(3px);
+  }
+
+  &__box {
+    width: 25%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    background-color: $color-font--white;
+
+    border-radius: 1.5rem;
+    overflow: hidden;
+  }
+
+  &__message-box {
+    padding: 3rem 2.5rem;
+    font-size: 1.6rem;
+    color: $color-font--black;
+    text-align: left;
+    font-style: italic;
+  }
+  &__title-box {
+    background-color: $color-font--black;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    padding: 1rem 2.5rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: $color-font--white;
+  }
+
+  &__button-box {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+    padding: 1rem 2.5rem;
+  }
+
+  &__button--confirm,
+  &__button--cancel {
+    background-color: $color-primary;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    color: $color-font--white;
+    font-family: inherit;
+    padding: 1rem 2rem;
+    cursor: pointer;
+
+    transition: all 300ms;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:disabled {
+      background-color: $color-font--white;
+      border: 1px solid rgb(197, 197, 197);
+      color: rgb(197, 197, 197);
+      cursor: auto;
+
+      &:hover {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+body:has(.modal__overlay) {
+  overflow: hidden;
+}

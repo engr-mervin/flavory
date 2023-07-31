@@ -1,35 +1,32 @@
 .footer {
   background-color: $color-font--black;
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
+  grid-template-columns: 1fr 1.4fr 1fr;
   color: $color-font--white;
-  row-gap: 2rem;
-  padding: 0rem 6rem;
-  padding-top: 2rem;
+  padding: 2rem 3rem;
+  padding-bottom: 0;
 
   & > * {
-    padding: 2rem 6rem;
+    padding: 2rem 5rem;
   }
 
   &-flavory {
-    align-self: flex-end;
+    align-self: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
   &-about {
     display: flex;
     flex-direction: column;
   }
 
-  &-contact {
-    display: flex;
-    flex-direction: column;
-    grid-column: 2/3;
-    justify-content: space-between;
-    padding: 0 6rem;
-    margin-top: 1rem;
-  }
   &-address {
     display: flex;
-    justify-content: space-between;
+    gap: 3.5rem;
+    margin-top: auto;
+    align-self: flex-end;
+    padding: 1rem 5rem;
   }
 
   &-text {
@@ -57,8 +54,8 @@
   }
 
   &-logo {
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     fill: $color-primary--white;
 
     // border: 2px solid $color-primary--white;
@@ -76,6 +73,9 @@
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
     text-align: center;
+    padding-left: 7rem;
+    padding-right: 3rem;
+    justify-items: flex-start;
 
     a:link,
     a:visited {
@@ -83,22 +83,38 @@
       text-decoration: underline;
       text-underline-offset: 0.3rem;
       color: $color-font--white;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       transform: skewX(0deg) translateX(0);
       transition: all 300ms;
     }
+    li:nth-child(even) {
+      justify-self: flex-end;
+    }
+
     a:hover,
     a:active {
       transform: skewX(-10deg) translateX(1rem);
     }
   }
   &-copyright {
-    padding-top: 1rem;
-    grid-column: 1/-1;
+    align-self: center;
+    grid-column: 3/4;
     text-align: right;
-    border-top: 1px solid $color-font--white;
     width: 100%;
     font-size: 1.4rem;
-    padding-right: 0;
+
+    padding: 1rem 5rem;
+  }
+
+  &-navigate {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-line {
+    grid-column: 1/-1;
+    height: 0.1rem;
+    padding: 0;
+    background-color: $color-primary--white;
   }
 }

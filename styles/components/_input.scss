@@ -1,20 +1,22 @@
 .input {
   border: none;
-  border-radius: 1px;
+  border-radius: 3px;
   font-family: inherit;
   padding: 0.3rem 1rem;
   font-weight: 500;
   font-size: 1.6rem;
   color: $color-font--black;
-  outline: 2px solid rgb(230, 230, 230);
+  width: 100%;
+  outline: 1.5px solid rgb(230, 230, 230);
 
+  transition: all 150ms;
   &:focus {
-    outline: 2px solid $color-primary--light;
+    outline: 1.5px solid $color-primary--light;
   }
 
   &.invalid {
     background-color: rgb(253, 200, 200);
-    outline: 2px solid rgb(255, 107, 107);
+    outline: 1.5px solid rgb(255, 107, 107);
   }
 
   &__label {

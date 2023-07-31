@@ -10,6 +10,7 @@ const Footer = function () {
       <div className="footer-flavory">
         <h1 className="heading--1d">Flavory</h1>
         <p className="footer-flavory-text">Where taste meets imagination.</p>
+        {/* <h3 className="heading--3b">Contact me</h3> */}
       </div>
       <div className="footer-about">
         <h3 className="heading--3b">About</h3>
@@ -42,42 +43,37 @@ const Footer = function () {
           </li>
         </ul>
       </nav>
-      <div className="footer-contact">
-        {/* <h3 className="heading--3b">Contact me</h3> */}
-        <address className="footer-address">
-          <a
-            className="footer-link"
-            target="_blank"
-            href="mailto:johnmervin.bocatcat@gmail.com"
-          >
-            <GoogleLogo className="footer-logo" />
-          </a>
-          <a
-            className="footer-link"
-            target="_blank"
-            href="https://www.linkedin.com/in/engr-mervin/"
-          >
-            <LinkedInLogo className="footer-logo" />
-          </a>
-          <a
-            className="footer-link"
-            target="_blank"
-            href="https://github.com/engr-mervin"
-          >
-            <GithubLogo className="footer-logo" />
-          </a>
-          <a
-            className="footer-link"
-            target="_blank"
-            href="https://www.eonox.dev"
-          >
-            <PersonLogo className="footer-logo" />
-          </a>
-          <a className="footer-link" target="_blank" href="tel:+639994279387">
-            <PhoneLogo className="footer-logo" />
-          </a>
-        </address>
-      </div>
+      <div className="footer-line"></div>
+
+      <address className="footer-address">
+        <a
+          className="footer-link"
+          target="_blank"
+          href="mailto:johnmervin.bocatcat@gmail.com"
+        >
+          <GoogleLogo className="footer-logo" />
+        </a>
+        <a
+          className="footer-link"
+          target="_blank"
+          href="https://www.linkedin.com/in/engr-mervin/"
+        >
+          <LinkedInLogo className="footer-logo" />
+        </a>
+        <a
+          className="footer-link"
+          target="_blank"
+          href="https://github.com/engr-mervin"
+        >
+          <GithubLogo className="footer-logo" />
+        </a>
+        <a className="footer-link" target="_blank" href="https://www.eonox.dev">
+          <PersonLogo className="footer-logo" />
+        </a>
+        <a className="footer-link" target="_blank" href="tel:+639994279387">
+          <PhoneLogo className="footer-logo" />
+        </a>
+      </address>
       <div className="footer-copyright">
         Copyright &copy;{" "}
         <a

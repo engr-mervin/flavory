@@ -60,7 +60,9 @@ const deleteRecipe = async function (req, res) {
       data: newUserData,
     });
 
-    return res.status(200).json({ message: "Successfully removed my recipe!" });
+    return res
+      .status(200)
+      .json({ message: "Successfully removed my recipe!", ok: true });
   } catch (err) {
     res
       .status(500)

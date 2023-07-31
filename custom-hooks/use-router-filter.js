@@ -11,6 +11,12 @@ const useRouterFilter = function () {
     router.push({ pathname, query: updatedQuery });
   };
 
+  const deleteParam = function (param) {
+    const { query } = router;
+    const params = new URLSearchParams(query);
+    params.delete(param);
+    router.replace({ pathname, query: params.toString() });
+  };
   const addMultipleParam = function (params, values) {
     //params => array of arrays with param and value
 
@@ -34,7 +40,7 @@ const useRouterFilter = function () {
     });
   };
 
-  return { addParam, addMultipleParam, addParamShallow };
+  return { addParam, addMultipleParam, addParamShallow, deleteParam };
 };
 
 export default useRouterFilter;
