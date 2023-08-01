@@ -1,78 +1,109 @@
-import useValidateText from "../custom-hooks/use-validate-text";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useRouter } from "next/router";
+import { validateTextLength } from "../util/validate";
+import InputText from "../components/UI/InputText";
+import AuthContext from "../store/auth-context";
+import InfoLogo from "../assets/information-circle-outline.svg";
+import InfoMessage from "../components/Fallback Pages/InfoMessage";
 
 const SignUpPage = function ({ users }) {
+  const { authState } = useContext(AuthContext);
+
   const router = useRouter();
-  const [isSigningUp, setIsSigningUp] = useState(false);
   const [message, setMessage] = useState("");
-  const [
-    displayNameValue,
-    displayNameChangeHandler,
-    displayNameIsError,
-    displayNameIsValid,
-  ] = useValidateText("", 32);
 
-  const [
-    userNameValue,
-    userNameChangeHandler,
-    userNameIsError,
-    userNameIsValid,
-  ] = useValidateText("", 16);
+  const [formData, setFormData] = useState({
+    displayName: "",
+    userName: "",
+    password: "",
+    password2: "",
+  });
 
-  const [
-    passwordValue,
-    passwordChangeHandler,
-    passwordIsError,
-    passwordIsValid,
-  ] = useValidateText("", 16);
+  const [formDataValidity, setFormDataValidity] = useState({
+    displayName: false,
+    userName: false,
+    password: false,
+    password2: false,
+  });
 
-  const [
-    password2Value,
-    password2ChangeHandler,
-    password2IsError,
-    password2IsValid,
-  ] = useValidateText("", 16);
+  const updateFormDataState = function (value, inputtype) {
+    setFormData((prev) => {
+      const arrayState = { ...prev };
+      arrayState[inputtype] = value;
+      return arrayState;
+    });
+  };
+
+  const updateFormDataValidityState = function (value, inputtype) {
+    setFormDataValidity((prev) => {
+      const arrayState = { ...prev };
+      arrayState[inputtype] = value;
+      return arrayState;
+    });
+  };
+
+  const [touchSubscribers, setTouchSubscribers] = useState([]);
+
+  const touchSubscribe = function (func) {
+    setTouchSubscribers((prev) => {
+      let newState = [...prev];
+      newState.push(func);
+      return newState;
+    });
+  };
+
+  const touchUnsubscribe = function (func) {
+    setTouchSubscribers((prev) => {
+      let newState = [...prev];
+      const index = newState.findIndex((subscriber) => subscriber === func);
+      if (index === -1) return prev;
+      newState.splice(index, 1);
+      return newState;
+    });
+  };
+  const touchFunction = function () {
+    touchSubscribers.forEach((func) => {
+      func();
+    });
+  };
 
   const submitHandler = async function (e) {
     e.preventDefault();
 
-    setIsSigningUp(true);
-    setMessage("Registering user...");
-    if (
-      !userNameIsValid ||
-      !password2IsValid ||
-      !passwordIsValid ||
-      !displayNameIsValid
-    ) {
+    touchFunction();
+    setMessage("Signing up...");
+    if (Object.values(formDataValidity).includes(false)) {
       setMessage("Please fix input errors.");
-      setIsSigningUp(false);
       return;
     }
-    if (passwordValue != password2Value) {
+    if (formData.password != formData.password2) {
       setMessage("Password does not match");
-      setIsSigningUp(false);
       return;
     }
 
     const userData = {
-      displayName: displayNameValue,
-      userName: userNameValue,
-      password: passwordValue,
+      displayName: formData.displayName,
+      userName: formData.userName,
+      password: formData.password,
     };
-    const response = await fetch("/api/new-user", {
-      method: "POST",
-      body: JSON.stringify(userData),
-      headers: { "Content-Type": "application/json" },
-    });
 
-    // console.log("Logged in!", data);
-    const data = await response.json();
-    setMessage(data.message);
-
-    setIsSigningUp(false);
-    if (response.ok) router.push("/log-in");
+    try {
+      const response = await fetch("/api/new-user", {
+        method: "POST",
+        body: JSON.stringify(userData),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await response.json();
+      setMessage(data.message);
+      if (response.ok) router.push("/log-in");
+    } catch (err) {
+      setMessage("Something went wrong. Please try again.");
+    }
   };
+  if (authState.isAuth) {
+    return <InfoMessage message="You are already logged in."></InfoMessage>;
+  }
+
   return (
     <div className="signup">
       <h1 className="heading--1e">Sign up New User</h1>
@@ -80,47 +111,63 @@ const SignUpPage = function ({ users }) {
         <label className="input__label" htmlFor="signup__display-name">
           Display Name:
         </label>
-        <input
-          onChange={displayNameChangeHandler}
-          className={`input ${displayNameIsError ? "invalid" : ""}`}
-          value={displayNameValue}
-          type="text"
+        <InputText
+          validateFunction={validateTextLength(32)}
           id="signup__display-name"
-          placeholder="6-32 (a-Z)(0-9)(-_)"
-        ></input>
+          className="input"
+          tooltip="Input a 6-32 Alphanumeric Characters Display Name including -,_ and . characters."
+          dataindex={0}
+          inputtype="displayName"
+          updateStateFunction={updateFormDataState}
+          updateValidityField={updateFormDataValidityState}
+          touchSubscribe={touchSubscribe}
+          touchUnsubscribe={touchUnsubscribe}
+        />
         <label className="input__label" htmlFor="signup__user-name">
           User Name:
         </label>
-        <input
-          onChange={userNameChangeHandler}
-          className={`input ${userNameIsError ? "invalid" : ""}`}
-          value={userNameValue}
-          type="text"
+        <InputText
+          validateFunction={validateTextLength(16)}
           id="signup__user-name"
-          placeholder="6-16 (a-Z)(0-9)(-_)"
-        ></input>
+          className="input"
+          tooltip="Input a 6-32 Alphanumeric Characters User Name including -,_ and . characters."
+          dataindex={0}
+          inputtype="userName"
+          updateStateFunction={updateFormDataState}
+          updateValidityField={updateFormDataValidityState}
+          touchSubscribe={touchSubscribe}
+          touchUnsubscribe={touchUnsubscribe}
+        />
         <label className="input__label" htmlFor="signup__password">
           Password:
         </label>
-        <input
-          onChange={passwordChangeHandler}
-          className={`input ${passwordIsError ? "invalid" : ""}`}
-          value={passwordValue}
-          type="text"
+        <InputText
+          validateFunction={validateTextLength(16)}
           id="signup__password"
-          placeholder="6-16 (a-Z)(0-9)(-_)"
-        ></input>
+          className="input"
+          tooltip="Input a 6-32 Alphanumeric Characters Password including -,_ and . characters."
+          dataindex={0}
+          inputtype="password"
+          updateStateFunction={updateFormDataState}
+          updateValidityField={updateFormDataValidityState}
+          touchSubscribe={touchSubscribe}
+          touchUnsubscribe={touchUnsubscribe}
+        />
         <label className="input__label" htmlFor="signup__password2">
           Retype Password:
         </label>
-        <input
-          onChange={password2ChangeHandler}
-          className={`input ${password2IsError ? "invalid" : ""}`}
-          value={password2Value}
-          type="text"
+        <InputText
+          validateFunction={validateTextLength(16)}
           id="signup__password2"
-          placeholder="6-16 (a-Z)(0-9)(-_)"
-        ></input>
+          className="input"
+          tooltip="Input a 6-32 Alphanumeric Characters Password including -,_ and . characters."
+          dataindex={0}
+          inputtype="password2"
+          updateStateFunction={updateFormDataState}
+          updateValidityField={updateFormDataValidityState}
+          touchSubscribe={touchSubscribe}
+          touchUnsubscribe={touchUnsubscribe}
+        />
         <div className="signup__status">
           <p className="signup__message">{message}</p>
         </div>

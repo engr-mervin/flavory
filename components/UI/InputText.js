@@ -13,20 +13,26 @@ const InputText = function ({
   postProcessFunction /*Modifies the state on successful updating*/,
   touchSubscribe /*Simulates touch on components*/,
   tooltip,
+  touchUnsubscribe,
 }) {
-  const [validity, setValidity] = useState(validateFunction(""));
+  const [validity, setValidity] = useState(false);
   const [value, setValue] = useState("");
-  const [error, setError] = useState(false);
   const [classNames, setClassNames] = useState(className);
+  const [touched, setTouched] = useState(false);
 
   const touch = function () {
-    setError(!validity);
+    setTouched(true);
   };
-  //subscribe to touch function:IIFEs
-  (() => {
+
+  //subscribe & unsubscribe to touch function
+  useEffect(() => {
     if (!touchSubscribe) return;
     touchSubscribe(touch);
-  })();
+
+    return () => {
+      touchUnsubscribe(touch);
+    };
+  }, []);
 
   useEffect(() => {
     updateStateFunction(value, inputtype, dataindex);
@@ -36,22 +42,22 @@ const InputText = function ({
   }, [validity]);
 
   useEffect(() => {
-    if (error) {
+    if (touched && !validity) {
       setClassNames((prev) => {
         return `${className} invalid tooltip-parent`;
       });
     } else {
       setClassNames((prev) => {
-        return className;
+        return `${className} tooltip-parent`;
       });
     }
-  }, [error]);
+  }, [touched, validity]);
 
   const updateHandler = function (e) {
     e.preventDefault();
+    setTouched(true);
     const isValid = validateFunction(e.target.value);
     setValidity(isValid);
-    setError(!isValid);
     let updatedValue = e.target.value;
     if (postProcessFunction) {
       updatedValue = postProcessFunction(updatedValue);

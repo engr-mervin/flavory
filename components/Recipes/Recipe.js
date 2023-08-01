@@ -12,11 +12,13 @@ import UserDataContext from "../../store/user-data-context";
 import { round } from "../../util/numbers";
 import ModalContext from "../../store/modal-context";
 import useRouterFilter from "../../custom-hooks/use-router-filter";
+import { useRouter } from "next/router";
 
 const Recipe = function ({ currentRecipe }) {
   const { setModalMessage, setModal } = useContext(ModalContext);
   const [multiplier, setMultiplier] = useState(1);
   const { authState } = useContext(AuthContext);
+  const router = useRouter();
   const { userData, addBookmark, removeBookmark, removeMyRecipe } =
     useContext(UserDataContext);
   const [saved, setSaved] = useState(false);
@@ -218,20 +220,28 @@ const Recipe = function ({ currentRecipe }) {
                 ></Ingredient>
               ))}
             </ul>
-
-            <a
-              target="_blank"
-              href={currentRecipe.source_url}
-              className="recipe__link"
-            >
-              View Complete Recipe &rarr;
-            </a>
+            {currentRecipe.source_url === "" ||
+            currentRecipe.source_url === "BLANK" ? (
+              ""
+            ) : (
+              <a
+                target="_blank"
+                href={currentRecipe.source_url}
+                className="recipe__link"
+              >
+                View Complete Recipe &rarr;
+              </a>
+            )}
           </div>
         </>
       ) : (
         <NoSelected
           imageSource="http://forkify-api.herokuapp.com/images/mare_portobello_burgers_with_pesto_provolone_and_roasted_peppers_h05d8.jpg"
-          message="Please select a recipe!"
+          message={
+            !router.query.current
+              ? "Please select a recipe first!"
+              : "Recipe is either missing or deleted."
+          }
           withImage={true}
         ></NoSelected>
       )}

@@ -7,10 +7,6 @@ const NoSelected = function (props) {
       }
       className="no-selected"
     >
-      {/* <ArtLogo className="no-selected__art"></ArtLogo> */}
-      {/* <div className="no-selected__blob"></div>
-      <div className="no-selected__blob--2"></div>
-      <div className="no-selected__blob--3"></div> */}
       <img
         style={props.withImage ? {} : { display: "none" }}
         src={props.imageSource}

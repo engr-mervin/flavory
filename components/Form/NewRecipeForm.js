@@ -19,15 +19,28 @@ import ModalContext from "../../store/modal-context";
 
 const NewRecipeForm = function () {
   const { authState } = useContext(AuthContext);
-  const { userData, addMyRecipe } = useContext(UserDataContext);
-  const { setModal, setMessage } = useContext(ModalContext);
+  const { addMyRecipe } = useContext(UserDataContext);
+  const { setModal } = useContext(ModalContext);
 
-  let touchSubscribers = [];
+  const [touchSubscribers, setTouchSubscribers] = useState([]);
 
   const touchSubscribe = function (func) {
-    touchSubscribers.push(func);
+    setTouchSubscribers((prev) => {
+      let newState = [...prev];
+      newState.push(func);
+      return newState;
+    });
   };
 
+  const touchUnsubscribe = function (func) {
+    setTouchSubscribers((prev) => {
+      let newState = [...prev];
+      const index = newState.findIndex((subscriber) => subscriber === func);
+      if (index === -1) return prev;
+      newState.splice(index, 1);
+      return newState;
+    });
+  };
   const touchFunction = function () {
     touchSubscribers.forEach((func) => {
       func();
@@ -208,7 +221,9 @@ const NewRecipeForm = function () {
       <form className="new-recipe__form">
         <h2 className="heading--2d">Details:</h2>
         <div className="new-recipe__group--1">
-          <label className="input__label">Title:</label>
+          <label className="input__label" htmlFor="new-recipe__title">
+            Title:
+          </label>
           <InputText
             validateFunction={validateTitle}
             id="new-recipe__title"
@@ -219,8 +234,11 @@ const NewRecipeForm = function () {
             updateStateFunction={updateDetailsState}
             updateValidityField={updateDetailsValidityState}
             touchSubscribe={touchSubscribe}
+            touchUnsubscribe={touchUnsubscribe}
           />
-          <label className="input__label">Recipe URL:</label>
+          <label className="input__label" htmlFor="new-recipe__source">
+            Recipe URL:
+          </label>
           <InputTextAsync
             validateFunctionAsync={validateURL}
             id="new-recipe__source"
@@ -232,7 +250,9 @@ const NewRecipeForm = function () {
             updateValidityField={updateDetailsValidityState}
             initialValidity={true}
           />
-          <label className="input__label">Image URL:</label>
+          <label className="input__label" htmlFor="new-recipe__image">
+            Image URL:
+          </label>
           <InputTextAsync
             validateFunctionAsync={validateImage}
             id="new-recipe__image"
@@ -244,7 +264,9 @@ const NewRecipeForm = function () {
             updateValidityField={updateDetailsValidityState}
             initialValidity={true}
           />
-          <label className="input__label">Cooking Time (mins):</label>
+          <label className="input__label" htmlFor="new-recipe__cooking-time">
+            Cooking Time (mins):
+          </label>
           <InputText
             validateFunction={validateWholeNumber}
             id="new-recipe__cooking-time"
@@ -256,11 +278,14 @@ const NewRecipeForm = function () {
             updateValidityField={updateDetailsValidityState}
             postProcessFunction={convertToNumber(0)}
             touchSubscribe={touchSubscribe}
+            touchUnsubscribe={touchUnsubscribe}
           />
-          <label className="input__label">Servings:</label>
+          <label className="input__label" htmlFor="new-recipe__servings">
+            Servings:
+          </label>
           <InputText
             validateFunction={validateWholeNumber}
-            id="new-recipe__cooking-time"
+            id="new-recipe__servings"
             className="input"
             tooltip="Input number of servings. Whole number only."
             dataindex={0}
@@ -269,6 +294,7 @@ const NewRecipeForm = function () {
             updateValidityField={updateDetailsValidityState}
             postProcessFunction={convertToNumber(0)}
             touchSubscribe={touchSubscribe}
+            touchUnsubscribe={touchUnsubscribe}
           />
         </div>
 
@@ -277,9 +303,10 @@ const NewRecipeForm = function () {
           {ingredients.map((el, index) => {
             return (
               <Fragment key={index}>
-                <label className="input__label">{`Quantity ${
-                  index + 1
-                }:`}</label>
+                <label
+                  className="input__label"
+                  htmlFor={`ingredient__quantity-${index + 1}`}
+                >{`Quantity ${index + 1}:`}</label>
                 <InputText
                   validateFunction={validateQuantity}
                   id={`ingredient__quantity-${index + 1}`}
@@ -291,8 +318,12 @@ const NewRecipeForm = function () {
                   updateValidityField={updateIngredientValidityState}
                   postProcessFunction={convertToNumber(4)}
                   touchSubscribe={touchSubscribe}
+                  touchUnsubscribe={touchUnsubscribe}
                 />
-                <label className="input__label">{`Unit ${index + 1}:`}</label>
+                <label
+                  className="input__label"
+                  htmlFor={`ingredient__unit-${index + 1}`}
+                >{`Unit ${index + 1}:`}</label>
                 <InputText
                   validateFunction={validateUnit}
                   id={`ingredient__unit-${index + 1}`}
@@ -303,10 +334,12 @@ const NewRecipeForm = function () {
                   updateStateFunction={updateIngredientState}
                   updateValidityField={updateIngredientValidityState}
                   touchSubscribe={touchSubscribe}
+                  touchUnsubscribe={touchUnsubscribe}
                 />
-                <label className="input__label">{`Ingredient ${
-                  index + 1
-                }:`}</label>
+                <label
+                  className="input__label"
+                  htmlFor={`ingredient__description-${index + 1}`}
+                >{`Ingredient ${index + 1}:`}</label>
                 <InputText
                   validateFunction={validateDescription}
                   id={`ingredient__description-${index + 1}`}
@@ -317,6 +350,7 @@ const NewRecipeForm = function () {
                   updateStateFunction={updateIngredientState}
                   updateValidityField={updateIngredientValidityState}
                   touchSubscribe={touchSubscribe}
+                  touchUnsubscribe={touchUnsubscribe}
                 />
               </Fragment>
             );

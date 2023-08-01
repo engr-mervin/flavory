@@ -4,30 +4,32 @@ import AuthContext from "../../store/auth-context";
 import UserDataContext from "../../store/user-data-context";
 import DeleteLogo from "../../assets/trash-outline.svg";
 
-const Bookmark = function ({ recipe }) {
-  const { userData, removeBookmark } = useContext(UserDataContext);
+const MyRecipe = function ({ recipe }) {
+  const { userData, removeMyRecipe } = useContext(UserDataContext);
   const { authState } = useContext(AuthContext);
 
-  const removeBookmarkHandler = async function () {
+  const removeMyRecipeHandler = async function () {
     const requestData = {
       sessionId: authState.sessionId,
       recipe: recipe,
     };
-    const exists = userData.bookmarks.findIndex(
-      (bookmark) => bookmark.id === recipe.id
+    const exists = userData.myRecipes.findIndex(
+      (myRecipe) => myRecipe.id === recipe.id
     );
     if (exists != -1) {
-      const response = await fetch("/api/unbookmark", {
-        method: "POST",
-        body: JSON.stringify(requestData),
-        headers: { "Content-Type": "application/json" },
-      });
+      try {
+        const response = await fetch("/api/delete-recipe", {
+          method: "POST",
+          body: JSON.stringify(requestData),
+          headers: { "Content-Type": "application/json" },
+        });
 
-      const data = response.json();
+        const data = await response.json();
 
-      if (data.ok) {
-        removeBookmark(recipe);
-      }
+        if (data.ok) {
+          removeMyRecipe(recipe);
+        }
+      } catch (err) {}
     }
   };
   return (
@@ -48,14 +50,14 @@ const Bookmark = function ({ recipe }) {
         </ul> */}
         <div className="bookmark__details-box">
           <h2 className="bookmark__title">{recipe.title}</h2>
-          <p className="bookmark__author">by: {recipe.publisher}</p>
+          <p className="bookmark__author">{recipe.createdAt}</p>
         </div>
       </Link>
       <div className="bookmark__unsave">
-        <DeleteLogo onClick={removeBookmarkHandler}></DeleteLogo>
+        <DeleteLogo onClick={removeMyRecipeHandler}></DeleteLogo>
       </div>
     </li>
   );
 };
 
-export default Bookmark;
+export default MyRecipe;

@@ -31,15 +31,17 @@
     background-color: $color-font--white;
     opacity: 0.9;
     border: none;
-    border: 1.5px solid $color-primary;
+    border: 1.5px solid $color-primary--lightest;
     font-size: 2rem;
     font-weight: 600;
-    border-radius: 1rem;
+    border-radius: 50%;
 
-    color: $color-primary;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    color: $color-font--black;
+    border-radius: 50%;
 
     transition: all 300ms;
     &:hover {
@@ -91,6 +93,7 @@
     justify-content: flex-start;
     align-items: flex-end;
     background-color: $color-accent--yellow-light;
+    gap: 1rem;
   }
   &__publisher {
     color: $color-font--black;
@@ -143,7 +146,7 @@
 
     transition: all 300ms;
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     &:last-child {

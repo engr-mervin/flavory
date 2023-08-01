@@ -1,7 +1,7 @@
 import { prisma } from "../../db";
 import { parseArrayObject, stringifyArrayObject } from "../../util/strings";
 
-const deleteRecipe = async function (req, res) {
+const validateRecipe = async function (req, res) {
   const session = await prisma.session.findFirst({
     where: {
       id: req.body.sessionId,
@@ -9,7 +9,9 @@ const deleteRecipe = async function (req, res) {
   });
 
   if (!session) {
-    return res.status(500).json({ message: "Invalid Session id.", ok: false });
+    return res
+      .status(500)
+      .json({ message: "Invalid Session id.", ok: false, validate: "failed" });
   }
 
   const user = await prisma.user.findFirst({
@@ -19,7 +21,9 @@ const deleteRecipe = async function (req, res) {
   });
 
   if (!user) {
-    return res.status(500).json({ message: "User does not exist.", ok: false });
+    return res
+      .status(500)
+      .json({ message: "User does not exist.", ok: false, validate: "failed" });
   }
 
   const myRecipes = parseArrayObject(user.myRecipes);
@@ -28,10 +32,12 @@ const deleteRecipe = async function (req, res) {
     (recipe) => recipe.id === req.body.recipe.id
   );
 
-  if (index === -1 && user.id !== "clkh9ctxg0001rs7cl4uhp04v") {
-    return res
-      .status(500)
-      .json({ message: "User unauthorized to delete the recipe.", ok: false });
+  if (index === -1) {
+    return res.status(500).json({
+      message: "Recipe does not exist or isn't made by the user.",
+      ok: false,
+      validate: "does not exist",
+    });
   }
 
   try {
@@ -69,4 +75,4 @@ const deleteRecipe = async function (req, res) {
   }
 };
 
-export default deleteRecipe;
+export default validateRecipe;

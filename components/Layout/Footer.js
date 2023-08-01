@@ -4,7 +4,10 @@ import PhoneLogo from "../../assets/svg ion/logo-phone.svg";
 import LinkedInLogo from "../../assets/logo-linkedin.svg";
 import GithubLogo from "../../assets/logo-github.svg";
 import Link from "next/link";
+import { useContext } from "react";
+import AuthContext from "../../store/auth-context";
 const Footer = function () {
+  const { authState } = useContext(AuthContext);
   return (
     <footer className="footer">
       <div className="footer-flavory">
@@ -35,12 +38,34 @@ const Footer = function () {
           <li className="footer-navigate-item">
             <Link href="/about">About</Link>
           </li>
-          <li className="footer-navigate-item">
-            <Link href="/sign-up">Sign up</Link>
-          </li>
-          <li className="footer-navigate-item">
-            <Link href="/sign-up">Log in</Link>
-          </li>
+          {authState.isAuth ? (
+            ""
+          ) : (
+            <li className="footer-navigate-item">
+              <Link href="/sign-up">Sign up</Link>
+            </li>
+          )}
+          {authState.isAuth ? (
+            ""
+          ) : (
+            <li className="footer-navigate-item">
+              <Link href="/sign-up">Log in</Link>
+            </li>
+          )}
+          {authState.isAuth ? (
+            <li className="footer-navigate-item">
+              <Link href="/account">Account</Link>
+            </li>
+          ) : (
+            ""
+          )}
+          {authState.isAuth ? (
+            <li className="footer-navigate-item">
+              <Link href="/new-recipe">New Recipe</Link>
+            </li>
+          ) : (
+            ""
+          )}
         </ul>
       </nav>
       <div className="footer-line"></div>

@@ -1180,14 +1180,15 @@ body:has(.modal__overlay) {
   background-color: rgb(255, 245, 236);
   opacity: 0.9;
   border: none;
-  border: 1.5px solid #ea5c2b;
+  border: 1.5px solid #fdc5a9;
   font-size: 2rem;
   font-weight: 600;
-  border-radius: 1rem;
-  color: #ea5c2b;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #3f2107;
+  border-radius: 50%;
   transition: all 300ms;
 }
 .recipe__button-action:hover {
@@ -1230,6 +1231,7 @@ body:has(.modal__overlay) {
   justify-content: flex-start;
   align-items: flex-end;
   background-color: #fcf7e1;
+  gap: 1rem;
 }
 .recipe__publisher {
   color: #3f2107;
@@ -1276,7 +1278,7 @@ body:has(.modal__overlay) {
   transition: all 300ms;
 }
 .recipe__button:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 .recipe__button:last-child {
   margin-right: 0;

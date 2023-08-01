@@ -43,6 +43,10 @@ const newRecipe = async function (req, res) {
       "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930";
   }
 
+  if (req.body["source_url"] === "") {
+    req.body["source_url"] = "BLANK";
+  }
+
   //if both exists do form validation
 
   //if form is ok do the POST method to forkify
