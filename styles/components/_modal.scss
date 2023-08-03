@@ -29,6 +29,15 @@
     color: $color-font--black;
     text-align: left;
     font-style: italic;
+    padding-bottom: 0;
+  }
+  &__message-box-2 {
+    padding: 2rem 2.5rem;
+    font-size: 1.6rem;
+    color: $color-font--black;
+    text-align: left;
+    font-style: italic;
+    padding-top: 0;
   }
   &__title-box {
     background-color: $color-font--black;

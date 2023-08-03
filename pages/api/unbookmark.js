@@ -9,7 +9,7 @@ const unbookmarkRecipe = async function (req, res) {
   });
 
   if (!session) {
-    return res.status(500).json({ message: "Invalid Session id." });
+    return res.status(500).json({ message: "Invalid Session id.", ok: false });
   }
 
   const user = await prisma.user.findFirst({
@@ -19,7 +19,7 @@ const unbookmarkRecipe = async function (req, res) {
   });
 
   if (!user) {
-    return res.status(500).json({ message: "User does not exist." });
+    return res.status(500).json({ message: "User does not exist.", ok: false });
   }
 
   const loved = parseArrayObject(user.lovedRecipes);
@@ -27,7 +27,7 @@ const unbookmarkRecipe = async function (req, res) {
   const index = loved.findIndex((recipe) => recipe.id === req.body.recipe.id);
 
   if (index === -1) {
-    return res.status(500).json({ message: "Not yet bookmarked." });
+    return res.status(500).json({ message: "Not yet bookmarked.", ok: false });
   }
 
   loved.splice(index, 1);
@@ -45,7 +45,9 @@ const unbookmarkRecipe = async function (req, res) {
     data: newUserData,
   });
 
-  return res.status(200).json({ message: "Successfully unbookmarked!" });
+  return res
+    .status(200)
+    .json({ message: "Successfully unbookmarked!", ok: true });
 };
 
 export default unbookmarkRecipe;

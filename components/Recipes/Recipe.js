@@ -28,7 +28,7 @@ const Recipe = function ({ currentRecipe }) {
     (myRecipe) => myRecipe.id === currentRecipe?.id
   )
     ? true
-    : true;
+    : false;
 
   //TOGGLE BOOKMARK BUTTON STATE (FILLED OR NOT)
   useEffect(() => {
@@ -71,20 +71,28 @@ const Recipe = function ({ currentRecipe }) {
     );
     if (exists != -1) {
       removeBookmark(currentRecipe);
-
-      await fetch("/api/unbookmark", {
+      const response = await fetch("/api/unbookmark", {
         method: "POST",
         body: JSON.stringify(requestData),
         headers: { "Content-Type": "application/json" },
       });
+
+      const data = await response.json();
+
+      if (!data.ok) {
+        addBookmark(currentRecipe);
+      }
     } else {
       addBookmark(currentRecipe);
-
-      await fetch("/api/bookmark", {
+      const response = await fetch("/api/bookmark", {
         method: "POST",
         body: JSON.stringify(requestData),
         headers: { "Content-Type": "application/json" },
       });
+      const data = await response.json();
+      if (!data.ok) {
+        removeBookmark(currentRecipe);
+      }
     }
   };
 
@@ -127,21 +135,36 @@ const Recipe = function ({ currentRecipe }) {
       });
 
       setModalMessage("Parsing data...");
+      console.log(res);
       const data = await res.json();
-
-      setModal({
-        disableButtons: false,
-        okFunction: null,
-        canBeClosed: true,
-        message: data.message,
-        isConfirmButtonShown: false,
-        cancelButtonText: "Ok",
-      });
+      console.log(data);
 
       //delete at client side when delete request is successful
       if (data.ok) {
         deleteParam("current");
         removeMyRecipe(currentRecipe);
+        setModalMessage("Deleting from bookmarks...");
+        const response2 = await fetch("/api/unbookmark", {
+          method: "POST",
+          body: JSON.stringify(requestData),
+          headers: { "Content-Type": "application/json" },
+        });
+
+        const data2 = await response2.json();
+
+        if (data2.ok) {
+          removeBookmark(currentRecipe);
+        }
+
+        setModal({
+          disableButtons: false,
+          okFunction: null,
+          canBeClosed: true,
+          message: data.message,
+          message2: data2.message,
+          isConfirmButtonShown: false,
+          cancelButtonText: "Ok",
+        });
       }
     } catch (err) {
       setModal({

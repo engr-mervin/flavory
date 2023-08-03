@@ -20,6 +20,7 @@ const initialVal = {
   isShown: false,
   title: "",
   message: "",
+  message2: "",
   okFunction: null,
   closeFunction: null,
   isConfirmButtonShown: true,

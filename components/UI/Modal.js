@@ -31,6 +31,7 @@ const Modal = function () {
       <div className="modal__box">
         <div className="modal__title-box">{modalState.title}</div>
         <div className="modal__message-box">{modalState.message}</div>
+        <div className="modal__message-box-2">{modalState.message2}</div>
 
         <div className="modal__button-box">
           {modalState.isConfirmButtonShown ? (

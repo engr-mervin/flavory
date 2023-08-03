@@ -23,7 +23,7 @@ const Bookmark = function ({ recipe }) {
         headers: { "Content-Type": "application/json" },
       });
 
-      const data = response.json();
+      const data = await response.json();
 
       if (data.ok) {
         removeBookmark(recipe);
@@ -36,16 +36,6 @@ const Bookmark = function ({ recipe }) {
         <div className="bookmark__image-box">
           <img className="bookmark__image" src={recipe.image_url}></img>
         </div>
-        {/* <ul className="bookmark__list">
-          {recipe.ingredients.map((ingredient, index) => (
-            <li
-              key={`${ingredient.description}_${index}`}
-              className="bookmark__list-item"
-            >
-              {ingredient.description}
-            </li>
-          ))}
-        </ul> */}
         <div className="bookmark__details-box">
           <h2 className="bookmark__title">{recipe.title}</h2>
           <p className="bookmark__author">by: {recipe.publisher}</p>

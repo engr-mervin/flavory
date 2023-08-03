@@ -87,7 +87,7 @@ const newRecipe = async function (req, res) {
     const fullRecipe = {
       ...postRecipe,
       id: forkifyData.data.recipe.id,
-      createdAt: forkifyData.data.recipe.createdAt,
+      createdAt: new Date().toISOString(),
     };
     //if successful, save to database of session id add myrecipes
 
