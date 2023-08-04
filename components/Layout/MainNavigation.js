@@ -61,9 +61,9 @@ const MainNavigation = function () {
         <li className={`navigation-item ${tab === "recipes" ? "current" : ""}`}>
           <Link href="/recipes">Recipes</Link>
         </li>
-        <li className={`navigation-item ${tab === "about" ? "current" : ""}`}>
+        {/* <li className={`navigation-item ${tab === "about" ? "current" : ""}`}>
           <Link href="/about">About</Link>
-        </li>
+        </li> */}
         {authState.isAuth ? (
           <li
             className={`navigation-item ${

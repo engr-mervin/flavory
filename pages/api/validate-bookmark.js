@@ -48,7 +48,7 @@ const validateBookmark = async function (req, res) {
       `https://forkify-api.herokuapp.com/api/v2/recipes/${req.body.recipe.id}?key=${process.env["API_KEY"]}`
     );
 
-    const data = forkify.json();
+    const data = await forkify.json();
 
     //IF IT IS NOT IN DATABASE, DELETE LOCAL
     //CASE 1, THE USER CHANGED THE LOCAL STATE TO MAKE IT LOOK AS IF HE BOOKMARKED THIS RECIPE
@@ -64,14 +64,15 @@ const validateBookmark = async function (req, res) {
     //FOUND IN DATABASE BUT NOT IN API
     //CASE 1, THE CREATE REQUEST FAILED IS MADE IN DATABASE BUT NOT IN API (SHOULD BE IMPOSSIBLE)
     //CASE 2, THE DELETE REQUEST FAILED AND DELETED AT API BUT NOT DELETED IN DATABASE (NETWORK CONNECTION LOST?) DELETE AT DATABASE.
+    console.log(data);
     if (data.message === "No recipe found with that ID!" && index !== -1) {
-      myRecipes.splice(index, 1);
+      lovedRecipes.splice(index, 1);
 
-      const myRecipesString = stringifyArrayObject(myRecipes);
+      const lovedRecipesString = stringifyArrayObject(lovedRecipes);
 
       const newUserData = {
         ...user,
-        myRecipes: myRecipesString,
+        lovedRecipes: lovedRecipesString,
       };
 
       //DELETE FROM DATABASE

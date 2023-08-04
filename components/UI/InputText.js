@@ -5,7 +5,7 @@ const InputText = function ({
   validateFunction /*Function to determine this input validity*/,
   id,
   className,
-  placeholder,
+  initialValidity,
   dataindex = "" /*Grouping mechanism for ingredients (by row) */,
   inputtype = "" /*Grouping mechanism for ingredients (by column)*/,
   updateStateFunction /*Changes the state that holds all the values of the form */,
@@ -16,7 +16,7 @@ const InputText = function ({
   touchUnsubscribe,
   type = "text",
 }) {
-  const [validity, setValidity] = useState(false);
+  const [validity, setValidity] = useState(initialValidity);
   const [value, setValue] = useState("");
   const [classNames, setClassNames] = useState(className);
   const [touched, setTouched] = useState(false);

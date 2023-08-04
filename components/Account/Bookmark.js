@@ -122,17 +122,17 @@ const Bookmark = function ({ recipe }) {
     }
   };
   return (
-    <li className="bookmark">
-      <div className="my-recipe__link" onClick={validateRecipe}>
-        <div className="bookmark__image-box">
-          <img className="bookmark__image" src={recipe.image_url}></img>
+    <li className="account-card">
+      <div className="account-card__link" onClick={validateRecipe}>
+        <div className="account-card__image-box">
+          <img className="account-card__image" src={recipe.image_url}></img>
         </div>
-        <div className="bookmark__details-box">
-          <h2 className="bookmark__title">{recipe.title}</h2>
-          <p className="bookmark__author">by: {recipe.publisher}</p>
+        <div className="account-card__details-box">
+          <h2 className="account-card__title">{recipe.title}</h2>
+          <p className="account-card__author">by: {recipe.publisher}</p>
         </div>
       </div>
-      <div className="bookmark__unsave">
+      <div className="account-card__unsave">
         <DeleteLogo onClick={confirmAction}></DeleteLogo>
       </div>
     </li>

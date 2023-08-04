@@ -251,6 +251,7 @@ const NewRecipeForm = function () {
             updateValidityField={updateDetailsValidityState}
             touchSubscribe={touchSubscribe}
             touchUnsubscribe={touchUnsubscribe}
+            initialValidity={false}
           />
           <label className="input__label" htmlFor="new-recipe__source">
             Recipe URL:
@@ -259,7 +260,7 @@ const NewRecipeForm = function () {
             validateFunctionAsync={validateURL}
             id="new-recipe__source"
             className="input"
-            tooltip="Input a valid URL."
+            tooltip="Input a valid URL. Add http:// or https:// at the beginning."
             dataindex={0}
             inputtype="source_url"
             updateStateFunction={updateDetailsState}
@@ -273,7 +274,7 @@ const NewRecipeForm = function () {
             validateFunctionAsync={validateImage}
             id="new-recipe__image"
             className="input"
-            tooltip="Input a valid image URL."
+            tooltip="Input a valid image URL. Add http:// or https:// at the beginning."
             dataindex={0}
             inputtype="image_url"
             updateStateFunction={updateDetailsState}
@@ -295,6 +296,7 @@ const NewRecipeForm = function () {
             postProcessFunction={convertToNumber(0)}
             touchSubscribe={touchSubscribe}
             touchUnsubscribe={touchUnsubscribe}
+            initialValidity={false}
           />
           <label className="input__label" htmlFor="new-recipe__servings">
             Servings:
@@ -311,6 +313,7 @@ const NewRecipeForm = function () {
             postProcessFunction={convertToNumber(0)}
             touchSubscribe={touchSubscribe}
             touchUnsubscribe={touchUnsubscribe}
+            initialValidity={false}
           />
         </div>
 
@@ -335,6 +338,7 @@ const NewRecipeForm = function () {
                   postProcessFunction={convertToNumber(4)}
                   touchSubscribe={touchSubscribe}
                   touchUnsubscribe={touchUnsubscribe}
+                  initialValidity={true}
                 />
                 <label
                   className="input__label"
@@ -351,6 +355,7 @@ const NewRecipeForm = function () {
                   updateValidityField={updateIngredientValidityState}
                   touchSubscribe={touchSubscribe}
                   touchUnsubscribe={touchUnsubscribe}
+                  initialValidity={true}
                 />
                 <label
                   className="input__label"
@@ -367,6 +372,7 @@ const NewRecipeForm = function () {
                   updateValidityField={updateIngredientValidityState}
                   touchSubscribe={touchSubscribe}
                   touchUnsubscribe={touchUnsubscribe}
+                  initialValidity={false}
                 />
               </Fragment>
             );

@@ -19,9 +19,3 @@ const Header = function (props) {
 };
 
 export default Header;
-
-{
-  /* <ButtonIcon className="button--action">
-        <IconCart className="icon"></IconCart>
-      </ButtonIcon> */
-}

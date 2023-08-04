@@ -18,6 +18,7 @@ body {
 
 ::selection {
   background: #ea5c2b;
+  color: rgb(255, 245, 236);
 }
 
 #__next {
@@ -463,6 +464,66 @@ body {
 }
 .chevron__right-logo {
   transform: translateX(5%);
+}
+
+.account-card {
+  border-radius: 0.8rem;
+  box-shadow: 0rem 0rem 3rem rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: all 300ms;
+}
+.account-card:hover {
+  transform: translateY(-0.5rem);
+}
+.account-card__link {
+  display: grid;
+  text-decoration: none;
+  grid-template-columns: 20rem 1fr;
+  color: #3f2107;
+  align-items: stretch;
+  height: 20rem;
+  background-color: rgb(255, 250, 246);
+  cursor: pointer;
+}
+.account-card__title {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+.account-card__details-box {
+  padding: 2rem;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.account-card__image-box {
+  height: 20rem;
+  width: 20rem;
+  flex-basis: 20rem;
+  overflow: hidden;
+}
+.account-card__image {
+  height: 20rem;
+  width: 20rem;
+  object-fit: cover;
+}
+.account-card__unsave {
+  height: 4rem;
+  width: 4rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background-color: #ea5c2b;
+  color: rgb(250, 238, 229);
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  transition: all 300ms;
+}
+.account-card__unsave:hover {
+  transform: scale(1.08);
 }
 
 .recipe-card__tag {
@@ -1648,6 +1709,33 @@ body:has(.modal__overlay) {
   z-index: -1;
 }
 
+.no-selected-account {
+  min-height: 20rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5rem;
+  padding-left: 22rem;
+  position: relative;
+}
+.no-selected-account__logo {
+  height: 4rem;
+  width: 4rem;
+  color: #3f2107;
+  fill: #3f2107;
+  margin-right: 1rem;
+}
+.no-selected-account__art {
+  position: absolute;
+  height: 18rem;
+  height: 100%;
+  color: #ea5c2b;
+  left: -10%;
+  bottom: 0;
+  opacity: 0.7;
+  z-index: -1;
+}
+
 .custom-page__404 {
   min-height: 40rem;
   display: flex;
@@ -1760,23 +1848,66 @@ body:has(.modal__overlay) {
 
 .account {
   padding: 4rem;
-  padding-bottom: 0;
-}
-.account__content-box {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 5fr;
+  gap: 2rem;
+  color: #3f2107;
 }
-.account__bookmarks {
-  padding: 4rem 8rem;
-}
-.account__own {
-  gap: 3rem;
-  padding: 4rem 8rem;
-}
-.account__bookmarks-list {
+.account__box {
+  grid-row: 1/-1;
   display: flex;
   flex-direction: column;
-  padding: 3rem 0;
+  gap: 1rem;
+}
+.account__stats-box {
+  background-color: #f5f5f5;
+  padding: 2.4rem;
+  border-radius: 1rem;
+}
+.account__stats {
+  font-size: 1.8rem;
+  font-weight: 300;
+  font-style: italic;
+}
+.account__stats:not(:last-child) {
+  padding-bottom: 1rem;
+}
+.account__content-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.account__title {
+  text-align: center;
+  font-family: "Montserrat", monospace;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  font-size: 3.2rem;
+  background-color: #f5f5f5;
+  border-radius: 1rem;
+  padding: 1.6rem;
+  text-transform: uppercase;
+}
+.account__recipes-box {
+  padding: 2rem 4rem;
+  background-color: #f5f5f5;
+  border-radius: 1rem;
+  display: grid;
+}
+.account__subtitle {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  padding-bottom: 2rem;
+  text-align: right;
+}
+.account__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 3rem;
   gap: 2rem;
 }
 

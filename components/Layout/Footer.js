@@ -35,9 +35,9 @@ const Footer = function () {
           <li className="footer-navigate-item">
             <Link href="/recipes">Recipes</Link>
           </li>
-          <li className="footer-navigate-item">
+          {/* <li className="footer-navigate-item">
             <Link href="/about">About</Link>
-          </li>
+          </li> */}
           {authState.isAuth ? (
             ""
           ) : (

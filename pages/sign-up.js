@@ -112,7 +112,7 @@ const SignUpPage = function ({ users }) {
           Display Name:
         </label>
         <InputText
-          validateFunction={validateTextLength(32)}
+          validateFunction={validateTextLength(16)}
           id="signup__display-name"
           className="input"
           tooltip="Input a 6-32 Alphanumeric Characters Display Name including -,_ and . characters."

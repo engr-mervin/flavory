@@ -1,23 +1,68 @@
 .account {
   padding: 4rem;
-  padding-bottom: 0;
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  gap: 2rem;
+  color: $color-font--black;
 
-  &__content-box {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  &__bookmarks {
-    padding: 4rem 8rem;
-  }
-  &__own {
-    gap: 3rem;
-    padding: 4rem 8rem;
-  }
-  &__bookmarks-list {
+  &__box {
+    grid-row: 1/-1;
     display: flex;
     flex-direction: column;
-    padding: 3rem 0;
+    gap: 1rem;
+  }
+
+  &__stats-box {
+    background-color: $color-accent--gray;
+    padding: 2.4rem;
+    border-radius: 1rem;
+  }
+
+  &__stats {
+    font-size: 1.8rem;
+    font-weight: 300;
+    font-style: italic;
+    &:not(:last-child) {
+      padding-bottom: 1rem;
+    }
+  }
+  &__content-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  &__title {
+    text-align: center;
+    font-family: "Montserrat", monospace;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    font-size: 3.2rem;
+    background-color: $color-accent--gray;
+    border-radius: 1rem;
+    padding: 1.6rem;
+    text-transform: uppercase;
+  }
+  &__recipes-box {
+    padding: 2rem 4rem;
+    background-color: $color-accent--gray;
+    border-radius: 1rem;
+    display: grid;
+  }
+
+  &__subtitle {
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-family: "Montserrat", monospace;
+    color: $color-font--black;
+    padding-bottom: 2rem;
+    text-align: right;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 3rem;
     gap: 2rem;
   }
 }

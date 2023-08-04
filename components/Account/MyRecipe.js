@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import UserDataContext from "../../store/user-data-context";
 import DeleteLogo from "../../assets/trash-outline.svg";
@@ -154,17 +153,17 @@ const MyRecipe = function ({ recipe }) {
     router.push(`/recipes?current=${recipe.id}`);
   };
   return (
-    <li className="my-recipe">
-      <div className="my-recipe__link" onClick={validateRecipe}>
-        <div className="my-recipe__image-box">
-          <img className="my-recipe__image" src={recipe.image_url}></img>
+    <li className="account-card">
+      <div className="account-card__link" onClick={validateRecipe}>
+        <div className="account-card__image-box">
+          <img className="account-card__image" src={recipe.image_url}></img>
         </div>
-        <div className="my-recipe__details-box">
-          <h2 className="my-recipe__title">{recipe.title}</h2>
-          <p className="my-recipe__author">{createdDateString}</p>
+        <div className="account-card__details-box">
+          <h2 className="account-card__title">{recipe.title}</h2>
+          <p className="account-card__author">{createdDateString}</p>
         </div>
       </div>
-      <div className="my-recipe__unsave">
+      <div className="account-card__unsave">
         <DeleteLogo onClick={confirmAction}></DeleteLogo>
       </div>
     </li>

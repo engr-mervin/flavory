@@ -100,7 +100,6 @@ export const validateURL = async function (text) {
 async function doesURLExist(url) {
   try {
     const response = await fetch(url, { method: "HEAD", mode: "no-cors" });
-    console.log(response);
     return response.status != 404;
   } catch (error) {
     return false;

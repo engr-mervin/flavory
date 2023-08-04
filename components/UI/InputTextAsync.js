@@ -21,6 +21,7 @@ const InputTextAsync = function ({
   useEffect(() => {
     //validate only when the value doesn't change for 1000 ms; "Debouncing"
     setValidity(false);
+
     const delayedValidation = setTimeout(async () => {
       const isValid = await validateFunctionAsync(value);
       setValidity(isValid);
