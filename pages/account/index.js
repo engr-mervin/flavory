@@ -2,6 +2,7 @@ import { useContext } from "react";
 import UserDataContext from "../../store/user-data-context";
 import Bookmark from "../../components/Account/Bookmark";
 import MyRecipe from "../../components/Account/MyRecipe";
+import InfoMessage from "../../components/Fallback Pages/InfoMessage";
 
 const AccountPage = function () {
   const { userData } = useContext(UserDataContext);
@@ -9,7 +10,7 @@ const AccountPage = function () {
   return (
     <>
       {userData.displayName === "" ? (
-        <p>Please log in first.</p>
+        <InfoMessage message="Please log in first."></InfoMessage>
       ) : (
         <div className="account">
           <h1 className="heading--1c">{`Hello ${userData.displayName}!`}</h1>

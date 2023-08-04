@@ -16,11 +16,13 @@ import InputTextAsync from "../UI/InputTextAsync";
 import UserDataContext from "../../store/user-data-context";
 import { parseNested } from "../../util/strings";
 import ModalContext from "../../store/modal-context";
+import { useRouter } from "next/router";
 
 const NewRecipeForm = function () {
+  const router = useRouter();
   const { authState } = useContext(AuthContext);
   const { addMyRecipe } = useContext(UserDataContext);
-  const { setModal } = useContext(ModalContext);
+  const { setModal, hideModal } = useContext(ModalContext);
 
   const [touchSubscribers, setTouchSubscribers] = useState([]);
 
@@ -158,15 +160,29 @@ const NewRecipeForm = function () {
 
       const data = await response.json();
 
-      setModal({
-        isCancelButtonShown: true,
-        cancelButtonText: "Ok",
-        message: data.message,
-        canBeClosed: true,
-      });
-      if (!data.ok) return;
-
-      addMyRecipe(parseNested(data.createdRecipe));
+      if (data.ok) {
+        const madeRecipe = parseNested(data.createdRecipe);
+        setModal({
+          isConfirmButtonShown: true,
+          okFunction: () => {
+            router.push(`/recipes?current=${madeRecipe.id}`);
+            hideModal();
+          },
+          isCancelButtonShown: true,
+          okButtonText: "View Recipe",
+          cancelButtonText: "Ok",
+          message: data.message,
+          canBeClosed: true,
+        });
+        addMyRecipe(madeRecipe);
+      } else {
+        setModal({
+          isCancelButtonShown: true,
+          cancelButtonText: "Ok",
+          message: data.message,
+          canBeClosed: true,
+        });
+      }
     } catch (err) {
       setModal({
         isCancelButtonShown: true,

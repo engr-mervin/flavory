@@ -145,7 +145,7 @@ const MyRecipe = function ({ recipe }) {
         message: data.message,
         isConfirmButtonShown: false,
         isCancelButtonShown: true,
-        cancelButtonText: "Ok",
+        cancelButtonText: "View Recipe",
       });
     }
   };

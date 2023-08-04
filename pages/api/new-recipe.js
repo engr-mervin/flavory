@@ -82,7 +82,7 @@ const newRecipe = async function (req, res) {
     );
     const forkifyData = await forkify.json();
 
-    console.log(forkify, forkifyData);
+    console.log(forkifyData);
 
     const fullRecipe = {
       ...postRecipe,

@@ -130,6 +130,7 @@ const LogInPage = function () {
           updateValidityField={updateFormDataValidityState}
           touchSubscribe={touchSubscribe}
           touchUnsubscribe={touchUnsubscribe}
+          type="password"
         />
         <div className="signup__status">
           <p className="signup__message">{message}</p>

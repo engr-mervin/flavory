@@ -152,6 +152,7 @@ const SignUpPage = function ({ users }) {
           updateValidityField={updateFormDataValidityState}
           touchSubscribe={touchSubscribe}
           touchUnsubscribe={touchUnsubscribe}
+          type="password"
         />
         <label className="input__label" htmlFor="signup__password2">
           Retype Password:
@@ -167,6 +168,7 @@ const SignUpPage = function ({ users }) {
           updateValidityField={updateFormDataValidityState}
           touchSubscribe={touchSubscribe}
           touchUnsubscribe={touchUnsubscribe}
+          type="password"
         />
         <div className="signup__status">
           <p className="signup__message">{message}</p>

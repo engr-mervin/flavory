@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import AuthContext from "../store/auth-context";
-import { useRouter } from "next/router";
 import NewRecipeForm from "../components/Form/NewRecipeForm";
+import InfoMessage from "../components/Fallback Pages/InfoMessage";
 
 const NewRecipePage = function () {
   const { authState } = useContext(AuthContext);
@@ -11,7 +11,7 @@ const NewRecipePage = function () {
       {authState.isAuth ? (
         <NewRecipeForm></NewRecipeForm>
       ) : (
-        <p>You need an account to upload recipes.</p>
+        <InfoMessage message="You need an account to upload recipes."></InfoMessage>
       )}
     </>
   );

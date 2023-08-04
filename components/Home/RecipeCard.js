@@ -5,11 +5,7 @@ import ArrowLogo from "../../assets/chevron-forward-outline.svg";
 const RecipeCard = function ({ recipe }) {
   return (
     <>
-      <Link
-        target="_blank"
-        href={`/recipes?current=${recipe.id}`}
-        className="recipe-card"
-      >
+      <Link href={`/recipes?current=${recipe.id}`} className="recipe-card">
         <span className="recipe-card__tag">Recommended</span>
         <div className="recipe-card__image-box">
           <img className="recipe-card__image" src={recipe.image_url}></img>

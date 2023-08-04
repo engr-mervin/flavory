@@ -3,16 +3,24 @@ import { useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import UserDataContext from "../../store/user-data-context";
 import DeleteLogo from "../../assets/trash-outline.svg";
+import ModalContext from "../../store/modal-context";
+import { useRouter } from "next/router";
 
 const Bookmark = function ({ recipe }) {
+  const router = useRouter();
   const { userData, removeBookmark } = useContext(UserDataContext);
   const { authState } = useContext(AuthContext);
-
+  const { setModal, setModalMessage } = useContext(ModalContext);
   const removeBookmarkHandler = async function () {
     const requestData = {
       sessionId: authState.sessionId,
       recipe: recipe,
     };
+    setModal({
+      disableButtons: true,
+      canBeClosed: false,
+      message: "Removing bookmark...Please wait.",
+    });
     const exists = userData.bookmarks.findIndex(
       (bookmark) => bookmark.id === recipe.id
     );
@@ -27,12 +35,95 @@ const Bookmark = function ({ recipe }) {
 
       if (data.ok) {
         removeBookmark(recipe);
+        setModal({
+          disableButtons: false,
+          okFunction: null,
+          canBeClosed: true,
+          message: data.message,
+          isConfirmButtonShown: false,
+          cancelButtonText: "Ok",
+        });
       }
+    }
+  };
+  const redirect = function () {
+    router.push(`/recipes?current=${recipe.id}`);
+  };
+
+  //MODAL CONFIRMATION
+  const confirmAction = async function () {
+    setModal({
+      isShown: true,
+      title: "Unbookmark",
+      message: "Unbookmark this recipe?",
+      okFunction: removeBookmarkHandler,
+    });
+  };
+
+  const validateRecipe = async function () {
+    setModal({
+      isShown: true,
+      title: "Validate Recipe",
+      message: "Validating Recipe...",
+      isConfirmButtonShown: false,
+      isCancelButtonShown: false,
+      canBeClosed: false,
+    });
+    const requestData = {
+      sessionId: authState.sessionId,
+      recipe: recipe,
+    };
+    const response = await fetch("/api/validate-bookmark", {
+      method: "POST",
+      body: JSON.stringify(requestData),
+      headers: { "Content-Type": "application/json" },
+    });
+    setModalMessage("Parsing data...");
+
+    const data = await response.json();
+
+    if (data.command === "logout") {
+      updateState();
+      setModal({
+        disableButtons: false,
+        okFunction: null,
+        closeFunction: null,
+        canBeClosed: true,
+        message: data.message,
+        isConfirmButtonShown: false,
+        isCancelButtonShown: true,
+        cancelButtonText: "Ok",
+      });
+    }
+    if (data.command === "delete_local") {
+      removeBookmark(recipe);
+      setModal({
+        disableButtons: false,
+        okFunction: null,
+        closeFunction: null,
+        canBeClosed: true,
+        message: data.message,
+        isConfirmButtonShown: false,
+        isCancelButtonShown: true,
+        cancelButtonText: "Ok",
+      });
+    }
+    if (data.command === "redirect") {
+      setModal({
+        disableButtons: false,
+        okFunction: null,
+        closeFunction: redirect,
+        canBeClosed: true,
+        message: data.message,
+        isConfirmButtonShown: false,
+        isCancelButtonShown: true,
+        cancelButtonText: "View Recipe",
+      });
     }
   };
   return (
     <li className="bookmark">
-      <Link className="bookmark__link" href={`/recipes?current=${recipe.id}`}>
+      <div className="my-recipe__link" onClick={validateRecipe}>
         <div className="bookmark__image-box">
           <img className="bookmark__image" src={recipe.image_url}></img>
         </div>
@@ -40,9 +131,9 @@ const Bookmark = function ({ recipe }) {
           <h2 className="bookmark__title">{recipe.title}</h2>
           <p className="bookmark__author">by: {recipe.publisher}</p>
         </div>
-      </Link>
+      </div>
       <div className="bookmark__unsave">
-        <DeleteLogo onClick={removeBookmarkHandler}></DeleteLogo>
+        <DeleteLogo onClick={confirmAction}></DeleteLogo>
       </div>
     </li>
   );

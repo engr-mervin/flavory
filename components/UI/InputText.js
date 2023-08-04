@@ -14,6 +14,7 @@ const InputText = function ({
   touchSubscribe /*Simulates touch on components*/,
   tooltip,
   touchUnsubscribe,
+  type = "text",
 }) {
   const [validity, setValidity] = useState(false);
   const [value, setValue] = useState("");
@@ -69,7 +70,7 @@ const InputText = function ({
   return (
     <div className="tooltip-parent">
       <input
-        type="text"
+        type={type}
         className={classNames}
         inputtype={inputtype}
         onChange={updateHandler}
