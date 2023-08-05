@@ -8,6 +8,8 @@
     border-radius: 0.5rem;
     border: none;
     overflow: hidden;
+    background-color: $color-primary--white;
+    box-shadow: 0 0 1rem rgba(black, 0.15);
 
     &__image {
       width: 100%;

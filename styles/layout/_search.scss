@@ -1,6 +1,7 @@
 .search {
   @include right-box;
-  @include flex-justify;
+  display: flex;
+  justify-content: space-between;
   flex-direction: column;
   box-shadow: 0 0 2rem rgba(black, 0.1);
   overflow: hidden;
@@ -11,7 +12,7 @@
   &__list {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     column-gap: 3rem;
     row-gap: 3rem;
   }
