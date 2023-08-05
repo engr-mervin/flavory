@@ -1,15 +1,43 @@
 .recipe {
+  @include left-box;
   display: flex;
   flex-direction: column;
-
-  box-shadow: 0 0 2rem rgba(black, 0.1);
-  border-radius: 2rem;
   overflow: hidden;
+
   &__image-box {
     overflow: hidden;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/10;
     width: 100%;
     position: relative;
+  }
+
+  &__title {
+    font-size: 3.5rem;
+    font-family: "Montserrat", monospace;
+    font-weight: 500;
+    letter-spacing: 1px;
+    position: absolute;
+    z-index: 1;
+    bottom: 2rem;
+    right: 2rem;
+    text-transform: uppercase;
+    color: $color-font--white;
+    font-style: italic;
+    text-align: right;
+    display: -webkit-box;
+    max-width: 75%;
+
+    backdrop-filter: blur(2px);
+    & span {
+      border-radius: 0.5rem;
+      padding: 0.5rem 2rem;
+      box-decoration-break: clone;
+      background-image: linear-gradient(
+        to bottom,
+        rgba($color-primary, 0.8),
+        rgba($color-primary, 0.65)
+      );
+    }
   }
   &__image {
     width: 100%;
@@ -17,46 +45,34 @@
     object-fit: cover;
     object-position: center;
     display: block;
-    // filter: blur(1px);
-    // clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   }
 
+  &__details {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    gap: 1rem;
+  }
+  &__publisher {
+    @include classy;
+    color: $color-font--black;
+    font-size: 2.6rem;
+    margin-right: auto;
+  }
   &__button-action {
+    @include button--circle;
     cursor: pointer;
     top: 2rem;
     right: 2rem;
     width: 5rem;
     height: 5rem;
     padding: 1rem;
-    background-color: $color-font--white;
     opacity: 0.9;
-    border: none;
-    border: 1.5px solid $color-primary--lightest;
     font-size: 2rem;
     font-weight: 600;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: $color-font--black;
-    border-radius: 50%;
 
     transition: all 300ms;
-    &:hover {
-      transform: scale(1.1);
-
-      &:disabled {
-        transform: scale(1);
-      }
-    }
-
-    &:disabled {
-      color: #aaa;
-      border: 1.5px solid #aaa;
-      cursor: auto;
-    }
 
     &.saved {
       color: red;
@@ -72,35 +88,20 @@
   }
 
   &__logo-2 {
-    height: 4rem;
-    width: 4rem;
-    margin-right: 2rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    margin-right: 1.5rem;
   }
   &__all-details {
     color: $color-font--black;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    // gap: 1rem;
     padding-bottom: 1rem;
 
     & > * {
       padding: 1rem 2rem;
     }
-  }
-
-  &__details {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    background-color: $color-accent--yellow-light;
-    gap: 1rem;
-  }
-  &__publisher {
-    color: $color-font--black;
-    font-size: 2.6rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-right: auto;
   }
 
   &__link {
@@ -116,46 +117,40 @@
     }
   }
 
-  &__specifics {
-    display: flex;
-    align-items: center;
+  &__controls {
+    @include flex-center;
+    background-color: $color-primary--white-dark-2;
   }
   &__duration {
-    margin-right: auto;
+    @include flex-end;
+    @include classy;
   }
   &__servings {
+    @include classy;
     margin: 0 1rem;
-    width: 13rem;
     text-align: center;
+    margin-right: auto;
+    margin-left: auto;
   }
   &__button {
+    @include flex-center;
+    @include button--smooth;
+    background-color: white;
+    color: $color-font--black;
+    // border: 1.5px solid $color-font--black;
     cursor: pointer;
-    top: 2rem;
     margin: 0 0.5rem;
-    right: 2rem;
     height: 5rem;
     padding: 1rem;
-    background-color: $color-font--white;
-    opacity: 0.9;
-    border: none;
-    border-radius: 1rem;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition: all 300ms;
-    &:hover {
-      transform: scale(1.05);
+    &:first-child {
+      margin-left: 0;
     }
-
     &:last-child {
       margin-right: 0;
     }
 
     & span {
-      bottom: 0.4rem;
-      right: 0.4rem;
       font-size: 1.2rem;
     }
   }

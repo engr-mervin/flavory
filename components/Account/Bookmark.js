@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import UserDataContext from "../../store/user-data-context";
@@ -10,7 +9,7 @@ const Bookmark = function ({ recipe }) {
   const router = useRouter();
   const { userData, removeBookmark } = useContext(UserDataContext);
   const { authState } = useContext(AuthContext);
-  const { setModal, setModalMessage } = useContext(ModalContext);
+  const { setModal, setModalMessage, hideModal } = useContext(ModalContext);
   const removeBookmarkHandler = async function () {
     const requestData = {
       sessionId: authState.sessionId,
@@ -19,7 +18,8 @@ const Bookmark = function ({ recipe }) {
     setModal({
       disableButtons: true,
       canBeClosed: false,
-      message: "Removing bookmark...Please wait.",
+      message: "Removing bookmark...",
+      message2: "Please wait...",
     });
     const exists = userData.bookmarks.findIndex(
       (bookmark) => bookmark.id === recipe.id
@@ -37,11 +37,14 @@ const Bookmark = function ({ recipe }) {
         removeBookmark(recipe);
         setModal({
           disableButtons: false,
-          okFunction: null,
+          okFunction: () => {
+            hideModal();
+          },
           canBeClosed: true,
           message: data.message,
-          isConfirmButtonShown: false,
-          cancelButtonText: "Ok",
+          message2: "",
+          isCancelButtonShown: false,
+          okButtonText: "Close",
         });
       }
     }
@@ -54,8 +57,9 @@ const Bookmark = function ({ recipe }) {
   const confirmAction = async function () {
     setModal({
       isShown: true,
-      title: "Unbookmark",
-      message: "Unbookmark this recipe?",
+      title: "Confirmation",
+      message: "Remove this recipe from bookmarks?",
+      message2: "You can always bookmark the recipe again.",
       okFunction: removeBookmarkHandler,
     });
   };
@@ -65,7 +69,9 @@ const Bookmark = function ({ recipe }) {
       isShown: true,
       title: "Validate Recipe",
       message: "Validating Recipe...",
-      isConfirmButtonShown: false,
+      isConfirmButtonShown: true,
+      disableButtons: true,
+      okButtonText: "View Recipe",
       isCancelButtonShown: false,
       canBeClosed: false,
     });
@@ -86,13 +92,15 @@ const Bookmark = function ({ recipe }) {
       updateState();
       setModal({
         disableButtons: false,
-        okFunction: null,
+        okFunction: () => {
+          hideModal();
+        },
         closeFunction: null,
         canBeClosed: true,
         message: data.message,
-        isConfirmButtonShown: false,
-        isCancelButtonShown: true,
-        cancelButtonText: "Ok",
+        isConfirmButtonShown: true,
+        isCancelButtonShown: false,
+        okButtonText: "Ok",
       });
     }
     if (data.command === "delete_local") {
@@ -111,13 +119,16 @@ const Bookmark = function ({ recipe }) {
     if (data.command === "redirect") {
       setModal({
         disableButtons: false,
-        okFunction: null,
-        closeFunction: redirect,
+        okFunction: () => {
+          redirect();
+          hideModal();
+        },
+        closeFunction: null,
         canBeClosed: true,
         message: data.message,
-        isConfirmButtonShown: false,
-        isCancelButtonShown: true,
-        cancelButtonText: "View Recipe",
+        isConfirmButtonShown: true,
+        isCancelButtonShown: false,
+        okButtonText: "View Recipe",
       });
     }
   };
@@ -129,7 +140,8 @@ const Bookmark = function ({ recipe }) {
         </div>
         <div className="account-card__details-box">
           <h2 className="account-card__title">{recipe.title}</h2>
-          <p className="account-card__author">by: {recipe.publisher}</p>
+          <p className="account-card__extra">Published by:</p>
+          <p className="account-card__extra">{recipe.publisher}</p>
         </div>
       </div>
       <div className="account-card__unsave">

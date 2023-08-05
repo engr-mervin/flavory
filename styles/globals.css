@@ -17,7 +17,7 @@ body {
 }
 
 ::selection {
-  background: #ea5c2b;
+  background: rgb(234, 92, 43);
   color: rgb(255, 245, 236);
 }
 
@@ -104,7 +104,7 @@ body {
 body {
   font-size: 1.6rem;
   font-weight: 400;
-  color: #ea5c2b;
+  color: rgb(234, 92, 43);
   font-family: "Montserrat", sans-serif;
 }
 
@@ -166,31 +166,6 @@ body {
   letter-spacing: 0.5px;
 }
 
-.heading--2b {
-  font-size: 3.5rem;
-  font-family: "Montserrat", monospace;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  right: 0;
-  text-transform: uppercase;
-  color: rgb(255, 250, 246);
-  font-style: italic;
-  text-align: right;
-  display: -webkit-box;
-  max-width: 75%;
-  margin-right: 2rem;
-  margin-bottom: 2rem;
-  backdrop-filter: blur(2px);
-}
-.heading--2b span {
-  padding: 0.5rem 2rem;
-  box-decoration-break: clone;
-  background-image: linear-gradient(to top, rgba(149, 205, 65, 0.8), rgba(149, 205, 65, 0.6));
-}
-
 .heading--2d {
   font-size: 2.8rem;
   font-weight: 500;
@@ -221,6 +196,14 @@ body {
   justify-content: flex-start;
 }
 
+.classy {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+}
+
 .button--action {
   display: flex;
   align-items: center;
@@ -230,11 +213,11 @@ body {
   height: 5rem;
   border-radius: 30%;
   cursor: pointer;
-  border: 1.5px solid #ea5c2b;
+  border: 1.5px solid rgb(234, 92, 43);
   transition: all 200ms;
 }
 .button--action:hover {
-  background-color: #ea5c2b;
+  background-color: rgb(234, 92, 43);
   transform: scale(1.08);
 }
 .button--action:hover .icon {
@@ -242,12 +225,12 @@ body {
 }
 .button .icon {
   transition: all 200ms;
-  color: #ea5c2b;
+  color: rgb(234, 92, 43);
   width: 3rem;
   height: 3rem;
 }
 .button-hero--signup {
-  background-color: #ea5c2b;
+  background-color: rgb(234, 92, 43);
   border: none;
   padding: 1rem 3rem;
   border-radius: 1rem;
@@ -265,7 +248,7 @@ body {
 }
 .button-hero--start {
   background-color: rgb(255, 250, 246);
-  border: 1.5px solid #ea5c2b;
+  border: 1.5px solid rgb(234, 92, 43);
   padding: 1rem 3rem;
   border-radius: 1rem;
   font-size: 1.6rem;
@@ -333,7 +316,7 @@ body {
   transition: all 300ms;
 }
 .tab.active {
-  border-bottom: 3px solid #ea5c2b;
+  border-bottom: 3px solid rgb(234, 92, 43);
 }
 .tab:hover {
   transform: scale(1.05);
@@ -346,7 +329,7 @@ body {
 .mask1--recipes {
   width: 120%;
   aspect-ratio: 1/1;
-  background-color: rgb(250, 238, 229);
+  background-color: rgb(255, 247, 238);
   filter: blur(200px) saturate(70%);
   border-radius: 50%;
   top: 100%;
@@ -356,7 +339,7 @@ body {
 .mask1--recipes-3 {
   width: 120%;
   aspect-ratio: 1/1;
-  background-color: rgb(250, 238, 229);
+  background-color: rgb(255, 247, 238);
   filter: blur(200px) saturate(70%);
   border-radius: 50%;
   top: 0%;
@@ -381,7 +364,7 @@ body {
   left: calc(50% - 3.25rem);
   z-index: 1;
   width: 6.5rem;
-  border: 5px solid #ea5c2b;
+  border: 5px solid rgb(234, 92, 43);
   border-top: 5px solid transparent;
   animation-duration: 1000ms;
   animation-timing-function: ease-in;
@@ -417,7 +400,7 @@ body {
   left: calc(50% - 1.625rem);
   z-index: 1;
   width: 3.25rem;
-  border: 0.25rem solid #ea5c2b;
+  border: 0.25rem solid rgb(234, 92, 43);
   border-top: 0.25rem solid transparent;
   animation-duration: 1000ms;
   animation-timing-function: ease-in;
@@ -449,7 +432,7 @@ body {
   height: 4rem;
   width: 4rem;
   border-radius: 50%;
-  border: 1.5px solid #ea5c2b;
+  border: 1.5px solid rgb(234, 92, 43);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -468,13 +451,14 @@ body {
 
 .account-card {
   border-radius: 0.8rem;
-  box-shadow: 0rem 0rem 3rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0rem 0rem 3rem rgba(0, 0, 0, 0.15);
   overflow: hidden;
   position: relative;
   transition: all 300ms;
 }
 .account-card:hover {
-  transform: translateY(-0.5rem);
+  transform: translateY(-0.3rem);
+  box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.1);
 }
 .account-card__link {
   display: grid;
@@ -487,8 +471,17 @@ body {
   cursor: pointer;
 }
 .account-card__title {
-  font-size: 2.2rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  padding-bottom: 2rem;
+  margin-bottom: auto;
+}
+.account-card__extra {
+  font-size: 1.4rem;
 }
 .account-card__details-box {
   padding: 2rem;
@@ -496,7 +489,6 @@ body {
   text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 .account-card__image-box {
   height: 20rem;
@@ -510,26 +502,28 @@ body {
   object-fit: cover;
 }
 .account-card__unsave {
+  background-color: #ff7f3f;
+  cursor: pointer;
+  color: rgb(255, 245, 236);
+  border-radius: 1rem;
+  border: 1.5px solid transparent;
+  transition: all 300ms;
   height: 4rem;
   width: 4rem;
   padding: 0.75rem;
-  border-radius: 0.5rem;
-  background-color: #ea5c2b;
-  color: rgb(250, 238, 229);
   position: absolute;
   bottom: 1rem;
   right: 1rem;
   cursor: pointer;
-  transition: all 300ms;
 }
 .account-card__unsave:hover {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 .recipe-card__tag {
   position: absolute;
   right: 0;
-  background-color: #ea5c2b;
+  background-color: rgb(234, 92, 43);
   padding: 1.2rem 2rem;
   top: 0;
   color: rgb(255, 245, 236);
@@ -542,7 +536,7 @@ body {
   border-radius: 1rem;
 }
 .recipe-card:link, .recipe-card:visited {
-  outline: 3.5px solid #ea5c2b;
+  outline: 3.5px solid rgb(234, 92, 43);
   outline-offset: 6.5px;
   min-height: 45rem;
   text-decoration: none;
@@ -666,7 +660,7 @@ body {
   width: 4.25rem;
   padding: 0.75rem;
   border-radius: 0.5rem;
-  background-color: rgb(250, 238, 229);
+  background-color: rgb(255, 247, 238);
   color: currentColor;
   fill: currentColor;
   position: absolute;
@@ -726,7 +720,7 @@ body {
   width: 4.25rem;
   padding: 0.75rem;
   border-radius: 0.5rem;
-  background-color: rgb(250, 238, 229);
+  background-color: rgb(255, 247, 238);
   color: currentColor;
   fill: currentColor;
   position: absolute;
@@ -740,26 +734,47 @@ body {
 }
 
 .new-recipe {
-  padding: 8rem 20rem;
+  padding: 4rem 4rem;
+  background-color: white;
 }
 .new-recipe__form {
-  padding: 6rem;
+  padding: 4rem;
   padding-bottom: 3rem;
-  border-radius: 1.5em;
-  margin-top: 4rem;
+  border-radius: 1.5rem;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.new-recipe__title {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  text-align: center;
+  font-size: 3.5rem;
+  border-bottom: 1.5px solid #3f2107;
+  padding: 1rem 0;
+  font-weight: 300;
+}
+.new-recipe__subtitle {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  padding: 1rem 0;
 }
 .new-recipe__group--1 {
   display: grid;
-  grid-template-columns: 3fr 4.5fr 3fr 4.5fr;
+  grid-template-columns: 1fr 1.5fr 1fr 1.5fr;
   column-gap: 6rem;
   row-gap: 1.5rem;
   align-items: center;
-  margin-top: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 .new-recipe__group--2 {
-  margin-top: 2rem;
   display: grid;
   grid-template-columns: auto 2fr auto 3fr auto 5fr;
   column-gap: 3rem;
@@ -773,46 +788,49 @@ body {
 }
 .new-recipe__button-box {
   display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-  padding: 0 4rem;
-  align-items: flex-end;
-}
-.new-recipe__status {
-  margin-top: 8rem;
-  text-align: center;
-  display: block;
-  color: red;
-}
-.new-recipe__button {
-  background-color: rgb(255, 250, 246);
-  cursor: pointer;
-  width: 6rem;
-  height: 6rem;
-  transition: all 300ms;
-  font-size: 4rem;
-  color: #3f2107;
-  border-radius: 50%;
-  border: 1.5px solid #fdc5a9;
-  display: flex;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding: 0 4rem;
+}
+.new-recipe__status {
+  text-align: center;
+  display: block;
+  color: rgb(255, 120, 120);
+  letter-spacing: 1px;
+  margin-top: 4rem;
+}
+.new-recipe__button {
+  background-color: #ff7f3f;
+  cursor: pointer;
+  color: rgb(255, 245, 236);
+  border-radius: 1rem;
+  border: 1.5px solid transparent;
+  transition: all 300ms;
+  width: 6rem;
+  height: 6rem;
+  font-size: 3.2rem;
 }
 .new-recipe__button:hover {
   transform: scale(1.05);
 }
 .new-recipe__submit-button {
-  background-color: rgb(255, 250, 246);
+  background-color: #ff7f3f;
   cursor: pointer;
-  padding: 1.5rem 3.5rem;
-  transition: all 300ms;
-  font-size: 1.8rem;
-  color: #3f2107;
+  color: rgb(255, 245, 236);
   border-radius: 1rem;
-  border: 1.5px solid #fdc5a9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 1.5px solid transparent;
+  transition: all 300ms;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  color: rgb(255, 245, 236);
+  height: 6rem;
+  font-size: 1.8rem;
+  padding: 1.5rem 2.5rem;
 }
 .new-recipe__submit-button:hover {
   transform: scale(1.05);
@@ -834,68 +852,75 @@ body {
   outline: 1.5px solid #ff7f3f;
 }
 .input.invalid {
-  background-color: rgb(253, 200, 200);
-  outline: 1.5px solid rgb(255, 107, 107);
+  background-color: rgb(255, 215, 215);
+  outline: 1.5px solid rgb(255, 120, 120);
 }
 .input__label {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
   font-size: 1.6rem;
   color: #3f2107;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .modal__overlay {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.75);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
   backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3f2107;
 }
 .modal__box {
-  width: 25%;
+  min-width: 40rem;
+  max-width: 80%;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgb(255, 245, 236);
-  border-radius: 1.5rem;
+  background-color: rgb(255, 250, 246);
+  border-radius: 1rem;
   overflow: hidden;
-}
-.modal__message-box {
-  padding: 3rem 2.5rem;
-  font-size: 1.6rem;
-  color: #3f2107;
-  text-align: left;
-  font-style: italic;
-  padding-bottom: 0;
-}
-.modal__message-box-2 {
-  padding: 2rem 2.5rem;
-  font-size: 1.6rem;
-  color: #3f2107;
-  text-align: left;
-  font-style: italic;
-  padding-top: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 .modal__title-box {
-  background-color: #3f2107;
-  text-transform: uppercase;
-  font-size: 2.5rem;
-  padding: 1rem 2.5rem;
+  text-transform: none;
+  font-size: 2.4rem;
   font-weight: 500;
-  letter-spacing: 0.5px;
-  color: rgb(255, 245, 236);
+  padding: 0.8rem 1rem;
+  border-bottom: 2px solid #3f2107;
+}
+.modal__message-box {
+  display: flex;
+  flex-direction: column;
+  padding-right: 4rem;
+}
+.modal__message {
+  font-size: 1.6rem;
+  color: #3f2107;
+  text-align: left;
+  font-style: italic;
+  padding: 0 1rem;
+}
+.modal__message:not(:last-child) {
+  padding-bottom: 0.8rem;
 }
 .modal__button-box {
   display: flex;
   justify-content: flex-end;
-  gap: 2rem;
-  padding: 1rem 2.5rem;
+  gap: 1rem;
 }
 .modal__button--confirm, .modal__button--cancel {
-  background-color: #ea5c2b;
+  background-color: rgb(234, 92, 43);
   border: 1px solid transparent;
   border-radius: 0.5rem;
   color: rgb(255, 245, 236);
@@ -908,13 +933,18 @@ body {
   transform: scale(1.05);
 }
 .modal__button--confirm:disabled, .modal__button--cancel:disabled {
-  background-color: rgb(255, 245, 236);
-  border: 1px solid rgb(197, 197, 197);
-  color: rgb(197, 197, 197);
-  cursor: auto;
+  background-color: rgb(255, 250, 246);
+  border: 1px solid rgb(177, 177, 177);
+  color: rgb(177, 177, 177);
+  cursor: not-allowed;
 }
 .modal__button--confirm:disabled:hover, .modal__button--cancel:disabled:hover {
   transform: scale(1);
+}
+.modal__button--cancel {
+  background-color: rgb(255, 250, 246);
+  color: #3f2107;
+  border: 1px solid rgb(234, 92, 43);
 }
 
 body:has(.modal__overlay) {
@@ -923,7 +953,7 @@ body:has(.modal__overlay) {
 
 .tooltip {
   position: absolute;
-  min-width: 8rem;
+  min-width: 12rem;
   max-width: 24rem;
   top: 95%;
   left: 95%;
@@ -947,6 +977,99 @@ body:has(.modal__overlay) {
 .tooltip-parent:hover .tooltip {
   opacity: 1;
   visibility: visible;
+}
+
+.search-item__front, .search-item__back {
+  width: 100%;
+  position: relative;
+  aspect-ratio: 1/1;
+  transition: all 500ms;
+  border-radius: 0.5rem;
+  border: none;
+  overflow: hidden;
+}
+.search-item__front__image, .search-item__back__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.search-item__front__image-box, .search-item__back__image-box {
+  display: block;
+  height: 100%;
+}
+.search-item__front__mask, .search-item__back__mask {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom right, rgba(255, 127, 63, 0.15), rgba(255, 127, 63, 0.05));
+}
+.search-item__front__title-box, .search-item__back__title-box {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.5rem;
+  text-align: left;
+  width: 100%;
+}
+.search-item__front__title, .search-item__back__title {
+  max-width: 100%;
+  background-image: linear-gradient(to bottom right, rgba(246, 216, 96, 0.95), rgba(246, 216, 96, 0.75));
+  color: #3f2107;
+  font-style: italic;
+  font-weight: 500;
+  padding: 0.3rem 1rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  display: inline-block;
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+.search-item__front {
+  z-index: 1;
+  backface-visibility: hidden;
+  transform: rotateY(0deg);
+}
+.search-item__front__title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.search-item__back {
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+  z-index: 0;
+  backface-visibility: visible;
+  position: absolute;
+}
+.search-item__back__image {
+  transform: rotateY(180deg);
+  filter: blur(3px);
+}
+.search-item__back__title-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.search-item__back__publisher {
+  max-width: 100%;
+  background-image: linear-gradient(to bottom right, rgba(149, 205, 65, 0.95), rgba(149, 205, 65, 0.75));
+  color: #3f2107;
+  font-style: italic;
+  font-weight: 500;
+  padding: 0.3rem 1rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  display: inline-block;
+  border-radius: 0.3rem;
+}
+.search-item:hover .search-item__front {
+  transform: rotateY(180deg);
+}
+.search-item:hover .search-item__back {
+  transform: rotateY(360deg);
 }
 
 .header {
@@ -1105,7 +1228,7 @@ body:has(.modal__overlay) {
   padding: 1.5rem 6rem;
   padding-top: 1.5rem;
   border-bottom: 3px double #3f2107;
-  background-color: rgb(255, 250, 246);
+  background-color: white;
   display: flex;
   justify-content: space-between;
   animation: fade 800ms;
@@ -1134,32 +1257,31 @@ body:has(.modal__overlay) {
   transition: all 250ms;
   border-radius: 2px;
   font-size: 1.8rem;
+  border-bottom: 2px solid transparent;
 }
 .navigation-item a:hover,
 .navigation-item a:active, .navigation-item-2 a:hover,
 .navigation-item-2 a:active, .navigation-item-3 a:hover,
 .navigation-item-3 a:active {
-  transform: scale(1.05);
-  background-color: rgb(250, 238, 229);
+  border-bottom: 2px solid rgb(234, 92, 43);
 }
-.navigation-item.current {
-  background-color: rgb(250, 238, 229);
-  transform: scale(1.05);
+.navigation-item.current a {
+  border-bottom: 2px solid rgb(234, 92, 43);
 }
 .navigation-item-2 a:link,
 .navigation-item-2 a:visited {
   padding: 1rem 3rem;
   color: rgb(255, 245, 236);
-  background-color: #ea5c2b;
+  background-color: rgb(234, 92, 43);
   border-radius: 1rem;
 }
 .navigation-item-3 a:link,
 .navigation-item-3 a:visited {
   padding: 1rem 3rem;
-  color: #ea5c2b;
+  color: rgb(234, 92, 43);
   background-color: rgb(255, 250, 246);
   border-radius: 1rem;
-  border: 2px solid #ea5c2b;
+  border: 2px solid rgb(234, 92, 43);
 }
 .navigation__logout {
   padding: 1rem 3rem;
@@ -1192,7 +1314,7 @@ body:has(.modal__overlay) {
   flex-direction: column;
   gap: 6rem;
   padding: 15rem 30rem;
-  background-color: rgb(250, 238, 229);
+  background-color: rgb(255, 247, 238);
   overflow: hidden;
   position: relative;
 }
@@ -1247,7 +1369,7 @@ body:has(.modal__overlay) {
   border-image: url("../assets/svg blobs/blob-1.svg");
   border-image-slice: 30 fill;
   z-index: 1;
-  outline: 3.5px solid #ea5c2b;
+  outline: 3.5px solid rgb(234, 92, 43);
   outline-offset: 6px;
   cursor: pointer;
   animation: zoomOut 400ms;
@@ -1281,17 +1403,44 @@ body:has(.modal__overlay) {
 }
 
 .recipe {
+  border-radius: 1rem;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 3px solid rgb(234, 92, 43);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
-  border-radius: 2rem;
   overflow: hidden;
 }
 .recipe__image-box {
   overflow: hidden;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/10;
   width: 100%;
   position: relative;
+}
+.recipe__title {
+  font-size: 3.5rem;
+  font-family: "Montserrat", monospace;
+  font-weight: 500;
+  letter-spacing: 1px;
+  position: absolute;
+  z-index: 1;
+  bottom: 2rem;
+  right: 2rem;
+  text-transform: uppercase;
+  color: rgb(255, 245, 236);
+  font-style: italic;
+  text-align: right;
+  display: -webkit-box;
+  max-width: 75%;
+  backdrop-filter: blur(2px);
+}
+.recipe__title span {
+  border-radius: 0.5rem;
+  padding: 0.5rem 2rem;
+  box-decoration-break: clone;
+  background-image: linear-gradient(to bottom, rgba(234, 92, 43, 0.8), rgba(234, 92, 43, 0.65));
 }
 .recipe__image {
   width: 100%;
@@ -1300,36 +1449,48 @@ body:has(.modal__overlay) {
   object-position: center;
   display: block;
 }
+.recipe__details {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  gap: 1rem;
+}
+.recipe__publisher {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  color: #3f2107;
+  font-size: 2.6rem;
+  margin-right: auto;
+}
 .recipe__button-action {
+  background-color: white;
+  border: 1.5px solid rgb(234, 92, 43);
+  border-radius: 50%;
+  color: rgb(234, 92, 43);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   top: 2rem;
   right: 2rem;
   width: 5rem;
   height: 5rem;
   padding: 1rem;
-  background-color: rgb(255, 245, 236);
   opacity: 0.9;
-  border: none;
-  border: 1.5px solid #fdc5a9;
   font-size: 2rem;
   font-weight: 600;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #3f2107;
-  border-radius: 50%;
   transition: all 300ms;
 }
-.recipe__button-action:hover {
-  transform: scale(1.1);
-}
-.recipe__button-action:hover:disabled {
-  transform: scale(1);
+.recipe__button-action:hover:not(:disabled) {
+  transform: scale(1.05);
 }
 .recipe__button-action:disabled {
-  color: #aaa;
-  border: 1.5px solid #aaa;
+  color: #f5f5f5;
+  border: 1.5px solid #f5f5f5;
   cursor: auto;
 }
 .recipe__button-action.saved {
@@ -1342,80 +1503,82 @@ body:has(.modal__overlay) {
   fill: currentColor;
 }
 .recipe__logo-2 {
-  height: 4rem;
-  width: 4rem;
-  margin-right: 2rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  margin-right: 1.5rem;
 }
 .recipe__all-details {
   color: #3f2107;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   padding-bottom: 1rem;
 }
 .recipe__all-details > * {
   padding: 1rem 2rem;
 }
-.recipe__details {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  background-color: #fcf7e1;
-  gap: 1rem;
-}
-.recipe__publisher {
-  color: #3f2107;
-  font-size: 2.6rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-right: auto;
-}
 .recipe__link {
   text-align: right;
 }
 .recipe__link:link, .recipe__link:visited {
-  color: #ea5c2b;
+  color: rgb(234, 92, 43);
 }
 .recipe__link:hover, .recipe__link:active {
   font-weight: 500;
 }
-.recipe__specifics {
-  display: flex;
-  align-items: center;
-}
-.recipe__duration {
-  margin-right: auto;
-}
-.recipe__servings {
-  margin: 0 1rem;
-  width: 13rem;
-  text-align: center;
-}
-.recipe__button {
-  cursor: pointer;
-  top: 2rem;
-  margin: 0 0.5rem;
-  right: 2rem;
-  height: 5rem;
-  padding: 1rem;
-  background-color: rgb(255, 245, 236);
-  opacity: 0.9;
-  border: none;
-  border-radius: 1rem;
+.recipe__controls {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgb(249, 229, 214);
+}
+.recipe__duration {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+}
+.recipe__servings {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  margin: 0 1rem;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+.recipe__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff7f3f;
+  cursor: pointer;
+  color: rgb(255, 245, 236);
+  border-radius: 1rem;
+  border: 1.5px solid transparent;
   transition: all 300ms;
+  background-color: white;
+  color: #3f2107;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  height: 5rem;
+  padding: 1rem;
 }
 .recipe__button:hover {
   transform: scale(1.05);
+}
+.recipe__button:first-child {
+  margin-left: 0;
 }
 .recipe__button:last-child {
   margin-right: 0;
 }
 .recipe__button span {
-  bottom: 0.4rem;
-  right: 0.4rem;
   font-size: 1.2rem;
 }
 .recipe__ingredient-list {
@@ -1532,12 +1695,28 @@ body:has(.modal__overlay) {
 }
 
 .search {
+  border-radius: 1rem;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 3px solid rgb(234, 92, 43);
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-direction: column;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
-  border-radius: 2rem;
   overflow: hidden;
-  justify-content: space-between;
+}
+.search__box {
+  padding: 4rem;
+}
+.search__list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  column-gap: 3rem;
+  row-gap: 3rem;
 }
 .search__button-box {
   padding: 6rem;
@@ -1547,12 +1726,6 @@ body:has(.modal__overlay) {
   justify-content: space-between;
   padding: 0 5rem;
   margin-bottom: 2rem;
-}
-.search__box {
-  padding: 6rem;
-  border-radius: 2rem;
-  min-height: 20rem;
-  background-color: rgba(255, 245, 236, 0.15);
 }
 .search-bar {
   padding: 1rem;
@@ -1565,7 +1738,7 @@ body:has(.modal__overlay) {
 }
 .search-bar:focus {
   outline: none;
-  border: 2px solid #ea5c2b;
+  border: 2px solid rgb(234, 92, 43);
 }
 .search-button {
   padding: 1rem 2rem;
@@ -1583,140 +1756,36 @@ body:has(.modal__overlay) {
   grid-column: 1/-1;
   padding: 0 16rem;
 }
-.search-list {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  column-gap: 3rem;
-  row-gap: 3rem;
-}
-.search__item:hover .search__item--front, .search__item:hover .search__item--back {
-  transform: rotateY(180deg);
-}
-.search__item--front, .search__item--back {
-  width: 100%;
-  background-color: rgb(255, 250, 246);
-  box-shadow: 1rem 1rem 2rem rgba(63, 33, 7, 0.13);
-  position: relative;
-  aspect-ratio: 1/1;
-  transition: all 500ms;
-  backface-visibility: hidden;
-  border-radius: 1rem;
-  border: none;
-  overflow: hidden;
-}
-.search__item--front__image, .search__item--back__image {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-.search__item--front__image-box, .search__item--back__image-box {
-  display: block;
-  height: 100%;
-}
-.search__item--front__mask, .search__item--back__mask {
-  position: absolute;
-  z-index: 3;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(to bottom right, rgba(255, 127, 63, 0.15), rgba(255, 127, 63, 0.05));
-}
-.search__item--front__title-box, .search__item--back__title-box {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 0.5rem;
-  text-align: left;
-  width: 100%;
-}
-.search__item--front__title, .search__item--back__title {
-  max-width: 100%;
-  background-image: linear-gradient(to bottom right, rgba(246, 216, 96, 0.95), rgba(246, 216, 96, 0.75));
-  color: #3f2107;
-  font-style: italic;
-  font-weight: 500;
-  padding: 0.3rem 1rem;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  display: inline-block;
-  border-radius: 0.3rem;
-  overflow: hidden;
-}
-.search__item--front {
-  transform: rotateY(0deg);
-}
-.search__item--front__title {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.search__item--back {
-  top: 0;
-  left: 0;
-  transform: rotateY(0deg);
-  z-index: -1;
-  backface-visibility: visible;
-  position: absolute;
-}
-.search__item--back__image {
-  filter: blur(3px);
-}
-.search__item--back__title-box {
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-.search__item--back__publisher {
-  max-width: 100%;
-  background-image: linear-gradient(to bottom right, rgba(149, 205, 65, 0.95), rgba(149, 205, 65, 0.75));
-  color: #3f2107;
-  font-style: italic;
-  font-weight: 500;
-  padding: 0.3rem 1rem;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  display: inline-block;
-  border-radius: 0.3rem;
-}
 
 .no-selected {
-  min-height: 20rem;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: center;
   padding: 5rem;
-  padding-left: 22rem;
-  position: relative;
-  border-bottom: 8px solid #ea5c2b;
 }
-.no-selected__logo {
-  height: 4rem;
-  width: 4rem;
+.no-selected__message {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
   color: #3f2107;
-  fill: #3f2107;
-  margin-right: 1rem;
-}
-.no-selected__art {
-  position: absolute;
-  height: 18rem;
-  height: 100%;
-  color: #ea5c2b;
-  left: -10%;
-  bottom: 0;
-  opacity: 0.7;
-  z-index: -1;
+  font-size: 2.5rem;
 }
 
 .no-selected-account {
-  min-height: 20rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  padding: 5rem;
-  padding-left: 22rem;
   position: relative;
+  padding-bottom: 2rem;
+}
+.no-selected-account__message {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  font-size: 2rem;
 }
 .no-selected-account__logo {
   height: 4rem;
@@ -1729,7 +1798,7 @@ body:has(.modal__overlay) {
   position: absolute;
   height: 18rem;
   height: 100%;
-  color: #ea5c2b;
+  color: rgb(234, 92, 43);
   left: -10%;
   bottom: 0;
   opacity: 0.7;
@@ -1765,17 +1834,28 @@ body:has(.modal__overlay) {
   margin: 1rem 1.5rem;
 }
 .pages__button {
+  background-color: white;
+  border: 1.5px solid rgb(234, 92, 43);
+  border-radius: 50%;
+  color: rgb(234, 92, 43);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   font: inherit;
-  background-color: rgb(255, 245, 236);
-  color: #3f2107;
   height: 4rem;
   width: 4rem;
-  border-radius: 50%;
-  border: 1.5px solid #ea5c2b;
+}
+.pages__button:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+.pages__button:disabled {
+  color: #f5f5f5;
+  border: 1.5px solid #f5f5f5;
+  cursor: auto;
 }
 .pages__button.current {
-  background-color: #ea5c2b;
+  background-color: rgb(234, 92, 43);
   color: rgb(255, 245, 236);
 }
 
@@ -1801,7 +1881,7 @@ body:has(.modal__overlay) {
   align-items: center;
 }
 .signup__submit {
-  background-color: #ea5c2b;
+  background-color: rgb(234, 92, 43);
   border: none;
   font-family: inherit;
   color: rgb(255, 245, 236);
@@ -1834,7 +1914,7 @@ body:has(.modal__overlay) {
   align-items: center;
 }
 .login__submit {
-  background-color: #ea5c2b;
+  background-color: rgb(234, 92, 43);
   grid-column: 2/-1;
   border: none;
   font-family: inherit;
@@ -1850,24 +1930,29 @@ body:has(.modal__overlay) {
   padding: 4rem;
   display: grid;
   grid-template-columns: 2fr 5fr;
-  gap: 2rem;
+  gap: 4rem;
   color: #3f2107;
 }
 .account__box {
   grid-row: 1/-1;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 }
 .account__stats-box {
-  background-color: #f5f5f5;
-  padding: 2.4rem;
   border-radius: 1rem;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 3px solid rgb(234, 92, 43);
+  padding: 2.4rem;
 }
 .account__stats {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 300;
-  font-style: italic;
+  text-align: justify;
+  line-height: 1.5;
 }
 .account__stats:not(:last-child) {
   padding-bottom: 1rem;
@@ -1875,23 +1960,31 @@ body:has(.modal__overlay) {
 .account__content-box {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3.5rem;
 }
 .account__title {
+  border-radius: 1rem;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 3px solid rgb(234, 92, 43);
   text-align: center;
   font-family: "Montserrat", monospace;
   font-weight: 400;
   letter-spacing: 1.5px;
-  font-size: 3.2rem;
-  background-color: #f5f5f5;
-  border-radius: 1rem;
+  font-size: 2.8rem;
   padding: 1.6rem;
   text-transform: uppercase;
 }
 .account__recipes-box {
-  padding: 2rem 4rem;
-  background-color: #f5f5f5;
   border-radius: 1rem;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 3px solid rgb(234, 92, 43);
+  padding: 2rem 4rem;
   display: grid;
 }
 .account__subtitle {

@@ -13,6 +13,8 @@ import { round } from "../../util/numbers";
 import ModalContext from "../../store/modal-context";
 import useRouterFilter from "../../custom-hooks/use-router-filter";
 import { useRouter } from "next/router";
+import DeleteLogo from "../../assets/trash-outline.svg";
+import NoSelectedAccount from "../Fallback Pages/NoSelectedAccount";
 
 const Recipe = function ({ currentRecipe }) {
   const { setModalMessage, setModal } = useContext(ModalContext);
@@ -79,7 +81,7 @@ const Recipe = function ({ currentRecipe }) {
 
       const data = await response.json();
 
-      if (!data.ok) {
+      if (!data.ok && !data.message === "Not yet bookmarked.") {
         addBookmark(currentRecipe);
       }
     } else {
@@ -90,7 +92,7 @@ const Recipe = function ({ currentRecipe }) {
         headers: { "Content-Type": "application/json" },
       });
       const data = await response.json();
-      if (!data.ok) {
+      if (!data.ok && !data.message === "Already bookmarked") {
         removeBookmark(currentRecipe);
       }
     }
@@ -183,7 +185,7 @@ const Recipe = function ({ currentRecipe }) {
         <>
           <div className="recipe__image-box">
             <img className="recipe__image" src={currentRecipe.image_url}></img>
-            <h2 className="heading--2b">
+            <h2 className="recipe__title">
               <span>{currentRecipe.title}</span>
             </h2>
           </div>
@@ -207,15 +209,13 @@ const Recipe = function ({ currentRecipe }) {
                   disabled={authState.isAuth ? false : true}
                   onClick={confirmAction}
                 >
-                  &#10005;
+                  <DeleteLogo />
                 </button>
               ) : (
                 ""
               )}
             </div>
-            <div className="recipe__specifics">
-              <TimeLogo className="recipe__logo-2"></TimeLogo>
-              <div className="recipe__duration">{`${currentRecipe.cooking_time} minutes`}</div>
+            <div className="recipe__controls">
               <button className="recipe__button" onClick={subtract(10)}>
                 <SubtractLogo className="recipe__logo"></SubtractLogo>
                 <span>10</span>
@@ -233,6 +233,10 @@ const Recipe = function ({ currentRecipe }) {
                 <AddLogo className="recipe__logo"></AddLogo>
                 <span>10</span>
               </button>
+            </div>
+            <div className="recipe__duration">
+              <TimeLogo className="recipe__logo-2"></TimeLogo>
+              <p className="recipe__duration-text">{`${currentRecipe.cooking_time} minutes`}</p>
             </div>
             <ul className="recipe__ingredient-list">
               {currentRecipe.ingredients.map((ingredient, ind) => (
@@ -259,13 +263,11 @@ const Recipe = function ({ currentRecipe }) {
         </>
       ) : (
         <NoSelected
-          imageSource="http://forkify-api.herokuapp.com/images/mare_portobello_burgers_with_pesto_provolone_and_roasted_peppers_h05d8.jpg"
           message={
             !router.query.current
               ? "Please select a recipe first!"
               : "Recipe is either missing or deleted."
           }
-          withImage={true}
         ></NoSelected>
       )}
     </div>

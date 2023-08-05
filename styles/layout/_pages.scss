@@ -9,15 +9,13 @@
     margin: 1rem 1.5rem;
   }
   &__button {
+    @include button--circle;
     cursor: pointer;
     font: inherit;
-    background-color: $color-font--white;
-    color: $color-font--black;
+    // background-color: $color-font--white;
+    // color: $color-font--black;
     height: 4rem;
     width: 4rem;
-    border-radius: 50%;
-    border: 1.5px solid $color-primary;
-
     &.current {
       background-color: $color-primary;
       color: $color-font--white;

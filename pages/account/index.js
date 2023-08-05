@@ -32,7 +32,7 @@ const AccountPage = function () {
             <div className="account__recipes-box">
               <h2 className="account__subtitle">Bookmarks</h2>
               {userData.bookmarks.length === 0 ? (
-                <NoSelectedAccount message="No recipes saved."></NoSelectedAccount>
+                <NoSelectedAccount message="You haven't bookmarked any recipe yet."></NoSelectedAccount>
               ) : (
                 <ul className="account__list">
                   {userData.bookmarks.map((bookmark) => (
@@ -45,7 +45,7 @@ const AccountPage = function () {
             <div className="account__recipes-box">
               <h2 className="account__subtitle">Your Recipes</h2>
               {userData.myRecipes.length === 0 ? (
-                <NoSelectedAccount message="No recipes created."></NoSelectedAccount>
+                <NoSelectedAccount message="You haven't published any recipe yet."></NoSelectedAccount>
               ) : (
                 <ul className="account__list">
                   {userData.myRecipes.map((myRecipe) => (

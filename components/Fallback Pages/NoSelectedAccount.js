@@ -2,8 +2,7 @@ import InfoLogo from "../../assets/information-circle-outline.svg";
 const NoSelectedAccount = function (props) {
   return (
     <div className="no-selected-account">
-      <InfoLogo className="no-selected-account__logo"></InfoLogo>
-      <h2 className="heading--2d">{props.message}</h2>
+      <h2 className="no-selected-account__message">{props.message}</h2>
     </div>
   );
 };

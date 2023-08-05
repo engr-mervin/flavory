@@ -1,13 +1,14 @@
 .no-selected-account {
-  min-height: 20rem;
-
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  padding: 5rem;
-  padding-left: 22rem;
   position: relative;
+  padding-bottom: 2rem;
 
+  &__message {
+    @include classy;
+    font-size: 2rem;
+  }
   &__logo {
     height: 4rem;
     width: 4rem;

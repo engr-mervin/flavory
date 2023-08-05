@@ -7,7 +7,7 @@ import ModalContext from "../../store/modal-context";
 import { useRouter } from "next/router";
 
 const MyRecipe = function ({ recipe }) {
-  const { setModal, setModalMessage } = useContext(ModalContext);
+  const { setModal, setModalMessage, hideModal } = useContext(ModalContext);
   const { userData, removeMyRecipe, removeBookmark } =
     useContext(UserDataContext);
   const { authState, updateState } = useContext(AuthContext);
@@ -92,9 +92,11 @@ const MyRecipe = function ({ recipe }) {
       isShown: true,
       title: "Validate Recipe",
       message: "Validating Recipe...",
-      isConfirmButtonShown: false,
+      isConfirmButtonShown: true,
+      disableButtons: true,
       isCancelButtonShown: false,
       canBeClosed: false,
+      okButtonText: "View Recipe",
     });
     const requestData = {
       sessionId: authState.sessionId,
@@ -138,13 +140,16 @@ const MyRecipe = function ({ recipe }) {
     if (data.command === "redirect") {
       setModal({
         disableButtons: false,
-        okFunction: null,
-        closeFunction: redirect,
+        okFunction: () => {
+          redirect();
+          hideModal();
+        },
+        closeFunction: null,
         canBeClosed: true,
         message: data.message,
-        isConfirmButtonShown: false,
-        isCancelButtonShown: true,
-        cancelButtonText: "View Recipe",
+        isConfirmButtonShown: true,
+        isCancelButtonShown: false,
+        okButtonText: "View Recipe",
       });
     }
   };
@@ -160,7 +165,8 @@ const MyRecipe = function ({ recipe }) {
         </div>
         <div className="account-card__details-box">
           <h2 className="account-card__title">{recipe.title}</h2>
-          <p className="account-card__author">{createdDateString}</p>
+          <p className="account-card__extra">Published on:</p>
+          <p className="account-card__extra">{createdDateString}</p>
         </div>
       </div>
       <div className="account-card__unsave">

@@ -1,6 +1,6 @@
 import useRouterFilter from "../../custom-hooks/use-router-filter";
 import Card from "../Reusable/Card";
-const SearchItem = function ({ recipe, selectRecipe }) {
+const SearchItem = function ({ recipe }) {
   const { addParam } = useRouterFilter();
   const clickHandler = function (e, recipe) {
     e.preventDefault();
@@ -8,36 +8,36 @@ const SearchItem = function ({ recipe, selectRecipe }) {
   };
   return (
     <li
-      className="search__item"
+      className="search-item"
       onClick={(e) => {
         clickHandler(e, recipe);
       }}
     >
       <Card>
-        <div className="search__item--front">
-          <div className="search__item--front__image-box">
-            <div className="search__item--front__mask"></div>
+        <div className="search-item__front">
+          <div className="search-item__front__image-box">
+            <div className="search-item__front__mask"></div>
             <img
-              className="search__item--front__image"
+              className="search-item__front__image"
               src={recipe["image_url"]}
             ></img>
           </div>
-          <div className="search__item--front__title-box">
-            <span className="search__item--front__title">{recipe.title}</span>
+          <div className="search-item__front__title-box">
+            <span className="search-item__front__title">{recipe.title}</span>
           </div>
         </div>
-        <div className="search__item--back">
-          <div className="search__item--back__image-box">
-            <div className="search__item--back__mask"></div>
+        <div className="search-item__back">
+          <div className="search-item__back__image-box">
+            <div className="search-item__back__mask"></div>
             <img
-              className="search__item--back__image"
+              className="search-item__back__image"
               src={recipe["image_url"]}
             ></img>{" "}
           </div>
-          <div className="search__item--back__title-box">
-            <span className="search__item--back__title">{recipe.title}</span>
+          <div className="search-item__back__title-box">
+            <span className="search-item__back__title">{recipe.title}</span>
 
-            <span className="search__item--back__publisher">
+            <span className="search-item__back__publisher">
               {`by: ${recipe.publisher}`}
             </span>
           </div>

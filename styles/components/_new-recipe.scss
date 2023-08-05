@@ -1,24 +1,38 @@
 .new-recipe {
-  padding: 8rem 20rem;
+  padding: 4rem 4rem;
+  background-color: white;
 
   &__form {
-    padding: 6rem;
+    padding: 4rem;
     padding-bottom: 3rem;
-    border-radius: 1.5em;
-    margin-top: 4rem;
+    border-radius: 1.5rem;
     box-shadow: 0 0 2rem rgba(black, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  &__title {
+    @include classy;
+    text-align: center;
+    font-size: 3.5rem;
+    border-bottom: 1.5px solid $color-font--black;
+    padding: 1rem 0;
+    font-weight: 300;
+  }
+
+  &__subtitle {
+    @include classy;
+    padding: 1rem 0;
   }
   &__group--1 {
     display: grid;
-    grid-template-columns: 3fr 4.5fr 3fr 4.5fr;
+    grid-template-columns: 1fr 1.5fr 1fr 1.5fr;
     column-gap: 6rem;
     row-gap: 1.5rem;
     align-items: center;
-    margin-top: 2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
   }
   &__group--2 {
-    margin-top: 2rem;
     display: grid;
     grid-template-columns: auto 2fr auto 3fr auto 5fr;
     column-gap: 3rem;
@@ -26,57 +40,32 @@
     align-items: center;
   }
   &__group--3 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-justify;
   }
 
   &__button-box {
-    display: flex;
-    justify-content: space-between;
+    @include flex-center;
+    gap: 2rem;
     margin-top: 1rem;
     padding: 0 4rem;
-    align-items: flex-end;
   }
 
   &__status {
-    margin-top: 8rem;
-    text-align: center;
-    display: block;
-    color: red;
+    @include status-text;
+    margin-top: 4rem;
   }
   &__button {
-    background-color: $color-primary--white;
-    cursor: pointer;
+    @include button--smooth;
     width: 6rem;
     height: 6rem;
-    transition: all 300ms;
-    font-size: 4rem;
-    color: $color-font--black;
-    border-radius: 50%;
-    border: 1.5px solid $color-primary--lightest;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &:hover {
-      transform: scale(1.05);
-    }
+    font-size: 3.2rem;
   }
   &__submit-button {
-    background-color: $color-primary--white;
-    cursor: pointer;
-    padding: 1.5rem 3.5rem;
-    // height: 6rem;
-    transition: all 300ms;
+    @include button--smooth;
+    @include classy;
+    color: $color-font--white;
+    height: 6rem;
     font-size: 1.8rem;
-    color: $color-font--black;
-    border-radius: 1rem;
-    border: 1.5px solid $color-primary--lightest;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &:hover {
-      transform: scale(1.05);
-    }
+    padding: 1.5rem 2.5rem;
   }
 }

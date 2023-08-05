@@ -1,19 +1,7 @@
-import InfoLogo from "../../assets/information-circle-outline.svg";
 const NoSelected = function (props) {
   return (
-    <div
-      style={
-        props.withImage ? {} : { padding: "5rem", justifyContent: "center" }
-      }
-      className="no-selected"
-    >
-      <img
-        style={props.withImage ? {} : { display: "none" }}
-        src={props.imageSource}
-        className="no-selected__art"
-      ></img>
-      <InfoLogo className="no-selected__logo"></InfoLogo>
-      <h2 className="heading--2d">{props.message}</h2>
+    <div className="no-selected">
+      <h2 className="no-selected__message">{props.message}</h2>
     </div>
   );
 };

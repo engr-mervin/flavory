@@ -2,7 +2,7 @@
   padding: 1.5rem 6rem;
   padding-top: 1.5rem;
   border-bottom: 3px double $color-font--black;
-  background-color: $color-primary--white;
+  background-color: white;
   display: flex;
   justify-content: space-between;
 
@@ -33,18 +33,17 @@
       transition: all 250ms;
       border-radius: 2px;
       font-size: 1.8rem;
+      border-bottom: 2px solid transparent;
     }
 
     a:hover,
     a:active {
-      transform: scale(1.05);
-      background-color: $color-primary--white-dark-1;
+      border-bottom: 2px solid $color-primary;
     }
   }
 
-  &-item.current {
-    background-color: $color-primary--white-dark-1;
-    transform: scale(1.05);
+  &-item.current a {
+    border-bottom: 2px solid $color-primary;
   }
 
   &-item-2 {

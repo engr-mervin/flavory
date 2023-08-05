@@ -4,8 +4,6 @@
     right: 0;
     background-color: $color-primary;
     padding: 1.2rem 2rem;
-    // top: 50%;
-    // top: 0;
     top: 0;
     color: $color-font--white;
     font-weight: 400;
@@ -13,8 +11,6 @@
     text-transform: uppercase;
     letter-spacing: 3px;
     opacity: 0.95;
-    // transform: translate(50%, -50%) rotate(270deg);
-    // transform: rotate(45deg) translate(25%, -25%);b
     transform: translate(5%, calc(-50% - 5px));
     border-radius: 1rem;
   }

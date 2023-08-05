@@ -3,7 +3,7 @@ import NoSelected from "../Fallback Pages/NoSelected";
 
 const SearchResults = function ({ recipes }) {
   return (
-    <ul className="search-list">
+    <ul className="search__list">
       {recipes.length > 0 ? (
         recipes.map((recipe) => (
           <SearchItem key={recipe.id} recipe={recipe}></SearchItem>

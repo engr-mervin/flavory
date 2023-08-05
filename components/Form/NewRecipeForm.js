@@ -77,10 +77,16 @@ const NewRecipeForm = function () {
 
     setIngredients((prev) => {
       if (prev.length > MIN_INGREDIENTS || prev.length === 0) {
+        setStatus("");
         let newState = [...prev];
         newState.splice(newState.length - 1, 1);
         return newState;
       } else {
+        setStatus(
+          `You should have at least ${MIN_INGREDIENTS} ingredient${
+            MIN_INGREDIENTS === 1 ? "" : "s"
+          }.`
+        );
         return prev;
       }
     });
@@ -100,10 +106,12 @@ const NewRecipeForm = function () {
     e.preventDefault();
     setIngredients((prev) => {
       if (prev.length < MAX_INGREDIENTS) {
+        setStatus("");
         let newState = [...prev];
         newState.push({ quantity: "", unit: "", description: "" });
         return newState;
       } else {
+        setStatus(`You can have at most ${MAX_INGREDIENTS} ingredients.`);
         return prev;
       }
     });
@@ -233,9 +241,9 @@ const NewRecipeForm = function () {
 
   return (
     <div className="new-recipe">
-      <h1 className="heading--1e">SHARE YOUR RECIPE!</h1>
       <form className="new-recipe__form">
-        <h2 className="heading--2d">Details:</h2>
+        <h1 className="new-recipe__title">SHARE YOUR RECIPE!</h1>
+        <h2 className="new-recipe__subtitle">Details</h2>
         <div className="new-recipe__group--1">
           <label className="input__label" htmlFor="new-recipe__title">
             Title:
@@ -260,7 +268,7 @@ const NewRecipeForm = function () {
             validateFunctionAsync={validateURL}
             id="new-recipe__source"
             className="input"
-            tooltip="Input a valid URL. Add http:// or https:// at the beginning."
+            tooltip="Input a valid URL. Add http:// or https:// at the beginning. Please note that validation is asynchronous and takes some time to ensure validity."
             dataindex={0}
             inputtype="source_url"
             updateStateFunction={updateDetailsState}
@@ -274,7 +282,7 @@ const NewRecipeForm = function () {
             validateFunctionAsync={validateImage}
             id="new-recipe__image"
             className="input"
-            tooltip="Input a valid image URL. Add http:// or https:// at the beginning."
+            tooltip="Input a valid image URL. Add http:// or https:// at the beginning. Please note that validation is asynchronous and takes some time to ensure validity."
             dataindex={0}
             inputtype="image_url"
             updateStateFunction={updateDetailsState}
@@ -317,7 +325,7 @@ const NewRecipeForm = function () {
           />
         </div>
 
-        <h2 className="heading--2d">Ingredients:</h2>
+        <h2 className="new-recipe__subtitle">Ingredients</h2>
         <div className="new-recipe__group--2">
           {ingredients.map((el, index) => {
             return (
