@@ -1528,8 +1528,6 @@ body:has(.modal__overlay) {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  top: 2rem;
-  right: 2rem;
   width: 5rem;
   height: 5rem;
   padding: 1rem;
