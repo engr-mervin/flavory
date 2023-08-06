@@ -56,15 +56,16 @@
   }
   &__button {
     @include button--smooth;
-    width: 6rem;
-    height: 6rem;
+    width: 5rem;
+    height: 5rem;
     font-size: 3.2rem;
   }
   &__submit-button {
     @include button--smooth;
     @include classy;
+    @include flex-center;
     color: $color-font--white;
-    height: 6rem;
+    height: 5rem;
     font-size: 1.8rem;
     padding: 1.5rem 2.5rem;
   }

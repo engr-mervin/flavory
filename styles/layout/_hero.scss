@@ -1,14 +1,14 @@
 .hero {
-  display: flex;
-  padding: 15rem 10rem;
-  background-color: $color-primary--white;
+  display: grid;
+  grid-template-columns: 0.6fr 0.4fr;
+  padding: 12rem 10rem;
 
   gap: 10rem;
-  justify-content: space-between;
+  // justify-content: space-between;
 
   text-align: center;
   &-box {
-    width: 60%;
+    width: 100%;
     display: flex;
     flex-direction: column;
   }
@@ -35,13 +35,14 @@
   }
 
   &-feature-list {
+    border-radius: 0.75rem;
     background-color: $color-font--black;
     padding: 1.5rem 5rem;
     list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
 
   &-feature-item {
@@ -62,10 +63,12 @@
     margin-top: 8rem;
     font-size: 1.8rem;
     color: $color-font--black;
+    font-weight: 300;
   }
   &-text-2 {
     margin-top: 1.5rem;
     font-size: 1.8rem;
+    font-weight: 300;
   }
   &-actions {
     margin-top: 3rem;
@@ -74,12 +77,14 @@
     gap: 4rem;
   }
   &-image-box {
+    border-radius: 1rem;
+    overflow: hidden;
     position: relative;
     padding: 0rem;
-    width: 40%;
+    width: 100%;
     align-items: center;
     display: grid;
-    gap: 3rem;
+    gap: 2rem;
     grid-template-columns: 1.2fr 1fr;
     grid-template-rows: 1fr 1fr;
     justify-content: center;
@@ -116,6 +121,3 @@
     object-fit: cover;
   }
 }
-
-// ,
-//       url(../assets/images/hero-2.jpg);

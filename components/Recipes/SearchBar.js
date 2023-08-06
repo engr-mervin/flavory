@@ -17,15 +17,15 @@ const SearchBar = function () {
   };
 
   return (
-    <form className="search-form">
+    <form className="search__form">
       <input
-        className="search-bar"
+        className="search__bar"
         type="search"
         onChange={queryChangeHandler}
         placeholder="What do you want to cook?"
       ></input>
       <button
-        className="search-button"
+        className="search__button"
         type="submit"
         onClick={submitQueryHandler}
       >

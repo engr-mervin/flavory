@@ -28,37 +28,28 @@
   }
 
   &-hero--signup {
-    background-color: $color-primary;
-    border: none;
-    padding: 1rem 3rem;
-    border-radius: 1rem;
-    font-size: 1.6rem;
-    font-family: "Montserrat", sans-serif;
-    cursor: pointer;
-    font-weight: 500;
+    @include button--smooth;
+    @include classy;
     color: $color-font--white;
-    animation: zoomOut 400ms;
-    animation-fill-mode: both;
-    &:hover {
-      animation: zoomIn 400ms;
-      animation-fill-mode: both;
-    }
+    border: 1.5px solid transparent;
+    background-color: $color-primary;
+    padding: 1rem 3rem;
+    border-radius: 0.75rem;
+    font-size: 1.4rem;
+    font-family: inherit;
+    font-weight: 500;
   }
 
   &-hero--start {
-    background-color: $color-primary--white;
+    @include button--smooth;
+    @include classy;
+    color: $color-primary;
     border: 1.5px solid $color-primary;
+    background-color: white;
     padding: 1rem 3rem;
-    border-radius: 1rem;
-    font-size: 1.6rem;
-    font-family: "Montserrat", sans-serif;
-    cursor: pointer;
+    border-radius: 0.75rem;
+    font-size: 1.4rem;
+    font-family: inherit;
     font-weight: 500;
-    animation: zoomOut 400ms;
-    animation-fill-mode: both;
-    &:hover {
-      animation: zoomIn 400ms;
-      animation-fill-mode: both;
-    }
   }
 }

@@ -230,37 +230,52 @@ body {
   height: 3rem;
 }
 .button-hero--signup {
-  background-color: rgb(234, 92, 43);
-  border: none;
-  padding: 1rem 3rem;
-  border-radius: 1rem;
-  font-size: 1.6rem;
-  font-family: "Montserrat", sans-serif;
+  background-color: #ff7f3f;
   cursor: pointer;
-  font-weight: 500;
   color: rgb(255, 245, 236);
-  animation: zoomOut 400ms;
-  animation-fill-mode: both;
+  border-radius: 1rem;
+  border: 1.5px solid transparent;
+  transition: all 300ms;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  color: rgb(255, 245, 236);
+  border: 1.5px solid transparent;
+  background-color: rgb(234, 92, 43);
+  padding: 1rem 3rem;
+  border-radius: 0.75rem;
+  font-size: 1.4rem;
+  font-family: inherit;
+  font-weight: 500;
 }
 .button-hero--signup:hover {
-  animation: zoomIn 400ms;
-  animation-fill-mode: both;
+  transform: scale(1.05);
 }
 .button-hero--start {
-  background-color: rgb(255, 250, 246);
-  border: 1.5px solid rgb(234, 92, 43);
-  padding: 1rem 3rem;
-  border-radius: 1rem;
-  font-size: 1.6rem;
-  font-family: "Montserrat", sans-serif;
+  background-color: #ff7f3f;
   cursor: pointer;
+  color: rgb(255, 245, 236);
+  border-radius: 1rem;
+  border: 1.5px solid transparent;
+  transition: all 300ms;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  color: rgb(234, 92, 43);
+  border: 1.5px solid rgb(234, 92, 43);
+  background-color: white;
+  padding: 1rem 3rem;
+  border-radius: 0.75rem;
+  font-size: 1.4rem;
+  font-family: inherit;
   font-weight: 500;
-  animation: zoomOut 400ms;
-  animation-fill-mode: both;
 }
 .button-hero--start:hover {
-  animation: zoomIn 400ms;
-  animation-fill-mode: both;
+  transform: scale(1.05);
 }
 
 .project-info p {
@@ -532,23 +547,26 @@ body {
 }
 
 .recipe-card__tag {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
   position: absolute;
   right: 0;
+  top: 0;
   background-color: rgb(234, 92, 43);
   padding: 1.2rem 2rem;
-  top: 0;
   color: rgb(255, 245, 236);
-  font-weight: 400;
-  font-size: 1.8rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
+  font-weight: 300;
+  font-size: 1.6rem;
   opacity: 0.95;
   transform: translate(5%, calc(-50% - 5px));
   border-radius: 1rem;
 }
 .recipe-card:link, .recipe-card:visited {
-  outline: 3.5px solid rgb(234, 92, 43);
-  outline-offset: 6.5px;
+  outline: 3px solid rgb(234, 92, 43);
+  outline-offset: 6px;
   min-height: 45rem;
   text-decoration: none;
   color: #3f2107;
@@ -561,14 +579,14 @@ body {
   font: inherit;
   cursor: pointer;
   border: none;
-  border-radius: 2rem;
+  border-radius: 1rem;
   box-shadow: 0rem 0rem 2rem rgba(63, 33, 7, 0.15);
   background-color: white;
   transition: all 400ms;
   position: relative;
 }
 .recipe-card:hover, .recipe-card:active {
-  transform: translateY(-1rem) scale(1.02);
+  transform: translateY(-0.5rem);
   box-shadow: 0rem 0rem 1.6rem rgba(63, 33, 7, 0.23);
 }
 .recipe-card__all-details-box {
@@ -819,8 +837,8 @@ body {
   border-radius: 1rem;
   border: 1.5px solid transparent;
   transition: all 300ms;
-  width: 6rem;
-  height: 6rem;
+  width: 5rem;
+  height: 5rem;
   font-size: 3.2rem;
 }
 .new-recipe__button:hover {
@@ -838,8 +856,11 @@ body {
   letter-spacing: 2px;
   font-family: "Montserrat", monospace;
   color: #3f2107;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: rgb(255, 245, 236);
-  height: 6rem;
+  height: 5rem;
   font-size: 1.8rem;
   padding: 1.5rem 2.5rem;
 }
@@ -1133,15 +1154,14 @@ body:has(.modal__overlay) {
 }
 
 .hero {
-  display: flex;
-  padding: 15rem 10rem;
-  background-color: rgb(255, 250, 246);
+  display: grid;
+  grid-template-columns: 0.6fr 0.4fr;
+  padding: 12rem 10rem;
   gap: 10rem;
-  justify-content: space-between;
   text-align: center;
 }
 .hero-box {
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -1164,13 +1184,14 @@ body:has(.modal__overlay) {
   background-color: #3f2107;
 }
 .hero-feature-list {
+  border-radius: 0.75rem;
   background-color: #3f2107;
   padding: 1.5rem 5rem;
   list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 .hero-feature-item {
   height: 2.5rem;
@@ -1187,10 +1208,12 @@ body:has(.modal__overlay) {
   margin-top: 8rem;
   font-size: 1.8rem;
   color: #3f2107;
+  font-weight: 300;
 }
 .hero-text-2 {
   margin-top: 1.5rem;
   font-size: 1.8rem;
+  font-weight: 300;
 }
 .hero-actions {
   margin-top: 3rem;
@@ -1199,12 +1222,14 @@ body:has(.modal__overlay) {
   gap: 4rem;
 }
 .hero-image-box {
+  border-radius: 1rem;
+  overflow: hidden;
   position: relative;
   padding: 0rem;
-  width: 40%;
+  width: 100%;
   align-items: center;
   display: grid;
-  gap: 3rem;
+  gap: 2rem;
   grid-template-columns: 1.2fr 1fr;
   grid-template-rows: 1fr 1fr;
   justify-content: center;
@@ -1257,8 +1282,14 @@ body:has(.modal__overlay) {
   gap: 2rem;
 }
 .navigation-item, .navigation-item-2, .navigation-item-3 {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
   display: flex;
   align-items: center;
+  font-size: 1.6rem;
 }
 .navigation-item a:link,
 .navigation-item a:visited, .navigation-item-2 a:link,
@@ -1268,8 +1299,7 @@ body:has(.modal__overlay) {
   text-decoration: none;
   color: #3f2107;
   transition: all 250ms;
-  border-radius: 2px;
-  font-size: 1.8rem;
+  border-radius: 0.5rem;
   border-bottom: 2px solid transparent;
 }
 .navigation-item a:hover,
@@ -1277,59 +1307,71 @@ body:has(.modal__overlay) {
 .navigation-item-2 a:active, .navigation-item-3 a:hover,
 .navigation-item-3 a:active {
   border-bottom: 2px solid rgb(234, 92, 43);
+  color: rgb(234, 92, 43);
+  background-color: rgb(255, 250, 246);
 }
 .navigation-item.current a {
   border-bottom: 2px solid rgb(234, 92, 43);
+  color: rgb(234, 92, 43);
+  background-color: rgb(255, 250, 246);
 }
 .navigation-item-2 a:link,
 .navigation-item-2 a:visited {
-  padding: 1rem 3rem;
+  padding: 1rem 2.5rem;
   color: rgb(255, 245, 236);
   background-color: rgb(234, 92, 43);
-  border-radius: 1rem;
+  border: 1.5px solid transparent;
 }
 .navigation-item-3 a:link,
 .navigation-item-3 a:visited {
-  padding: 1rem 3rem;
+  padding: 1rem 2.5rem;
   color: rgb(234, 92, 43);
   background-color: rgb(255, 250, 246);
-  border-radius: 1rem;
-  border: 2px solid rgb(234, 92, 43);
+  border: 1.5px solid rgb(234, 92, 43);
 }
 .navigation__logout {
-  padding: 1rem 3rem;
-  color: #fb9a69;
-  background-color: rgb(255, 250, 246);
+  background-color: #ff7f3f;
+  cursor: pointer;
+  color: rgb(255, 245, 236);
   border-radius: 1rem;
-  border: 1.5px solid #fb9a69;
+  border: 1.5px solid transparent;
+  transition: all 300ms;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  font-size: 1.6rem;
+  padding: 1rem 3rem;
+  color: rgb(234, 92, 43);
+  background-color: white;
+  border: 1.5px solid rgb(234, 92, 43);
   font-family: inherit;
-  cursor: pointer;
-  font-size: 1.8rem;
   transition: all 250ms;
 }
 .navigation__logout:hover {
   transform: scale(1.05);
 }
-.navigation__logout:hover:disabled {
-  transform: scale(1);
+.navigation__logout:hover:not(:disabled) {
+  transform: scale(1.05);
 }
 .navigation__logout:disabled {
-  color: #aaa;
-  border: 2px solid #aaa;
-  cursor: auto;
+  color: rgb(177, 177, 177);
+  border: 1.5px solid rgb(177, 177, 177);
+  cursor: not-allowed;
 }
 
 .testimonial {
   display: flex;
+  position: relative;
   flex-direction: column;
   gap: 6rem;
-  padding: 15rem 30rem;
-  background-color: rgb(255, 247, 238);
+  padding: 12rem 30rem;
+  background-color: rgb(255, 250, 246);
   overflow: hidden;
-  position: relative;
 }
 .testimonial-item {
   display: grid;
@@ -1343,14 +1385,14 @@ body:has(.modal__overlay) {
 }
 .testimonial-box, .testimonial-box-2 {
   margin-left: -4rem;
-  background-color: rgb(255, 250, 246);
+  background-color: white;
+  box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.12);
   color: #3f2107;
   display: flex;
   flex-direction: column;
   padding: 3rem;
   padding-left: 10rem;
   padding-right: 8rem;
-  box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.08);
   transform: skewX(-10deg);
 }
 .testimonial-box *, .testimonial-box-2 * {
@@ -1365,7 +1407,7 @@ body:has(.modal__overlay) {
 }
 .testimonial-video {
   height: 100%;
-  opacity: 0.08;
+  opacity: 0.2;
   top: 50%;
   left: 50%;
   position: absolute;
@@ -1385,12 +1427,10 @@ body:has(.modal__overlay) {
   outline: 3.5px solid rgb(234, 92, 43);
   outline-offset: 6px;
   cursor: pointer;
-  animation: zoomOut 400ms;
-  animation-fill-mode: both;
+  transition: all 400ms;
 }
 .testimonial-image:hover, .testimonial-image-2:hover {
-  animation: zoomIn 400ms;
-  animation-fill-mode: both;
+  transform: scale(1.03);
 }
 .testimonial-image-2 {
   margin-left: -4rem;
@@ -1404,7 +1444,7 @@ body:has(.modal__overlay) {
 
 .section-recipes {
   padding: 12rem 18rem;
-  background-color: rgb(255, 250, 246);
+  background-color: white;
 }
 .section-recipes__box {
   display: grid;
@@ -1739,28 +1779,42 @@ body:has(.modal__overlay) {
   padding: 0 5rem;
   margin-bottom: 2rem;
 }
-.search-bar {
+.search__bar {
   padding: 1rem;
   font-family: inherit;
   border: 2px solid rgba(63, 33, 7, 0.3);
-  border-radius: 1rem;
+  border-radius: 0.75rem;
 }
-.search-bar::placeholder {
+.search__bar::placeholder {
   font-family: inherit;
 }
-.search-bar:focus {
+.search__bar:focus {
   outline: none;
   border: 2px solid rgb(234, 92, 43);
 }
-.search-button {
-  padding: 1rem 2rem;
-  background-color: rgba(234, 92, 43, 0.8);
-  border: none;
-  font-family: inherit;
+.search__button {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  background-color: #ff7f3f;
   cursor: pointer;
+  color: rgb(255, 245, 236);
   border-radius: 1rem;
+  border: 1.5px solid transparent;
+  transition: all 300ms;
+  padding: 1rem 2rem;
+  font-family: inherit;
+  border-radius: 0.75rem;
 }
-.search-form {
+.search__button:hover {
+  transform: scale(1.05);
+}
+.search__button:hover {
+  transform: scale(1.02);
+}
+.search__form {
   display: grid;
   grid-template-columns: 1fr auto;
   column-gap: 0.5rem;

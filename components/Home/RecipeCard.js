@@ -21,7 +21,7 @@ const RecipeCard = function ({ recipe }) {
           </div>
         </div> */}
           <ul className="recipe-card__list">
-            {recipe.ingredients.slice(0, 14).map((ingredient, ind) => (
+            {recipe.ingredients.slice(0, 12).map((ingredient, ind) => (
               <li
                 className="recipe-card__item"
                 key={`${ingredient.description}_${ind}`}

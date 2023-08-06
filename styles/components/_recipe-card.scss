@@ -1,23 +1,22 @@
 .recipe-card {
   &__tag {
+    @include classy;
     position: absolute;
     right: 0;
+    top: 0;
     background-color: $color-primary;
     padding: 1.2rem 2rem;
-    top: 0;
     color: $color-font--white;
-    font-weight: 400;
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+    font-weight: 300;
+    font-size: 1.6rem;
     opacity: 0.95;
     transform: translate(5%, calc(-50% - 5px));
     border-radius: 1rem;
   }
   &:link,
   &:visited {
-    outline: 3.5px solid $color-primary;
-    outline-offset: 6.5px;
+    outline: 3px solid $color-primary;
+    outline-offset: 6px;
     min-height: 45rem;
     text-decoration: none;
     color: $color-font--black;
@@ -31,7 +30,7 @@
     cursor: pointer;
     border: none;
     // overflow: hidden;
-    border-radius: 2rem;
+    border-radius: 1rem;
     box-shadow: 0rem 0rem 2rem rgba($color-font--black, 0.15);
     background-color: white;
     transition: all 400ms;
@@ -40,7 +39,7 @@
 
   &:hover,
   &:active {
-    transform: translateY(-1rem) scale(1.02);
+    transform: translateY(-0.5rem);
     box-shadow: 0rem 0rem 1.6rem rgba($color-font--black, 0.23);
   }
   &__all-details-box {
