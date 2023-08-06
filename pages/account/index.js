@@ -4,12 +4,18 @@ import Bookmark from "../../components/Account/Bookmark";
 import MyRecipe from "../../components/Account/MyRecipe";
 import InfoMessage from "../../components/Fallback Pages/InfoMessage";
 import NoSelectedAccount from "../../components/Fallback Pages/NoSelectedAccount";
+import Head from "next/head";
 
 const AccountPage = function () {
   const { userData } = useContext(UserDataContext);
 
   return (
     <>
+      <Head>
+        <title>{`${
+          userData?.displayName ? userData.displayName : "Error"
+        } | Flavory`}</title>
+      </Head>
       {userData.displayName === "" ? (
         <InfoMessage message="Please log in first."></InfoMessage>
       ) : (

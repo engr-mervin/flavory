@@ -11,12 +11,12 @@
     align-items: center;
     justify-content: center;
     filter: blur(0.4px);
+    z-index: 10;
   }
   &--1 {
     position: fixed;
     top: calc(50% - 3.25rem);
     left: calc(50% - 3.25rem);
-    z-index: 1;
 
     width: 6.5rem;
     border: 5px solid $color-primary;

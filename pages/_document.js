@@ -5,7 +5,6 @@ export default function Document() {
     <Html>
       <Head>
         <title>Flavory</title>
-
         <meta charset="UTF-8" />
         <meta name="description" content="Recipe App" />
         <meta name="author" content="John Mervin C. Bocatcat" />

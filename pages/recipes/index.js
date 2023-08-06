@@ -8,6 +8,7 @@ import {
   MAX_RECIPES_PER_PAGE,
 } from "../../util/constants";
 import useRouterFilter from "../../custom-hooks/use-router-filter";
+import Head from "next/head";
 const Recipes = function (props) {
   const { addParamShallow } = useRouterFilter();
   const [currentPage, setCurrentPage] = useState(1);
@@ -106,6 +107,11 @@ const Recipes = function (props) {
   };
   return (
     <div className="recipes">
+      <Head>
+        <title>{`${
+          currentRecipe?.title ? currentRecipe.title : "Recipes"
+        } | Flavory`}</title>
+      </Head>
       <SearchBar></SearchBar>
       <Recipe currentRecipe={currentRecipe}></Recipe>
 

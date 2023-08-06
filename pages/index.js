@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Loading from "../components/Fallback Pages/Loading";
 import Hero from "../components/Home/Hero";
 import Recipes from "../components/Home/Recipes";
@@ -6,6 +7,9 @@ import { SAMPLE_RECIPES } from "../util/constants";
 const HomePage = function ({ samples }) {
   return (
     <>
+      <Head>
+        <title>Flavory</title>
+      </Head>
       <Hero></Hero>
       <Testimonial></Testimonial>
       <Recipes samples={samples}></Recipes>

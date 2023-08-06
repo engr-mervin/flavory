@@ -5,10 +5,11 @@ import { validateTextLength } from "../util/validate";
 import InputText from "../components/UI/InputText";
 import InfoLogo from "../assets/information-circle-outline.svg";
 import InfoMessage from "../components/Fallback Pages/InfoMessage";
+import Head from "next/head";
 
 const LogInPage = function () {
   const { authState, updateState } = useContext(AuthContext);
-
+  const [disabled, setDisabled] = useState(false);
   const [message, setMessage] = useState("");
   const router = useRouter();
   useEffect(() => {
@@ -67,11 +68,12 @@ const LogInPage = function () {
   };
   const submitHandler = async function (e) {
     e.preventDefault();
-
+    setDisabled(true);
     touchFunction();
     setMessage("Logging in, please wait...");
     if (Object.values(formDataValidity).includes(false)) {
       setMessage("Please fix input errors.");
+      setDisabled(false);
       return;
     }
 
@@ -83,7 +85,7 @@ const LogInPage = function () {
       });
 
       const data = await response.json();
-
+      setDisabled(false);
       setMessage(data.message);
       if (response.ok) {
         updateState();
@@ -91,6 +93,7 @@ const LogInPage = function () {
         router.push("/");
       }
     } catch (err) {
+      setDisabled(false);
       setMessage("Something went wrong. Please try again.");
     }
   };
@@ -99,7 +102,10 @@ const LogInPage = function () {
   }
   return (
     <div className="login">
-      <h1 className="heading--1e">Log In</h1>
+      <Head>
+        <title>Log-in | Flavory</title>
+      </Head>
+      <h1 className="login__title">Log In</h1>
       <form onSubmit={submitHandler} className="login__form">
         <label className="input__label" htmlFor="login__user-name">
           User Name:
@@ -135,7 +141,9 @@ const LogInPage = function () {
         <div className="signup__status">
           <p className="signup__message">{message}</p>
         </div>
-        <button className="login__submit">Log in!</button>
+        <button className="login__submit" disabled={disabled}>{`${
+          disabled ? "Logging-in" : "Log in!"
+        }`}</button>
       </form>
     </div>
   );

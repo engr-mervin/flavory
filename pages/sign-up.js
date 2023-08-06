@@ -5,13 +5,14 @@ import InputText from "../components/UI/InputText";
 import AuthContext from "../store/auth-context";
 import InfoLogo from "../assets/information-circle-outline.svg";
 import InfoMessage from "../components/Fallback Pages/InfoMessage";
+import Head from "next/head";
 
 const SignUpPage = function ({ users }) {
   const { authState } = useContext(AuthContext);
 
   const router = useRouter();
   const [message, setMessage] = useState("");
-
+  const [disabled, setDisabled] = useState(false);
   const [formData, setFormData] = useState({
     displayName: "",
     userName: "",
@@ -72,12 +73,15 @@ const SignUpPage = function ({ users }) {
 
     touchFunction();
     setMessage("Signing up...");
+    setDisabled(true);
     if (Object.values(formDataValidity).includes(false)) {
       setMessage("Please fix input errors.");
+      setDisabled(false);
       return;
     }
     if (formData.password != formData.password2) {
       setMessage("Password does not match");
+      setDisabled(false);
       return;
     }
 
@@ -95,9 +99,11 @@ const SignUpPage = function ({ users }) {
       });
       const data = await response.json();
       setMessage(data.message);
+      setDisabled(false);
       if (response.ok) router.push("/log-in");
     } catch (err) {
       setMessage("Something went wrong. Please try again.");
+      setDisabled(false);
     }
   };
   if (authState.isAuth) {
@@ -106,6 +112,9 @@ const SignUpPage = function ({ users }) {
 
   return (
     <div className="signup">
+      <Head>
+        <title>Sign-up | Flavory</title>
+      </Head>
       <h1 className="signup__title">Sign up New User</h1>
       <form onSubmit={submitHandler} className="signup__form">
         <label className="input__label" htmlFor="signup__display-name">
@@ -173,7 +182,9 @@ const SignUpPage = function ({ users }) {
         <div className="signup__status">
           <p className="signup__message">{message}</p>
         </div>
-        <button className="signup__submit">Sign-up!</button>
+        <button className="signup__submit" disabled={disabled}>
+          {disabled ? "Sign-up!" : "Sign-up!"}
+        </button>
       </form>
     </div>
   );

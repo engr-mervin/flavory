@@ -29,7 +29,7 @@
     padding: 1rem;
     font-family: inherit;
 
-    border: 2px solid rgba($color-font--black, 0.3);
+    border: 1.5px solid rgba($color-font--black, 0.3);
     border-radius: 0.75rem;
     &::placeholder {
       font-family: inherit;
@@ -37,7 +37,7 @@
 
     &:focus {
       outline: none;
-      border: 2px solid $color-primary;
+      border: 1.5px solid $color-primary;
     }
   }
 

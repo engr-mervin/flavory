@@ -1,8 +1,12 @@
+import Head from "next/head";
 import InfoLogo from "../assets/information-circle-outline.svg";
 
 const Custom404 = function () {
   return (
     <div className="custom-page__404">
+      <Head>
+        <title>404 | Flavory</title>
+      </Head>
       <h1 className="custom-page__404-title">
         Are you trying to break my website?
       </h1>

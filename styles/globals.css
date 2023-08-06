@@ -372,12 +372,12 @@ body {
   align-items: center;
   justify-content: center;
   filter: blur(0.4px);
+  z-index: 10;
 }
 .spinner--1 {
   position: fixed;
   top: calc(50% - 3.25rem);
   left: calc(50% - 3.25rem);
-  z-index: 1;
   width: 6.5rem;
   border: 5px solid rgb(234, 92, 43);
   border-top: 5px solid transparent;
@@ -1780,7 +1780,7 @@ body:has(.modal__overlay) {
 .search__bar {
   padding: 1rem;
   font-family: inherit;
-  border: 2px solid rgba(63, 33, 7, 0.3);
+  border: 1.5px solid rgba(63, 33, 7, 0.3);
   border-radius: 0.75rem;
 }
 .search__bar::placeholder {
@@ -1788,7 +1788,7 @@ body:has(.modal__overlay) {
 }
 .search__bar:focus {
   outline: none;
-  border: 2px solid rgb(234, 92, 43);
+  border: 1.5px solid rgb(234, 92, 43);
 }
 .search__button {
   text-transform: uppercase;
@@ -1979,14 +1979,21 @@ body:has(.modal__overlay) {
 }
 .signup__submit {
   background-color: rgb(234, 92, 43);
-  border: none;
+  border: 1.5px solid transparent;
   font-family: inherit;
   color: rgb(255, 245, 236);
   padding: 1rem 2rem;
+  width: 100%;
   margin-top: 0.5rem;
   border-radius: 0.8rem;
   cursor: pointer;
   font-size: 1.6rem;
+}
+.signup__submit:disabled {
+  color: rgb(177, 177, 177);
+  border: 1.5px solid rgb(177, 177, 177);
+  cursor: not-allowed;
+  background-color: white;
 }
 .signup__message {
   text-align: center;
@@ -1995,6 +2002,8 @@ body:has(.modal__overlay) {
   letter-spacing: 1px;
   font-size: 1.4rem;
   text-align: left;
+  min-width: 30rem;
+  white-space: initial;
 }
 .signup__text {
   font-size: 1.4rem;
@@ -2004,13 +2013,26 @@ body:has(.modal__overlay) {
 
 .login {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
   flex-direction: column;
-  padding: 8rem 48rem;
+  padding: 4rem;
+  gap: 3rem;
+}
+.login__title {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  font-size: 3.5rem;
 }
 .login__form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  row-gap: 2rem;
+  column-gap: 6rem;
   align-items: center;
 }
 .login__submit {
@@ -2024,6 +2046,12 @@ body:has(.modal__overlay) {
   border-radius: 0.8rem;
   cursor: pointer;
   font-size: 1.6rem;
+}
+.login__submit:disabled {
+  color: rgb(177, 177, 177);
+  border: 1.5px solid rgb(177, 177, 177);
+  cursor: not-allowed;
+  background-color: white;
 }
 
 .account {
