@@ -1326,7 +1326,7 @@ body:has(.modal__overlay) {
 .navigation-item-3 a:visited {
   padding: 1rem 2.5rem;
   color: rgb(234, 92, 43);
-  background-color: rgb(255, 250, 246);
+  background-color: white;
   border: 1.5px solid rgb(234, 92, 43);
 }
 .navigation__logout {
@@ -1876,16 +1876,37 @@ body:has(.modal__overlay) {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 5rem;
+}
+.custom-page__404-title {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  font-size: 4rem;
+  font-weight: 600;
+}
+.custom-page__404-message-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .custom-page__404-text {
-  font-size: 4.5rem;
-  font-family: "Monserrat", monospace;
-  font-weight: 300;
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
   color: #3f2107;
+  display: inline-block;
 }
 .custom-page__404-logo {
-  height: 5rem;
-  width: 5rem;
+  display: inline-block;
+  height: 4rem;
+  width: 4rem;
+  margin-right: 2rem;
   color: #3f2107;
   fill: #3f2107;
 }
@@ -1937,13 +1958,25 @@ body:has(.modal__overlay) {
 
 .signup {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  padding: 8rem 48rem;
+  padding: 4rem;
+  gap: 3rem;
+}
+.signup__title {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  font-size: 3.5rem;
 }
 .signup__form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  row-gap: 2rem;
+  column-gap: 6rem;
   align-items: center;
 }
 .signup__submit {
@@ -1958,9 +1991,12 @@ body:has(.modal__overlay) {
   font-size: 1.6rem;
 }
 .signup__message {
+  text-align: center;
+  display: block;
+  color: rgb(255, 120, 120);
+  letter-spacing: 1px;
   font-size: 1.4rem;
-  color: red;
-  font-weight: 400;
+  text-align: left;
 }
 .signup__text {
   font-size: 1.4rem;

@@ -8,7 +8,11 @@ const RecipeCard = function ({ recipe }) {
       <Link href={`/recipes?current=${recipe.id}`} className="recipe-card">
         <span className="recipe-card__tag">Recommended</span>
         <div className="recipe-card__image-box">
-          <img className="recipe-card__image" src={recipe.image_url}></img>
+          <img
+            className="recipe-card__image"
+            src={recipe.image_url}
+            alt={`Photo of ${recipe.title}`}
+          ></img>
         </div>
         <div className="recipe-card__all-details-box">
           <div className="recipe-card__title-box">

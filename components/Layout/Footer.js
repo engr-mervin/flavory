@@ -75,6 +75,7 @@ const Footer = function () {
           className="footer-link"
           target="_blank"
           href="mailto:johnmervin.bocatcat@gmail.com"
+          title="Author's email"
         >
           <GoogleLogo className="footer-logo" />
         </a>
@@ -82,6 +83,7 @@ const Footer = function () {
           className="footer-link"
           target="_blank"
           href="https://www.linkedin.com/in/engr-mervin/"
+          title="Author's LinkedIn Profile"
         >
           <LinkedInLogo className="footer-logo" />
         </a>
@@ -89,13 +91,24 @@ const Footer = function () {
           className="footer-link"
           target="_blank"
           href="https://github.com/engr-mervin"
+          title="Author's Github Profile"
         >
           <GithubLogo className="footer-logo" />
         </a>
-        <a className="footer-link" target="_blank" href="https://www.eonox.dev">
+        <a
+          className="footer-link"
+          target="_blank"
+          href="https://www.eonox.dev"
+          title="Author's Website"
+        >
           <PersonLogo className="footer-logo" />
         </a>
-        <a className="footer-link" target="_blank" href="tel:+639994279387">
+        <a
+          className="footer-link"
+          target="_blank"
+          href="tel:+639994279387"
+          title="Author's Phone Number"
+        >
           <PhoneLogo className="footer-logo" />
         </a>
       </address>
@@ -105,6 +118,7 @@ const Footer = function () {
           target="_blank"
           href="https://www.eonox.dev"
           className="footer-link-2"
+          title="Author's Website"
         >
           eonox.dev
         </a>{" "}

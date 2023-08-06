@@ -7,12 +7,20 @@ const ContactInfo = function () {
   return (
     <ul className="contact-info">
       <li className="contact-item">
-        <a href={constants.URL_LI} target="_blank">
+        <a
+          href={constants.URL_LI}
+          target="_blank"
+          title="Author's LinkedIn Profile"
+        >
           <ContactLogoLI className="contact-logo" />
         </a>
       </li>
       <li className="contact-item">
-        <a href={constants.URL_GH} target="_blank">
+        <a
+          href={constants.URL_GH}
+          target="_blank"
+          title="Author's Github Profile"
+        >
           <ContactLogoGH className="contact-logo" />
         </a>
       </li>

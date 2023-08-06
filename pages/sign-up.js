@@ -106,7 +106,7 @@ const SignUpPage = function ({ users }) {
 
   return (
     <div className="signup">
-      <h1 className="heading--1e">Sign up New User</h1>
+      <h1 className="signup__title">Sign up New User</h1>
       <form onSubmit={submitHandler} className="signup__form">
         <label className="input__label" htmlFor="signup__display-name">
           Display Name:
@@ -115,7 +115,7 @@ const SignUpPage = function ({ users }) {
           validateFunction={validateTextLength(16)}
           id="signup__display-name"
           className="input"
-          tooltip="Input a 6-32 Alphanumeric Characters Display Name including -,_ and . characters."
+          tooltip="Input a 6-16 Alphanumeric Characters Display Name including -,_ and . characters."
           dataindex={0}
           inputtype="displayName"
           updateStateFunction={updateFormDataState}
@@ -130,7 +130,7 @@ const SignUpPage = function ({ users }) {
           validateFunction={validateTextLength(16)}
           id="signup__user-name"
           className="input"
-          tooltip="Input a 6-32 Alphanumeric Characters User Name including -,_ and . characters."
+          tooltip="Input a 6-16 Alphanumeric Characters User Name including -,_ and . characters."
           dataindex={0}
           inputtype="userName"
           updateStateFunction={updateFormDataState}
@@ -145,7 +145,7 @@ const SignUpPage = function ({ users }) {
           validateFunction={validateTextLength(16)}
           id="signup__password"
           className="input"
-          tooltip="Input a 6-32 Alphanumeric Characters Password including -,_ and . characters."
+          tooltip="Input a 6-16 Alphanumeric Characters Password including -,_ and . characters."
           dataindex={0}
           inputtype="password"
           updateStateFunction={updateFormDataState}
@@ -161,7 +161,7 @@ const SignUpPage = function ({ users }) {
           validateFunction={validateTextLength(16)}
           id="signup__password2"
           className="input"
-          tooltip="Input a 6-32 Alphanumeric Characters Password including -,_ and . characters."
+          tooltip="Input a 6-16 Alphanumeric Characters Password including -,_ and . characters."
           dataindex={0}
           inputtype="password2"
           updateStateFunction={updateFormDataState}

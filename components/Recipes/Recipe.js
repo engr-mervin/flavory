@@ -184,7 +184,11 @@ const Recipe = function ({ currentRecipe }) {
       {currentRecipe ? (
         <>
           <div className="recipe__image-box">
-            <img className="recipe__image" src={currentRecipe.image_url}></img>
+            <img
+              className="recipe__image"
+              src={currentRecipe.image_url}
+              alt={`A picture of ${currentRecipe.title}`}
+            ></img>
             <h2 className="recipe__title">
               <span>{currentRecipe.title}</span>
             </h2>

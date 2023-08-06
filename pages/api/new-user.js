@@ -1,5 +1,5 @@
 import { prisma } from "../../db";
-import { validateText } from "../../util/validate";
+import { validateText, validateTextLength } from "../../util/validate";
 
 const registerUserHandler = async function (req, res) {
   if (req.method !== "POST")
@@ -20,8 +20,8 @@ const registerUserHandler = async function (req, res) {
   }
 
   if (
-    !validateText(userObject.userName) ||
-    !validateText(userObject.password)
+    !validateTextLength(16)(userObject.userName) ||
+    !validateTextLength(16)(userObject.password)
   ) {
     return res.status(500).json({ message: "Validating error" });
   }

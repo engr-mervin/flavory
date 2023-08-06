@@ -1,11 +1,17 @@
 .signup {
-  display: flex;
+  @include flex-center;
   flex-direction: column;
-  padding: 8rem 48rem;
+  padding: 4rem;
+  gap: 3rem;
+  &__title {
+    @include classy;
+    font-size: 3.5rem;
+  }
   &__form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    row-gap: 2rem;
+    column-gap: 6rem;
     align-items: center;
   }
 
@@ -22,9 +28,9 @@
   }
 
   &__message {
+    @include status-text;
     font-size: 1.4rem;
-    color: red;
-    font-weight: 400;
+    text-align: left;
   }
   &__text {
     font-size: 1.4rem;
