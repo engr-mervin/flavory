@@ -11,6 +11,7 @@ import { UserDataContextProvider } from "../store/user-data-context";
 import ModalContext, { ModalContextProvider } from "../store/modal-context";
 import Modal from "../components/UI/Modal";
 import { createPortal } from "react-dom";
+import Head from "next/head";
 function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -42,6 +43,35 @@ function App({ Component, pageProps }) {
       <UserDataContextProvider>
         <ModalContextProvider>
           <UserDataProvider>
+            <Head>
+              <title>Flavory</title>
+              <link rel="shortcut icon" href="/images/favicon.ico" />
+              <link
+                rel="icon"
+                type="image/png"
+                sizes="96x96"
+                href="/image/favicon96.png"
+              />
+              <link
+                rel="icon"
+                type="image/png"
+                sizes="32x32"
+                href="/image/favicon32.png"
+              />
+              <link
+                rel="icon"
+                type="image/png"
+                sizes="16x16"
+                href="/image/favicon16.png"
+              />
+              <meta charset="UTF-8" />
+              <meta name="description" content="Recipe App" />
+              <meta name="author" content="John Mervin C. Bocatcat" />
+              <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0"
+              />
+            </Head>
             {loading ? <Loading></Loading> : ""}
             <Header></Header>
             <MainNavigation></MainNavigation>

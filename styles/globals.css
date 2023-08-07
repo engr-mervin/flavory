@@ -17,7 +17,7 @@ body {
 }
 
 ::selection {
-  background: rgb(234, 92, 43);
+  background: #ea5c2b;
   color: rgb(255, 245, 236);
 }
 
@@ -104,7 +104,7 @@ body {
 body {
   font-size: 1.6rem;
   font-weight: 400;
-  color: rgb(234, 92, 43);
+  color: #ea5c2b;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -213,11 +213,11 @@ body {
   height: 5rem;
   border-radius: 30%;
   cursor: pointer;
-  border: 1.5px solid rgb(234, 92, 43);
+  border: 1.5px solid #ea5c2b;
   transition: all 200ms;
 }
 .button--action:hover {
-  background-color: rgb(234, 92, 43);
+  background-color: #ea5c2b;
   transform: scale(1.08);
 }
 .button--action:hover .icon {
@@ -225,7 +225,7 @@ body {
 }
 .button .icon {
   transition: all 200ms;
-  color: rgb(234, 92, 43);
+  color: #ea5c2b;
   width: 3rem;
   height: 3rem;
 }
@@ -243,7 +243,7 @@ body {
   color: #3f2107;
   color: rgb(255, 245, 236);
   border: 1.5px solid transparent;
-  background-color: rgb(234, 92, 43);
+  background-color: #ea5c2b;
   padding: 1rem 3rem;
   border-radius: 0.75rem;
   font-size: 1.4rem;
@@ -265,8 +265,8 @@ body {
   letter-spacing: 2px;
   font-family: "Montserrat", monospace;
   color: #3f2107;
-  color: rgb(234, 92, 43);
-  border: 1.5px solid rgb(234, 92, 43);
+  color: #ea5c2b;
+  border: 1.5px solid #ea5c2b;
   background-color: white;
   padding: 1rem 3rem;
   border-radius: 0.75rem;
@@ -331,7 +331,7 @@ body {
   transition: all 300ms;
 }
 .tab.active {
-  border-bottom: 3px solid rgb(234, 92, 43);
+  border-bottom: 3px solid #ea5c2b;
 }
 .tab:hover {
   transform: scale(1.05);
@@ -379,7 +379,7 @@ body {
   top: calc(50% - 3.25rem);
   left: calc(50% - 3.25rem);
   width: 6.5rem;
-  border: 5px solid rgb(234, 92, 43);
+  border: 5px solid #ea5c2b;
   border-top: 5px solid transparent;
   animation-duration: 1000ms;
   animation-timing-function: ease-in;
@@ -415,7 +415,7 @@ body {
   left: calc(50% - 1.625rem);
   z-index: 1;
   width: 3.25rem;
-  border: 0.25rem solid rgb(234, 92, 43);
+  border: 0.25rem solid #ea5c2b;
   border-top: 0.25rem solid transparent;
   animation-duration: 1000ms;
   animation-timing-function: ease-in;
@@ -441,9 +441,9 @@ body {
 
 .chevron {
   background-color: white;
-  border: 1.5px solid rgb(234, 92, 43);
+  border: 1.5px solid #ea5c2b;
   border-radius: 50%;
-  color: rgb(234, 92, 43);
+  color: #ea5c2b;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -555,7 +555,7 @@ body {
   position: absolute;
   right: 0;
   top: 0;
-  background-color: rgb(234, 92, 43);
+  background-color: #ea5c2b;
   padding: 1.2rem 2rem;
   color: rgb(255, 245, 236);
   font-weight: 300;
@@ -565,7 +565,7 @@ body {
   border-radius: 1rem;
 }
 .recipe-card:link, .recipe-card:visited {
-  outline: 3px solid rgb(234, 92, 43);
+  outline: 3px solid #ea5c2b;
   outline-offset: 6px;
   min-height: 45rem;
   text-decoration: none;
@@ -952,7 +952,7 @@ body {
   gap: 1rem;
 }
 .modal__button--confirm, .modal__button--cancel {
-  background-color: rgb(234, 92, 43);
+  background-color: #ea5c2b;
   border: 1px solid transparent;
   border-radius: 0.5rem;
   color: rgb(255, 245, 236);
@@ -976,7 +976,7 @@ body {
 .modal__button--cancel {
   background-color: rgb(255, 250, 246);
   color: #3f2107;
-  border: 1px solid rgb(234, 92, 43);
+  border: 1px solid #ea5c2b;
 }
 
 body:has(.modal__overlay) {
@@ -1306,28 +1306,28 @@ body:has(.modal__overlay) {
 .navigation-item a:active, .navigation-item-2 a:hover,
 .navigation-item-2 a:active, .navigation-item-3 a:hover,
 .navigation-item-3 a:active {
-  border-bottom: 2px solid rgb(234, 92, 43);
-  color: rgb(234, 92, 43);
+  border-bottom: 2px solid #ea5c2b;
+  color: #ea5c2b;
   background-color: rgb(255, 250, 246);
 }
 .navigation-item.current a {
-  border-bottom: 2px solid rgb(234, 92, 43);
-  color: rgb(234, 92, 43);
+  border-bottom: 2px solid #ea5c2b;
+  color: #ea5c2b;
   background-color: rgb(255, 250, 246);
 }
 .navigation-item-2 a:link,
 .navigation-item-2 a:visited {
   padding: 1rem 2.5rem;
   color: rgb(255, 245, 236);
-  background-color: rgb(234, 92, 43);
+  background-color: #ea5c2b;
   border: 1.5px solid transparent;
 }
 .navigation-item-3 a:link,
 .navigation-item-3 a:visited {
   padding: 1rem 2.5rem;
-  color: rgb(234, 92, 43);
+  color: #ea5c2b;
   background-color: white;
-  border: 1.5px solid rgb(234, 92, 43);
+  border: 1.5px solid #ea5c2b;
 }
 .navigation__logout {
   background-color: #ff7f3f;
@@ -1346,9 +1346,9 @@ body:has(.modal__overlay) {
   color: #3f2107;
   font-size: 1.6rem;
   padding: 1rem 3rem;
-  color: rgb(234, 92, 43);
+  color: #ea5c2b;
   background-color: white;
-  border: 1.5px solid rgb(234, 92, 43);
+  border: 1.5px solid #ea5c2b;
   font-family: inherit;
   transition: all 250ms;
 }
@@ -1424,7 +1424,7 @@ body:has(.modal__overlay) {
   border-image: url("../assets/svg blobs/blob-1.svg");
   border-image-slice: 30 fill;
   z-index: 1;
-  outline: 3.5px solid rgb(234, 92, 43);
+  outline: 3.5px solid #ea5c2b;
   outline-offset: 6px;
   cursor: pointer;
   transition: all 400ms;
@@ -1461,7 +1461,7 @@ body:has(.modal__overlay) {
   background-color: white;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-left: 3px solid rgb(234, 92, 43);
+  border-left: 3px solid #ea5c2b;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -1521,9 +1521,9 @@ body:has(.modal__overlay) {
 }
 .recipe__button-action {
   background-color: white;
-  border: 1.5px solid rgb(234, 92, 43);
+  border: 1.5px solid #ea5c2b;
   border-radius: 50%;
-  color: rgb(234, 92, 43);
+  color: #ea5c2b;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1571,7 +1571,7 @@ body:has(.modal__overlay) {
   text-align: right;
 }
 .recipe__link:link, .recipe__link:visited {
-  color: rgb(234, 92, 43);
+  color: #ea5c2b;
 }
 .recipe__link:hover, .recipe__link:active {
   font-weight: 500;
@@ -1580,7 +1580,7 @@ body:has(.modal__overlay) {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(249, 229, 214);
+  background-color: rgb(255, 247, 238);
 }
 .recipe__duration {
   display: flex;
@@ -1751,7 +1751,7 @@ body:has(.modal__overlay) {
   background-color: white;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  border-right: 3px solid rgb(234, 92, 43);
+  border-right: 3px solid #ea5c2b;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -1788,7 +1788,7 @@ body:has(.modal__overlay) {
 }
 .search__bar:focus {
   outline: none;
-  border: 1.5px solid rgb(234, 92, 43);
+  border: 1.5px solid #ea5c2b;
 }
 .search__button {
   text-transform: uppercase;
@@ -1862,7 +1862,7 @@ body:has(.modal__overlay) {
   position: absolute;
   height: 18rem;
   height: 100%;
-  color: rgb(234, 92, 43);
+  color: #ea5c2b;
   left: -10%;
   bottom: 0;
   opacity: 0.7;
@@ -1920,9 +1920,9 @@ body:has(.modal__overlay) {
 }
 .pages__button {
   background-color: white;
-  border: 1.5px solid rgb(234, 92, 43);
+  border: 1.5px solid #ea5c2b;
   border-radius: 50%;
-  color: rgb(234, 92, 43);
+  color: #ea5c2b;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1940,7 +1940,7 @@ body:has(.modal__overlay) {
   cursor: auto;
 }
 .pages__button.current {
-  background-color: rgb(234, 92, 43);
+  background-color: #ea5c2b;
   color: rgb(255, 245, 236);
 }
 
@@ -1978,7 +1978,7 @@ body:has(.modal__overlay) {
   align-items: center;
 }
 .signup__submit {
-  background-color: rgb(234, 92, 43);
+  background-color: #ea5c2b;
   border: 1.5px solid transparent;
   font-family: inherit;
   color: rgb(255, 245, 236);
@@ -2036,7 +2036,7 @@ body:has(.modal__overlay) {
   align-items: center;
 }
 .login__submit {
-  background-color: rgb(234, 92, 43);
+  background-color: #ea5c2b;
   grid-column: 2/-1;
   border: none;
   font-family: inherit;
@@ -2073,7 +2073,7 @@ body:has(.modal__overlay) {
   background-color: white;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-left: 3px solid rgb(234, 92, 43);
+  border-left: 3px solid #ea5c2b;
   padding: 2.4rem;
 }
 .account__stats {
@@ -2096,7 +2096,7 @@ body:has(.modal__overlay) {
   background-color: white;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-left: 3px solid rgb(234, 92, 43);
+  border-left: 3px solid #ea5c2b;
   text-align: center;
   font-family: "Montserrat", monospace;
   font-weight: 400;
@@ -2111,7 +2111,7 @@ body:has(.modal__overlay) {
   background-color: white;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  border-right: 3px solid rgb(234, 92, 43);
+  border-right: 3px solid #ea5c2b;
   padding: 2rem 4rem;
   display: grid;
 }
