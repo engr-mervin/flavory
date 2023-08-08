@@ -1,0 +1,22 @@
+$bpw1640: 1640px; // change paddings
+$bpw1460: 1460px;
+$bpw1350: 1350px;
+$bpw1290: 1290px;
+$bpw1200: 1200px; //9px
+$bpw1150: 1150px;
+$bpw950: 950px;
+$bpw860: 860px;
+$bpw770: 770px; // change paddings
+$bpw720: 720px; //8px
+$bpw630: 630px;
+//600 embrace double lines
+$bpw510: 510px; // change paddings
+$bpw420: 420px;
+$bpw380: 380px; // change paddings
+$bpw350: 350px;
+
+@mixin respondMax($breakpoint) {
+  @media (max-width: calc(($breakpoint/16px * 1em))) {
+    @content;
+  }
+}

@@ -1,5 +1,11 @@
 html {
   font-size: 62.5%;
+  @include respondMax($bpw1200) {
+    font-size: 56.25%;
+  }
+  @include respondMax($bpw720) {
+    font-size: 50%;
+  }
 }
 
 body {

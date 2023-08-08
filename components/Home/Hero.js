@@ -15,8 +15,8 @@ const Hero = function () {
   return (
     <section className="hero">
       <div className="hero-box">
-        <h1 className="heading--1b">
-          Thousands of healthy, tasty recipes from all over the world.
+        <h1 className="hero-title">
+          Thousands of healthy, tasty recipes from all over the world!
         </h1>
         <p className="hero-text">
           Immerse yourself in a world of endless flavor possibilities.
@@ -33,7 +33,7 @@ const Hero = function () {
               router.push("/recipes");
             }}
           >
-            Start Cooking!
+            Start!
           </button>
           <button
             className="button-hero--signup"
@@ -51,9 +51,9 @@ const Hero = function () {
           <ul className="hero-feature-list">
             <li>
               <Image
-                alt="BBC Logo"
+                alt="Tech Crunch Logo"
                 className="hero-feature-item"
-                src={logoBBC}
+                src={logoTechcrunch}
               ></Image>
             </li>
             <li>
@@ -72,9 +72,9 @@ const Hero = function () {
             </li>
             <li>
               <Image
-                alt="Tech Crunch Logo"
+                alt="BBC Logo"
                 className="hero-feature-item"
-                src={logoTechcrunch}
+                src={logoBBC}
               ></Image>
             </li>
           </ul>

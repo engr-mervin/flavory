@@ -5,15 +5,80 @@
 
   gap: 10rem;
   // justify-content: space-between;
-
+  @include respondMax($bpw1640) {
+    padding: 10rem 8rem;
+    gap: 8rem;
+  }
+  @include respondMax($bpw1460) {
+    grid-template-columns: 0.65fr 0.35fr;
+    gap: 6rem;
+  }
+  @include respondMax($bpw1290) {
+    grid-template-columns: 7fr 3fr;
+    gap: 5rem;
+  }
+  @include respondMax($bpw1200) {
+    grid-template-columns: 3fr 1fr;
+  }
+  @include respondMax($bpw1150) {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  @include respondMax($bpw770) {
+    padding: 10rem 6rem;
+  }
+  @include respondMax($bpw510) {
+    padding: 10rem 4rem;
+  }
+  @include respondMax($bpw380) {
+    padding: 10rem 2rem;
+  }
   text-align: center;
+  &-title {
+    font-family: "Montserrat", monospace;
+    font-size: 4.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: $color-font--black;
+    animation: moveToTop 800ms, fadeIn 800ms;
+    animation-delay: addAnimDelay($animation-hero-delay, 1);
+    animation-fill-mode: both;
+
+    @include respondMax($bpw1640) {
+      font-size: 4.4rem;
+    }
+    @include respondMax($bpw1350) {
+      font-size: 4.2rem;
+      letter-spacing: 0.4px;
+    }
+    @include respondMax($bpw1150) {
+      padding: 0 3rem;
+    }
+    @include respondMax($bpw950) {
+      padding: 0;
+    }
+    @include respondMax($bpw770) {
+      font-size: 4rem;
+    }
+    @include respondMax($bpw630) {
+      font-size: 3.8rem;
+    }
+    @include respondMax($bpw420) {
+      font-size: 3.4rem;
+      letter-spacing: 0px;
+    }
+    @include respondMax($bpw350) {
+      font-size: 3.1rem;
+      letter-spacing: 0px;
+    }
+  }
   &-box {
     width: 100%;
     display: flex;
     flex-direction: column;
   }
   &-feature-box {
-    margin-top: 4rem;
+    margin-top: 2.5rem;
     animation: moveToTop 800ms, fade 800ms;
     animation-delay: addAnimDelay($animation-hero-delay, 3);
     animation-fill-mode: both;
@@ -39,10 +104,46 @@
     background-color: $color-font--black;
     padding: 1.5rem 5rem;
     list-style: none;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
     align-items: center;
+    justify-items: center;
     margin-top: 1.5rem;
+    @include respondMax($bpw770) {
+      padding: 1.5rem 3rem;
+    }
+    @include respondMax($bpw630) {
+      grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(2, 1fr);
+      background-color: white;
+      column-gap: 4rem;
+      row-gap: 2rem;
+      padding: 1.5rem 0;
+    }
+    @include respondMax($bpw510) {
+      column-gap: 3rem;
+    }
+    @include respondMax($bpw420) {
+      column-gap: 2rem;
+    }
+    & li {
+      @include respondMax($bpw630) {
+        @include flex-center;
+
+        width: 35vw;
+        padding: 1.5rem 0;
+        background-color: $color-font--black;
+        border-radius: 0.5rem;
+
+        &:nth-child(odd) {
+          justify-self: center;
+        }
+        &:nth-child(even) {
+          justify-self: center;
+        }
+      }
+    }
   }
 
   &-feature-item {
@@ -51,6 +152,15 @@
     display: block;
 
     filter: opacity(100%);
+    @include respondMax($bpw1150) {
+      height: 2.1rem;
+    }
+    @include respondMax($bpw770) {
+      height: 1.8rem;
+    }
+    @include respondMax($bpw420) {
+      height: 1.5rem;
+    }
   }
   &-text,
   &-text-2,
@@ -61,20 +171,35 @@
   }
   &-text {
     margin-top: 8rem;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: $color-font--black;
     font-weight: 300;
+    @include respondMax($bpw420) {
+      font-size: 1.5rem;
+      margin-top: 6rem;
+    }
   }
   &-text-2 {
     margin-top: 1.5rem;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 300;
+    @include respondMax($bpw420) {
+      font-size: 1.5rem;
+    }
   }
   &-actions {
     margin-top: 3rem;
-    display: flex;
-    justify-content: center;
+    // @include flex-center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: flex-start;
     gap: 4rem;
+    @include respondMax($bpw510) {
+      column-gap: 3rem;
+    }
+    @include respondMax($bpw420) {
+      column-gap: 2rem;
+    }
   }
   &-image-box {
     border-radius: 1rem;
@@ -94,6 +219,27 @@
     animation: fade 800ms, blurIn 800ms;
     animation-delay: addAnimDelay($animation-hero-delay, 4);
     animation-fill-mode: both;
+    @include respondMax($bpw1460) {
+      gap: 1.5rem;
+      grid-template-columns: 1fr 1fr;
+    }
+    @include respondMax($bpw1290) {
+      grid-template-columns: 1fr;
+    }
+    @include respondMax($bpw1150) {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
+      gap: 5rem;
+    }
+    @include respondMax($bpw950) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @include respondMax($bpw770) {
+      gap: 4rem;
+    }
+    @include respondMax($bpw630) {
+      display: none;
+    }
   }
   &-image-center {
     display: block;
@@ -102,6 +248,17 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    @include respondMax($bpw1290) {
+      display: none;
+    }
+    @include respondMax($bpw1150) {
+      display: block;
+      grid-column: 3/4;
+      height: 30rem;
+    }
+    @include respondMax($bpw950) {
+      display: none;
+    }
   }
 
   &-image-1 {
@@ -111,6 +268,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    @include respondMax($bpw1150) {
+      grid-column: 2/3;
+      grid-row: 1/2;
+    }
   }
 
   &-image-2 {

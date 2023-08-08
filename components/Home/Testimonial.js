@@ -18,7 +18,7 @@ const Testimonial = function () {
           src={test1}
         ></Image>
         <div className="testimonial-box">
-          <h2 className="heading--2">Mildred Thompson</h2>
+          <h2 className="testimonial-author">Mildred Thompson</h2>
           <p className="testimonial-text">
             My Husband and I enjoy trying the amazing recipes Flavory offers!
             From meals to desserts, you can never ran out of new things to make!
@@ -29,7 +29,7 @@ const Testimonial = function () {
       </div>{" "}
       <div className="testimonial-item-2">
         <div className="testimonial-box-2">
-          <h2 className="heading--2">Nattawut Chaiyapong</h2>
+          <h2 className="testimonial-author">Nattawut Chaiyapong</h2>
           <p className="testimonial-text">
             As the lead chef and owner of my restaurant, flavory helped me
             create an amazing menu the customers love! A lot of cultural recipes
@@ -52,7 +52,7 @@ const Testimonial = function () {
           src={test3}
         ></Image>
         <div className="testimonial-box">
-          <h2 className="heading--2">Amelia Knight</h2>
+          <h2 className="testimonial-author">Amelia Knight</h2>
 
           <p className="testimonial-text">
             Flavory offers food recipes I can prepare in 20 minutes, which helps
