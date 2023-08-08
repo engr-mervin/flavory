@@ -1,9 +1,6 @@
 import InfoLogo from "../../assets/information-circle-outline.svg";
 
-const InfoMessage = function ({
-  message,
-  title = "Are you trying to break my website?",
-}) {
+const InfoMessage = function ({ message, title = "Information" }) {
   return (
     <div className="custom-page__404">
       <h1 className="custom-page__404-title">{title}</h1>
