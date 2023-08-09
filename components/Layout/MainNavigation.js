@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import AuthContext from "../../store/auth-context";
 import UserDataContext from "../../store/user-data-context";
+import Hamburger from "../UI/Hamburger";
 
 const MainNavigation = function () {
   let tab;
@@ -77,31 +78,43 @@ const MainNavigation = function () {
         )}
       </ul>
       {authState.isAuth ? (
-        <ul className="navigation-list-2">
-          <li
-            className={`navigation-item ${tab === "account" ? "current" : ""}`}
-          >
-            <Link href="/account">{userData.displayName}</Link>
-          </li>
-          <li className="navigation-item-3">
-            <button
-              className="navigation__logout"
-              onClick={logoutHandler}
-              disabled={loggingOut ? true : false}
+        <>
+          <div className="navigation-item-hamburger">
+            <Hamburger authState={true}></Hamburger>
+          </div>
+          <ul className="navigation-list-2">
+            <li
+              className={`navigation-item ${
+                tab === "account" ? "current" : ""
+              }`}
             >
-              {loggingOut ? "Please wait..." : "Log out"}
-            </button>
-          </li>
-        </ul>
+              <Link href="/account">{userData.displayName}</Link>
+            </li>
+            <li className="navigation-item-3">
+              <button
+                className="navigation__logout"
+                onClick={logoutHandler}
+                disabled={loggingOut ? true : false}
+              >
+                {loggingOut ? "Please wait..." : "Log out"}
+              </button>
+            </li>
+          </ul>
+        </>
       ) : (
-        <ul className="navigation-list-2">
-          <li className="navigation-item-2">
-            <Link href="/sign-up">Sign up</Link>
-          </li>
-          <li className="navigation-item-3">
-            <Link href="/log-in">Log in</Link>
-          </li>
-        </ul>
+        <>
+          <div className="navigation-item-hamburger">
+            <Hamburger authState={false}></Hamburger>
+          </div>
+          <ul className="navigation-list-2">
+            <li className="navigation-item-2">
+              <Link href="/sign-up">Sign up</Link>
+            </li>
+            <li className="navigation-item-3">
+              <Link href="/log-in">Log in</Link>
+            </li>
+          </ul>
+        </>
       )}
     </nav>
   );

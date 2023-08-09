@@ -16,7 +16,7 @@ const Footer = function () {
         {/* <h3 className="heading--3b">Contact me</h3> */}
       </div>
       <div className="footer-about">
-        <h3 className="heading--3b">About</h3>
+        <h3 className="footer-title">About</h3>
         <p className="footer-text">
           This website has been developed as a means to present and exhibit my
           professional portfolio. The website features a user-friendly
@@ -27,7 +27,7 @@ const Footer = function () {
       </div>
 
       <nav className="footer-navigate">
-        <h3 className="heading--3b">Navigation</h3>
+        <h3 className="footer-title">Navigation</h3>
         <ul className="footer-navigate-list">
           <li className="footer-navigate-item">
             <Link href="/">Home</Link>
@@ -122,7 +122,7 @@ const Footer = function () {
         >
           eonox.dev
         </a>{" "}
-        &mdash; 2023. All rights reserved.
+        &mdash; 2023.
       </div>
     </footer>
   );

@@ -19,6 +19,14 @@
   animation: blurIn 800ms;
   animation-fill-mode: both;
   animation-delay: 0ms;
+
+  @include respondMax($bpw770) {
+    padding: 2rem 4rem;
+  }
+  @include respondMax($bpw510) {
+    padding: 2rem;
+  }
+
   &-box {
     border-radius: 1rem;
     background-color: rgba(white, 0.6);

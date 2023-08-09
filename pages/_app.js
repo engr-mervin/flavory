@@ -8,7 +8,7 @@ import Loading from "../components/Fallback Pages/Loading";
 import { AuthContextProvider } from "../store/auth-context";
 import UserDataProvider from "../components/Wrapper/UserDataProvider";
 import { UserDataContextProvider } from "../store/user-data-context";
-import ModalContext, { ModalContextProvider } from "../store/modal-context";
+import { ModalContextProvider } from "../store/modal-context";
 import Modal from "../components/UI/Modal";
 import { createPortal } from "react-dom";
 import Head from "next/head";

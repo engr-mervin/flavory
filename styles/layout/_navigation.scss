@@ -9,13 +9,29 @@
   animation: fade 800ms;
   animation-fill-mode: both;
   animation-delay: 0ms;
+  @include respondMax($bpw770) {
+    padding: 1rem 4rem;
+    justify-content: flex-end;
+  }
+  @include respondMax($bpw510) {
+    padding: 1rem 2rem;
+  }
+
+  &-item-hamburger {
+    display: none;
+    @include respondMax($bpw770) {
+      display: block;
+    }
+  }
   &-list,
   &-list-2 {
     display: flex;
     list-style: none;
     flex-wrap: wrap;
+    @include respondMax($bpw770) {
+      display: none;
+    }
   }
-
   &-list-2 {
     gap: 2rem;
   }

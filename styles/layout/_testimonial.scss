@@ -7,24 +7,49 @@
   background-color: $color-primary--white;
   overflow: hidden;
   @include respondMax($bpw1640) {
-    padding: 10rem 24rem;
+    padding: 12rem 24rem;
   }
   @include respondMax($bpw1350) {
-    padding: 10rem 18rem;
+    padding: 12rem 18rem;
   }
   @include respondMax($bpw1200) {
-    padding: 10rem 12rem;
+    padding: 12rem 12rem;
   }
   @include respondMax($bpw950) {
-    padding: 10rem 8rem;
+    padding: 12rem 6rem;
   }
   @include respondMax($bpw770) {
-    padding: 10rem 6rem;
+    padding: 12rem 4rem;
   }
   @include respondMax($bpw510) {
-    padding: 10rem 4rem;
+    padding: 10rem 2rem;
+  }
+  @include respondMax($bpw420) {
+    gap: 3rem;
+  }
+  @include respondMax($bpw350) {
+    padding: 8rem 2rem;
   }
 
+  &-title {
+    font-family: "Montserrat", monospace;
+    font-size: 4.2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    color: $color-font--black;
+    text-align: center;
+    @include respondMax($bpw1350) {
+      font-size: 4rem;
+    }
+    @include respondMax($bpw770) {
+      font-size: 3.5rem;
+    }
+    @include respondMax($bpw420) {
+      font-size: 3rem;
+      letter-spacing: 0.6px;
+    }
+  }
   &-item {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -44,15 +69,12 @@
 
   &-box,
   &-box-2 {
-    margin-left: -4rem;
     background-color: white;
     box-shadow: 1rem 1rem 2rem rgba(black, 0.12);
     color: $color-font--black;
     display: flex;
     border-radius: 0.8rem;
     flex-direction: column;
-    padding: 3rem 7.5rem;
-    padding-right: 3.5rem;
     transform: skewX(-10deg);
 
     @include respondMax($bpw1290) {
@@ -65,21 +87,58 @@
       }
     }
   }
+
+  &-box {
+    margin-left: -4rem;
+    padding: 3rem;
+    padding-left: 7.5rem;
+    @include respondMax($bpw510) {
+      padding: 2rem;
+      margin-left: 0;
+    }
+  }
   &-box-2 {
+    margin-right: -4rem;
     margin-left: 0;
-    padding-left: 3.5rem;
+    padding: 3rem;
     padding-right: 7.5rem;
+    @include respondMax($bpw510) {
+      padding: 2rem;
+      margin-right: 0;
+    }
   }
 
-  &-author {
-    font-size: 3.4rem;
+  &-author,
+  &-author--2 {
+    font-size: 3rem;
     font-family: "Montserrat", monospace;
     font-weight: 600;
     letter-spacing: 0.5px;
     white-space: nowrap;
-    @include respondMax($bpw630) {
-      font-size: 3rem;
-      letter-spacing: 0px;
+
+    @include respondMax($bpw770) {
+      font-size: 2.7rem;
+    }
+    @include respondMax($bpw510) {
+      text-align: right;
+    }
+    @include respondMax($bpw420) {
+      font-size: 2.4rem;
+    }
+  }
+
+  &-author--2 {
+    @include respondMax($bpw510) {
+      text-align: left;
+    }
+  }
+
+  &-profession {
+    font-size: 2.2rem;
+    text-align: right;
+    font-family: "Inconsolata", monospace;
+    @include respondMax($bpw510) {
+      font-size: 1.8rem;
     }
   }
   &-video-box {
@@ -120,20 +179,51 @@
       width: 16rem;
       height: 16rem;
     }
+    @include respondMax($bpw510) {
+      height: 12rem;
+      width: 12rem;
+      grid-row: 1/2;
+      justify-self: flex-start;
+      margin-bottom: -4rem;
+      outline: 2px solid $color-primary;
+      outline-offset: 4px;
+      margin-left: 1rem;
+    }
+    @include respondMax($bpw420) {
+      height: 10rem;
+      width: 10rem;
+      outline: 1.5px solid $color-primary;
+      outline-offset: 3px;
+    }
+    @include respondMax($bpw350) {
+      margin-bottom: -3.5rem;
+    }
   }
 
   &-image-2 {
-    margin-left: -4rem;
+    @include respondMax($bpw510) {
+      justify-self: flex-end;
+      margin-right: 1rem;
+    }
   }
 
   &-text {
     font-style: italic;
     text-align: justify;
     font-size: 1.8rem;
-    margin-top: 2.8rem;
+    margin: 2rem 0;
     margin-bottom: 2.8rem;
+    @include respondMax($bpw950) {
+      margin: 2rem 0;
+    }
+    @include respondMax($bpw770) {
+      margin: 1.6rem 0;
+    }
     @include respondMax($bpw630) {
       font-size: 1.6rem;
+    }
+    @include respondMax($bpw420) {
+      margin: 1.2rem 0;
     }
   }
 }

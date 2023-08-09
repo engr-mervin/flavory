@@ -1,0 +1,127 @@
+.hamburger {
+  &-open {
+    @include button--smooth;
+    @include flex-center;
+    border: none;
+    background-color: white;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem 0.5rem;
+
+    &:hover {
+      background-color: $color-primary--white-dark-1;
+    }
+  }
+
+  &-overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(black, 0.75);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    backdrop-filter: blur(3px);
+    transition: all 300ms;
+    opacity: 0%;
+    pointer-events: none;
+    visibility: hidden;
+    right: 0;
+  }
+
+  &-overlay.active {
+    opacity: 100%;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: auto;
+    visibility: visible;
+    top: 0;
+    right: 0;
+  }
+  &-menu {
+    transform: translateX(100%);
+    background-color: rgba($color: white, $alpha: 0.1);
+    backdrop-filter: blur(3px);
+    position: absolute;
+    padding: 10rem;
+    height: 100vh;
+    transition: all 300ms;
+    right: 0;
+    top: 0;
+    max-width: 100vw;
+    @include respondMax($bpw510) {
+      padding: 8rem;
+    }
+  }
+  &-menu.active {
+    transform: translateX(0%);
+  }
+
+  &-menu-list,
+  &-menu-list-2 {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &-menu-item {
+    display: block;
+    & > a {
+      @include flex-center;
+      @include classy;
+      padding: 1rem 3rem;
+      width: 100%;
+      height: 100%;
+      font-size: 2.5rem;
+      text-decoration: none;
+      color: $color-font--white;
+      transition: all 300ms;
+      border-radius: 1rem;
+      text-align: center;
+
+      &:hover {
+        background-color: $color-primary--white-dark-1;
+        color: $color-font--black;
+      }
+      @include respondMax($bpw510) {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  &-close {
+    @include button--smooth;
+    @include flex-center;
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    border: none;
+    background-color: transparent;
+    &:hover {
+      background-color: $color-primary--white-dark-1;
+    }
+  }
+
+  &-line {
+    width: 4rem;
+    height: 0.3rem;
+    background-color: $color-font--black--light;
+  }
+  &-line2 {
+    width: 4rem;
+    height: 0.3rem;
+    background-color: $color-font--white;
+    transform: rotate(45deg);
+    position: absolute;
+    &:last-child {
+      transform: rotate(135deg);
+    }
+  }
+}
+
+body:has(.hamburger-overlay.active) {
+  overflow: hidden;
+}

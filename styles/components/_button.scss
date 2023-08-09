@@ -38,9 +38,9 @@
     font-size: 1.4rem;
     font-family: inherit;
     font-weight: 500;
-    @include respondMax($bpw770) {
-      font-size: 1.2rem;
-    }
+    // @include respondMax($bpw770) {
+    //   font-size: 1.2rem;
+    // }
   }
 
   &-hero--start {
@@ -55,8 +55,8 @@
     font-family: inherit;
     font-weight: 500;
     justify-self: flex-end;
-    @include respondMax($bpw770) {
-      font-size: 1.2rem;
-    }
+    // @include respondMax($bpw770) {
+    //   font-size: 1.2rem;
+    // }
   }
 }

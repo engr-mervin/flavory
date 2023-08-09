@@ -5,9 +5,38 @@
   color: $color-font--white;
   padding: 2rem 3rem;
   padding-bottom: 0;
+  @include respondMax($bpw950) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include respondMax($bpw630) {
+    grid-template-columns: 1fr;
+  }
+  @include respondMax($bpw510) {
+    padding: 2rem;
+    padding-bottom: 0;
+  }
 
   & > * {
     padding: 2rem 5rem;
+    @include respondMax($bpw1150) {
+      padding: 1rem 2.5rem;
+    }
+    @include respondMax($bpw510) {
+      padding: 1rem 1.5rem;
+    }
+    @include respondMax($bpw350) {
+      padding: 1rem 0rem;
+    }
+  }
+  &-title {
+    font-size: 2.8rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+    font-family: "Inconsolata", monospace;
+
+    @include respondMax($bpw770) {
+      display: none;
+    }
   }
 
   &-flavory {
@@ -19,6 +48,12 @@
   &-about {
     display: flex;
     flex-direction: column;
+
+    margin-bottom: 1.5rem;
+
+    @include respondMax($bpw770) {
+      grid-column: 1/-1;
+    }
   }
 
   &-address {
@@ -27,6 +62,15 @@
     margin-top: auto;
     align-self: flex-end;
     padding: 1rem 5rem;
+    @include respondMax($bpw1150) {
+      padding: 1rem 2.5rem;
+    }
+    @include respondMax($bpw630) {
+      justify-content: space-between;
+    }
+    @include respondMax($bpw510) {
+      padding: 1rem 1.5rem;
+    }
   }
 
   &-text {
@@ -77,6 +121,14 @@
     padding-right: 3rem;
     justify-items: flex-start;
 
+    @include respondMax($bpw1460) {
+      padding-left: 5rem;
+      padding-right: 2.5rem;
+    }
+    @include respondMax($bpw1290) {
+      padding-left: 4rem;
+      padding-right: 2rem;
+    }
     a:link,
     a:visited {
       display: block;
@@ -104,11 +156,26 @@
     font-size: 1.4rem;
 
     padding: 1rem 5rem;
+    @include respondMax($bpw1150) {
+      padding: 1rem 2.5rem;
+    }
+    @include respondMax($bpw950) {
+      grid-column: 2/3;
+    }
+    @include respondMax($bpw630) {
+      grid-column: 1/2;
+    }
+    @include respondMax($bpw350) {
+      padding: 1rem 0rem;
+    }
   }
 
   &-navigate {
     display: flex;
     flex-direction: column;
+    @include respondMax($bpw950) {
+      display: none;
+    }
   }
 
   &-line {

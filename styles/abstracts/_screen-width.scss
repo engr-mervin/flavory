@@ -4,15 +4,16 @@ $bpw1350: 1350px;
 $bpw1290: 1290px;
 $bpw1200: 1200px; //9px
 $bpw1150: 1150px;
-$bpw950: 950px;
+$bpw1060: 1060px; //change recipe card no.
+$bpw950: 950px; // change paddings
 $bpw860: 860px;
-$bpw770: 770px; // change paddings
-$bpw720: 720px; //8px
+$bpw770: 770px; // change paddings //font size change //burger menu
+$bpw720: 720px; //hamburger menu
 $bpw630: 630px;
 //600 embrace double lines
-$bpw510: 510px; // change paddings
-$bpw420: 420px;
-$bpw380: 380px; // change paddings
+$bpw510: 510px; // change paddings and top padding
+$bpw420: 420px; //font size change
+$bpw380: 380px;
 $bpw350: 350px;
 
 @mixin respondMax($breakpoint) {

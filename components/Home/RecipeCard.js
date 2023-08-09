@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { capitalizeFirstLetter } from "../../util/strings";
 import Link from "next/link";
 import ArrowLogo from "../../assets/chevron-forward-outline.svg";
@@ -25,7 +24,7 @@ const RecipeCard = function ({ recipe }) {
           </div>
         </div> */}
           <ul className="recipe-card__list">
-            {recipe.ingredients.slice(0, 12).map((ingredient, ind) => (
+            {recipe.ingredients.slice(0, 10).map((ingredient, ind) => (
               <li
                 className="recipe-card__item"
                 key={`${ingredient.description}_${ind}`}

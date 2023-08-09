@@ -6,7 +6,7 @@
   gap: 10rem;
   // justify-content: space-between;
   @include respondMax($bpw1640) {
-    padding: 10rem 8rem;
+    padding: 12rem 8rem;
     gap: 8rem;
   }
   @include respondMax($bpw1460) {
@@ -24,15 +24,21 @@
     grid-template-columns: 1fr;
     gap: 4rem;
   }
+  @include respondMax($bpw950) {
+    padding: 12rem 6rem;
+  }
   @include respondMax($bpw770) {
-    padding: 10rem 6rem;
+    padding: 12rem 4rem;
   }
   @include respondMax($bpw510) {
-    padding: 10rem 4rem;
-  }
-  @include respondMax($bpw380) {
     padding: 10rem 2rem;
   }
+  @include respondMax($bpw350) {
+    padding: 8rem 2rem;
+  }
+  // @include respondMax($bpw380) {
+  //   padding: 12rem 2rem;
+  // }
   text-align: center;
   &-title {
     font-family: "Montserrat", monospace;
@@ -49,7 +55,6 @@
     }
     @include respondMax($bpw1350) {
       font-size: 4.2rem;
-      letter-spacing: 0.4px;
     }
     @include respondMax($bpw1150) {
       padding: 0 3rem;
@@ -60,16 +65,8 @@
     @include respondMax($bpw770) {
       font-size: 4rem;
     }
-    @include respondMax($bpw630) {
-      font-size: 3.8rem;
-    }
     @include respondMax($bpw420) {
-      font-size: 3.4rem;
-      letter-spacing: 0px;
-    }
-    @include respondMax($bpw350) {
-      font-size: 3.1rem;
-      letter-spacing: 0px;
+      font-size: 3.6rem;
     }
   }
   &-box {
@@ -131,7 +128,7 @@
       @include respondMax($bpw630) {
         @include flex-center;
 
-        width: 35vw;
+        width: 40vw;
         padding: 1.5rem 0;
         background-color: $color-font--black;
         border-radius: 0.5rem;
@@ -153,13 +150,13 @@
 
     filter: opacity(100%);
     @include respondMax($bpw1150) {
-      height: 2.1rem;
+      height: 2.2rem;
     }
     @include respondMax($bpw770) {
-      height: 1.8rem;
+      height: 1.9rem;
     }
     @include respondMax($bpw420) {
-      height: 1.5rem;
+      height: 1.6rem;
     }
   }
   &-text,
@@ -175,7 +172,6 @@
     color: $color-font--black;
     font-weight: 300;
     @include respondMax($bpw420) {
-      font-size: 1.5rem;
       margin-top: 6rem;
     }
   }
@@ -183,9 +179,6 @@
     margin-top: 1.5rem;
     font-size: 1.6rem;
     font-weight: 300;
-    @include respondMax($bpw420) {
-      font-size: 1.5rem;
-    }
   }
   &-actions {
     margin-top: 3rem;
