@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useRouterFilter from "../../custom-hooks/use-router-filter";
+import SearchLogo from "../../assets/search-outline.svg";
 const SearchBar = function () {
   const [query, setQuery] = useState("");
 
@@ -31,6 +32,10 @@ const SearchBar = function () {
       >
         Search
       </button>
+      <SearchLogo
+        className="search__logo"
+        onClick={submitQueryHandler}
+      ></SearchLogo>
     </form>
   );
 };

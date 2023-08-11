@@ -326,16 +326,10 @@ body {
   letter-spacing: 3.6px;
   color: #3f2107;
 }
-
-.heading--1d {
-  font-family: "Montserrat", monospace;
-  font-size: 4rem;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: rgb(255, 250, 246);
-  text-align: left;
-  letter-spacing: 10px;
-  line-height: 1;
+@media (max-width: 39.375em) {
+  .heading--1 {
+    font-size: 4.5rem;
+  }
 }
 
 .heading--1e {
@@ -553,34 +547,6 @@ body {
 .hamburger-menu-item {
   display: block;
 }
-.hamburger-menu-item > a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
-  font-weight: 400;
-  letter-spacing: 2px;
-  font-family: "Montserrat", monospace;
-  color: #3f2107;
-  padding: 1rem 3rem;
-  width: 100%;
-  height: 100%;
-  font-size: 2.5rem;
-  text-decoration: none;
-  color: rgb(255, 245, 236);
-  transition: all 300ms;
-  border-radius: 1rem;
-  text-align: center;
-}
-.hamburger-menu-item > a:hover {
-  background-color: rgb(255, 247, 238);
-  color: #3f2107;
-}
-@media (max-width: 31.875em) {
-  .hamburger-menu-item > a {
-    font-size: 2rem;
-  }
-}
 .hamburger-close {
   background-color: #ff7f3f;
   cursor: pointer;
@@ -604,6 +570,36 @@ body {
 }
 .hamburger-close:hover {
   background-color: rgb(255, 247, 238);
+}
+.hamburger-link, .hamburger-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: "Montserrat", monospace;
+  color: #3f2107;
+  background-color: transparent;
+  border: none;
+  padding: 1rem 3rem;
+  width: 100%;
+  height: 100%;
+  font-size: 2.5rem;
+  text-decoration: none;
+  color: rgb(255, 245, 236);
+  transition: all 300ms;
+  border-radius: 1rem;
+  text-align: center;
+}
+.hamburger-link:hover, .hamburger-button:hover {
+  background-color: rgb(255, 247, 238);
+  color: #3f2107;
+}
+@media (max-width: 31.875em) {
+  .hamburger-link, .hamburger-button {
+    font-size: 2rem;
+  }
 }
 .hamburger-line {
   width: 4rem;
@@ -865,8 +861,6 @@ body:has(.hamburger-overlay.active) {
 }
 
 .recipe-card:link, .recipe-card:visited {
-  outline: 3px solid #ea5c2b;
-  outline-offset: 6px;
   min-height: 45rem;
   text-decoration: none;
   color: #3f2107;
@@ -879,23 +873,25 @@ body:has(.hamburger-overlay.active) {
   font: inherit;
   cursor: pointer;
   border: none;
-  border-radius: 1rem;
+  border-radius: 2rem;
   box-shadow: 0rem 0rem 2rem rgba(63, 33, 7, 0.15);
   background-color: white;
   transition: all 400ms;
   position: relative;
 }
-@media (max-width: 66.25em) {
-  .recipe-card:link:nth-child(3), .recipe-card:visited:nth-child(3) {
-    display: none;
-  }
-}
 @media (max-width: 39.375em) {
-  .recipe-card:link:nth-child(3), .recipe-card:visited:nth-child(3) {
+  .recipe-card:link, .recipe-card:visited {
     display: flex;
+    flex-direction: row;
+    min-height: 20rem;
   }
 }
-@media (max-width: 26.25em) {
+@media (max-width: 31.875em) {
+  .recipe-card:link, .recipe-card:visited {
+    flex-direction: column;
+  }
+}
+@media (max-width: 53.75em) {
   .recipe-card:link:nth-child(3), .recipe-card:visited:nth-child(3) {
     display: none;
   }
@@ -915,8 +911,16 @@ body:has(.hamburger-overlay.active) {
   font-weight: 300;
   font-size: 1.6rem;
   opacity: 0.95;
-  transform: translate(5%, calc(-50% - 5px));
+  transform: translate(0, -50%);
   border-radius: 1rem;
+}
+@media (max-width: 39.375em) {
+  .recipe-card__tag {
+    left: 0;
+    right: auto;
+    font-size: 1.4rem;
+    padding: 0.8rem 1.6rem;
+  }
 }
 .recipe-card:hover, .recipe-card:active {
   transform: translateY(-0.5rem);
@@ -939,6 +943,18 @@ body:has(.hamburger-overlay.active) {
   overflow: hidden;
   border-top-right-radius: 2rem;
 }
+@media (max-width: 39.375em) {
+  .recipe-card__image-box {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 2rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .recipe-card__image-box {
+    border-top-right-radius: 2rem;
+    border-bottom-left-radius: 0rem;
+  }
+}
 .recipe-card__image {
   width: 100%;
   height: 100%;
@@ -955,20 +971,24 @@ body:has(.hamburger-overlay.active) {
   list-style: none;
   text-align: left;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   padding: 3rem;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 @media (max-width: 80.625em) {
   .recipe-card__list {
     padding: 2rem;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 }
 @media (max-width: 71.875em) {
   .recipe-card__list {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 39.375em) {
+  .recipe-card__list {
+    gap: 0.25rem;
   }
 }
 .recipe-card__item {
@@ -990,7 +1010,11 @@ body:has(.hamburger-overlay.active) {
   font-size: 1.4rem;
   font-style: italic;
   width: 100%;
-  word-break: keep-all;
+}
+@media (max-width: 66.25em) {
+  .recipe-card__item span {
+    font-size: 1.2rem;
+  }
 }
 
 .bookmark {
@@ -1471,7 +1495,7 @@ body:has(.modal__overlay) {
   animation-fill-mode: both;
   animation-delay: 0ms;
 }
-@media (max-width: 48.125em) {
+@media (max-width: 59.375em) {
   .header {
     padding: 2rem 4rem;
   }
@@ -1485,21 +1509,38 @@ body:has(.modal__overlay) {
   border-radius: 1rem;
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(4px);
-  width: 50%;
+  width: 55%;
+  min-width: min-content;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
   padding: 3rem 4rem;
   padding-bottom: 1rem;
-  padding-right: 2rem;
+  padding-right: 8rem;
   margin-bottom: 1rem;
+}
+@media (max-width: 53.75em) {
+  .header-box {
+    width: 50rem;
+  }
+}
+@media (max-width: 39.375em) {
+  .header-box {
+    padding-right: 4rem;
+    width: 40rem;
+  }
 }
 .header-box > p {
   font-size: 1.8rem;
   letter-spacing: 1px;
   margin-top: 2rem;
   margin-bottom: 3rem;
+}
+@media (max-width: 39.375em) {
+  .header-box > p {
+    font-size: 1.6rem;
+  }
 }
 .header-info-box {
   display: flex;
@@ -1853,9 +1894,13 @@ body:has(.modal__overlay) {
   animation-fill-mode: both;
   animation-delay: 0ms;
 }
-@media (max-width: 48.125em) {
+@media (max-width: 59.375em) {
   .navigation {
     padding: 1rem 4rem;
+  }
+}
+@media (max-width: 48.125em) {
+  .navigation {
     justify-content: flex-end;
   }
 }
@@ -1883,7 +1928,7 @@ body:has(.modal__overlay) {
   }
 }
 .navigation-list-2 {
-  gap: 2rem;
+  gap: 1rem;
 }
 .navigation-item, .navigation-item-2, .navigation-item-3 {
   text-transform: uppercase;
@@ -1905,6 +1950,15 @@ body:has(.modal__overlay) {
   transition: all 250ms;
   border-radius: 0.5rem;
   border-bottom: 2px solid transparent;
+}
+@media (max-width: 59.375em) {
+  .navigation-item a:link,
+  .navigation-item a:visited, .navigation-item-2 a:link,
+  .navigation-item-2 a:visited, .navigation-item-3 a:link,
+  .navigation-item-3 a:visited {
+    padding: 1rem 2rem;
+    letter-spacing: 0.5px;
+  }
 }
 .navigation-item a:hover,
 .navigation-item a:active, .navigation-item-2 a:hover,
@@ -1958,6 +2012,12 @@ body:has(.modal__overlay) {
 }
 .navigation__logout:hover {
   transform: scale(1.05);
+}
+@media (max-width: 59.375em) {
+  .navigation__logout {
+    padding: 1rem 2rem;
+    letter-spacing: 0.5px;
+  }
 }
 .navigation__logout:hover:not(:disabled) {
   transform: scale(1.05);
@@ -2047,7 +2107,7 @@ body:has(.modal__overlay) {
   grid-template-columns: auto 1fr;
   align-items: center;
 }
-@media (max-width: 31.875em) {
+@media (max-width: 39.375em) {
   .testimonial-item {
     grid-template-columns: 1fr;
   }
@@ -2057,7 +2117,7 @@ body:has(.modal__overlay) {
   grid-template-columns: 1fr auto;
   align-items: center;
 }
-@media (max-width: 31.875em) {
+@media (max-width: 39.375em) {
   .testimonial-item-2 {
     grid-template-columns: 1fr;
   }
@@ -2089,7 +2149,7 @@ body:has(.modal__overlay) {
   padding: 3rem;
   padding-left: 7.5rem;
 }
-@media (max-width: 31.875em) {
+@media (max-width: 39.375em) {
   .testimonial-box {
     padding: 2rem;
     margin-left: 0;
@@ -2101,7 +2161,7 @@ body:has(.modal__overlay) {
   padding: 3rem;
   padding-right: 7.5rem;
 }
-@media (max-width: 31.875em) {
+@media (max-width: 39.375em) {
   .testimonial-box-2 {
     padding: 2rem;
     margin-right: 0;
@@ -2119,7 +2179,7 @@ body:has(.modal__overlay) {
     font-size: 2.7rem;
   }
 }
-@media (max-width: 31.875em) {
+@media (max-width: 39.375em) {
   .testimonial-author, .testimonial-author--2 {
     text-align: right;
   }
@@ -2129,7 +2189,7 @@ body:has(.modal__overlay) {
     font-size: 2.4rem;
   }
 }
-@media (max-width: 31.875em) {
+@media (max-width: 39.375em) {
   .testimonial-author--2 {
     text-align: left;
   }
@@ -2139,7 +2199,7 @@ body:has(.modal__overlay) {
   text-align: right;
   font-family: "Inconsolata", monospace;
 }
-@media (max-width: 31.875em) {
+@media (max-width: 39.375em) {
   .testimonial-profession {
     font-size: 1.8rem;
   }
@@ -2167,8 +2227,7 @@ body:has(.modal__overlay) {
   border-image: url("../assets/svg blobs/blob-1.svg");
   border-image-slice: 30 fill;
   z-index: 1;
-  outline: 3.5px solid #ea5c2b;
-  outline-offset: 6px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.6);
   cursor: pointer;
   transition: all 400ms;
 }
@@ -2181,24 +2240,26 @@ body:has(.modal__overlay) {
     height: 16rem;
   }
 }
-@media (max-width: 31.875em) {
+@media (max-width: 39.375em) {
   .testimonial-image, .testimonial-image-2 {
-    height: 12rem;
-    width: 12rem;
+    height: 14rem;
+    width: 14rem;
     grid-row: 1/2;
     justify-self: flex-start;
     margin-bottom: -4rem;
-    outline: 2px solid #ea5c2b;
-    outline-offset: 4px;
     margin-left: 1rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .testimonial-image, .testimonial-image-2 {
+    width: 12rem;
+    height: 12rem;
   }
 }
 @media (max-width: 26.25em) {
   .testimonial-image, .testimonial-image-2 {
     height: 10rem;
     width: 10rem;
-    outline: 1.5px solid #ea5c2b;
-    outline-offset: 3px;
   }
 }
 @media (max-width: 21.875em) {
@@ -2206,7 +2267,7 @@ body:has(.modal__overlay) {
     margin-bottom: -3.5rem;
   }
 }
-@media (max-width: 31.875em) {
+@media (max-width: 39.375em) {
   .testimonial-image-2 {
     justify-self: flex-end;
     margin-right: 1rem;
@@ -2254,19 +2315,34 @@ body:has(.modal__overlay) {
     padding: 12rem 6rem;
   }
 }
+@media (max-width: 53.75em) {
+  .section-recipes {
+    padding: 12rem 8rem;
+  }
+}
 @media (max-width: 48.125em) {
+  .section-recipes {
+    padding: 12rem 6rem;
+  }
+}
+@media (max-width: 39.375em) {
   .section-recipes {
     padding: 12rem 4rem;
   }
 }
 @media (max-width: 31.875em) {
   .section-recipes {
-    padding: 10rem 2rem;
+    padding: 10rem 8rem;
   }
 }
-@media (max-width: 21.875em) {
+@media (max-width: 28.75em) {
   .section-recipes {
-    padding: 8rem 2rem;
+    padding: 8rem 6rem;
+  }
+}
+@media (max-width: 26.25em) {
+  .section-recipes {
+    padding: 8rem 4rem;
   }
 }
 .section-recipes__title {
@@ -2300,32 +2376,38 @@ body:has(.modal__overlay) {
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   align-items: center;
-  gap: 12rem;
+  gap: 8rem;
 }
 @media (max-width: 102.5em) {
-  .section-recipes__box {
-    gap: 8rem;
-  }
-}
-@media (max-width: 66.25em) {
-  .section-recipes__box {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 59.375em) {
   .section-recipes__box {
     gap: 6rem;
   }
 }
-@media (max-width: 48.125em) {
+@media (max-width: 66.25em) {
+  .section-recipes__box {
+    gap: 6rem;
+  }
+}
+@media (max-width: 59.375em) {
   .section-recipes__box {
     gap: 4rem;
+  }
+}
+@media (max-width: 53.75em) {
+  .section-recipes__box {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8rem;
+  }
+}
+@media (max-width: 48.125em) {
+  .section-recipes__box {
+    gap: 6rem;
   }
 }
 @media (max-width: 39.375em) {
   .section-recipes__box {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 8rem;
     padding: 0 4rem;
   }
@@ -2352,6 +2434,11 @@ body:has(.modal__overlay) {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+@media (max-width: 66.25em) {
+  .recipe {
+    flex-direction: row;
+  }
 }
 .recipe__image-box {
   overflow: hidden;
@@ -2582,6 +2669,26 @@ body:has(.modal__overlay) {
     display: none;
   }
 }
+.footer-flavory-title {
+  font-family: "Montserrat", monospace;
+  font-size: 4rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: rgb(255, 250, 246);
+  text-align: left;
+  letter-spacing: 10px;
+  line-height: 1;
+}
+@media (max-width: 39.375em) {
+  .footer-flavory-title {
+    font-size: 3.5rem;
+  }
+}
+@media (max-width: 39.375em) {
+  .footer-flavory-text {
+    font-size: 1.6rem;
+  }
+}
 .footer-flavory {
   align-self: center;
   height: 100%;
@@ -2624,6 +2731,27 @@ body:has(.modal__overlay) {
   font-size: 1.4rem;
   line-height: 1.4;
   text-align: justify;
+}
+@media (max-width: 31.875em) {
+  .footer-text {
+    display: none;
+  }
+}
+.footer-text-2 {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  text-align: justify;
+  display: none;
+}
+@media (max-width: 31.875em) {
+  .footer-text-2 {
+    display: block;
+  }
+}
+@media (max-width: 26.25em) {
+  .footer-text-2 {
+    font-size: 1.2rem;
+  }
 }
 .footer-link {
   color: rgb(255, 245, 236);
@@ -2751,7 +2879,7 @@ body:has(.modal__overlay) {
 .search__list {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
   column-gap: 3rem;
   row-gap: 3rem;
 }
@@ -2799,13 +2927,49 @@ body:has(.modal__overlay) {
 .search__button:hover {
   transform: scale(1.02);
 }
+@media (max-width: 39.375em) {
+  .search__button {
+    display: none;
+  }
+}
+.search__logo {
+  display: none;
+  height: 100%;
+  color: white;
+  background-color: #ff7f3f;
+  cursor: pointer;
+  color: rgb(255, 245, 236);
+  border-radius: 1rem;
+  border: 1.5px solid transparent;
+  transition: all 300ms;
+  padding: 0.5rem;
+}
+.search__logo:hover {
+  transform: scale(1.05);
+}
+@media (max-width: 39.375em) {
+  .search__logo {
+    display: inline-block;
+  }
+}
+.search__logo:hover {
+  transform: scale(1.02);
+}
 .search__form {
   display: grid;
   grid-template-columns: 1fr auto;
   column-gap: 0.5rem;
   margin-bottom: 4rem;
   grid-column: 1/-1;
-  padding: 0 16rem;
+  padding: 0 4rem;
+  width: 90%;
+  justify-self: center;
+}
+@media (max-width: 53.75em) {
+  .search__form {
+    width: 100%;
+    padding: 0;
+  }
 }
 
 .no-selected {
@@ -2933,12 +3097,44 @@ body:has(.modal__overlay) {
 
 .recipes {
   display: grid;
-  grid-template-columns: 1fr 1.25fr;
+  grid-template-columns: 60rem auto;
   align-items: flex-start;
   position: relative;
   margin-top: 4rem;
   padding: 6rem;
   column-gap: 6rem;
+}
+@media (max-width: 91.25em) {
+  .recipes {
+    grid-template-columns: 55rem auto;
+  }
+}
+@media (max-width: 84.375em) {
+  .recipes {
+    grid-template-columns: 50rem auto;
+  }
+}
+@media (max-width: 66.25em) {
+  .recipes {
+    grid-template-columns: 1fr;
+    row-gap: 4rem;
+  }
+}
+@media (max-width: 53.75em) {
+  .recipes {
+    padding: 4rem;
+  }
+}
+@media (max-width: 48.125em) {
+  .recipes {
+    row-gap: 2rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .recipes {
+    padding: 2rem;
+    margin-top: 4rem;
+  }
 }
 
 .signup {

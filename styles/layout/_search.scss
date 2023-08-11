@@ -12,7 +12,7 @@
   &__list {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     column-gap: 3rem;
     row-gap: 3rem;
   }
@@ -50,6 +50,23 @@
     padding: 1rem 2rem;
     font-family: inherit;
     border-radius: 0.75rem;
+    @include respondMax($bpw630) {
+      display: none;
+    }
+  }
+
+  &__logo {
+    display: none;
+    height: 100%;
+    color: white;
+    @include button--smooth;
+    padding: 0.5rem;
+    @include respondMax($bpw630) {
+      display: inline-block;
+    }
+    &:hover {
+      transform: scale(1.02);
+    }
   }
 
   &__form {
@@ -58,6 +75,15 @@
     column-gap: 0.5rem;
     margin-bottom: 4rem;
     grid-column: 1/-1;
-    padding: 0 16rem;
+    padding: 0 4rem;
+    width: 90%;
+    justify-self: center;
+    // @include respondMax($bpw1200) {
+    //   padding: 0 12rem;
+    // }
+    @include respondMax($bpw860) {
+      width: 100%;
+      padding: 0;
+    }
   }
 }

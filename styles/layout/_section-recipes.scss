@@ -8,14 +8,23 @@
   @include respondMax($bpw950) {
     padding: 12rem 6rem;
   }
+  @include respondMax($bpw860) {
+    padding: 12rem 8rem;
+  }
   @include respondMax($bpw770) {
+    padding: 12rem 6rem;
+  }
+  @include respondMax($bpw630) {
     padding: 12rem 4rem;
   }
   @include respondMax($bpw510) {
-    padding: 10rem 2rem;
+    padding: 10rem 8rem;
   }
-  @include respondMax($bpw350) {
-    padding: 8rem 2rem;
+  @include respondMax($bpw460) {
+    padding: 8rem 6rem;
+  }
+  @include respondMax($bpw420) {
+    padding: 8rem 4rem;
   }
   // @include respondMax($bpw630) {
   //   padding: 10rem 12rem;
@@ -55,22 +64,27 @@
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     align-items: center;
-    gap: 12rem;
+    gap: 8rem;
     @include respondMax($bpw1640) {
-      gap: 8rem;
-    }
-    @include respondMax($bpw1060) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    @include respondMax($bpw950) {
       gap: 6rem;
     }
-    @include respondMax($bpw770) {
+    @include respondMax($bpw1060) {
+      // grid-template-columns: repeat(2, 1fr);
+      gap: 6rem;
+    }
+    @include respondMax($bpw950) {
       gap: 4rem;
+    }
+    @include respondMax($bpw860) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8rem;
+    }
+    @include respondMax($bpw770) {
+      gap: 6rem;
     }
     @include respondMax($bpw630) {
       grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
       gap: 8rem;
       padding: 0 4rem;
     }

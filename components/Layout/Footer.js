@@ -11,7 +11,7 @@ const Footer = function () {
   return (
     <footer className="footer">
       <div className="footer-flavory">
-        <h1 className="heading--1d">Flavory</h1>
+        <h2 className="footer-flavory-title">Flavory</h2>
         <p className="footer-flavory-text">Where taste meets imagination.</p>
         {/* <h3 className="heading--3b">Contact me</h3> */}
       </div>
@@ -23,6 +23,12 @@ const Footer = function () {
           interface, intuitive navigation, and seamless integration of
           multimedia elements to effectively communicate my abilities and
           experiences to potential clients, employers, or collaborators.
+        </p>
+        <p className="footer-text-2">
+          This website showcases my professional portfolio with a user-friendly
+          interface, intuitive navigation, and seamless multimedia integration
+          to effectively communicate my abilities and experiences to potential
+          clients.
         </p>
       </div>
 

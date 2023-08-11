@@ -1,9 +1,29 @@
 .recipes {
   display: grid;
-  grid-template-columns: 1fr 1.25fr;
+  grid-template-columns: 60rem auto;
   align-items: flex-start;
   position: relative;
   margin-top: 4rem;
   padding: 6rem;
   column-gap: 6rem;
+  @include respondMax($bpw1460) {
+    grid-template-columns: 55rem auto;
+  }
+  @include respondMax($bpw1350) {
+    grid-template-columns: 50rem auto;
+  }
+  @include respondMax($bpw1060) {
+    grid-template-columns: 1fr;
+    row-gap: 4rem;
+  }
+  @include respondMax($bpw860) {
+    padding: 4rem;
+  }
+  @include respondMax($bpw770) {
+    row-gap: 2rem;
+  }
+  @include respondMax($bpw510) {
+    padding: 2rem;
+    margin-top: 4rem;
+  }
 }

@@ -20,7 +20,7 @@
   animation-fill-mode: both;
   animation-delay: 0ms;
 
-  @include respondMax($bpw770) {
+  @include respondMax($bpw950) {
     padding: 2rem 4rem;
   }
   @include respondMax($bpw510) {
@@ -31,21 +31,32 @@
     border-radius: 1rem;
     background-color: rgba(white, 0.6);
     backdrop-filter: blur(4px);
-    width: 50%;
+    width: 55%;
+    min-width: min-content;
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
     padding: 3rem 4rem;
     padding-bottom: 1rem;
-    padding-right: 2rem;
+    padding-right: 8rem;
 
     margin-bottom: 1rem;
+    @include respondMax($bpw860) {
+      width: 50rem;
+    }
+    @include respondMax($bpw630) {
+      padding-right: 4rem;
+      width: 40rem;
+    }
     & > p {
       font-size: 1.8rem;
       letter-spacing: 1px;
       margin-top: 2rem;
       margin-bottom: 3rem;
+      @include respondMax($bpw630) {
+        font-size: 1.6rem;
+      }
     }
   }
   &-info-box {

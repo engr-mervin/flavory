@@ -1,10 +1,41 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import UserDataContext from "../../store/user-data-context";
+import AuthContext from "../../store/auth-context";
+import { useRouter } from "next/router";
 
 const Hamburger = function ({ authState }) {
   const [active, setActive] = useState(false);
   const [documentObj, setDocumentObj] = useState(null);
+  const router = useRouter();
+  const { updateState } = useContext(AuthContext);
+  const [loggingOut, setLoggingOut] = useState(false);
+  const logoutHandler = async function (e) {
+    e.preventDefault();
+
+    setLoggingOut(true);
+    const sessionId = localStorage.getItem("sessionId");
+
+    if (!sessionId) {
+      setLoggingOut(false);
+      return;
+    }
+    await fetch("/api/log-out", {
+      method: "POST",
+      body: JSON.stringify({ sessionId: sessionId }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    localStorage.removeItem("sessionId");
+    updateState();
+    clearData();
+    setLoggingOut(false);
+    setActive(false);
+    router.push("/");
+  };
+  const { userData, clearData } = useContext(UserDataContext);
+
   const openMenuHandler = function (e) {
     e.preventDefault();
 
@@ -24,6 +55,13 @@ const Hamburger = function ({ authState }) {
     ) {
       setActive(false);
     }
+  };
+
+  const linkClickHandler = function (path) {
+    return (e) => {
+      router.push(path);
+      setActive(false);
+    };
   };
 
   return (
@@ -52,52 +90,79 @@ const Hamburger = function ({ authState }) {
                   {authState ? (
                     <ul className="hamburger-menu-list-2">
                       <li className="hamburger-menu-item">
-                        <Link className="hamburger-link" href="/">
+                        <button
+                          className="hamburger-button"
+                          onClick={linkClickHandler("/")}
+                        >
                           Home
-                        </Link>
+                        </button>
                       </li>
                       <li className="hamburger-menu-item">
-                        <Link className="hamburger-link" href="/recipes">
+                        <button
+                          className="hamburger-button"
+                          onClick={linkClickHandler("/recipes")}
+                        >
                           Recipes
-                        </Link>
+                        </button>
                       </li>
                       <li className="hamburger-menu-item">
-                        <Link className="hamburger-link" href="/new-recipe">
+                        <button
+                          className="hamburger-button"
+                          onClick={linkClickHandler("/new-recipe")}
+                        >
                           New Recipe
-                        </Link>
+                        </button>
                       </li>
                       <li className="hamburger-menu-item">
-                        <Link className="hamburger-link" href="/account">
-                          Account
-                        </Link>
+                        <button
+                          className="hamburger-button"
+                          onClick={linkClickHandler("/account")}
+                        >
+                          {userData.displayName}
+                        </button>
                       </li>
                       <li className="hamburger-menu-item">
-                        <Link className="hamburger-link" href="/">
-                          Log Out
-                        </Link>
+                        <button
+                          className="hamburger-button"
+                          onClick={logoutHandler}
+                        >
+                          {loggingOut ? "Please wait..." : "Log out"}
+                        </button>
                       </li>
                     </ul>
                   ) : (
                     <ul className="hamburger-menu-list">
                       <li className="hamburger-menu-item">
-                        <Link className="hamburger-link" href="/">
+                        <button
+                          className="hamburger-button"
+                          onClick={linkClickHandler("/")}
+                        >
                           Home
-                        </Link>
+                        </button>
                       </li>
                       <li className="hamburger-menu-item">
-                        <Link className="hamburger-link" href="/recipes">
+                        <button
+                          className="hamburger-button"
+                          onClick={linkClickHandler("/recipes")}
+                        >
                           Recipes
-                        </Link>
+                        </button>
                       </li>
                       <li className="hamburger-menu-item">
-                        <Link className="hamburger-link" href="/sign-up">
+                        <button
+                          className="hamburger-button"
+                          onClick={linkClickHandler("/sign-up")}
+                        >
                           Sign Up
-                        </Link>
+                        </button>
                       </li>
                       <li className="hamburger-menu-item">
-                        <Link className="hamburger-link" href="/log-in">
+                        <button
+                          className="hamburger-button"
+                          onClick={linkClickHandler("/log-in")}
+                        >
                           Log In
-                        </Link>
+                        </button>
                       </li>
                     </ul>
                   )}

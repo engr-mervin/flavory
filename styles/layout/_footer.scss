@@ -39,6 +39,25 @@
     }
   }
 
+  &-flavory-title {
+    font-family: "Montserrat", monospace;
+    font-size: 4rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: $color-primary--white;
+    text-align: left;
+    letter-spacing: 10px;
+    line-height: 1;
+    @include respondMax($bpw630) {
+      font-size: 3.5rem;
+    }
+  }
+
+  &-flavory-text {
+    @include respondMax($bpw630) {
+      font-size: 1.6rem;
+    }
+  }
   &-flavory {
     align-self: center;
     height: 100%;
@@ -77,6 +96,22 @@
     font-size: 1.4rem;
     line-height: 1.4;
     text-align: justify;
+    @include respondMax($bpw510) {
+      display: none;
+    }
+  }
+  &-text-2 {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    text-align: justify;
+    display: none;
+
+    @include respondMax($bpw510) {
+      display: block;
+    }
+    @include respondMax($bpw420) {
+      font-size: 1.2rem;
+    }
   }
 
   &-link {

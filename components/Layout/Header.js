@@ -10,10 +10,10 @@ const Header = function (props) {
         <h1 className="heading--1">{constants.APP_TITLE}</h1>
         <p>{constants.APP_SLOGAN}</p>
       </div>
-      <div className="header-info-box">
+      {/* <div className="header-info-box">
         <ContactInfo></ContactInfo>
         <ProjectInfo></ProjectInfo>
-      </div>
+      </div> */}
     </header>
   );
 };

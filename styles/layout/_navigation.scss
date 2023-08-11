@@ -9,8 +9,10 @@
   animation: fade 800ms;
   animation-fill-mode: both;
   animation-delay: 0ms;
-  @include respondMax($bpw770) {
+  @include respondMax($bpw950) {
     padding: 1rem 4rem;
+  }
+  @include respondMax($bpw770) {
     justify-content: flex-end;
   }
   @include respondMax($bpw510) {
@@ -33,7 +35,7 @@
     }
   }
   &-list-2 {
-    gap: 2rem;
+    gap: 1rem;
   }
 
   &-item,
@@ -51,6 +53,10 @@
       transition: all 250ms;
       border-radius: 0.5rem;
       border-bottom: 2px solid transparent;
+      @include respondMax($bpw950) {
+        padding: 1rem 2rem;
+        letter-spacing: 0.5px;
+      }
     }
 
     a:hover,
@@ -97,6 +103,10 @@
     border: 1.5px solid $color-primary;
     font-family: inherit;
     transition: all 250ms;
+    @include respondMax($bpw950) {
+      padding: 1rem 2rem;
+      letter-spacing: 0.5px;
+    }
     &:hover:not(:disabled) {
       transform: scale(1.05);
     }

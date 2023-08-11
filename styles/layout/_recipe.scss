@@ -4,11 +4,17 @@
   flex-direction: column;
   overflow: hidden;
 
+  @include respondMax($bpw1060) {
+    flex-direction: row;
+  }
   &__image-box {
     overflow: hidden;
     aspect-ratio: 16/10;
     width: 100%;
     position: relative;
+    @include respondMax($bpw1060) {
+      // width: 50%;
+    }
   }
 
   &__title {

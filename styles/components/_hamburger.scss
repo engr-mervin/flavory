@@ -67,27 +67,6 @@
 
   &-menu-item {
     display: block;
-    & > a {
-      @include flex-center;
-      @include classy;
-      padding: 1rem 3rem;
-      width: 100%;
-      height: 100%;
-      font-size: 2.5rem;
-      text-decoration: none;
-      color: $color-font--white;
-      transition: all 300ms;
-      border-radius: 1rem;
-      text-align: center;
-
-      &:hover {
-        background-color: $color-primary--white-dark-1;
-        color: $color-font--black;
-      }
-      @include respondMax($bpw510) {
-        font-size: 2rem;
-      }
-    }
   }
 
   &-close {
@@ -102,6 +81,30 @@
     background-color: transparent;
     &:hover {
       background-color: $color-primary--white-dark-1;
+    }
+  }
+  &-link,
+  &-button {
+    @include flex-center;
+    @include classy;
+    background-color: transparent;
+    border: none;
+    padding: 1rem 3rem;
+    width: 100%;
+    height: 100%;
+    font-size: 2.5rem;
+    text-decoration: none;
+    color: $color-font--white;
+    transition: all 300ms;
+    border-radius: 1rem;
+    text-align: center;
+
+    &:hover {
+      background-color: $color-primary--white-dark-1;
+      color: $color-font--black;
+    }
+    @include respondMax($bpw510) {
+      font-size: 2rem;
     }
   }
 

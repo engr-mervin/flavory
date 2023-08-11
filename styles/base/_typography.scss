@@ -11,6 +11,9 @@ body {
   font-weight: 400;
   letter-spacing: 3.6px;
   color: $color-font--black;
+  @include respondMax($bpw630) {
+    font-size: 4.5rem;
+  }
 }
 
 //hero-title
@@ -19,16 +22,18 @@ body {
 //testimonial-title
 // .heading--1c {
 // }
-.heading--1d {
-  font-family: "Montserrat", monospace;
-  font-size: 4rem;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: $color-primary--white;
-  text-align: left;
-  letter-spacing: 10px;
-  line-height: 1;
-}
+
+//footer-flavory-title
+// .heading--1d {
+//   font-family: "Montserrat", monospace;
+//   font-size: 4rem;
+//   text-transform: uppercase;
+//   font-weight: 500;
+//   color: $color-primary--white;
+//   text-align: left;
+//   letter-spacing: 10px;
+//   line-height: 1;
+// }
 .heading--1e {
   font-family: "Montserrat", monospace;
   font-size: 4rem;
