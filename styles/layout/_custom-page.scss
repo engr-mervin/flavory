@@ -3,11 +3,21 @@
   @include flex-center;
   flex-direction: column;
   gap: 5rem;
+  padding: 0 4rem;
 
+  @include respondMax($bpw950) {
+    min-height: 35rem;
+  }
+  @include respondMax($bpw770) {
+    min-height: 30rem;
+  }
   &-title {
     @include classy;
     font-size: 4rem;
     font-weight: 600;
+    @include respondMax($bpw950) {
+      font-size: 3.5rem;
+    }
   }
   &-message-box {
     @include flex-center;
@@ -16,6 +26,9 @@
     font-size: 3.5rem;
     @include classy;
     display: inline-block;
+    @include respondMax($bpw950) {
+      font-size: 3rem;
+    }
   }
 
   &-logo {

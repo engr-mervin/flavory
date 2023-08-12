@@ -1,13 +1,24 @@
 .login {
   @include flex-center;
-  display: flex;
   flex-direction: column;
-  padding: 4rem;
-  gap: 3rem;
+  padding: 6rem 4rem;
+  gap: 4rem;
 
+  @include respondMax($bpw630) {
+    padding: 6rem 3rem;
+  }
+  @include respondMax($bpw510) {
+    padding: 6rem 2rem;
+  }
   &__title {
     @include classy;
     font-size: 3.5rem;
+    @include respondMax($bpw770) {
+      font-size: 3rem;
+    }
+    @include respondMax($bpw420) {
+      font-size: 2.5rem;
+    }
   }
   &__form {
     display: grid;
@@ -15,6 +26,18 @@
     row-gap: 2rem;
     column-gap: 6rem;
     align-items: center;
+    @include respondMax($bpw770) {
+      grid-template-columns: 2fr 3fr;
+    }
+    @include respondMax($bpw630) {
+      column-gap: 4rem;
+    }
+    @include respondMax($bpw510) {
+      column-gap: 2rem;
+    }
+    @include respondMax($bpw420) {
+      column-gap: 1rem;
+    }
   }
 
   &__submit {
@@ -34,5 +57,29 @@
       cursor: not-allowed;
       background-color: white;
     }
+  }
+
+  &__message {
+    @include status-text;
+    font-size: 1.4rem;
+    text-align: left;
+    white-space: initial;
+    min-width: 30rem;
+    @include respondMax($bpw770) {
+      min-width: 18rem;
+      letter-spacing: 0.5px;
+    }
+    @include respondMax($bpw510) {
+      letter-spacing: 0;
+    }
+    @include respondMax($bpw350) {
+      min-width: 15rem;
+      font-size: 1.2rem;
+    }
+  }
+  &__text {
+    font-size: 1.4rem;
+    color: $color-font--black;
+    font-weight: 400;
   }
 }

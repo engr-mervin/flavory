@@ -2,8 +2,14 @@
   @include flex-center;
   padding: 5rem;
 
+  @include respondMax($bpw510) {
+    padding: 3rem;
+  }
   &__message {
     @include classy;
     font-size: 2.5rem;
+    @include respondMax($bpw510) {
+      font-size: 2rem;
+    }
   }
 }

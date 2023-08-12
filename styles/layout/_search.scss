@@ -6,15 +6,26 @@
   box-shadow: 0 0 2rem rgba(black, 0.1);
   overflow: hidden;
 
+  @include respondMax($bpw950) {
+    margin-top: 4rem;
+  }
   &__box {
     padding: 4rem;
+    @include respondMax($bpw950) {
+      padding: 3rem;
+    }
+    @include respondMax($bpw510) {
+      padding: 2rem;
+    }
   }
   &__list {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-    column-gap: 3rem;
-    row-gap: 3rem;
+    gap: 3rem;
+    @include respondMax($bpw510) {
+      gap: 2rem;
+    }
   }
   &__button-box {
     padding: 6rem;
@@ -24,6 +35,12 @@
     justify-content: space-between;
     padding: 0 5rem;
     margin-bottom: 2rem;
+    @include respondMax($bpw630) {
+      padding: 0 3rem;
+    }
+    @include respondMax($bpw510) {
+      padding: 0 2rem;
+    }
   }
   &__bar {
     padding: 1rem;
@@ -73,16 +90,15 @@
     display: grid;
     grid-template-columns: 1fr auto;
     column-gap: 0.5rem;
-    margin-bottom: 4rem;
     grid-column: 1/-1;
     padding: 0 4rem;
-    width: 90%;
+    margin-bottom: 4rem;
+    width: 100%;
     justify-self: center;
     // @include respondMax($bpw1200) {
     //   padding: 0 12rem;
     // }
-    @include respondMax($bpw860) {
-      width: 100%;
+    @include respondMax($bpw950) {
       padding: 0;
     }
   }

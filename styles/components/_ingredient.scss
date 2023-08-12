@@ -1,4 +1,7 @@
 .ingredient {
+  @include respondMax($bpw350) {
+    font-size: 1.2rem;
+  }
   &__quantity {
     font-weight: 600;
   }

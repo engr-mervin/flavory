@@ -3,7 +3,7 @@
   grid-template-columns: 60rem auto;
   align-items: flex-start;
   position: relative;
-  margin-top: 4rem;
+  // margin-top: 4rem;
   padding: 6rem;
   column-gap: 6rem;
   @include respondMax($bpw1460) {
@@ -12,18 +12,20 @@
   @include respondMax($bpw1350) {
     grid-template-columns: 50rem auto;
   }
-  @include respondMax($bpw1060) {
+  @include respondMax($bpw950) {
     grid-template-columns: 1fr;
-    row-gap: 4rem;
+    padding: 6rem 14rem;
   }
   @include respondMax($bpw860) {
+    padding: 4rem 10rem;
+  }
+  @include respondMax($bpw720) {
+    padding: 4rem 8rem;
+  }
+  @include respondMax($bpw630) {
     padding: 4rem;
   }
-  @include respondMax($bpw770) {
-    row-gap: 2rem;
-  }
   @include respondMax($bpw510) {
-    padding: 2rem;
-    margin-top: 4rem;
+    padding: 4rem 2rem;
   }
 }

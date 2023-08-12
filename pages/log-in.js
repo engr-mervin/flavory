@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../store/auth-context";
 import { validateTextLength } from "../util/validate";
 import InputText from "../components/UI/InputText";
-import InfoLogo from "../assets/information-circle-outline.svg";
 import InfoMessage from "../components/Fallback Pages/InfoMessage";
 import Head from "next/head";
 
@@ -138,8 +137,8 @@ const LogInPage = function () {
           touchUnsubscribe={touchUnsubscribe}
           type="password"
         />
-        <div className="signup__status">
-          <p className="signup__message">{message}</p>
+        <div className="login__status">
+          <p className="login__message">{message}</p>
         </div>
         <button className="login__submit" disabled={disabled}>{`${
           disabled ? "Logging-in" : "Log in!"

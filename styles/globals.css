@@ -486,7 +486,7 @@ body {
   background-color: white;
   flex-direction: column;
   gap: 0.8rem;
-  padding: 1rem 0.5rem;
+  padding: 1rem 0;
 }
 .hamburger-open:hover {
   transform: scale(1.05);
@@ -533,6 +533,16 @@ body {
 @media (max-width: 31.875em) {
   .hamburger-menu {
     padding: 8rem;
+  }
+}
+@media (max-width: 26.25em) {
+  .hamburger-menu {
+    padding: 6rem;
+  }
+}
+@media (max-width: 21.875em) {
+  .hamburger-menu {
+    padding: 4rem;
   }
 }
 .hamburger-menu.active {
@@ -605,6 +615,11 @@ body {
   width: 4rem;
   height: 0.3rem;
   background-color: #584636;
+}
+@media (max-width: 21.875em) {
+  .hamburger-line {
+    width: 3rem;
+  }
 }
 .hamburger-line2 {
   width: 4rem;
@@ -749,6 +764,11 @@ body:has(.hamburger-overlay.active) {
   animation-timing-function: ease-in;
 }
 
+@media (max-width: 21.875em) {
+  .ingredient {
+    font-size: 1.2rem;
+  }
+}
 .ingredient__quantity {
   font-weight: 600;
 }
@@ -776,6 +796,19 @@ body:has(.hamburger-overlay.active) {
   color: #f5f5f5;
   border: 1.5px solid #f5f5f5;
   cursor: auto;
+}
+@media (max-width: 28.75em) {
+  .chevron {
+    height: 3.5rem;
+    width: 3.5rem;
+  }
+}
+@media (max-width: 21.875em) {
+  .chevron {
+    height: 3rem;
+    width: 3rem;
+    border: 1px solid #ea5c2b;
+  }
 }
 .chevron__left-logo, .chevron__right-logo {
   height: 3rem;
@@ -1271,6 +1304,21 @@ body:has(.hamburger-overlay.active) {
   color: #3f2107;
   font-weight: 400;
 }
+@media (max-width: 48.125em) {
+  .input__label {
+    letter-spacing: 0.5px;
+  }
+}
+@media (max-width: 31.875em) {
+  .input__label {
+    letter-spacing: 0px;
+  }
+}
+@media (max-width: 21.875em) {
+  .input__label {
+    font-size: 1.4rem;
+  }
+}
 
 .modal__overlay {
   width: 100vw;
@@ -1362,7 +1410,7 @@ body:has(.modal__overlay) {
   min-width: 12rem;
   max-width: 24rem;
   top: 95%;
-  left: 95%;
+  right: 95%;
   z-index: 10;
   font-size: 1rem;
   font-family: inherit;
@@ -2435,9 +2483,11 @@ body:has(.modal__overlay) {
   flex-direction: column;
   overflow: hidden;
 }
-@media (max-width: 66.25em) {
+@media (max-width: 59.375em) {
   .recipe {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
   }
 }
 .recipe__image-box {
@@ -2446,8 +2496,17 @@ body:has(.modal__overlay) {
   width: 100%;
   position: relative;
 }
+@media (max-width: 59.375em) {
+  .recipe__image-box {
+    aspect-ratio: 2/1;
+  }
+}
+@media (max-width: 31.875em) {
+  .recipe__image-box {
+    aspect-ratio: 4/3;
+  }
+}
 .recipe__title {
-  font-size: 3.5rem;
   font-family: "Montserrat", monospace;
   font-weight: 500;
   letter-spacing: 1px;
@@ -2460,14 +2519,30 @@ body:has(.modal__overlay) {
   font-style: italic;
   text-align: right;
   display: -webkit-box;
-  max-width: 75%;
+  left: 2rem;
   backdrop-filter: blur(2px);
 }
 .recipe__title span {
+  font-size: 3.5rem;
   border-radius: 0.5rem;
   padding: 0.5rem 2rem;
   box-decoration-break: clone;
   background-image: linear-gradient(to bottom, rgba(234, 92, 43, 0.8), rgba(234, 92, 43, 0.65));
+}
+@media (max-width: 48.125em) {
+  .recipe__title span {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 39.375em) {
+  .recipe__title span {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 21.875em) {
+  .recipe__title span {
+    font-size: 2rem;
+  }
 }
 .recipe__image {
   width: 100%;
@@ -2492,6 +2567,17 @@ body:has(.modal__overlay) {
   color: #3f2107;
   font-size: 2.6rem;
   margin-right: auto;
+}
+@media (max-width: 39.375em) {
+  .recipe__publisher {
+    font-size: 2.2rem;
+  }
+}
+@media (max-width: 21.875em) {
+  .recipe__publisher {
+    font-size: 1.8rem;
+    letter-spacing: 0.5px;
+  }
 }
 .recipe__button-action {
   background-color: white;
@@ -2521,6 +2607,13 @@ body:has(.modal__overlay) {
 .recipe__button-action.saved {
   color: red;
 }
+@media (max-width: 39.375em) {
+  .recipe__button-action {
+    width: 4rem;
+    height: 4rem;
+    padding: 0.5rem;
+  }
+}
 .recipe__logo, .recipe__logo-2 {
   height: 2.75rem;
   width: 2.75rem;
@@ -2532,14 +2625,26 @@ body:has(.modal__overlay) {
   width: 3.5rem;
   margin-right: 1.5rem;
 }
+@media (max-width: 39.375em) {
+  .recipe__logo-2 {
+    height: 3rem;
+    width: 3rem;
+    margin-right: 1rem;
+  }
+}
 .recipe__all-details {
   color: #3f2107;
   display: flex;
   flex-direction: column;
-  padding-bottom: 1rem;
 }
 .recipe__all-details > * {
   padding: 1rem 2rem;
+}
+.recipe__link-box {
+  margin: 1rem 2rem;
+  margin-top: 3rem;
+  justify-self: flex-end;
+  grid-column: 1/-1;
 }
 .recipe__link {
   text-align: right;
@@ -2549,6 +2654,11 @@ body:has(.modal__overlay) {
 }
 .recipe__link:hover, .recipe__link:active {
   font-weight: 500;
+}
+@media (max-width: 21.875em) {
+  .recipe__link {
+    font-size: 1.2rem;
+  }
 }
 .recipe__controls {
   display: flex;
@@ -2566,6 +2676,21 @@ body:has(.modal__overlay) {
   font-family: "Montserrat", monospace;
   color: #3f2107;
 }
+@media (max-width: 31.875em) {
+  .recipe__duration {
+    letter-spacing: 0.5px;
+  }
+}
+@media (max-width: 26.25em) {
+  .recipe__duration {
+    letter-spacing: 0px;
+  }
+}
+@media (max-width: 21.875em) {
+  .recipe__duration {
+    font-size: 1.3rem;
+  }
+}
 .recipe__servings {
   text-transform: uppercase;
   font-weight: 400;
@@ -2576,6 +2701,21 @@ body:has(.modal__overlay) {
   text-align: center;
   margin-right: auto;
   margin-left: auto;
+}
+@media (max-width: 31.875em) {
+  .recipe__servings {
+    letter-spacing: 0.5px;
+  }
+}
+@media (max-width: 26.25em) {
+  .recipe__servings {
+    letter-spacing: 0px;
+  }
+}
+@media (max-width: 21.875em) {
+  .recipe__servings {
+    font-size: 1.3rem;
+  }
 }
 .recipe__button {
   display: flex;
@@ -2597,6 +2737,17 @@ body:has(.modal__overlay) {
 .recipe__button:hover {
   transform: scale(1.05);
 }
+@media (max-width: 39.375em) {
+  .recipe__button {
+    height: 4rem;
+    padding: 0.5rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .recipe__button {
+    margin: 0 0.25rem;
+  }
+}
 .recipe__button:first-child {
   margin-left: 0;
 }
@@ -2607,13 +2758,37 @@ body:has(.modal__overlay) {
   font-size: 1.2rem;
 }
 .recipe__ingredient-list {
+  color: #3f2107;
   display: grid;
-  padding: 4rem 5rem;
+  padding: 2rem 5rem;
+  padding-bottom: 0;
   grid-template-columns: 1fr 1fr;
   column-gap: 3rem;
   row-gap: 2rem;
   align-items: flex-end;
   justify-content: center;
+}
+@media (max-width: 75em) {
+  .recipe__ingredient-list {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    padding: 0 3rem;
+  }
+}
+@media (max-width: 59.375em) {
+  .recipe__ingredient-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 31.875em) {
+  .recipe__ingredient-list {
+    padding: 0 2rem;
+  }
+}
+@media (max-width: 28.75em) {
+  .recipe__ingredient-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 .footer {
@@ -2873,15 +3048,34 @@ body:has(.modal__overlay) {
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
+@media (max-width: 59.375em) {
+  .search {
+    margin-top: 4rem;
+  }
+}
 .search__box {
   padding: 4rem;
+}
+@media (max-width: 59.375em) {
+  .search__box {
+    padding: 3rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .search__box {
+    padding: 2rem;
+  }
 }
 .search__list {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  column-gap: 3rem;
-  row-gap: 3rem;
+  gap: 3rem;
+}
+@media (max-width: 31.875em) {
+  .search__list {
+    gap: 2rem;
+  }
 }
 .search__button-box {
   padding: 6rem;
@@ -2891,6 +3085,16 @@ body:has(.modal__overlay) {
   justify-content: space-between;
   padding: 0 5rem;
   margin-bottom: 2rem;
+}
+@media (max-width: 39.375em) {
+  .search__button-box {
+    padding: 0 3rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .search__button-box {
+    padding: 0 2rem;
+  }
 }
 .search__bar {
   padding: 1rem;
@@ -2959,15 +3163,14 @@ body:has(.modal__overlay) {
   display: grid;
   grid-template-columns: 1fr auto;
   column-gap: 0.5rem;
-  margin-bottom: 4rem;
   grid-column: 1/-1;
   padding: 0 4rem;
-  width: 90%;
+  margin-bottom: 4rem;
+  width: 100%;
   justify-self: center;
 }
-@media (max-width: 53.75em) {
+@media (max-width: 59.375em) {
   .search__form {
-    width: 100%;
     padding: 0;
   }
 }
@@ -2978,6 +3181,11 @@ body:has(.modal__overlay) {
   justify-content: center;
   padding: 5rem;
 }
+@media (max-width: 31.875em) {
+  .no-selected {
+    padding: 3rem;
+  }
+}
 .no-selected__message {
   text-transform: uppercase;
   font-weight: 400;
@@ -2985,6 +3193,11 @@ body:has(.modal__overlay) {
   font-family: "Montserrat", monospace;
   color: #3f2107;
   font-size: 2.5rem;
+}
+@media (max-width: 31.875em) {
+  .no-selected__message {
+    font-size: 2rem;
+  }
 }
 
 .no-selected-account {
@@ -3027,6 +3240,17 @@ body:has(.modal__overlay) {
   justify-content: center;
   flex-direction: column;
   gap: 5rem;
+  padding: 0 4rem;
+}
+@media (max-width: 59.375em) {
+  .custom-page__404 {
+    min-height: 35rem;
+  }
+}
+@media (max-width: 48.125em) {
+  .custom-page__404 {
+    min-height: 30rem;
+  }
 }
 .custom-page__404-title {
   text-transform: uppercase;
@@ -3036,6 +3260,11 @@ body:has(.modal__overlay) {
   color: #3f2107;
   font-size: 4rem;
   font-weight: 600;
+}
+@media (max-width: 59.375em) {
+  .custom-page__404-title {
+    font-size: 3.5rem;
+  }
 }
 .custom-page__404-message-box {
   display: flex;
@@ -3050,6 +3279,11 @@ body:has(.modal__overlay) {
   font-family: "Montserrat", monospace;
   color: #3f2107;
   display: inline-block;
+}
+@media (max-width: 59.375em) {
+  .custom-page__404-text {
+    font-size: 3rem;
+  }
 }
 .custom-page__404-logo {
   display: inline-block;
@@ -3068,6 +3302,16 @@ body:has(.modal__overlay) {
 }
 .pages__item {
   margin: 1rem 1.5rem;
+}
+@media (max-width: 45em) {
+  .pages__item {
+    margin: 0.75rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .pages__item {
+    margin: 0.5rem;
+  }
 }
 .pages__button {
   background-color: white;
@@ -3094,13 +3338,25 @@ body:has(.modal__overlay) {
   background-color: #ea5c2b;
   color: rgb(255, 245, 236);
 }
+@media (max-width: 28.75em) {
+  .pages__button {
+    height: 3.5rem;
+    width: 3.5rem;
+  }
+}
+@media (max-width: 21.875em) {
+  .pages__button {
+    height: 3rem;
+    width: 3rem;
+    border: 1px solid #ea5c2b;
+  }
+}
 
 .recipes {
   display: grid;
   grid-template-columns: 60rem auto;
   align-items: flex-start;
   position: relative;
-  margin-top: 4rem;
   padding: 6rem;
   column-gap: 6rem;
 }
@@ -3114,26 +3370,30 @@ body:has(.modal__overlay) {
     grid-template-columns: 50rem auto;
   }
 }
-@media (max-width: 66.25em) {
+@media (max-width: 59.375em) {
   .recipes {
     grid-template-columns: 1fr;
-    row-gap: 4rem;
+    padding: 6rem 14rem;
   }
 }
 @media (max-width: 53.75em) {
   .recipes {
-    padding: 4rem;
+    padding: 4rem 10rem;
   }
 }
-@media (max-width: 48.125em) {
+@media (max-width: 45em) {
   .recipes {
-    row-gap: 2rem;
+    padding: 4rem 8rem;
+  }
+}
+@media (max-width: 39.375em) {
+  .recipes {
+    padding: 4rem;
   }
 }
 @media (max-width: 31.875em) {
   .recipes {
-    padding: 2rem;
-    margin-top: 4rem;
+    padding: 4rem 2rem;
   }
 }
 
@@ -3142,8 +3402,18 @@ body:has(.modal__overlay) {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 4rem;
-  gap: 3rem;
+  padding: 6rem 4rem;
+  gap: 4rem;
+}
+@media (max-width: 39.375em) {
+  .signup {
+    padding: 6rem 3rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .signup {
+    padding: 6rem 2rem;
+  }
 }
 .signup__title {
   text-transform: uppercase;
@@ -3153,12 +3423,42 @@ body:has(.modal__overlay) {
   color: #3f2107;
   font-size: 3.5rem;
 }
+@media (max-width: 48.125em) {
+  .signup__title {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 26.25em) {
+  .signup__title {
+    font-size: 2.5rem;
+  }
+}
 .signup__form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 2rem;
   column-gap: 6rem;
   align-items: center;
+}
+@media (max-width: 48.125em) {
+  .signup__form {
+    grid-template-columns: 2fr 3fr;
+  }
+}
+@media (max-width: 39.375em) {
+  .signup__form {
+    column-gap: 4rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .signup__form {
+    column-gap: 2rem;
+  }
+}
+@media (max-width: 26.25em) {
+  .signup__form {
+    column-gap: 1rem;
+  }
 }
 .signup__submit {
   background-color: #ea5c2b;
@@ -3185,8 +3485,25 @@ body:has(.modal__overlay) {
   letter-spacing: 1px;
   font-size: 1.4rem;
   text-align: left;
-  min-width: 30rem;
   white-space: initial;
+  min-width: 30rem;
+}
+@media (max-width: 48.125em) {
+  .signup__message {
+    min-width: 18rem;
+    letter-spacing: 0.5px;
+  }
+}
+@media (max-width: 31.875em) {
+  .signup__message {
+    letter-spacing: 0;
+  }
+}
+@media (max-width: 21.875em) {
+  .signup__message {
+    min-width: 15rem;
+    font-size: 1.2rem;
+  }
 }
 .signup__text {
   font-size: 1.4rem;
@@ -3198,10 +3515,19 @@ body:has(.modal__overlay) {
   display: flex;
   align-items: center;
   justify-content: center;
-  display: flex;
   flex-direction: column;
-  padding: 4rem;
-  gap: 3rem;
+  padding: 6rem 4rem;
+  gap: 4rem;
+}
+@media (max-width: 39.375em) {
+  .login {
+    padding: 6rem 3rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .login {
+    padding: 6rem 2rem;
+  }
 }
 .login__title {
   text-transform: uppercase;
@@ -3211,12 +3537,42 @@ body:has(.modal__overlay) {
   color: #3f2107;
   font-size: 3.5rem;
 }
+@media (max-width: 48.125em) {
+  .login__title {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 26.25em) {
+  .login__title {
+    font-size: 2.5rem;
+  }
+}
 .login__form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 2rem;
   column-gap: 6rem;
   align-items: center;
+}
+@media (max-width: 48.125em) {
+  .login__form {
+    grid-template-columns: 2fr 3fr;
+  }
+}
+@media (max-width: 39.375em) {
+  .login__form {
+    column-gap: 4rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .login__form {
+    column-gap: 2rem;
+  }
+}
+@media (max-width: 26.25em) {
+  .login__form {
+    column-gap: 1rem;
+  }
 }
 .login__submit {
   background-color: #ea5c2b;
@@ -3235,6 +3591,38 @@ body:has(.modal__overlay) {
   border: 1.5px solid rgb(177, 177, 177);
   cursor: not-allowed;
   background-color: white;
+}
+.login__message {
+  text-align: center;
+  display: block;
+  color: rgb(255, 120, 120);
+  letter-spacing: 1px;
+  font-size: 1.4rem;
+  text-align: left;
+  white-space: initial;
+  min-width: 30rem;
+}
+@media (max-width: 48.125em) {
+  .login__message {
+    min-width: 18rem;
+    letter-spacing: 0.5px;
+  }
+}
+@media (max-width: 31.875em) {
+  .login__message {
+    letter-spacing: 0;
+  }
+}
+@media (max-width: 21.875em) {
+  .login__message {
+    min-width: 15rem;
+    font-size: 1.2rem;
+  }
+}
+.login__text {
+  font-size: 1.4rem;
+  color: #3f2107;
+  font-weight: 400;
 }
 
 .account {

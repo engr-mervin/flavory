@@ -7,6 +7,12 @@
   }
   &__item {
     margin: 1rem 1.5rem;
+    @include respondMax($bpw720) {
+      margin: 0.75rem;
+    }
+    @include respondMax($bpw510) {
+      margin: 0.5rem;
+    }
   }
   &__button {
     @include button--circle;
@@ -19,6 +25,15 @@
     &.current {
       background-color: $color-primary;
       color: $color-font--white;
+    }
+    @include respondMax($bpw460) {
+      height: 3.5rem;
+      width: 3.5rem;
+    }
+    @include respondMax($bpw350) {
+      height: 3rem;
+      width: 3rem;
+      border: 1px solid $color-primary;
     }
   }
 }

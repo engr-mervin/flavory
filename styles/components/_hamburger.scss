@@ -6,7 +6,7 @@
     background-color: white;
     flex-direction: column;
     gap: 0.8rem;
-    padding: 1rem 0.5rem;
+    padding: 1rem 0;
 
     &:hover {
       background-color: $color-primary--white-dark-1;
@@ -51,6 +51,12 @@
     max-width: 100vw;
     @include respondMax($bpw510) {
       padding: 8rem;
+    }
+    @include respondMax($bpw420) {
+      padding: 6rem;
+    }
+    @include respondMax($bpw350) {
+      padding: 4rem;
     }
   }
   &-menu.active {
@@ -112,6 +118,9 @@
     width: 4rem;
     height: 0.3rem;
     background-color: $color-font--black--light;
+    @include respondMax($bpw350) {
+      width: 3rem;
+    }
   }
   &-line2 {
     width: 4rem;

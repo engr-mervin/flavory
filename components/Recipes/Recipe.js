@@ -242,28 +242,30 @@ const Recipe = function ({ currentRecipe }) {
               <TimeLogo className="recipe__logo-2"></TimeLogo>
               <p className="recipe__duration-text">{`${currentRecipe.cooking_time} minutes`}</p>
             </div>
-            <ul className="recipe__ingredient-list">
-              {currentRecipe.ingredients.map((ingredient, ind) => (
-                <Ingredient
-                  key={`${ingredient.description}_${ind}`}
-                  ingredient={ingredient}
-                  multiplier={multiplier}
-                ></Ingredient>
-              ))}
-            </ul>
+          </div>
+          <ul className="recipe__ingredient-list">
+            {currentRecipe.ingredients.map((ingredient, ind) => (
+              <Ingredient
+                key={`${ingredient.description}_${ind}`}
+                ingredient={ingredient}
+                multiplier={multiplier}
+              ></Ingredient>
+            ))}
             {currentRecipe.source_url === "" ||
             currentRecipe.source_url === "BLANK" ? (
               ""
             ) : (
-              <a
-                target="_blank"
-                href={currentRecipe.source_url}
-                className="recipe__link"
-              >
-                View Complete Recipe &rarr;
-              </a>
+              <div className="recipe__link-box">
+                <a
+                  target="_blank"
+                  href={currentRecipe.source_url}
+                  className="recipe__link"
+                >
+                  View Complete Recipe &rarr;
+                </a>
+              </div>
             )}
-          </div>
+          </ul>
         </>
       ) : (
         <NoSelected

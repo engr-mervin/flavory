@@ -7,6 +7,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @include respondMax($bpw460) {
+    height: 3.5rem;
+    width: 3.5rem;
+  }
+  @include respondMax($bpw350) {
+    height: 3rem;
+    width: 3rem;
+    border: 1px solid $color-primary;
+  }
   &__left-logo,
   &__right-logo {
     height: 3rem;
