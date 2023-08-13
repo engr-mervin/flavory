@@ -1170,8 +1170,18 @@ body:has(.hamburger-overlay.active) {
 }
 
 .new-recipe {
-  padding: 4rem 4rem;
+  padding: 6rem;
   background-color: white;
+}
+@media (max-width: 59.375em) {
+  .new-recipe {
+    padding: 4rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .new-recipe {
+    padding: 2rem;
+  }
 }
 .new-recipe__form {
   padding: 4rem;
@@ -1182,6 +1192,11 @@ body:has(.hamburger-overlay.active) {
   flex-direction: column;
   gap: 1rem;
 }
+@media (max-width: 31.875em) {
+  .new-recipe__form {
+    padding: 2rem;
+  }
+}
 .new-recipe__title {
   text-transform: uppercase;
   font-weight: 400;
@@ -1189,10 +1204,26 @@ body:has(.hamburger-overlay.active) {
   font-family: "Montserrat", monospace;
   color: #3f2107;
   text-align: center;
+  font-weight: 400;
   font-size: 3.5rem;
   border-bottom: 1.5px solid #3f2107;
   padding: 1rem 0;
-  font-weight: 300;
+}
+@media (max-width: 48.125em) {
+  .new-recipe__title {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .new-recipe__title {
+    font-size: 2.5rem;
+    letter-spacing: 0.5px;
+  }
+}
+@media (max-width: 21.875em) {
+  .new-recipe__title {
+    font-size: 2rem;
+  }
 }
 .new-recipe__subtitle {
   text-transform: uppercase;
@@ -1201,6 +1232,18 @@ body:has(.hamburger-overlay.active) {
   font-family: "Montserrat", monospace;
   color: #3f2107;
   padding: 1rem 0;
+  font-size: 2.5rem;
+}
+@media (max-width: 48.125em) {
+  .new-recipe__subtitle {
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+  }
+}
+@media (max-width: 21.875em) {
+  .new-recipe__subtitle {
+    font-size: 1.8rem;
+  }
 }
 .new-recipe__group--1 {
   display: grid;
@@ -1210,12 +1253,86 @@ body:has(.hamburger-overlay.active) {
   align-items: center;
   margin-bottom: 1rem;
 }
+@media (max-width: 66.25em) {
+  .new-recipe__group--1 {
+    padding: 0 4rem;
+    column-gap: 2rem;
+    grid-template-columns: 16rem 2fr 16rem 2fr;
+  }
+}
+@media (max-width: 59.375em) {
+  .new-recipe__group--1 {
+    column-gap: 2rem;
+    padding: 0 2rem;
+  }
+}
+@media (max-width: 53.75em) {
+  .new-recipe__group--1 {
+    grid-template-columns: 16rem 1fr;
+  }
+}
+@media (max-width: 53.75em) {
+  .new-recipe__group--1 {
+    grid-template-columns: 16rem 1fr;
+  }
+}
+@media (max-width: 48.125em) {
+  .new-recipe__group--1 {
+    grid-template-columns: 14rem 1fr;
+    padding: 0;
+  }
+}
+@media (max-width: 26.25em) {
+  .new-recipe__group--1 {
+    grid-template-columns: 13rem 1fr;
+    column-gap: 1rem;
+  }
+}
+@media (max-width: 21.875em) {
+  .new-recipe__group--1 {
+    grid-template-columns: 11rem 1fr;
+  }
+}
 .new-recipe__group--2 {
   display: grid;
   grid-template-columns: auto 2fr auto 3fr auto 5fr;
   column-gap: 3rem;
   row-gap: 1.5rem;
   align-items: center;
+}
+@media (max-width: 66.25em) {
+  .new-recipe__group--2 {
+    column-gap: 2rem;
+    grid-template-columns: 16rem 2fr 16rem 2fr;
+    padding: 0 4rem;
+  }
+}
+@media (max-width: 59.375em) {
+  .new-recipe__group--2 {
+    padding: 0 2rem;
+  }
+}
+@media (max-width: 53.75em) {
+  .new-recipe__group--2 {
+    grid-template-columns: 16rem 1fr;
+  }
+}
+@media (max-width: 48.125em) {
+  .new-recipe__group--2 {
+    grid-template-columns: 14rem 1fr;
+    padding: 0;
+  }
+}
+@media (max-width: 26.25em) {
+  .new-recipe__group--2 {
+    grid-template-columns: 13rem 1fr;
+    column-gap: 1rem;
+  }
+}
+@media (max-width: 21.875em) {
+  .new-recipe__group--2 {
+    grid-template-columns: 11rem 1fr;
+  }
 }
 .new-recipe__group--3 {
   display: flex;
@@ -1230,12 +1347,28 @@ body:has(.hamburger-overlay.active) {
   margin-top: 1rem;
   padding: 0 4rem;
 }
+@media (max-width: 31.875em) {
+  .new-recipe__button-box {
+    padding: 0;
+  }
+}
 .new-recipe__status {
   text-align: center;
   display: block;
   color: rgb(255, 120, 120);
   letter-spacing: 1px;
+  font-size: 1.4rem;
   margin-top: 4rem;
+}
+@media (max-width: 31.875em) {
+  .new-recipe__status {
+    margin-top: 2rem;
+  }
+}
+@media (max-width: 21.875em) {
+  .new-recipe__status {
+    font-size: 1.2rem;
+  }
 }
 .new-recipe__button {
   background-color: #ff7f3f;
@@ -1250,6 +1383,20 @@ body:has(.hamburger-overlay.active) {
 }
 .new-recipe__button:hover {
   transform: scale(1.05);
+}
+@media (max-width: 26.25em) {
+  .new-recipe__button {
+    width: 4rem;
+    height: 4rem;
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 21.875em) {
+  .new-recipe__button {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 2.1rem;
+  }
 }
 .new-recipe__submit-button {
   background-color: #ff7f3f;
@@ -1273,6 +1420,47 @@ body:has(.hamburger-overlay.active) {
 }
 .new-recipe__submit-button:hover {
   transform: scale(1.05);
+}
+@media (max-width: 26.25em) {
+  .new-recipe__submit-button {
+    height: 4rem;
+    font-size: 1.6rem;
+    padding: 1rem 2rem;
+  }
+}
+@media (max-width: 21.875em) {
+  .new-recipe__submit-button {
+    height: 3.5rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 66.25em) {
+  .tooltip-parent:has(.new-recipe__description--input) {
+    grid-column: 2/-1;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 66.25em) {
+  .new-recipe__description--label {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 66.25em) {
+  .new-recipe__unit--label,
+  .new-recipe__source--label,
+  .new-recipe__cooking-time--label {
+    text-align: right;
+  }
+}
+@media (max-width: 53.75em) {
+  .new-recipe__unit--label,
+  .new-recipe__source--label,
+  .new-recipe__cooking-time--label {
+    text-align: left;
+  }
 }
 
 .input {
@@ -1346,17 +1534,42 @@ body:has(.hamburger-overlay.active) {
   flex-direction: column;
   gap: 2.5rem;
 }
+@media (max-width: 31.875em) {
+  .modal__box {
+    min-width: 35rem;
+  }
+}
+@media (max-width: 21.875em) {
+  .modal__box {
+    min-width: 32rem;
+  }
+}
 .modal__title-box {
   text-transform: none;
   font-size: 2.4rem;
   font-weight: 500;
   padding: 0.8rem 1rem;
-  border-bottom: 2px solid #3f2107;
+  border-bottom: 1.5px solid #3f2107;
+}
+@media (max-width: 31.875em) {
+  .modal__title-box {
+    padding: 0.8rem 0;
+  }
+}
+@media (max-width: 31.875em) {
+  .modal__title-box {
+    font-size: 2.2rem;
+  }
 }
 .modal__message-box {
   display: flex;
   flex-direction: column;
   padding-right: 4rem;
+}
+@media (max-width: 31.875em) {
+  .modal__message-box {
+    padding-right: 0;
+  }
 }
 .modal__message {
   font-size: 1.6rem;
@@ -1367,6 +1580,12 @@ body:has(.hamburger-overlay.active) {
 }
 .modal__message:not(:last-child) {
   padding-bottom: 0.8rem;
+}
+@media (max-width: 31.875em) {
+  .modal__message {
+    font-size: 1.4rem;
+    padding: 0;
+  }
 }
 .modal__button-box {
   display: flex;
@@ -1394,6 +1613,12 @@ body:has(.hamburger-overlay.active) {
 }
 .modal__button--confirm:disabled:hover, .modal__button--cancel:disabled:hover {
   transform: scale(1);
+}
+@media (max-width: 31.875em) {
+  .modal__button--confirm, .modal__button--cancel {
+    font-size: 1.4rem;
+    padding: 0.75rem 1.5rem;
+  }
 }
 .modal__button--cancel {
   background-color: rgb(255, 250, 246);
@@ -1653,7 +1878,7 @@ body:has(.modal__overlay) {
     padding: 10rem 2rem;
   }
 }
-@media (max-width: 21.875em) {
+@media (max-width: 26.25em) {
   .hero {
     padding: 8rem 2rem;
   }
@@ -2117,12 +2342,8 @@ body:has(.modal__overlay) {
 }
 @media (max-width: 26.25em) {
   .testimonial {
-    gap: 3rem;
-  }
-}
-@media (max-width: 21.875em) {
-  .testimonial {
     padding: 8rem 2rem;
+    gap: 3rem;
   }
 }
 .testimonial-title {
@@ -3252,6 +3473,11 @@ body:has(.modal__overlay) {
     min-height: 30rem;
   }
 }
+@media (max-width: 31.875em) {
+  .custom-page__404 {
+    padding: 0 2rem;
+  }
+}
 .custom-page__404-title {
   text-transform: uppercase;
   font-weight: 400;
@@ -3266,23 +3492,40 @@ body:has(.modal__overlay) {
     font-size: 3.5rem;
   }
 }
+@media (max-width: 39.375em) {
+  .custom-page__404-title {
+    font-size: 3rem;
+  }
+}
 .custom-page__404-message-box {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .custom-page__404-text {
-  font-size: 3.5rem;
+  font-size: 3rem;
   text-transform: uppercase;
   font-weight: 400;
   letter-spacing: 2px;
   font-family: "Montserrat", monospace;
   color: #3f2107;
   display: inline-block;
+  line-height: 1;
 }
 @media (max-width: 59.375em) {
   .custom-page__404-text {
-    font-size: 3rem;
+    font-size: 2.4rem;
+  }
+}
+@media (max-width: 39.375em) {
+  .custom-page__404-text {
+    font-size: 2rem;
+    letter-spacing: 0;
+  }
+}
+@media (max-width: 26.25em) {
+  .custom-page__404-text {
+    font-size: 1.6rem;
   }
 }
 .custom-page__404-logo {
@@ -3292,6 +3535,11 @@ body:has(.modal__overlay) {
   margin-right: 2rem;
   color: #3f2107;
   fill: #3f2107;
+}
+@media (max-width: 59.375em) {
+  .custom-page__404-logo {
+    display: none;
+  }
 }
 
 .pages__list {

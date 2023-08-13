@@ -59,7 +59,7 @@ const Bookmark = function ({ recipe }) {
       isShown: true,
       title: "Confirmation",
       message: "Remove this recipe from bookmarks?",
-      message2: "You can always bookmark the recipe again.",
+      message2: "You can bookmark the recipe again.",
       okFunction: removeBookmarkHandler,
     });
   };

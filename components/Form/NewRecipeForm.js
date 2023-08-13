@@ -245,7 +245,10 @@ const NewRecipeForm = function () {
         <h1 className="new-recipe__title">SHARE YOUR RECIPE!</h1>
         <h2 className="new-recipe__subtitle">Details</h2>
         <div className="new-recipe__group--1">
-          <label className="input__label" htmlFor="new-recipe__title">
+          <label
+            className="input__label new-recipe__title--label"
+            htmlFor="new-recipe__title"
+          >
             Title:
           </label>
           <InputText
@@ -261,7 +264,10 @@ const NewRecipeForm = function () {
             touchUnsubscribe={touchUnsubscribe}
             initialValidity={false}
           />
-          <label className="input__label" htmlFor="new-recipe__source">
+          <label
+            className="input__label new-recipe__source--label"
+            htmlFor="new-recipe__source"
+          >
             Recipe URL:
           </label>
           <InputTextAsync
@@ -275,7 +281,10 @@ const NewRecipeForm = function () {
             updateValidityField={updateDetailsValidityState}
             initialValidity={true}
           />
-          <label className="input__label" htmlFor="new-recipe__image">
+          <label
+            className="input__label new-recipe__image--label"
+            htmlFor="new-recipe__image"
+          >
             Image URL:
           </label>
           <InputTextAsync
@@ -289,7 +298,10 @@ const NewRecipeForm = function () {
             updateValidityField={updateDetailsValidityState}
             initialValidity={true}
           />
-          <label className="input__label" htmlFor="new-recipe__cooking-time">
+          <label
+            className="input__label new-recipe__cooking-time--label"
+            htmlFor="new-recipe__cooking-time"
+          >
             Cooking Time (mins):
           </label>
           <InputText
@@ -306,7 +318,10 @@ const NewRecipeForm = function () {
             touchUnsubscribe={touchUnsubscribe}
             initialValidity={false}
           />
-          <label className="input__label" htmlFor="new-recipe__servings">
+          <label
+            className="input__label new-recipe__servings--label"
+            htmlFor="new-recipe__servings"
+          >
             Servings:
           </label>
           <InputText
@@ -331,13 +346,13 @@ const NewRecipeForm = function () {
             return (
               <Fragment key={index}>
                 <label
-                  className="input__label"
+                  className="input__label new-recipe__quantity--label"
                   htmlFor={`ingredient__quantity-${index + 1}`}
                 >{`Quantity ${index + 1}:`}</label>
                 <InputText
                   validateFunction={validateQuantity}
                   id={`ingredient__quantity-${index + 1}`}
-                  className="input"
+                  className="input new-recipe__quantity--input"
                   tooltip="Input a decimal number or fraction."
                   dataindex={index}
                   inputtype="quantity"
@@ -349,13 +364,13 @@ const NewRecipeForm = function () {
                   initialValidity={true}
                 />
                 <label
-                  className="input__label"
+                  className="input__label new-recipe__unit--label"
                   htmlFor={`ingredient__unit-${index + 1}`}
                 >{`Unit ${index + 1}:`}</label>
                 <InputText
                   validateFunction={validateUnit}
                   id={`ingredient__unit-${index + 1}`}
-                  className="input"
+                  className="input new-recipe__unit--input"
                   tooltip={`Input letters with "",'' and - symbols`}
                   dataindex={index}
                   inputtype="unit"
@@ -366,13 +381,13 @@ const NewRecipeForm = function () {
                   initialValidity={true}
                 />
                 <label
-                  className="input__label"
+                  className="input__label new-recipe__description--label"
                   htmlFor={`ingredient__description-${index + 1}`}
                 >{`Ingredient ${index + 1}:`}</label>
                 <InputText
                   validateFunction={validateDescription}
                   id={`ingredient__description-${index + 1}`}
-                  className="input"
+                  className="input new-recipe__description--input"
                   tooltip="Input an ingredient description(required)."
                   dataindex={index}
                   inputtype="description"

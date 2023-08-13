@@ -1,7 +1,13 @@
 .new-recipe {
-  padding: 4rem 4rem;
+  padding: 6rem;
   background-color: white;
 
+  @include respondMax($bpw950) {
+    padding: 4rem;
+  }
+  @include respondMax($bpw510) {
+    padding: 2rem;
+  }
   &__form {
     padding: 4rem;
     padding-bottom: 3rem;
@@ -10,19 +16,40 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    @include respondMax($bpw510) {
+      padding: 2rem;
+    }
   }
   &__title {
     @include classy;
     text-align: center;
+    font-weight: 400;
     font-size: 3.5rem;
     border-bottom: 1.5px solid $color-font--black;
     padding: 1rem 0;
-    font-weight: 300;
+    @include respondMax($bpw770) {
+      font-size: 3rem;
+    }
+    @include respondMax($bpw510) {
+      font-size: 2.5rem;
+      letter-spacing: 0.5px;
+    }
+    @include respondMax($bpw350) {
+      font-size: 2rem;
+    }
   }
 
   &__subtitle {
     @include classy;
     padding: 1rem 0;
+    font-size: 2.5rem;
+    @include respondMax($bpw770) {
+      font-size: 2rem;
+      letter-spacing: 0.5px;
+    }
+    @include respondMax($bpw350) {
+      font-size: 1.8rem;
+    }
   }
   &__group--1 {
     display: grid;
@@ -31,6 +58,32 @@
     row-gap: 1.5rem;
     align-items: center;
     margin-bottom: 1rem;
+    @include respondMax($bpw1060) {
+      padding: 0 4rem;
+      column-gap: 2rem;
+      grid-template-columns: 16rem 2fr 16rem 2fr;
+    }
+    @include respondMax($bpw950) {
+      column-gap: 2rem;
+      padding: 0 2rem;
+    }
+    @include respondMax($bpw860) {
+      grid-template-columns: 16rem 1fr;
+    }
+    @include respondMax($bpw860) {
+      grid-template-columns: 16rem 1fr;
+    }
+    @include respondMax($bpw770) {
+      grid-template-columns: 14rem 1fr;
+      padding: 0;
+    }
+    @include respondMax($bpw420) {
+      grid-template-columns: 13rem 1fr;
+      column-gap: 1rem;
+    }
+    @include respondMax($bpw350) {
+      grid-template-columns: 11rem 1fr;
+    }
   }
   &__group--2 {
     display: grid;
@@ -38,7 +91,30 @@
     column-gap: 3rem;
     row-gap: 1.5rem;
     align-items: center;
+    @include respondMax($bpw1060) {
+      column-gap: 2rem;
+      grid-template-columns: 16rem 2fr 16rem 2fr;
+      padding: 0 4rem;
+    }
+    @include respondMax($bpw950) {
+      padding: 0 2rem;
+    }
+    @include respondMax($bpw860) {
+      grid-template-columns: 16rem 1fr;
+    }
+    @include respondMax($bpw770) {
+      grid-template-columns: 14rem 1fr;
+      padding: 0;
+    }
+    @include respondMax($bpw420) {
+      grid-template-columns: 13rem 1fr;
+      column-gap: 1rem;
+    }
+    @include respondMax($bpw350) {
+      grid-template-columns: 11rem 1fr;
+    }
   }
+
   &__group--3 {
     @include flex-justify;
   }
@@ -48,17 +124,37 @@
     gap: 2rem;
     margin-top: 1rem;
     padding: 0 4rem;
+    @include respondMax($bpw510) {
+      padding: 0;
+    }
   }
 
   &__status {
     @include status-text;
+    font-size: 1.4rem;
     margin-top: 4rem;
+    @include respondMax($bpw510) {
+      margin-top: 2rem;
+    }
+    @include respondMax($bpw350) {
+      font-size: 1.2rem;
+    }
   }
   &__button {
     @include button--smooth;
     width: 5rem;
     height: 5rem;
     font-size: 3.2rem;
+    @include respondMax($bpw420) {
+      width: 4rem;
+      height: 4rem;
+      font-size: 2.5rem;
+    }
+    @include respondMax($bpw350) {
+      width: 3.5rem;
+      height: 3.5rem;
+      font-size: 2.1rem;
+    }
   }
   &__submit-button {
     @include button--smooth;
@@ -68,5 +164,36 @@
     height: 5rem;
     font-size: 1.8rem;
     padding: 1.5rem 2.5rem;
+    @include respondMax($bpw420) {
+      height: 4rem;
+      font-size: 1.6rem;
+      padding: 1rem 2rem;
+    }
+    @include respondMax($bpw350) {
+      height: 3.5rem;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.tooltip-parent:has(.new-recipe__description--input) {
+  @include respondMax($bpw1060) {
+    grid-column: 2/-1;
+    margin-bottom: 2rem;
+  }
+}
+.new-recipe__description--label {
+  @include respondMax($bpw1060) {
+    margin-bottom: 2rem;
+  }
+}
+.new-recipe__unit--label,
+.new-recipe__source--label,
+.new-recipe__cooking-time--label {
+  @include respondMax($bpw1060) {
+    text-align: right;
+  }
+  @include respondMax($bpw860) {
+    text-align: left;
   }
 }

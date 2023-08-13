@@ -25,10 +25,8 @@
     padding: 10rem 2rem;
   }
   @include respondMax($bpw420) {
-    gap: 3rem;
-  }
-  @include respondMax($bpw350) {
     padding: 8rem 2rem;
+    gap: 3rem;
   }
 
   &-title {
