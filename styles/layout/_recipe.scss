@@ -147,7 +147,7 @@
   }
 
   &__link-box {
-    margin: 1rem 2rem;
+    margin: 0 2rem;
     margin-top: 3rem;
     justify-self: flex-end;
     grid-column: 1/-1;
@@ -235,7 +235,7 @@
     color: $color-font--black;
     display: grid;
     padding: 2rem 5rem;
-    padding-bottom: 0;
+    padding-bottom: 1rem;
     grid-template-columns: 1fr 1fr;
     column-gap: 3rem;
     row-gap: 2rem;
@@ -245,12 +245,14 @@
       grid-template-columns: 1fr;
       row-gap: 1rem;
       padding: 0 3rem;
+      padding-bottom: 2rem;
     }
     @include respondMax($bpw950) {
       grid-template-columns: 1fr 1fr;
     }
     @include respondMax($bpw510) {
       padding: 0 2rem;
+      padding-bottom: 2rem;
     }
     @include respondMax($bpw460) {
       grid-template-columns: 1fr;

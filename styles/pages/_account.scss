@@ -1,10 +1,26 @@
 .account {
-  padding: 4rem;
+  padding: 6rem;
   display: grid;
-  grid-template-columns: 2fr 5fr;
+  grid-template-columns: 35rem 1fr;
   gap: 4rem;
   color: $color-font--black;
 
+  @include respondMax($bpw950) {
+    padding: 6rem 14rem;
+    grid-template-columns: 1fr;
+  }
+  @include respondMax($bpw860) {
+    padding: 4rem 10rem;
+  }
+  @include respondMax($bpw720) {
+    padding: 4rem 8rem;
+  }
+  @include respondMax($bpw630) {
+    padding: 4rem;
+  }
+  @include respondMax($bpw510) {
+    padding: 4rem 2rem;
+  }
   &__box {
     grid-row: 1/-1;
     display: flex;
@@ -15,6 +31,9 @@
   &__stats-box {
     @include left-box;
     padding: 2.4rem;
+    @include respondMax($bpw510) {
+      padding: 2rem;
+    }
   }
 
   &__stats {
@@ -25,11 +44,14 @@
     &:not(:last-child) {
       padding-bottom: 1rem;
     }
+    @include respondMax($bpw350) {
+      font-size: 1.4rem;
+    }
   }
   &__content-box {
     display: flex;
     flex-direction: column;
-    gap: 3.5rem;
+    gap: 6rem;
   }
   &__title {
     @include left-box;
@@ -40,11 +62,17 @@
     font-size: 2.8rem;
     padding: 1.6rem;
     text-transform: uppercase;
+    @include respondMax($bpw350) {
+      font-size: 2.4rem;
+    }
   }
   &__recipes-box {
     @include right-box;
     padding: 2rem 4rem;
     display: grid;
+    @include respondMax($bpw510) {
+      padding: 2rem;
+    }
   }
 
   &__subtitle {
@@ -62,5 +90,27 @@
     grid-template-columns: 1fr 1fr;
     padding-bottom: 3rem;
     gap: 2rem;
+
+    @include respondMax($bpw1350) {
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: stretch;
+      gap: 3rem;
+    }
+
+    @include respondMax($bpw1150) {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    @include respondMax($bpw720) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    @include respondMax($bpw510) {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @include respondMax($bpw420) {
+      grid-template-columns: 1fr;
+    }
   }
 }
