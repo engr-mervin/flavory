@@ -394,7 +394,7 @@ body {
   height: 3rem;
 }
 .button-hero--signup {
-  background-color: #ff7f3f;
+  background-color: #ea5c2b;
   cursor: pointer;
   color: rgb(255, 245, 236);
   border-radius: 1rem;
@@ -418,7 +418,7 @@ body {
   transform: scale(1.05);
 }
 .button-hero--start {
-  background-color: #ff7f3f;
+  background-color: #ea5c2b;
   cursor: pointer;
   color: rgb(255, 245, 236);
   border-radius: 1rem;
@@ -473,7 +473,7 @@ body {
 }
 
 .hamburger-open {
-  background-color: #ff7f3f;
+  background-color: #ea5c2b;
   cursor: pointer;
   color: rgb(255, 245, 236);
   border-radius: 1rem;
@@ -486,7 +486,7 @@ body {
   background-color: white;
   flex-direction: column;
   gap: 0.8rem;
-  padding: 1rem 0;
+  padding: 1rem;
 }
 .hamburger-open:hover {
   transform: scale(1.05);
@@ -532,17 +532,17 @@ body {
 }
 @media (max-width: 31.875em) {
   .hamburger-menu {
-    padding: 8rem;
+    padding: 10rem 8rem;
   }
 }
 @media (max-width: 26.25em) {
   .hamburger-menu {
-    padding: 6rem;
+    padding: 10rem 6rem;
   }
 }
 @media (max-width: 21.875em) {
   .hamburger-menu {
-    padding: 4rem;
+    padding: 10rem 4rem;
   }
 }
 .hamburger-menu.active {
@@ -558,7 +558,7 @@ body {
   display: block;
 }
 .hamburger-close {
-  background-color: #ff7f3f;
+  background-color: #ea5c2b;
   cursor: pointer;
   color: rgb(255, 245, 236);
   border-radius: 1rem;
@@ -592,6 +592,7 @@ body {
   color: #3f2107;
   background-color: transparent;
   border: none;
+  border: 1px solid white;
   padding: 1rem 3rem;
   width: 100%;
   height: 100%;
@@ -643,7 +644,7 @@ body:has(.hamburger-overlay.active) {
   color: #3f2107;
 }
 .link:hover, .link:active {
-  background-color: #ff7f3f;
+  background-color: #ea5c2b;
 }
 
 .tab {
@@ -1000,7 +1001,7 @@ body:has(.hamburger-overlay.active) {
   }
 }
 .account-card__unsave {
-  background-color: #ff7f3f;
+  background-color: #ea5c2b;
   cursor: pointer;
   color: rgb(255, 245, 236);
   border-radius: 1rem;
@@ -1502,7 +1503,7 @@ body:has(.hamburger-overlay.active) {
   }
 }
 .new-recipe__button {
-  background-color: #ff7f3f;
+  background-color: #ea5c2b;
   cursor: pointer;
   color: rgb(255, 245, 236);
   border-radius: 1rem;
@@ -1530,7 +1531,7 @@ body:has(.hamburger-overlay.active) {
   }
 }
 .new-recipe__submit-button {
-  background-color: #ff7f3f;
+  background-color: #ea5c2b;
   cursor: pointer;
   color: rgb(255, 245, 236);
   border-radius: 1rem;
@@ -1607,7 +1608,7 @@ body:has(.hamburger-overlay.active) {
   transition: all 150ms;
 }
 .input:focus {
-  outline: 1.5px solid #ff7f3f;
+  outline: 1.5px solid #ea5c2b;
 }
 .input.invalid {
   background-color: rgb(255, 215, 215);
@@ -1815,7 +1816,7 @@ body:has(.modal__overlay) {
   z-index: 3;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to bottom right, rgba(255, 127, 63, 0.15), rgba(255, 127, 63, 0.05));
+  background-image: linear-gradient(to bottom right, rgba(234, 92, 43, 0.15), rgba(234, 92, 43, 0.05));
 }
 .search-item__front__title-box, .search-item__back__title-box {
   position: absolute;
@@ -2288,10 +2289,9 @@ body:has(.modal__overlay) {
 }
 
 .navigation {
-  padding: 1.5rem 6rem;
-  padding-top: 1.5rem;
-  border-bottom: 3px double #3f2107;
-  background-color: white;
+  padding: 1rem 6rem;
+  box-shadow: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.04);
+  background-color: #ffffff;
   display: flex;
   justify-content: space-between;
   animation: fade 800ms;
@@ -2306,11 +2306,13 @@ body:has(.modal__overlay) {
 @media (max-width: 48.125em) {
   .navigation {
     justify-content: flex-end;
+    padding: 1rem 3rem;
   }
 }
 @media (max-width: 31.875em) {
   .navigation {
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.06);
   }
 }
 .navigation-item-hamburger {
@@ -2392,7 +2394,7 @@ body:has(.modal__overlay) {
   border: 1.5px solid #ea5c2b;
 }
 .navigation__logout {
-  background-color: #ff7f3f;
+  background-color: #ea5c2b;
   cursor: pointer;
   color: rgb(255, 245, 236);
   border-radius: 1rem;
@@ -3073,7 +3075,7 @@ body:has(.modal__overlay) {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ff7f3f;
+  background-color: #ea5c2b;
   cursor: pointer;
   color: rgb(255, 245, 236);
   border-radius: 1rem;
@@ -3469,7 +3471,7 @@ body:has(.modal__overlay) {
   letter-spacing: 2px;
   font-family: "Montserrat", monospace;
   color: #3f2107;
-  background-color: #ff7f3f;
+  background-color: #ea5c2b;
   cursor: pointer;
   color: rgb(255, 245, 236);
   border-radius: 1rem;
@@ -3494,7 +3496,7 @@ body:has(.modal__overlay) {
   display: none;
   height: 100%;
   color: white;
-  background-color: #ff7f3f;
+  background-color: #ea5c2b;
   cursor: pointer;
   color: rgb(255, 245, 236);
   border-radius: 1rem;
@@ -3535,9 +3537,14 @@ body:has(.modal__overlay) {
   justify-content: center;
   padding: 5rem;
 }
-@media (max-width: 31.875em) {
+@media (max-width: 45em) {
   .no-selected {
     padding: 3rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .no-selected {
+    padding: 2rem;
   }
 }
 .no-selected__message {
@@ -3546,11 +3553,18 @@ body:has(.modal__overlay) {
   letter-spacing: 2px;
   font-family: "Montserrat", monospace;
   color: #3f2107;
-  font-size: 2.5rem;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 300;
+}
+@media (max-width: 45em) {
+  .no-selected__message {
+    font-size: 2rem;
+  }
 }
 @media (max-width: 31.875em) {
   .no-selected__message {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -3568,6 +3582,18 @@ body:has(.modal__overlay) {
   font-family: "Montserrat", monospace;
   color: #3f2107;
   font-size: 2rem;
+  text-align: center;
+  font-weight: 300;
+}
+@media (max-width: 45em) {
+  .no-selected-account__message {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 31.875em) {
+  .no-selected-account__message {
+    font-size: 1.6rem;
+  }
 }
 .no-selected-account__logo {
   height: 4rem;

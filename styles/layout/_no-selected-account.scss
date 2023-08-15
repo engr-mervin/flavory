@@ -8,6 +8,14 @@
   &__message {
     @include classy;
     font-size: 2rem;
+    text-align: center;
+    font-weight: 300;
+    @include respondMax($bpw720) {
+      font-size: 2rem;
+    }
+    @include respondMax($bpw510) {
+      font-size: 1.6rem;
+    }
   }
   &__logo {
     height: 4rem;
