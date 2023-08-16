@@ -14,6 +14,7 @@ const InputText = function ({
   touchSubscribe /*Simulates touch on components*/,
   tooltip,
   touchUnsubscribe,
+  placeholder,
   type = "text",
 }) {
   const [validity, setValidity] = useState(initialValidity);
@@ -76,6 +77,7 @@ const InputText = function ({
         onChange={updateHandler}
         onBlur={updateHandler}
         id={id}
+        placeholder={placeholder}
       ></input>
       <Tooltip>{tooltip}</Tooltip>
     </div>

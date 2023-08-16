@@ -52,10 +52,10 @@ const NewRecipeForm = function () {
   const [status, setStatus] = useState("");
 
   const [ingredients, setIngredients] = useState(
-    Array(4).fill({ quantity: null, unit: "", description: "" })
+    Array(2).fill({ quantity: null, unit: "", description: "" })
   );
   const [ingredientsValidity, setIngredientsValidity] = useState(
-    Array(4).fill({ quantity: true, unit: true, description: false })
+    Array(2).fill({ quantity: true, unit: true, description: false })
   );
   const [details, setDetails] = useState({
     source_url: "",
@@ -263,6 +263,7 @@ const NewRecipeForm = function () {
             touchSubscribe={touchSubscribe}
             touchUnsubscribe={touchUnsubscribe}
             initialValidity={false}
+            placeholder="(Required*)"
           />
           <label
             className="input__label new-recipe__source--label"
@@ -317,6 +318,7 @@ const NewRecipeForm = function () {
             touchSubscribe={touchSubscribe}
             touchUnsubscribe={touchUnsubscribe}
             initialValidity={false}
+            placeholder="(Required*)"
           />
           <label
             className="input__label new-recipe__servings--label"
@@ -337,6 +339,7 @@ const NewRecipeForm = function () {
             touchSubscribe={touchSubscribe}
             touchUnsubscribe={touchUnsubscribe}
             initialValidity={false}
+            placeholder="(Required*)"
           />
         </div>
 
@@ -396,6 +399,7 @@ const NewRecipeForm = function () {
                   touchSubscribe={touchSubscribe}
                   touchUnsubscribe={touchUnsubscribe}
                   initialValidity={false}
+                  placeholder="(Required*)"
                 />
               </Fragment>
             );
